@@ -1,4 +1,4 @@
-print('[banked-xp] Loaded v0.155.0 (native anima tooltip).')
+print('[banked-xp] Loaded v0.156.0 (native anima tooltip).')
 -- Native middle-row layout 0.49. Native cursor positioning is preserved.
 -- Temporarily expands the native tooltip row and moves its footer below it.
 -- Reversible layout edits are undone before each frame and on exit.
@@ -367,11 +367,22 @@ local function paint()
         local optionsWidth=footerStyle.font:GetStringWidth(footerText,false)
         local pad=spaceWidth>0 and math.max(0,math.floor((plan.width-optionsWidth-2)/spaceWidth)) or 0
         combinedText=text..'<br><br>'..string.rep(nbsp,pad)..footerText
-        local count=math.max(1,footerStyle.font:GetStringLineCount(combinedText,plan.width,false))
-        combinedHeight=math.ceil(footerStyle.font.maxAscent+footerStyle.font.maxDescent+(count-1)*footerStyle.spacing+2)
+        -- Anchor the divider to the start of the options line, not the end
+        -- of the padded combined string (whose wrap count can include padding).
+        local bodyCount=0
+        for _,line in ipairs(lines) do
+            bodyCount=bodyCount+math.max(1,footerStyle.font:GetStringLineCount(line,plan.width,false))
+        end
+        local step=footerStyle.spacing
+        pcall(function()
+            local cfg=footer:GetConfigCopy()
+            if cfg.lineSpacing and cfg.lineSpacing>0 then step=cfg.lineSpacing end
+        end)
+        local optionsOffset=(bodyCount+1)*step -- one blank line before options
+        combinedHeight=math.ceil(footerStyle.font.maxAscent+footerStyle.font.maxDescent+optionsOffset+2)
         local adjusted={};for k,v in pairs(plan) do adjusted[k]=v end;plan=adjusted
         plan.height=plan.bodyY+combinedHeight
-        plan.footerY=plan.height-plan.footerHeight
+        plan.footerY=plan.bodyY+optionsOffset
     end
     -- Equipment details can contain native columns and precisely spaced rows.
     -- Translate the block intact rather than stacking/recentering every label.

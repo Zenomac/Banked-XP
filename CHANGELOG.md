@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.155.0**.
+Current plugin version: **0.156.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.156 — Divider above the options line
+
+- Anchor the anima footer divider to the options-line start, counting the wrapped XP body independently of the padded options string.
+- Read native configured line spacing when available and size the combined label from the same options offset. Keep centering, options padding and cursor behavior.
+- Update the executable load message to v0.156.0. Hover regression checks cover native configured spacing, divider placement, stable sizing and restoration; in-game visual confirmation remains pending.
 
 ## v0.155 — Centered anima information and load-version message
 

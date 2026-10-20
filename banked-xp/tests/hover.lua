@@ -359,6 +359,7 @@ ui.Canvas={new=function() error('tradeable hover must not allocate canvas') end}
 selected.inputPerPotion=3;selected.xpUnit='arrow'
 selected.note='Limited by: Dinarrow | Requires: Standard imbuing | Outfit: +0%'
 local nativeFooter=labels[2].content
+labels[2].GetConfigCopy=function() return {lineSpacing=9} end
 for cycle=1,3 do
  for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
   local title='Withdraw-All Resonant anima of '..god..' (tradeable)'
@@ -373,6 +374,15 @@ for cycle=1,3 do
    assert(labels[2].content:sub(-#nativeFooter)==nativeFooter,'options remain the final line')
    assert(labels[2].alignHorizontal==ui.AlignMode.CENTRE,'XP body centered')
    assert(labels[2].content:find('\194\160',1,true),'only options line receives nonbreaking padding')
+   local beforeWidths,beforeLines=widthCalls,lineCalls
+   local body=labels[2].content:match('^(.-)<br><br>')
+   local measuredFont=config.Font.FromID(labels[2].font)
+   local count=0
+   for line in (body..'<br>'):gmatch('(.-)<br>') do count=count+measuredFont:GetStringLineCount(line,labels[2].width,false) end
+   local expected=measuredFont.maxAscent+measuredFont.maxDescent+(count+1)*9+2
+   assert(labels[2].height==expected,'height excludes options padding wraps and uses native configured spacing')
+   assert(nativeRules[1].xyGlobal.y==labels[2].xyGlobal.y+(count+1)*9-4,'divider is above options start')
+   widthCalls,lineCalls=beforeWidths,beforeLines
    assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'invisible native body untouched')
    assert(labels[0].content==title,'native title unchanged')
    if frame==1 then expectedWidth=bg.width;measurements=widthCalls+lineCalls;firstContent=labels[2].content
