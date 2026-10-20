@@ -354,7 +354,13 @@ callbacks.MiniMenuOpened()
 ui.Text={new=function() error('no text constructors') end}
 ui.Layer={new=function() error('no layer constructors') end}
 ui.Sprite={new=function() error('no sprite constructors') end}
-local expectedWidth,measuredWidths,measuredLines
+local componentReads=0
+local originalGet=ui.Interfaces.GetComponent
+ui.Interfaces.GetComponent=function(self,...)
+ componentReads=componentReads+1;return originalGet(self,...)
+end
+local expectedWidth,measuredWidths,measuredLines,readCount
+selected.inputPerPotion=3;selected.xpUnit='arrow'
 selected.note='Limited by: Dinarrow | Requires: Standard imbuing | Outfit: <col=ff0000>+0%</col> Fletcher'
 for cycle=1,3 do
  for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
@@ -367,14 +373,18 @@ for cycle=1,3 do
   for frame=1,20 do
    callbacks.Draw()
    assert(labels[0].content:find('XP',1,true),'XP in visible native title on first and repeated draws')
+   assert(not labels[0].content:find('<br><br>',1,true),'no extra blank title line')
+   assert(labels[0].content:find('Uses 3 per arrow',1,true),'same consumption information as normal hover')
+   assert(labels[2].xyGlobal.y>=labels[0].xyGlobal.y+labels[0].height+7,'footer clear of body')
    assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'middle label untouched')
-   assert(labels[0].font==labels[2].font,'use smaller native options font')
+   assert(labels[0].font==12,'retain native title font and line advance')
    assert(labels[0].content:find('</col><br><col=e3d7bf>Requires:',1,true),'notes on separate lines')
    if frame==1 then
-    expectedWidth=bg.width;measuredWidths=widthCalls;measuredLines=lineCalls
+    expectedWidth=bg.width;measuredWidths=widthCalls;measuredLines=lineCalls;readCount=componentReads
    else
     assert(bg.width==expectedWidth,'width stable')
     assert(widthCalls==measuredWidths and lineCalls==measuredLines,'warm draws must not remeasure text')
+    assert(componentReads==readCount,'unchanged hover must not scan or rebuild native components')
    end
   end
   callbacks.MiniMenuOpened()
@@ -383,3 +393,19 @@ for cycle=1,3 do
  end
 end
 print('PASS: observed hidden-middle layout uses title only; no constructors, unhiding or horizontal growth')
+
+-- Switch directly between gods without opening/closing a menu.
+for index,god in ipairs({'Jas','Wen','Bik','Ful','Jas'}) do
+ local title='Withdraw-All Resonant anima of '..god..' (tradeable)'
+ labels[0].content=title
+ event.miniMenu.entries[1].componentData.objConfig={id=800+index,name='Resonant anima of '..god..' (tradeable)'}
+ callbacks.MiniMenuReady(event);callbacks.Draw()
+ assert(labels[0].content:find(title,1,true),'direct switch keeps current item title')
+ assert(labels[0].content:find('XP',1,true),'direct switch renders immediately')
+ local before=componentReads
+ bubble.position.x=bubble.position.x+3
+ callbacks.Draw()
+ assert(componentReads==before,'cursor parent movement reuses relative layout')
+end
+callbacks.MiniMenuOpened()
+print('PASS: direct anima transitions and cursor movement reuse stable native layout')

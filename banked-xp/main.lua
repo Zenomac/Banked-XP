@@ -26,6 +26,7 @@ if not noticeOK then print('[banked-xp] Optional Diango notice unavailable: '..t
 local warned = false
 local edits={}
 local nativeGeometry
+local animaPaintKey
 local function undoLayout()
     for i=#edits,1,-1 do
         local e=edits[i]
@@ -85,11 +86,13 @@ local function box(c,x,y,width,height)
     c.size=ui.Size.new(math.ceil(width),math.ceil(height))
     local position=ui.Pos.new(math.floor(x-origin.x),math.floor(y-origin.y))
     edits[#edits].after=ui.Pos.new(position)
+    edits[#edits].afterSize=ui.Size.new(c.size)
     c.position=position
 end
 local function resize(c,width,height)
     edits[#edits+1]={c=c,p='resize',before=ui.Size.new(c.size)}
     c.size=ui.Size.new(math.ceil(width),math.ceil(height))
+    edits[#edits].afterSize=ui.Size.new(c.size)
 end
 local function restore(preserveNativeText)
     local currentText={}
@@ -98,6 +101,7 @@ local function restore(preserveNativeText)
             if e.p=='content' then currentText[e.c]=e.c.content end
         end
     end
+    animaPaintKey=nil
     nativeGeometry=nil
     nativeFrame.hide()
     undoLayout()
@@ -145,7 +149,39 @@ local function detect(event)
 
     end
 end
+local function animaKey()
+    if not selected then return nil end
+    local values={selectedName or '',tostring(quantity)}
+    for _,key in ipairs({'total','equipmentTotal','outfitTotal','skill','method','craftable','xp','note','inputPerPotion','unit','outputUnit','xpUnit'}) do
+        values[#values+1]=tostring(selected[key])
+    end
+    return table.concat(values,'\0')
+end
+local function unchangedAnima()
+    if not animaPaintKey or animaPaintKey~=animaKey() or #edits==0 then return false end
+    for _,e in ipairs(edits) do
+        if not e.c.visibleGlobal then return false end
+        if e.p=='rect' or e.p=='resize' then
+            local size=e.c.size
+            for _,key in ipairs({'width','height','widthParentPc','heightParentPc'}) do
+                if size[key]~=e.afterSize[key] then return false end
+            end
+            if e.p=='rect' then
+                local pos=e.c.position
+                for _,key in ipairs({'x','y','xParentPc','yParentPc','xSelfPc','ySelfPc'}) do
+                    if pos[key]~=e.after[key] then return false end
+                end
+            end
+        elseif e.c[e.p]~=e.after then return false end
+    end
+    return true
+end
 local function paint()
+    if selected and not MiniMenu.IsOpen() then
+        local ok,unchanged=pcall(unchangedAnima)
+        if ok and unchanged then return end
+    end
+    animaPaintKey=nil
     nativeFrame.hide()
     undoLayout()
     if not selected or MiniMenu.IsOpen() then restore();return end
@@ -163,6 +199,16 @@ local function paint()
         if ok then return c end
     end
     local footer=optionalRow(2)
+    if require('bank').normalize(selectedName):match('^resonant anima of .+ %(tradeable%)$') then
+        for i=3,4 do
+            local c=optionalRow(i)
+            if c and c.visibleGlobal and (c.content or ''):gsub('<[^>]*>',''):match('^%s*%+%d+%s*options?') then footer=c end
+        end
+        if require('anima_hover').render(header,footer,selected,selectedName,quantity,box,edit,resize) then
+            animaPaintKey=animaKey()
+        else restore() end
+        return
+    end
     local candidates,details={},{}
     for i=2,31 do
         pcall(function()
@@ -177,10 +223,6 @@ local function paint()
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
     local function probe(reason)
         animaProbe.report(selectedName,reason,{[0]=header,[1]=row,[2]=footer,[3]=optionalRow(3)})
-    end
-    if require('bank').normalize(selectedName):match('^resonant anima of .+ %(tradeable%)$') then
-        if not require('anima_hover').render(header,footer,selected,selectedName,quantity,box,edit,resize) then restore() end
-        return
     end
     if not header or not row or not footer then probe('missing component');restore();return end
     if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then probe('middle row unavailable');restore();return end

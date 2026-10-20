@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.138.0**.
+Current plugin version: **0.139.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.139 — Tradeable anima spacing and stable hover reuse
+
+- Keep the native title font and its line advance together, remove the extra blank title line, separate the options footer from the body and restore the consumption line.
+- Retain unchanged native layouts between draws instead of undoing and rebuilding them every frame. Rebuild when displayed values or edited native geometry/content change; preserve cursor-relative positioning and restoration.
+- Resolve tradeable anima before the general 30-row detail scan and cache measurements for eight recent layouts to reduce repeat work when switching items.
+- Regression coverage includes direct god-to-god switches, no component scans on unchanged frames, cursor movement, no blank title line and footer clearance. No new native UI children or network calls. In-game smoothness and appearance require confirmation.
 
 ## v0.138 — Tradeable anima formatting and measurement cache
 
