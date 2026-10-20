@@ -37434,74 +37434,152 @@
     "category": "Arrows - Scratch"
   },
   {
-    "id": "skill:Fletching:d465fc27f984",
+    "id": "skill:Fletching:anima128:34987f409a7681",
     "skill": "Fletching",
     "method": "Bik arrow",
-    "xp": 600,
+    "xp": 40.0,
     "level": 95,
     "inputs": [
       {
         "name": "Sharp shell shard",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Tempered fungal shaft",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Dinosaur 'propellant'",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Bik (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Bik arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Bik_arrow",
     "label": "Bik arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
-    "id": "skill:Fletching:c427ac2d6d53",
+    "id": "skill:Fletching:anima128:62aaf8bda44be1",
     "skill": "Fletching",
-    "method": "Ful arrow",
-    "xp": 600,
+    "method": "Bik arrow",
+    "xp": 40.0,
     "level": 95,
     "inputs": [
       {
         "name": "Sharp shell shard",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Tempered fungal shaft",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Dinosaur 'propellant'",
-        "qty": 15
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Bik",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Bik arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Bik_arrow",
+    "label": "Bik arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:a0cb5f6039e5c8",
+    "skill": "Fletching",
+    "method": "Ful arrow",
+    "xp": 40.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Sharp shell shard",
+        "qty": 1.0
+      },
+      {
+        "name": "Tempered fungal shaft",
+        "qty": 1.0
+      },
+      {
+        "name": "Dinosaur 'propellant'",
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Ful (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Ful arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Ful_arrow",
     "label": "Ful arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:8d4f3036836c86",
+    "skill": "Fletching",
+    "method": "Ful arrow",
+    "xp": 40.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Sharp shell shard",
+        "qty": 1.0
+      },
+      {
+        "name": "Tempered fungal shaft",
+        "qty": 1.0
+      },
+      {
+        "name": "Dinosaur 'propellant'",
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Ful",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Ful arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Ful_arrow",
+    "label": "Ful arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
     "id": "skill:Fletching:ddb767b3459a",
@@ -37535,74 +37613,152 @@
     "category": "Arrows - Scratch"
   },
   {
-    "id": "skill:Fletching:62e25e28b951",
+    "id": "skill:Fletching:anima128:c33e9762b1da5a",
     "skill": "Fletching",
     "method": "Jas dragonbane arrow",
-    "xp": 600,
+    "xp": 40.0,
     "level": 95,
     "inputs": [
       {
         "name": "Sharp shell shard",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Tempered fungal shaft",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Dinosaur 'propellant'",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Jas (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Jas dragonbane arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Jas_dragonbane_arrow",
     "label": "Jas dragonbane arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
-    "id": "skill:Fletching:ee81971984d3",
+    "id": "skill:Fletching:anima128:f366b28841df20",
     "skill": "Fletching",
-    "method": "Wen arrow",
-    "xp": 600,
+    "method": "Jas dragonbane arrow",
+    "xp": 40.0,
     "level": 95,
     "inputs": [
       {
         "name": "Sharp shell shard",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Tempered fungal shaft",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Dinosaur 'propellant'",
-        "qty": 15
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Jas",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Jas dragonbane arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Jas_dragonbane_arrow",
+    "label": "Jas dragonbane arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:b94047dfdaa090",
+    "skill": "Fletching",
+    "method": "Wen arrow",
+    "xp": 40.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Sharp shell shard",
+        "qty": 1.0
+      },
+      {
+        "name": "Tempered fungal shaft",
+        "qty": 1.0
+      },
+      {
+        "name": "Dinosaur 'propellant'",
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Wen (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Wen arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Wen_arrow",
     "label": "Wen arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:55525b20c181ed",
+    "skill": "Fletching",
+    "method": "Wen arrow",
+    "xp": 40.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Sharp shell shard",
+        "qty": 1.0
+      },
+      {
+        "name": "Tempered fungal shaft",
+        "qty": 1.0
+      },
+      {
+        "name": "Dinosaur 'propellant'",
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Wen",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Wen arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Wen_arrow",
+    "label": "Wen arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
     "id": "skill:Fletching:598defdacba8",
@@ -37806,58 +37962,120 @@
     "category": "Arrows"
   },
   {
-    "id": "skill:Fletching:76a1185fd4a2",
+    "id": "skill:Fletching:anima128:cf41136b6f5cdd",
     "skill": "Fletching",
     "method": "Bik arrow",
-    "xp": 285,
+    "xp": 19.0,
     "level": 95,
     "inputs": [
       {
         "name": "Dinarrow",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Bik (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Bik arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Bik_arrow",
     "label": "Bik arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
-    "id": "skill:Fletching:2f145c386bff",
+    "id": "skill:Fletching:anima128:89b44205529e50",
     "skill": "Fletching",
-    "method": "Ful arrow",
-    "xp": 285,
+    "method": "Bik arrow",
+    "xp": 19.0,
     "level": 95,
     "inputs": [
       {
         "name": "Dinarrow",
-        "qty": 15
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Bik",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Bik arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Bik_arrow",
+    "label": "Bik arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:c96d6910a46200",
+    "skill": "Fletching",
+    "method": "Ful arrow",
+    "xp": 19.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Dinarrow",
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Ful (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Ful arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Ful_arrow",
     "label": "Ful arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:5493235f024f19",
+    "skill": "Fletching",
+    "method": "Ful arrow",
+    "xp": 19.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Dinarrow",
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Ful",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Ful arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Ful_arrow",
+    "label": "Ful arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
     "id": "skill:Fletching:20f69b19c5d5",
@@ -37887,58 +38105,120 @@
     "category": "Arrows"
   },
   {
-    "id": "skill:Fletching:f088870be8fc",
+    "id": "skill:Fletching:anima128:964d11dd3b7138",
     "skill": "Fletching",
     "method": "Jas dragonbane arrow",
-    "xp": 285,
+    "xp": 19.0,
     "level": 95,
     "inputs": [
       {
         "name": "Dinarrow",
-        "qty": 15
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Jas (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Jas dragonbane arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Jas_dragonbane_arrow",
     "label": "Jas dragonbane arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
-    "id": "skill:Fletching:701b7a260d2b",
+    "id": "skill:Fletching:anima128:7d6c40c73d6c91",
     "skill": "Fletching",
-    "method": "Wen arrow",
-    "xp": 285,
+    "method": "Jas dragonbane arrow",
+    "xp": 19.0,
     "level": 95,
     "inputs": [
       {
         "name": "Dinarrow",
-        "qty": 15
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Jas",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Jas dragonbane arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Jas_dragonbane_arrow",
+    "label": "Jas dragonbane arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:e94468dd038f43",
+    "skill": "Fletching",
+    "method": "Wen arrow",
+    "xp": 19.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Dinarrow",
+        "qty": 1.0
       },
       {
         "name": "Resonant anima of Wen (tradeable)",
-        "qty": 45
+        "qty": 3.0
       }
     ],
     "output": {
       "name": "Wen arrow",
-      "qty": 15
+      "qty": 1
     },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Wen_arrow",
     "label": "Wen arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
+  },
+  {
+    "id": "skill:Fletching:anima128:147bcbd36a433c",
+    "skill": "Fletching",
+    "method": "Wen arrow",
+    "xp": 19.0,
+    "level": 95,
+    "inputs": [
+      {
+        "name": "Dinarrow",
+        "qty": 1.0
+      },
+      {
+        "name": "Resonant anima of Wen",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Wen arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Standard imbuing; Wisdom of Anima disabled"
+    ],
+    "url": "https://runescape.wiki/w/Wen_arrow",
+    "label": "Wen arrow",
+    "outputUnit": "arrows",
+    "xpUnit": "arrow",
+    "category": "Resonant anima"
   },
   {
     "id": "skill:Fletching:9870f3edeba4",

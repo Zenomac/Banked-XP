@@ -26,3 +26,11 @@ Sources: [Black stone arrows](https://runescape.wiki/w/Black_stone_arrows), [Dea
 ## Arrow-tip hover visibility — v0.124
 
 Black stone, deathspore and splintering arrow tips now retain an informational preview when availability filters leave no selectable recipe. The preview reports per-arrow XP and the recipe's supply/level information. Missing supplies do not add XP to skill totals, and unavailable choices remain hidden in the right-click menu. This is a scoped exception to hiding the entire hover when no recipe is available; other item families retain their existing behavior. All three tip-only bank cases are covered by local regression checks. Live-client confirmation is still required.
+
+## Resonant anima — v0.128
+
+Both tradeable and untradeable resonant anima of Bik, Ful, Wen and Jas are recognized. Standard imbuing requires level 95 Fletching and consumes one dinarrow plus three corresponding anima for 19 base XP. Jas creates Jas dragonbane arrows; conversion to demonbane arrows is a separate Magic process, outside this plugin's supported skills.
+
+The variants remain separate ingredients and share the available dinarrow budget. Partial stacks are supported; leftover anima below three do not count as an arrow. Existing preparation routes from dinarrow materials remain available, with only remaining-stage XP included. Anima-only banks display an informational preview with missing ingredients while contributing zero ready XP.
+
+These estimates assume **Wisdom of Anima is disabled**. That mode uses different costs and much lower XP and is not automatically detected. See the creation tables for [Bik](https://runescape.wiki/w/Bik_arrow), [Ful](https://runescape.wiki/w/Ful_arrow), [Wen](https://runescape.wiki/w/Wen_arrow), and [Jas dragonbane](https://runescape.wiki/w/Jas_dragonbane_arrow) arrows. [Audited records](audits/resonant-anima-0.128.json) document the 16 direct/preparation routes. All 33 local suites pass; live-client confirmation is pending.

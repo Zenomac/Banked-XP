@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.127.0**.
+Current plugin version: **0.128.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.128
+
+Add untradeable resonant anima of Bik, Ful, Wen and Jas alongside the tradeable variants. Normalize standard imbuing to one dinarrow plus three anima for 19 Fletching XP, supporting partial stacks and shared-supply totals. Preserve raw dinarrow-preparation routes for each variant. Anima-only banks retain an informational hover without adding unavailable XP or menu choices. Estimates explicitly assume Wisdom of Anima is disabled; its alternate mode is not detected. All 33 local Lua suites pass. No native layout or runtime network changes.
 
 ## v0.127
 

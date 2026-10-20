@@ -121,9 +121,9 @@ function M.estimate(obj,base,bank,count)
     local ingredientPreview=false
     -- Arrow tips should remain identifiable even when no complete recipe is
     -- available. This informational route never enters menus or summaries.
-    if not method and bankData.normalize(obj.name):match('arrow tips?$') then
+    if not method and (bankData.normalize(obj.name):match('arrow tips?$') or bankData.normalize(obj.name):match('^resonant anima of ')) then
         for _,candidate in ipairs(engine.options(obj)) do
-            if candidate.category=='Specialist arrow tips' and #candidate.inputs==2 then
+            if (candidate.category=='Specialist arrow tips' or candidate.category=='Resonant anima') and #candidate.inputs==2 then
                 method=candidate;ingredientPreview=true;break
             end
         end

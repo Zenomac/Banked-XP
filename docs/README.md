@@ -1,6 +1,6 @@
 # Documentation
 
-Install the [banked-xp folder](../banked-xp). The [repository README](../README.md) describes current usage, and the [changelog](../CHANGELOG.md) covers every development build from v0.1 through v0.127.
+Install the [banked-xp folder](../banked-xp). The [repository README](../README.md) describes current usage, and the [changelog](../CHANGELOG.md) covers every development build from v0.1 through v0.128.
 
 ## Features and calculation limits
 
