@@ -81,3 +81,34 @@ assert(conversion.craftable==100 and math.abs(conversion.total-49)<0.000001,'fin
 assert(engine.estimate({name='Steel titan pouch'},scroll,{}).total==0,'conversion requires owned finished pouches')
 assert(#engine.options({name='Steel Titan scroll (Steel of Legends)'})==0,'no repeated conversion of scroll output')
 print('PASS: all granite sizes; finished pouch conversion, per-batch XP and no output recycling')
+-- Independent snapshot of all standard and elder pouch rows from supplied HTML.
+local fixture=require('tests.data.summoning_wiki')
+local function inputKey(inputs)
+ local a={};for _,i in ipairs(inputs) do a[#a+1]=i.name:lower()..'='..tostring(i.qty) end
+ table.sort(a);return table.concat(a,'|')
+end
+assert(#fixture==91,'86 regular and 5 elder pouches')
+for _,expected in ipairs(fixture) do
+ local found
+ for _,r in ipairs(engine.recipes) do
+  if r.skill=='Summoning' and r.output.name:lower()==expected.name:lower()
+      and inputKey(r.inputs)==inputKey(expected.inputs) then found=r;break end
+ end
+ assert(found,'missing exact Wiki inputs: '..expected.name)
+ assert(found.xp==expected.xp and found.level==expected.level,'Wiki XP/level: '..expected.name)
+end
+local scarab=route('Holy scarab pouch')
+local full={};for _,i in ipairs(scarab.inputs) do full[i.name:lower()]=i.qty end
+assert(engine.estimate({name='Plain whirligig shell'},scarab,full).total==283.4)
+for _,shell in ipairs({'Plain','Gliding','Swift','Hasty','Speedy'}) do
+ local partial={};for k,v in pairs(full) do partial[k]=v end
+ partial[(shell..' whirligig shell'):lower()]=nil
+ assert(engine.estimate({name='Plain whirligig shell'},scarab,partial).total==0,'all five shells required: '..shell)
+end
+for _,name in ipairs({'Jackalope antlers','Bagged plant','Ruby harvest jar'}) do
+ assert(#engine.options({name=name})>0,'current client item name indexed: '..name)
+end
+assert(route('Jackalope pouch').xp==39.6 and route('Jackalope pouch').level==30)
+assert(catalog.lookup({id=987003,name='Meerkats pouch'})==nil,'non-infusable pouch excluded')
+assert(catalog.lookup({id=987004,name='Ghast pouch'})==nil,'purchased pouch excluded')
+print('PASS: complete 91-row supplied Wiki standard/elder audit; all shell shortages and corrected item names')

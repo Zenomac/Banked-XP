@@ -1,6 +1,6 @@
 # Banked XP: local data and permissions
 
-Version 0.158.0. Updated 20 October 2026. Independent community plugin by Zenomac; not an assertion of Jagex endorsement or approval.
+Version 0.159.0. Updated 20 October 2026. Independent community plugin by Zenomac; not an assertion of Jagex endorsement or approval.
 
 ## Publication status and contact
 

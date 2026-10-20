@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.158.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.159.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer, Construction and Summoning. Coverage varies by item and method.
 
@@ -36,11 +36,11 @@ Metal-bank access uses the documented container. Archaeology container discovery
 
 Totals use supported recipes and a deterministic greedy allocation of shared supplies within each skill. They are estimates, not a guaranteed global optimum or XP/hour claim. Different individual skill totals represent alternative uses of shared items. The total-XP hover instead uses one shared supply budget across supported skills; it includes Archaeology artefact potential assuming missing materials will be obtained. Stored bonus XP is not applied to the estimates.
 
-Summoning currently covers 92 familiar pouches (including six flower variants for praying mantis and all three granite sizes), blank binding contracts, and three verified finished-pouch scroll conversions: 103 routes. Scroll conversion currently covers Spirit wolf, Dreadfowl and Steel titan. Familiar-summoning XP, kills to fill contracts, and resource-saving effects are not included. Quest/mystery requirements are shown as notes; completion is not detected. See [Summoning coverage](docs/SUMMONING_COVERAGE.md).
+Summoning currently covers 94 familiar pouches (including six flower variants for praying mantis and all three granite sizes), blank binding contracts, and three verified finished-pouch scroll conversions: 105 routes. Scroll conversion currently covers Spirit wolf, Dreadfowl and Steel titan. Familiar-summoning XP, kills to fill contracts, and resource-saving effects are not included. Quest/mystery requirements are shown as notes; completion is not detected. See [Summoning coverage](docs/SUMMONING_COVERAGE.md).
 
 ## Version history
 
-The current plugin version is **0.158.0**. [Complete changelog — v0.1 through v0.158](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.159.0**. [Complete changelog — v0.1 through v0.159](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 

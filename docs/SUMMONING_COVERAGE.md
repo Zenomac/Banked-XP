@@ -1,6 +1,6 @@
 # Summoning coverage — introduced in v0.157
 
-The local catalog contains 103 routes: 92 distinct familiar pouches (praying mantis has six flower recipes and granite lobster has three granite recipes), one blank binding-contract recipe, and three finished-pouch scroll conversions. These records feed the existing ingredient planner, hover display, right-click recipes and eleven-skill summaries. No HTTP requests are made by this feature.
+The local catalog contains 105 routes: 94 distinct familiar pouches (praying mantis has six flower recipes and granite lobster has three granite recipes), one blank binding-contract recipe, and three finished-pouch scroll conversions. These records feed the existing ingredient planner, hover display, right-click recipes and eleven-skill summaries. No HTTP requests are made by this feature.
 
 ## Data sources
 
@@ -12,7 +12,7 @@ The local catalog contains 103 routes: 92 distinct familiar pouches (praying man
 - [Iron ingot](https://secure.runescape.com/m=itemdb_rs/Iron+ingot/viewitem?obj=47072) and [Steel ingot](https://runescape.wiki/w/Steel_ingot): titan recipes consume ingots. Raw bars are not treated as ingots without preparation.
 - [Marigolds](https://runescape.wiki/w/Marigolds): Bull ant tertiary. Limpwurt roots have no Summoning route in this catalog.
 
-The current Wiki main table was blocked from retrieval. RuneHQ's table was cross-checked against available individual-item references; this is not a claim of a complete audit of every current Summoning action.
+The live Wiki main table was blocked from retrieval. In v0.159 the user supplied a saved copy, allowing all 91 regular/elder pouch rows to be audited. This verifies the supplied snapshot, not every other Summoning action or subsequent Wiki revision.
 
 ## Calculation boundaries
 
@@ -42,3 +42,18 @@ Confirmed additions:
 | Steel titan pouch | Ten steel of legends scrolls | 4.9 | [Wiki steel titan pouch](https://runescape.fandom.com/wiki/Steel_titan_pouch), [Wiki calculator module](https://runescape.wiki/w/Module:Sandbox/User:Hypermice/Module:Skill_calc/Summoning/data) |
 
 Finished pouches are not credited with their original infusion XP. New infusion outputs are not automatically spent again on scrolls by the planner. Voice of Seren's additional scroll yield is not applied. Other scroll conversions remain unverified, especially entries whose pouch and scroll references disagree about creation versus activation XP. A saved HTML/PDF copy of the requested current page is needed to finish the page-wide comparison.
+
+## v0.159 completed audit of supplied HTML
+
+All 86 regular and five elder-charm rows match an exact-input recipe, including level and base creation XP. Multi-row tertiary cells were expanded: Ice titan needs both talismans, Wolpertinger both meats/bones, and Holy scarab all five whirligig shells. An independent factual fixture lives in `banked-xp/tests/data/summoning_wiki.lua`.
+
+Changes: add Jackalope and Holy scarab; change Stranger plant's `Bagged plant 1` to `Bagged plant`; change Forge regent's `Ruby harvest` to `Ruby harvest jar`. Existing creation XP/level/charm/shard counts for the other matched pouch recipes agree with the supplied table.
+
+Coverage decisions for the other tables:
+
+- Two special pouches: Meerkats and Ghast are acquired, not infused from bank supplies; no infusion XP assigned.
+- Sixty Dungeoneering pouch entries: dungeon-only materials are outside the ordinary bank planner; no bank XP assigned.
+- Seven ancient familiar entries: the page explicitly requires killing the respective monster while carrying a contract. Do not count these kills as banked XP. Crafting blank binding contracts remains supported separately.
+- Three pig pouches retained from prior sources; they are not in the supplied regular/elder tables. Existing flower/granite alternatives and scroll conversions are also retained with their separate sources, not claimed as validated by this page.
+
+Uploaded snapshot SHA-256: `07f6993bc3f3690e5b1e243afc52ff153237e7247aa5e4375f5830b7ead5e6a0`.

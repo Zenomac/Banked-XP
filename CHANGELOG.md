@@ -1,10 +1,19 @@
 # Changelog
 
-Current plugin version: **0.158.0**.
+Current plugin version: **0.159.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.159 — Complete supplied Wiki pouch-table audit
+
+- Compare all 86 regular and five elder-charm pouch rows with the user-supplied Summoning pouches HTML. Verify levels, base creation XP, charms, shard/elder-energy counts and all tertiary quantities.
+- Add Jackalope pouch (level 30, 39.6 XP, ten shards, gold charm and jackalope antlers) and Holy scarab pouch (level 80, 283.4 XP, 154 shards, green charm and one of each of the five whirligig shells).
+- Correct Stranger plant's ingredient to Bagged plant and Forge regent's ingredient to Ruby harvest jar. Keep existing recipe IDs so saved choices survive.
+- Retain separately sourced pig recipes, granite/flower alternatives and three scroll conversions. Total Summoning routes: 105.
+- Document exclusions for non-infusable special pouches, dungeon-only recipes and ancient familiar creation requiring monster kills. Blank binding-contract crafting remains supported.
+- Add a 91-row independent factual fixture and checks for each missing shell, corrected names, and non-infusable exclusions. The provided page does not validate the separate scroll-conversion table.
 
 ## v0.158 — Verified pouch follow-up
 
