@@ -35,7 +35,7 @@ assert(not selected.method:find('Archaeology potion',1,true),'hidden saved choic
 level=1
 local spikes={id=403,name='Grenwall spikes'}
 local result,options=methods.estimate(spikes,catalog.lookup(spikes),bank,50)
-assert(#options==0 and result.levelPreview and result.note:find('<col=ff0000>Level Required:',1,true),'locked hover preview without selectable recipes')
+assert(#options==0 and result.levelPreview and result.method:find('<col=ff0000>[Lv ',1,true),'locked hover preview without selectable recipes')
 Player.GetLevelGameplay=function() error('unavailable') end
 result,options=methods.estimate(spikes,catalog.lookup(spikes),bank,50)
 assert(#options==0 and result.total==0 and result.note=='Herblore level unavailable')

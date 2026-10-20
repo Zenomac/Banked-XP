@@ -23,13 +23,13 @@ level=77
 assert(#methods.options(arch,base,{})==0,'off hides one level away')
 r=methods.estimate(arch,base,{GetSlots=function() return {} end},1)
 assert(r.note:find('More recipes unlocked in 1 level',1,true),'singular')
-assert(r.levelPreview and r.note:find('<col=ff9900>Level Required: 78</col>',1,true))
+assert(r.levelPreview and r.method:find('<col=ff9900>[Lv 78]</col>',1,true))
 level=73
 r=methods.estimate(arch,base,{GetSlots=function() return {} end},1)
-assert(r.levelPreview and r.note:find('<col=ff0000>Level Required: 78</col>',1,true))
+assert(r.levelPreview and r.method:find('<col=ff0000>[Lv 78]</col>',1,true))
 level=74
 r=methods.estimate(arch,base,{GetSlots=function() return {} end},1)
-assert(r.note:find('<col=ff9900>Level Required: 78</col>',1,true),'four levels orange')
+assert(r.method:find('<col=ff9900>[Lv 78]</col>',1,true),'four levels orange')
 level=77
 assert(settings.setShowUnderlevelRecipes(true))
 assert(#methods.options(arch,base,{})==1,'on enables one level preview')

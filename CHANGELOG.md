@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.119.0**.
+Current plugin version: **0.120.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.120
+
+Removed the standalone Level Required warning from recipe hovers. The existing [Lv ###] suffix on the method now carries the warning colour: orange for 1–4 missing levels, red for 5 or more. Targeted level-policy and syntax checks pass.
 
 ## v0.119
 

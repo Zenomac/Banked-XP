@@ -170,7 +170,7 @@ function M.estimate(obj,base,bank,count)
         local effective=(method.masterCape or method.unboostable) and state.baseLevel or state.level
         if required and effective and required>effective then
             local color=required-effective>=5 and 'ff0000' or 'ff9900'
-            result.note=(result.note and result.note..' | ' or '')..'<col='..color..'>Level Required: '..tostring(required):gsub('%.0$','')..'</col>'
+            result.method=result.method:gsub('(%[Lv %d+%])','<col='..color..'>%1</col>')
             result.levelPreview=levelPreview
         end
         local unlock=policy.nextUnlock(engine.options(obj),state)
