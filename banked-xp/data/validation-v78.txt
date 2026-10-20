@@ -1,0 +1,1 @@
+23 local suites passed; percentage checks cover +0 red, partial orange, full green and Fired up set maximum 5%. Native hover test confirms outfit name returns immediately to the native text color.

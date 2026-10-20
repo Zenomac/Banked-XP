@@ -1,0 +1,234 @@
+[
+  {
+    "skill": "Attack",
+    "portable_source": "Elder overload potion",
+    "amount": "5 + floor(0.17 * base level)",
+    "conditions": "Combat-stat boost, not extra crafting XP. Strength also has conditional battleaxe effects; this is not a claim of a universal combat maximum.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Attack"
+  },
+  {
+    "skill": "Strength",
+    "portable_source": "Elder overload potion",
+    "amount": "5 + floor(0.17 * base level)",
+    "conditions": "Combat-stat boost, not extra crafting XP. Strength also has conditional battleaxe effects; this is not a claim of a universal combat maximum.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Strength"
+  },
+  {
+    "skill": "Defence",
+    "portable_source": "Elder overload potion",
+    "amount": "5 + floor(0.17 * base level)",
+    "conditions": "Combat-stat boost, not extra crafting XP. Strength also has conditional battleaxe effects; this is not a claim of a universal combat maximum.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Defence"
+  },
+  {
+    "skill": "Ranged",
+    "portable_source": "Elder overload potion",
+    "amount": "5 + floor(0.17 * base level)",
+    "conditions": "Combat-stat boost, not extra crafting XP. Strength also has conditional battleaxe effects; this is not a claim of a universal combat maximum.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Ranged"
+  },
+  {
+    "skill": "Magic",
+    "portable_source": "Elder overload potion",
+    "amount": "5 + floor(0.17 * base level)",
+    "conditions": "Combat-stat boost, not extra crafting XP. Strength also has conditional battleaxe effects; this is not a claim of a universal combat maximum.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Magic"
+  },
+  {
+    "skill": "Necromancy",
+    "portable_source": "Elder overload potion",
+    "amount": "5 + floor(0.17 * base level)",
+    "conditions": "Combat-stat boost, not extra crafting XP. Strength also has conditional battleaxe effects; this is not a claim of a universal combat maximum.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Necromancy"
+  },
+  {
+    "skill": "Constitution",
+    "portable_source": "Constitution cape",
+    "amount": "+1",
+    "conditions": "Requires 99. Discontinued avocado wrap (+13) is not assumed available; extra life points do not unlock skill requirements.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Constitution"
+  },
+  {
+    "skill": "Prayer",
+    "portable_source": "Wendlewick ale (m)",
+    "amount": "3 + floor(0.01 * base level)",
+    "conditions": "Prayer-point restoration is not a level boost; boosts do not unlock higher prayers. Citadel +10 is area restricted.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Prayer"
+  },
+  {
+    "skill": "Cooking",
+    "portable_source": "Extreme cooking potion",
+    "amount": "XP-scaled, up to +17",
+    "conditions": "XP-scaled, up to +17; dedicated item page takes precedence over older generic percentage summaries. Access to the potion is required.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Cooking"
+  },
+  {
+    "skill": "Hunter",
+    "portable_source": "Extreme hunter",
+    "amount": "XP-scaled, up to +17",
+    "conditions": "XP-scaled, up to +17; dedicated item page takes precedence over older generic percentage summaries. Access to the potion is required.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Hunter"
+  },
+  {
+    "skill": "Divination",
+    "portable_source": "Extreme divination",
+    "amount": "XP-scaled, up to +17",
+    "conditions": "XP-scaled, up to +17; dedicated item page takes precedence over older generic percentage summaries. Access to the potion is required.",
+    "pulse_core_published_max": 11,
+    "url": "https://runescape.wiki/w/Divination"
+  },
+  {
+    "skill": "Invention",
+    "portable_source": "Extreme invention",
+    "amount": "XP-scaled, up to +17",
+    "conditions": "XP-scaled, up to +17; dedicated item page takes precedence over older generic percentage summaries. Access to the potion is required.",
+    "pulse_core_published_max": null,
+    "url": "https://runescape.wiki/w/Invention"
+  },
+  {
+    "skill": "Woodcutting",
+    "portable_source": "Brown spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost.",
+    "pulse_core_published_max": 12,
+    "url": "https://runescape.wiki/w/Woodcutting"
+  },
+  {
+    "skill": "Fletching",
+    "portable_source": "Orange spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Fletching"
+  },
+  {
+    "skill": "Firemaking",
+    "portable_source": "Orange spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost. Reborn phoenix +12 is invisible and is not a universal recipe unlock. Generic pages conflict about pulse-core maxima; the dedicated pulse-core table is recorded here.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Firemaking"
+  },
+  {
+    "skill": "Crafting",
+    "portable_source": "Orange spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Crafting"
+  },
+  {
+    "skill": "Smithing",
+    "portable_source": "Orange spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Smithing"
+  },
+  {
+    "skill": "Mining",
+    "portable_source": "Brown spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost. Familiar mining damage boosts are not Mining-level increases.",
+    "pulse_core_published_max": 12,
+    "url": "https://runescape.wiki/w/Mining"
+  },
+  {
+    "skill": "Herblore",
+    "portable_source": "Brown spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost. Improved recipe savings and master cape perks require real levels.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Herblore"
+  },
+  {
+    "skill": "Thieving",
+    "portable_source": "Yellow spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Thieving"
+  },
+  {
+    "skill": "Farming",
+    "portable_source": "Brown spicy stew",
+    "amount": "up to +6",
+    "conditions": "Peak random stew roll; Evil Dave quest progression required. Do not add this to another visible boost.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Farming"
+  },
+  {
+    "skill": "Fishing",
+    "portable_source": "Brown spicy stew",
+    "amount": "up to +6",
+    "conditions": "Super fishing potion and admiral pie give a steadier +5; stew peak requires quest progression and a random roll. Familiar invisible boosts are not universal unlocks.",
+    "pulse_core_published_max": 11,
+    "url": "https://runescape.wiki/w/Fishing"
+  },
+  {
+    "skill": "Agility",
+    "portable_source": "Stamina potion / spicy stew",
+    "amount": "+6",
+    "conditions": "Stamina is steady; stew peak is random. Citadel +10 is area restricted; old event food is excluded.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Agility"
+  },
+  {
+    "skill": "Slayer",
+    "portable_source": "Wilder pie",
+    "amount": "+6",
+    "conditions": "Maintained for six minutes; Slayer-specific unlock rules still apply.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Slayer"
+  },
+  {
+    "skill": "Runecrafting",
+    "portable_source": "Extreme runecrafting",
+    "amount": "3 + floor(0.15 * base level)",
+    "conditions": "Visible skill boost; do not infer that boostable level unlocks permanent skill perks.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Runecrafting"
+  },
+  {
+    "skill": "Construction",
+    "portable_source": "Spicy stew + Prifddinas crystal saw + sculpting chisel",
+    "amount": "up to +12 combined",
+    "conditions": "Only +6 is a general visible boost. The +5 saw and +1 chisel are conditional/invisible; saw does not build rooms or plants. Reliable tea combination is +9. Non-Ironman pulse combination can reach +13.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Construction"
+  },
+  {
+    "skill": "Summoning",
+    "portable_source": "Musaberry",
+    "amount": "+2",
+    "conditions": "Summoning points are not levels; citadel +10 is area restricted. Per-action restrictions apply.",
+    "pulse_core_published_max": 7,
+    "url": "https://runescape.wiki/w/Summoning"
+  },
+  {
+    "skill": "Dungeoneering",
+    "portable_source": "Dungeoneering cape",
+    "amount": "+1",
+    "conditions": "Requires 99; worn only. Door-specific potion/outfit boosts are not portable Dungeoneering-level boosts.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Dungeoneering"
+  },
+  {
+    "skill": "Archaeology",
+    "portable_source": "Archaeology potion",
+    "amount": "+3",
+    "conditions": "Boosts excavation/restoration, not research/dig-site access. Ring of Whispers is invisible and is not treated as a universal unlock.",
+    "pulse_core_published_max": 8,
+    "url": "https://runescape.wiki/w/Archaeology"
+  }
+]

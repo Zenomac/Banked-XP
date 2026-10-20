@@ -1,0 +1,11 @@
+Skill,Recipe routes,Coverage
+Smithing,830,"Smelting, equipment, upgrades, burial routes and miscellaneous material recipes represented in the calculator. Some rows model a complete path from bars rather than one upgrade."
+Crafting,567,"Gem cutting, armour, jewellery, battlestaves, pottery and miscellaneous calculator recipes."
+Fletching,440,"Bows, stringing, projectiles, intermediate steps and from-scratch calculator routes."
+Archaeology,232,232 restoration recipes: damaged artefact plus all listed materials. Repaired artefacts do not count as damaged inputs.
+Firemaking,19,Standard fixed-XP burn actions for 19 log/root types. Existing Maple bonfire options retained. Other bonfire scaling is not yet modeled.
+Cooking,279,Cooking and preparation recipes with explicit materials and positive fixed XP. Assumes success; not a burn-rate forecast.
+Construction,648,"Furniture, Fort processing and building recipes. Site, previous-tier and unlock conditions are not automatically checked."
+Farming,119,"Seed planting and appropriate plant/check-health stages, including banked saplings. No assumed repeat harvest yield."
+Herblore,262,Existing potion and primal recipe routes
+Prayer,30,Base entries; not engine recipe routes

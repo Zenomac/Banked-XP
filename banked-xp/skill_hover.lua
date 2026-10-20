@@ -1,0 +1,169 @@
+-- Use only the existing native 1477:923 components observed in the probe.
+-- No native UI children are allocated, destroyed, or moved in the child list.
+local M={}
+local summary=require('skill_summary')
+local edits={}
+local key,cachedWidth
+local function get(i)
+ local ok,c=pcall(function() return ui.Interfaces:GetComponent(1477,923,0,i) end)
+ return ok and c or nil
+end
+local function plain(text)
+ local value=(text or ''):gsub('<[^>]*>','')
+ return value
+end
+local function positionEquals(a,b)
+ for _,k in ipairs({'x','y','xParentPc','yParentPc','xSelfPc','ySelfPc'}) do if a[k]~=b[k] then return false end end
+ return true
+end
+function M.restore()
+ for i=#edits,1,-1 do
+  local e=edits[i]
+  pcall(function()
+   if e.kind=='box' then
+    if e.c.size.width==e.afterSize.width and e.c.size.height==e.afterSize.height then e.c.size=e.size end
+    if positionEquals(e.c.position,e.afterPosition) then e.c.position=e.position end
+   elseif e.kind=='size' then
+    if e.c.size.width==e.after.width and e.c.size.height==e.after.height then e.c.size=e.before end
+   elseif e.c[e.field]==e.after then e.c[e.field]=e.before end
+  end)
+ end
+ edits={}
+end
+local function field(c,name,value)
+ local ok,before=pcall(function() return c[name] end)
+ if not ok or before==nil then return end
+ local success=pcall(function() c[name]=value end)
+ if success then edits[#edits+1]={c=c,field=name,before=before,after=value} end
+end
+local function box(c,x,y,w,h)
+ local beforeSize,beforePosition=ui.Size.new(c.size),ui.Pos.new(c.position)
+ local origin=c.parent and c.parent.xyGlobal or {x=0,y=0}
+ local afterSize=ui.Size.new(math.ceil(w),math.ceil(h))
+ local afterPosition=ui.Pos.new(math.floor(x-origin.x),math.floor(y-origin.y))
+ edits[#edits+1]={kind='box',c=c,size=beforeSize,position=beforePosition,afterSize=afterSize,afterPosition=afterPosition}
+ c.size=afterSize;c.position=afterPosition
+end
+function M.paint()
+ M.restore()
+ if MiniMenu.IsOpen() then return end
+ local heading,current,currentValue,remainder,remainderValue=get(9),get(10),get(11),get(14),get(15)
+ if not heading or not current or not currentValue or not remainder or not remainderValue then return end
+ if not heading.visibleGlobal or not current.visibleGlobal or not remainder.visibleGlobal then return end
+ local skill=plain(heading.content):match('^%s*(%a+):%s*%d+%s*/%s*%d+')
+ if not skill or not summary.supports(skill) then return end
+ if not plain(current.content):match('^%s*Current XP:%s*$') or not plain(remainder.content):match('^%s*Remainder:%s*$') then return end
+ local function numeric(c) return c and c.visibleGlobal and plain(c.content):match('^%s*[%d,%.]+%s*$') end
+ if not numeric(currentValue) or not numeric(remainderValue) then return end
+ local root=current.parent
+ if not root or root~=currentValue.parent then return end
+ local frame={}
+ for i=0,8 do frame[i]=get(i);if not frame[i] or not frame[i].visibleGlobal then return end end
+ local x,y=frame[1].xyGlobal.x,frame[1].xyGlobal.y
+ local w=frame[2].xyGlobal.x+frame[2].width-x
+ local h=frame[3].xyGlobal.y+frame[3].height-y
+ if w<80 or w>600 or h<40 or h>300 then return end
+ local pairsToClear={{current,currentValue},{remainder,remainderValue}}
+ local oldLast=math.max(current.xyGlobal.y,remainder.xyGlobal.y)
+ local occupied={[9]=true,[10]=true,[11]=true,[14]=true,[15]=true}
+ local originals={{current.content,currentValue.content,y=current.xyGlobal.y},{remainder.content,remainderValue.content,y=remainder.xyGlobal.y}}
+ local firstTarget
+ local native={}
+ for i=12,48 do native[i]=get(i) end
+ local i=12
+ while i<=47 do
+  local c,v=native[i],native[i+1]
+  if not occupied[i] and c and c.visibleGlobal and c.parent==root and numeric(v) and v.parent==root then
+   local label=plain(c.content):lower():match('^%s*(.-)%s*$')
+   local isBonus=label=='bonus xp:'
+   local isTarget=label:match('^target.*:')~=nil
+   if label:match(':$') then
+    pairsToClear[#pairsToClear+1]={c,v};occupied[i]=true;occupied[i+1]=true
+    oldLast=math.max(oldLast,c.xyGlobal.y,v.xyGlobal.y)
+    local text=isBonus and ('<col=00ff00>'..plain(v.content)..'</col>') or v.content
+    originals[#originals+1]={c.content,text,y=c.xyGlobal.y}
+    if isTarget then firstTarget=math.min(firstTarget or c.xyGlobal.y,c.xyGlobal.y) end
+    i=i+1
+   end
+  end
+  i=i+1
+ end
+ table.sort(originals,function(a,b) return a.y<b.y end)
+ local amount=summary.tooltipLine(skill):gsub('^Banked XP:%s*','')
+ if amount:find('open your bank',1,true) then amount='Scan bank' end
+ if amount:find('calculating',1,true) then amount='Calculating...' end
+ if summary.missingStorage and summary.missingStorage(skill) and amount:match('^[%d,%.%s%-]+$') then amount='<col=ff0000>'..amount..'</col>' end
+ local rows={}
+ local inserted=false
+ local extra=summary.tooltipExtra and summary.tooltipExtra(skill)
+ local function insertBanked()
+  rows[#rows+1]={'Banked XP:',amount}
+  if extra then rows[#rows+1]={'Ready XP:',extra} end
+  inserted=true
+ end
+ for _,row in ipairs(originals) do
+  if firstTarget and row.y>=firstTarget and not inserted then insertBanked() end
+  rows[#rows+1]=row
+ end
+ if not inserted then insertBanked() end
+ local font=config.Font.FromID(current.font)
+ if not font then return end
+ local neutral=currentValue.content:match('<col=(%x+)>') or current.content:match('<col=(%x+)>') or heading.content:match('<col=(%x+)>') or 'e3d7bf'
+ local captions,values,measureParts={},{},{tostring(w),tostring(current.font)}
+ for _,row in ipairs(rows) do
+  captions[#captions+1]=row[1]
+  -- Native Bonus XP may use an unclosed colour tag or a separate colour
+  -- property. Reset each value independently so colours cannot cross rows.
+  values[#values+1]='<col='..neutral..'>'..row[2]..'</col>'
+  measureParts[#measureParts+1]=plain(row[1])..'|'..plain(row[2])
+ end
+ local measureKey=table.concat(measureParts,';')
+ if measureKey~=key then
+  cachedWidth=w
+  for _,row in ipairs(rows) do cachedWidth=math.max(cachedWidth,font:GetStringWidth(plain(row[1]))+font:GetStringWidth(plain(row[2]))+20) end
+  key=measureKey
+ end
+ local step=15
+ local startY=current.xyGlobal.y
+ local delta=startY+(#rows-1)*step-oldLast
+ -- Capture lower siblings before resizing. Move existing target progress
+ -- components as a group; never create or modify their children.
+ local lower={}
+ for id=12,48 do
+  local c=native[id]
+  if not occupied[id] and c and c.visibleGlobal and c.parent==root and c.xyGlobal.y>oldLast then
+   lower[#lower+1]={c=c,x=c.xyGlobal.x,y=c.xyGlobal.y,w=c.width,h=c.height}
+  end
+ end
+ local progressGap=#lower>0 and 4 or 0
+ local bottomPadding=4
+ local growth=delta+progressGap+bottomPadding
+ local before=ui.Size.new(root.size)
+ local after=ui.Size.new(root.size);after.width=after.width+(cachedWidth-w);after.height=after.height+growth
+ edits[#edits+1]={kind='size',c=root,before=before,after=after}
+ local oldX,oldY=root.xyGlobal.x,root.xyGlobal.y
+ root.size=after
+ local dx,dy=root.xyGlobal.x-oldX,root.xyGlobal.y-oldY
+ x=x+dx;y=y+dy;startY=startY+dy
+ local bounds=require('native_frame').plan(cachedWidth,h+growth)
+ bounds[0]={1,1,cachedWidth-2,h+growth-2}
+ for id=0,8 do local b=bounds[id];box(frame[id],x+b[1],y+b[2],b[3],b[4]) end
+ for _,pair in ipairs(pairsToClear) do field(pair[1],'content','');field(pair[2],'content','') end
+ box(current,x+6,startY,cachedWidth-12,#rows*step+1)
+ box(currentValue,x+6,startY,cachedWidth-14,#rows*step)
+ field(current,'maxLines',0);field(currentValue,'maxLines',0)
+ field(current,'alignVertical',0);field(currentValue,'alignVertical',0)
+ field(current,'content',table.concat(captions,'<br>'))
+ field(currentValue,'content',table.concat(values,'<br>'))
+ for _,v in ipairs(lower) do box(v.c,v.x+dx,v.y+dy+delta+progressGap,v.w,v.h) end
+end
+function M.register()
+ summary.register()
+ Event.Draw.Subscribe('bankedXpSkillTotals',function()
+  local ok,err=pcall(M.paint)
+  if not ok then M.restore();if not M.warned then print('[BXP skill] Display error: '..tostring(err));M.warned=true end end
+ end)
+ if Event.MiniMenuOpened then Event.MiniMenuOpened.Subscribe('bankedXpSkillTotalsClear',M.restore) end
+ print('[banked-xp] Skill totals use existing native text and frame components only; no UI children created.')
+end
+return M

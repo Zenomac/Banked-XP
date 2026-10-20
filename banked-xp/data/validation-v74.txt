@@ -1,0 +1,1 @@
+All 21 Lua test suites passed; includes 262 recipe routes, 3 primal extract tiers, 8 fruit pulping recipes, vial bottlenecks, actual-level restrictions and existing potion regressions. In-game rendering requires player confirmation.

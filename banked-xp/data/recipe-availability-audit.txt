@@ -1,0 +1,1 @@
+Audited 192 output families and 2280 dose/name/flask forms. 115 terminal families have no plugin hover; 77 upgradeable families have no available recipes with missing ingredients and the unowned setting off. 77 upgradeable families retain previews with unowned setting on at level 120. Empty-options hover restores the complete native tooltip, and creates no menu entries.

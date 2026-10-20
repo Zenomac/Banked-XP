@@ -1,0 +1,2 @@
+Catalog graph audit: 262 recipe routes; 192 distinct output families; 115 terminal families hidden; 77 upgradeable families retained; 2280 name/dose/flask cases checked.
+Scope: bundled normal-bank Potions catalog. No claim of all RuneScape crafting transformations outside that catalog.

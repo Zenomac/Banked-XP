@@ -1,0 +1,52 @@
+0.49 automated validation
+251 recipe level boundaries: hidden at requirement minus 3, shown at minus 2.
+5256 indexed source-item/level combinations checked.
+Master cape batches replace normal variants; improved bombs and powerbursts replace material-heavy variants.
+Bank, backpack, exposed worn cape detection, placeholders and unavailable levels checked.
+Shared selection persistence, best-variant replacement, doses, supply limits, direct outputs and hover regressions passed.
+In-game beta-client verification remains required.
+All six master cape routes normalize effective level to 120 despite lower source-table base levels. Explicit level-104 ownership and saved-choice regressions passed.
+Level-tag presentation checked at requirement, below requirement and with master cape qualifiers.
+Settings panel construction and bool/int checkbox callbacks, default-off/saved preference, owned soil alternatives, dose/preparation paths, quantity independence and hidden shared choice regressions passed.
+Full-batch audit: 2608 cases across all 251 routes, including removal and shortages of each direct ingredient, transitive preparation leaves, and Elder overload screenshot regression. All passed.
+All 251 routes checked with level previews on/off. Exact screenshot next unlock 11 levels, singular countdown, no-future-unlock case, both settings UI callbacks and migration/persistence passed.
+Separate measured limiter/requirement/unlock lines verified. Decanting qualifier checked with ready bottles, partial doses, flasks, supply-limited outputs and zero crafts.
+Performance: 100 unchanged hover frames cause zero repeated font measurements/border-segment writes. Inventory-ID cache tested across wrappers/ticks/invalidation. Synthetic refreshed-recipe benchmark 5.262s -> 0.491s for 20 calls on 1126 bank entries.
+Boost setting: persistence and independent UI callback passed. Base-level +6 never stacks with active boosts; unknown base fails closed. All six master-cape and 11 improved variants reject boosted levels. Prior full recipe/supply/level/hover regressions passed. Synthetic 1126-entry refreshed planning benchmark 0.476s for 20 calls. All 29 skill review records included.
+251 concise unique menu labels verified; no complete ingredient combinations in right-click entries. Full ingredient quantities verified after Limited by in hover, conditional decanting and original menu priority retained. All previous regressions passed.
+
+0.50: all 13 Lua regression suites pass, including saved hover recipe toggle, unchanged XP and cache, four compact settings rows, native cursor tracking, 2608 ingredient audit cases and 5256 policy combinations. In-client settings appearance still requires visual confirmation.
+
+0.51: all 15 local Lua suites passed. New coverage: shared-stock portfolio, repeated ingredient/recipe deduplication, known-empty versus unknown bank, saved methods, level-preview exclusions, skill-label append and restore, client text replacement and 100-frame font measurement cache. In-game tooltip structure and frame appearance await user verification.
+
+0.52: 15 suites pass with strict single-argument string.lower, including optional skill startup failure isolation and original coroutine error preservation. Requires client confirmation.
+
+0.53: 15 suites pass, with coroutine use forbidden in summary/item-hover fixtures; formatted names and single-value bank normalization checked. Screenshot-reported client-specific gsub failure still requires live verification after restart.
+
+0.54: 15 suites passed; affected skill-hover suite rerun after native line-cap handling. Shared hover target, clipping, cached scan and maxLines restoration verified in mock API.
+
+0.55: all 16 Lua suites pass. Full recipe-output audit: 251 routes, 190 canonical outputs, 115 terminal, 75 upgradeable, 2278 forms checked. Screenshot regression and underlevel upgrade retention pass.
+
+0.56: 17 suites pass. Stat boost versus restoration classification; XP/native details alignment; measured divider after full body and before effects; no extra effects rule without details; native cursor/layout restoration. Rendering suite rerun after decoration-iterator refinement.
+
+0.57: 17 suites pass; all item hover text centered, native alignment restored, current divider positions preserved.
+
+0.58: rendering regression and root Lua syntax pass; original right-aligned options footer retained while other text remains centered.
+
+0.59: hover regression and root Lua syntax pass; background-branch native rule hidden while enhanced potion hover is active and restored on leave; centering and native options alignment preserved. Live visual confirmation required.
+
+0.60: 18 suites pass. Plain fill below native text, hidden native background/restoration, rounded geometry, cache, cursor movement, ancestor safety and cleanup. Native screenshot line removal awaits client verification.
+
+0.61: 19 suites pass; 190-family/2278-form availability audit, Combat potion regression, missing supplies, underlevel suppression, opt-in previews, native restoration and hover recovery.
+
+0.62: 18 suites pass after removing background replacement. Native fill remains visible, empty-recipe hover suppression retained. One-time read-only frame inventory added; remaining client divider requires runtime evidence.
+
+0.63: 18 suites pass; observed sprite 35516 children 1477:901:0:0 and :1 explicitly hidden/restored, with native iterator unavailable. Native fill preserved and diagnostic probe removed.
+
+0.64: 19 suites pass, plus rendering rerun after palette adjustment. Native 10px corner/edge geometry, inset fill and padding, reused native rule placement, native cream/gold, restoration and cursor tracking.
+
+0.65: root Lua syntax and rendering regression pass; native header/footer rules span to inner borders, effects rule uses the same span; cursor and restoration preserved.
+
+0.66: root Lua syntax and rendering regressions pass; long-potion single-line footer, 4–8px bottom inset, right alignment and original native content/maxLines restoration verified.
+
+0.67: root Lua syntax and rendering regressions pass; trailing empty native effect rows trimmed, closing color tags retained, compact two-pixel effects divider gap and native content restoration verified.

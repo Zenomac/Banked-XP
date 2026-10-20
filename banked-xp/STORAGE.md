@@ -1,0 +1,15 @@
+v0.100: Compact skill hovers no longer show “(last scan)”. Only the Banked XP numeric value is red for Archaeology when its material storage has never been scanned this session, or Smithing when the metal bank has never been scanned. Captions and other skills retain their native colour. A successful empty scan counts; cached successful scans also retain normal colour. Scan flags reset on game-state changes/reload. Console and detailed storage status remain available. This supersedes earlier suffix instructions below.
+
+# Metal bank and Archaeology storage — v0.99 experiment
+
+Install the entire banked-xp folder, reload, and open the normal bank once. Open the metal bank and Archaeology material storage interfaces in turn. Watch for [BXP storage] lines reporting the container config, ID and scanned item-type count. Return to skill hovers after the background summary finishes. The first live test must confirm that the reported quantities match the game.
+
+Metal bank detection uses documented config.Inv.METAL_BANK. Archaeology tries guarded candidate names and listens for inventory events whose config names identify Archaeology material storage. These candidate names are not claimed to be verified runtime configs. Unidentified inventories generate up to 12 [BXP storage probe] lines per session and are never counted as supplies. If Archaeology does not produce a scan line, send the probe lines after opening its storage. No UI scraping or arbitrary inventory-ID enumeration is used in this build.
+
+Recognized inventory slot quantities are added once to ordinary bank supplies for recipe estimates and skill summaries. A snapshot of only the main bank is retained separately so repeated updates cannot accumulate auxiliary quantities. Storage changes also rebuild the skill summary while the main bank is closed. Archaeology potential XP stays distinct from material-limited Ready XP. Supported Smithing recipes can use stored ores/bars; recipe coverage and existing smelting limitations still apply.
+
+Scans run on Logic at most every 25 ticks, plus relevant inventory events. No storage reads run from the Draw callback. Data is copied into Lua records rather than retaining live inventory proxies. Empty live storage replaces its previous contents. Unavailable storage preserves its last successful scan, labels skill totals “last scan”, and reports status in Archaeology item details and the console. Such snapshots can become inaccurate after transfers until both containers are refreshed. Caches reset on game-state changes and are not persisted across plugin reloads or logins.
+
+No items are moved and no native UI children are created. All 27 local suites pass, including storage merging, update invalidation, empty/unavailable distinction, unknown-container exclusion, restoration materials, closed-bank refresh and session clearing. Native storage access remains unverified until tested in the RuneScape client.
+
+Sources: https://developer.runescape.com/rs/game/config/invtype.html ; https://developer.runescape.com/rs/game/inventory.html ; https://developer.runescape.com/rs/core/events.html .

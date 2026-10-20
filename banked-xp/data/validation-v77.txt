@@ -1,0 +1,1 @@
+All prior 22 suites pass; new outfit suite passes (23 total). Focused hover and multi-skill integration checks pass for adjusted totals, retained base values and immediate summary changes after equipment removal. No Draw inventory scans. Diango-only unlocks are unverified and not assumed.

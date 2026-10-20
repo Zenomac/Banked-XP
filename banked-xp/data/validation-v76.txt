@@ -1,0 +1,1 @@
+22 local suites passed. Added 3,134 recipe routes plus 30 Prayer bases; total 3,396 engine recipes. Route-wide tests and ten-skill summary integration passed. Local cached option benchmark: 100 calls ~0.008 seconds. In-game item-name matching, fonts and actual activity outcomes require client verification.
