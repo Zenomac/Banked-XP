@@ -5,8 +5,6 @@ require('storage').register()
 local selected, applied, saved, written = nil, nil, nil, nil
 local quantity=nil
 local selectedName=nil
-local selectedID=nil
-local titleMismatchFrames=0
 require("settings_ui").register()
 -- Optional skill-hover integration must not prevent item hovers loading.
 local skillHover
@@ -24,16 +22,7 @@ require("outfits").register()
 local noticeOK,noticeError=pcall(function() require("startup_notice").register() end)
 if not noticeOK then print('[banked-xp] Optional Diango notice unavailable: '..tostring(noticeError)) end
 local warned = false
-local animaDiagnostics={}
-local function animaDiagnostic(name,reason)
-    if not name or not name:lower():find('resonant anima',1,true) then return end
-    local key=name..':'..reason
-    if animaDiagnostics[key] then return end
-    animaDiagnostics[key]=true
-    print('[BXP anima] '..name..': '..reason)
-end
 local edits={}
-local ownedRow
 local nativeGeometry
 local function undoLayout()
     for i=#edits,1,-1 do
@@ -62,9 +51,6 @@ local function edit(c,p,value)
     -- Native LABEL proxies expose fewer style setters than plugin ui.Text.
     -- An unknown member can read as nil but rejects writes via __newindex.
     if not readable or old==nil or old==value then return end
-    -- Plugin-owned text needs no native-state rollback. Reverting its font
-    -- and geometry each Draw repeatedly invalidates the client text layout.
-    if c==ownedRow then c[p]=value;return end
     local before=old
     if p=='height' then
         before=ui.Size.new(c.size)
@@ -91,36 +77,19 @@ end
 -- layout, place text inside its native parent. The parent itself retains
 -- its client-controlled position so it can follow the cursor.
 local function box(c,x,y,width,height)
-    if c~=ownedRow then
-        edits[#edits+1]={c=c,p='rect',before={size=ui.Size.new(c.size),position=ui.Pos.new(c.position)}}
-    end
+    edits[#edits+1]={c=c,p='rect',before={size=ui.Size.new(c.size),position=ui.Pos.new(c.position)}}
     local parent=c.parent
     local origin=parent and parent.xyGlobal or {x=0,y=0}
-    if c~=ownedRow or c.width~=math.ceil(width) or c.height~=math.ceil(height) then
-        c.size=ui.Size.new(math.ceil(width),math.ceil(height))
-    end
+    c.size=ui.Size.new(math.ceil(width),math.ceil(height))
     local position=ui.Pos.new(math.floor(x-origin.x),math.floor(y-origin.y))
-    if c~=ownedRow then edits[#edits].after=ui.Pos.new(position) end
-    local same=true
-    for _,field in ipairs({'x','y','xParentPc','yParentPc','xSelfPc','ySelfPc'}) do
-        if c.position[field]~=position[field] then same=false;break end
-    end
-    if not same then c.position=position end
+    edits[#edits].after=ui.Pos.new(position)
+    c.position=position
 end
 local function resize(c,width,height)
     edits[#edits+1]={c=c,p='resize',before=ui.Size.new(c.size)}
     c.size=ui.Size.new(math.ceil(width),math.ceil(height))
 end
-local function restore(preserveNativeText)
-    -- The client may already have replaced a reused label for the next item.
-    -- On selection changes, keep that new text even if it equals our last edit.
-    local currentText={}
-    if preserveNativeText==true then
-        for _,e in ipairs(edits) do
-            if e.p=='content' and e.c~=ownedRow then currentText[e.c]=e.c.content end
-        end
-    end
-    if ownedRow then pcall(function() ownedRow.hidden=true;ownedRow.content='' end) end
+local function restore()
     nativeGeometry=nil
     nativeFrame.hide()
     undoLayout()
@@ -131,7 +100,6 @@ local function restore(preserveNativeText)
         end)
     end
     applied,saved,written=nil,nil,nil
-    for c,value in pairs(currentText) do c.content=value end
 end
 local function compact(n)
     if n>=1000000 then return string.format('%.2fm',n/1000000) end
@@ -139,8 +107,7 @@ local function compact(n)
     return string.format('%.1f',n):gsub('%.0$','')
 end
 local function detect(event)
-    local previousID,previousName=selectedID,selectedName
-    selected=nil;quantity=nil;selectedName=nil;selectedID=nil
+    selected=nil;quantity=nil;selectedName=nil
     if MiniMenu.IsOpen() then restore();return end
     local entries=event.miniMenu.entries
     local e=entries[#entries]
@@ -148,12 +115,8 @@ local function detect(event)
     local d=e.componentData
     if not d or not d.objConfig then restore();return end
     local obj=d.objConfig
-    if obj.id~=previousID or string.lower(obj.name or '')~=previousName then
-        restore(true)
-        titleMismatchFrames=0
-    end
     local method=catalog.lookup(obj)
-    if not method then animaDiagnostic(obj.name,'no catalog match');restore();return end
+    if not method then restore();return end
     local bank=Inventory.Find(config.Inv.BANK)
     local count=bank and bank:GetTotal(obj.id)
     if count and count>0 then
@@ -164,9 +127,17 @@ local function detect(event)
         -- The exact same filtered options drive hover and right-click.
         -- Explicit informational previews may render without selectable recipes.
         if (not options or #options==0) and not (estimate and (estimate.artefactPreview or estimate.levelPreview or estimate.ingredientPreview)) then restore();return end
-        selected=estimate;quantity=count;selectedID=obj.id
+        selected=estimate;quantity=count
         methods.addMenu(event.miniMenu,obj,options,method)
         selectedName=string.lower(obj.name or "")
+        -- Recovery v0.134: quarantine the crash-associated tradeable anima
+        -- tooltip path. Recipe/menu calculations above remain available.
+        local normalized=require('bank').normalize(obj.name)
+        if normalized:match('^resonant anima of .+ %(tradeable%)$') then
+            selected=nil;quantity=nil;selectedName=nil
+            restore()
+            return
+        end
     else
 
     end
@@ -201,45 +172,15 @@ local function paint()
         end)
     end
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
-    if not header or not footer or not header.visibleGlobal then restore();return end
-    -- A wrapped native item name can occupy the would-be XP row. Keep its
-    -- suffix in the header and use our own row rather than discarding text.
-    local continuation=row and row.content or ''
-    local normalizedContinuation=require('bank').normalize(continuation)
-    local splitAnima=selectedName and selectedName:find('resonant anima of ',1,true)
-        and (normalizedContinuation=='(tradeable)' or normalizedContinuation=='(tradable)')
-    if splitAnima then
-        edit(header,'content',(header.content or '')..'<br>'..continuation)
-        edit(row,'content','')
-    end
-    local occupied=row and row.content~='' and row.content~=nil and row.content~=written
-    -- Some item tooltips have no visible middle row. Never unhide a native
-    -- label: use a plugin-owned, click-through text component in its place.
-    if splitAnima or occupied or not row or row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then
-        local parent=header.parent
-        if not parent or not parent.visibleGlobal then restore();return end
-        if ownedRow and ownedRow.parent~=parent then ownedRow:Destroy();ownedRow=nil end
-        if not ownedRow then
-            ownedRow=ui.Text.new(parent)
-            ownedRow.clickthrough=true
-            ownedRow.font=header.font
-            ownedRow.content=''
-        end
-        if occupied and row.visibleGlobal then table.insert(details,1,row) end
-        row=ownedRow
-        row.hidden=false
-    elseif ownedRow then ownedRow.hidden=true end
-    local plainTitle=require('bank').normalize(header.content or '')
+    if not header or not row or not footer then restore();return end
+    if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then restore();return end
+    if (row.content or '')~='' and row.content~=written then restore();return end
+    local plainTitle=string.gsub(header.content or '', '<[^>]*>', '')
     local title=string.lower(plainTitle)
     title=string.gsub(title,'%s+','')
-    local matchingName=require('bank').normalize(selectedName or '')
+    local matchingName=string.gsub(selectedName or '', '<[^>]*>', '')
     matchingName=string.gsub(matchingName,'%s+','')
-    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then
-        titleMismatchFrames=titleMismatchFrames+1
-        if titleMismatchFrames==10 then animaDiagnostic(selectedName,'persistent native title mismatch: '..plainTitle) end
-        restore();return
-    end
-    titleMismatchFrames=0
+    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then restore();return end
     local function number(n)
         return string.format('%.0f',n):reverse():gsub('(%d%d%d)','%1,'):reverse():gsub('^,','')
     end
@@ -285,21 +226,6 @@ local function paint()
         end
     end
     local text=table.concat(lines,'<br>')
-    -- Publish the prepared text before expanding the frame, avoiding a blank
-    -- expanded bubble while the native client schedules text layout.
-    if applied and applied~=row then
-        if applied.content==written then applied.content=saved end
-        applied,saved,written=nil,nil,nil
-    end
-    local current=row.content or '' 
-    if current~=text then
-        -- Only take ownership of an empty row; don't replace native details.
-        if current~='' and current~=written then restore();return end
-        applied=row;saved='';written=text
-        row.content=text
-    end
-    if row==ownedRow then row:MoveToFront() end
-
     local fontOK,font=pcall(function() return config.Font.FromID(header.font) end)
     if not fontOK or not font then
         -- A font lookup failure should not erase supported XP information.
@@ -467,7 +393,13 @@ local function paint()
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
     nativeFrame.apply(bg,header,footer,effectY,box,edit)
-
+    local current=row.content or ''
+    if current~=text then
+        -- Only take ownership of an empty row; don't replace native details.
+        if current~='' and current~=written then restore();return end
+        applied=row;saved='';written=text
+        row.content=text
+    end
 end
 local function safe(fn,...)
     local ok,err=pcall(fn,...)
@@ -480,7 +412,6 @@ Event.MiniMenuReady.Subscribe('bankedXpRowSelection',function(e) safe(detect,e) 
 Event.Draw.Subscribe('bankedXpNativeRow',function() safe(paint) end)
 Event.MiniMenuOpened.Subscribe('bankedXpRowClear',restore)
 function PluginShutdown()
-    if ownedRow then ownedRow:Destroy();ownedRow=nil end
     nativeFrame.destroy()
     if skillHover then pcall(skillHover.restore) end
     restore()

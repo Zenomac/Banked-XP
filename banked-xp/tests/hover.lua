@@ -347,87 +347,28 @@ end
 callbacks.MiniMenuOpened();labels[4]=nil
 print('PASS: 100 client-interleaved relayouts keep native stat offsets and tooltip width stable')
 
--- Tradeable names may have whitespace/markup; an empty native middle row
--- may be hidden. Render a plugin-owned row without changing native visibility.
+-- Recovery: no plugin text children or tradeable anima layout mutations.
 callbacks.MiniMenuOpened()
-local replacement
-ui.Text={new=function(parent)
- replacement=component(996,parent,0,0,184,16)
- replacement.font=12;replacement.content='';replacement.alignHorizontal=0
- return replacement
-end}
-labels[0].content='Withdraw-All <col=ffff00>Resonant anima of Jas<br>(tradeable)</col>'
-labels[1].hidden=true
-labels[3].content=''
-event.miniMenu.entries[1].componentData.objConfig.name='Resonant anima of Jas (tradable) '
-callbacks.MiniMenuReady(event);callbacks.Draw()
-assert(replacement and replacement.content:find('XP',1,true),'hidden middle row gets plugin-owned XP')
-assert(labels[1].hidden,'native middle row stays hidden')
-callbacks.MiniMenuOpened();assert(replacement.hidden,'owned row hides on exit')
-
--- Each tradeable suffix can occupy a separate native row, not just a <br>.
+ui.Text={new=function() error('recovery must never create tooltip text children') end}
 for _,god in ipairs({'Bik','Ful','Wen','Jas'}) do
- callbacks.MiniMenuOpened()
- labels[0].content='Withdraw-All Resonant anima of '..god
- labels[1].hidden=false;labels[1].content='(tradeable)'
- event.miniMenu.entries[1].componentData.objConfig.name='Resonant anima of '..god..' (tradeable)'
- callbacks.MiniMenuReady(event)
- for i=1,10 do
-  callbacks.Draw()
-  assert(replacement.content:find('XP',1,true) and not replacement.hidden,'split '..god..' XP stays visible')
-  assert(labels[0].content:find('(tradeable)',1,true),'tradeable suffix preserved in header')
- end
- callbacks.MiniMenuOpened()
- assert(labels[0].content=='Withdraw-All Resonant anima of '..god and labels[1].content=='(tradeable)','split native title restored')
-end
-
--- Switch between native and plugin-owned rows WITHOUT a menu-close event.
--- The client may still display the previous item's title for one draw.
-for cycle=1,3 do
- for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
-  local name='Resonant anima of '..god..' (tradeable)'
-  event.miniMenu.entries[1].componentData.objConfig={id=800+index,name=name}
+ for _,suffix in ipairs({' (tradeable)',' (tradable)'}) do
+  labels[0].content='Withdraw-All Resonant anima of '..god..suffix
+  labels[1].content='';labels[1].hidden=false
+  local initialWidth,initialHeight=bg.width,bg.height
+  local beforeMenu=menuCalls
+  event.miniMenu.entries[1].componentData.objConfig={id=500,name='Resonant anima of '..god..suffix}
   callbacks.MiniMenuReady(event)
-  callbacks.Draw() -- old native title; never show the new item's XP here
-  labels[0].content='Withdraw-All '..(index%2==0 and 'Resonant anima of '..god or name)
-  labels[1].content=index%2==0 and '(tradeable)' or ''
-  labels[1].hidden=false
-  for frame=1,5 do callbacks.Draw() end
-  local active=index%2==0 and replacement or labels[1]
-  assert(active.content:find('XP',1,true),'sequential hover '..god..' renders without menu close')
+  for frame=1,20 do callbacks.Draw() end
+  assert(labels[1].content=='' and bg.width==initialWidth and bg.height==initialHeight,'tradeable tooltip stays native')
+  assert(menuCalls>beforeMenu,'recipe menu remains available')
  end
 end
+-- Native content and hidden native rows are never repurposed.
+event.miniMenu.entries[1].componentData.objConfig={id=1,name='Prayer potion (4)'}
+labels[0].content='Withdraw-All Prayer potion (4)'
+labels[1].content='native continuation'
+callbacks.MiniMenuReady(event);callbacks.Draw();assert(labels[1].content=='native continuation')
+labels[1].content='';labels[1].hidden=true
+callbacks.MiniMenuReady(event);callbacks.Draw();assert(labels[1].hidden and labels[1].content=='')
 callbacks.MiniMenuOpened()
-
--- Immediate updates with DIFFERENT estimates must clear the inactive owned row.
-for index,god in ipairs({'Ful','Bik','Jas','Wen','Ful'}) do
- selected.total=1000+index
- local split=index%2==1
- labels[0].content='Withdraw-All Resonant anima of '..god..(split and '' or ' (tradeable)')
- labels[1].content=split and '(tradeable)' or ''
- event.miniMenu.entries[1].componentData.objConfig={id=900+index,name='Resonant anima of '..god..' (tradeable)'}
- callbacks.MiniMenuReady(event)
- for frame=1,3 do callbacks.Draw() end
- local active=split and replacement or labels[1]
- assert(not active.hidden and active.content:find('XP',1,true),'immediate native/owned handoff '..god)
-end
-callbacks.MiniMenuOpened()
-
--- The body must be populated on the first matching Draw, before the frame
--- expands. Do not restore the plugin-owned font between identical frames.
-callbacks.MiniMenuOpened()
-labels[0].content='Withdraw-All Resonant anima of Jas'
-labels[1].content='(tradeable)';labels[1].hidden=false
-labels[2].font=12
-event.miniMenu.entries[1].componentData.objConfig={id=1200,name='Resonant anima of Jas (tradeable)'}
-local frameModule=require('native_frame')
-local originalApply=frameModule.apply
-frameModule.apply=function(...)
- assert(replacement and replacement.content:find('XP',1,true),'text ready before frame expansion')
- return originalApply(...)
-end
-callbacks.MiniMenuReady(event);callbacks.Draw()
-assert(replacement.content:find('XP',1,true) and not replacement.hidden,'first matching frame contains XP')
-for i=1,25 do callbacks.Draw() end
-frameModule.apply=originalApply
-callbacks.MiniMenuOpened()
+print('PASS: recovery skips all tradeable anima hover mutations while retaining menus; no text child creation')

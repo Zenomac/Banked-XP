@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.133.0**.
+Current plugin version: **0.134.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.134 — Crash recovery
+
+- Revert the v0.130–0.133 item-hover renderer experiments after a reported native-client crash in v0.133. Remove plugin-created text rows and their lifecycle changes.
+- Temporarily disable tradeable resonant anima hover augmentation entirely; retain recipes, menu preferences and summary calculations.
+- Preserve hidden/occupied native rows. Continue v0.129 visibility protections and privacy features.
+- Native crash cause is not established by Lua tests. Regression checks verify that tradeable anima do not modify tooltip geometry/text or create text children. Restart the client before installing this recovery build.
 
 ## v0.133 — Reduce blank hover rendering
 
