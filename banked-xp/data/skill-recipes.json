@@ -37403,99 +37403,6 @@
     "category": "Arrows - Scratch"
   },
   {
-    "id": "skill:Fletching:9a145c30da8c",
-    "skill": "Fletching",
-    "method": "Black stone arrows",
-    "xp": 189,
-    "level": 92,
-    "inputs": [
-      {
-        "name": "Black stone arrow tips",
-        "qty": 15
-      },
-      {
-        "name": "Elder shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Black stone arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Black stone arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:9ee547fd891e",
-    "skill": "Fletching",
-    "method": "Deathspore arrows",
-    "xp": 315,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Deathspore arrow tips",
-        "qty": 15
-      },
-      {
-        "name": "Elder shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Deathspore arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Deathspore arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:d5a841b7be58",
-    "skill": "Fletching",
-    "method": "Splintering arrows",
-    "xp": 315,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Splintering arrow tips",
-        "qty": 15
-      },
-      {
-        "name": "Elder shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Splintering arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Splintering arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
     "id": "skill:Fletching:2d2fca19eb72",
     "skill": "Fletching",
     "method": "Dinarrow",
@@ -37867,87 +37774,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Rune brutal",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:f39cc7ee8c0e",
-    "skill": "Fletching",
-    "method": "Black stone arrows",
-    "xp": 189,
-    "level": 92,
-    "inputs": [
-      {
-        "name": "Black stone arrow tips",
-        "qty": 15
-      },
-      {
-        "name": "Elder headless shaft",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Black stone arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Black stone arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:b185eabb7e96",
-    "skill": "Fletching",
-    "method": "Deathspore arrows",
-    "xp": 300,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Deathspore arrow tips",
-        "qty": 15
-      },
-      {
-        "name": "Elder headless shaft",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Deathspore arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Deathspore arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:8d24cedd4245",
-    "skill": "Fletching",
-    "method": "Splintering arrows",
-    "xp": 300,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Splintering arrow tips",
-        "qty": 15
-      },
-      {
-        "name": "Elder headless shaft",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Splintering arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Splintering arrows",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Arrows"
@@ -47817,33 +47643,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Elder shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
-    "id": "skill:Fletching:70f6f76ddb2a",
-    "skill": "Fletching",
-    "method": "Elder headless shaft",
-    "xp": 15,
-    "level": 90,
-    "inputs": [
-      {
-        "name": "Elder shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Elder headless shaft",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Elder headless shaft",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Unfinished projectiles"
@@ -101559,5 +101358,1039 @@
     "additionalXP": {},
     "requiredLevels": {},
     "id": "skill:Fletching:audit122:e470058515b472"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 12.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe."
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:dcff1834a56026"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 20.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:1c4d174ba17a8e"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder headless shaft",
+    "xp": 1.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_headless_shaft",
+    "label": "Elder headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:fb78f5bf7023d9"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder headless shaft",
+    "xp": 1.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Yellow feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_headless_shaft",
+    "label": "Elder headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:75d319a44e7b72"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder headless shaft",
+    "xp": 1.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Red feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_headless_shaft",
+    "label": "Elder headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:a00457576bc929"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder headless shaft",
+    "xp": 1.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Blue feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_headless_shaft",
+    "label": "Elder headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:5a67fa64e8275b"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder headless shaft",
+    "xp": 1.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Stripy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_headless_shaft",
+    "label": "Elder headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:0d54935d0522fa"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder headless shaft",
+    "xp": 1.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Orange feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_headless_shaft",
+    "label": "Elder headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:25c3923c2e346d"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder headless shaft",
+    "xp": 1.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Wimpy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_headless_shaft",
+    "label": "Elder headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:20946bd5fd0d25"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 20.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:8fbb6341098d22"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 13.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe.",
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:670010d0e647c0"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 13.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Yellow feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe.",
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:ffd6f6fd00606b"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 13.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Red feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe.",
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:2688070cfe2b96"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 13.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Blue feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe.",
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:2cffcc0efb8ee5"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 13.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Stripy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe.",
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:71335d495ad223"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 13.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Orange feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe.",
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:725a4e648f1f69"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Black stone arrows",
+    "xp": 13.6,
+    "level": 92.0,
+    "inputs": [
+      {
+        "name": "Black stone arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Wimpy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Black stone arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "You must have unlocked the recipe.",
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Black_stone_arrows",
+    "label": "Black stone arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:0813bf145e8dd6"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:e87fc7250818bc"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Yellow feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:a7f4b8054b9ab9"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Red feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:56852001dc951b"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Blue feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:c1bc8409040b29"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Stripy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:240ec75eba9982"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Orange feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:4394ae4613bcfe"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Deathspore arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Deathspore arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Wimpy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Deathspore arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Deathspore_arrows",
+    "label": "Deathspore arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:a4be8e0a78caaf"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:1d16e8398b24c5"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Yellow feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:772373781a5bbd"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Red feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:d5c201769e4ca8"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Blue feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:8412ebecd76cd6"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Stripy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:1ed756aec7b025"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Orange feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:b1e57658df2827"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Splintering arrows",
+    "xp": 21.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Splintering arrow tips",
+        "qty": 1
+      },
+      {
+        "name": "Elder shaft",
+        "qty": 1
+      },
+      {
+        "name": "Wimpy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Splintering arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining shaft-feathering XP"
+    ],
+    "url": "https://runescape.wiki/w/Splintering_arrows",
+    "label": "Splintering arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Specialist arrow tips",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit123:64c5d2c5ef9c95"
   }
 ]

@@ -7,7 +7,7 @@ for _,row in ipairs(require('skill_recipes')) do recipes[#recipes+1]=row end
 local preparations=require('wiki_preparations')
 local herbs=require('herbs').data
 local function copy(t) local c={};for k,v in pairs(t) do c[k]=v end;return c end
-local aliases={['headless arrow']='headless shaft',['headless arrows']='headless shaft',['arrow shaft']='shaft',['arrow shafts']='shaft',['ascension fragments']='ascension fragment',['battlestaves']='battlestaff',['ground mud runes']='ground mud rune',['wyvern bonemeal']='ground wyvern bones',
+local aliases={['elder headless arrow']='elder headless shaft',['elder headless arrows']='elder headless shaft',['black stone arrow tip']='black stone arrow tips',['deathspore arrow tip']='deathspore arrow tips',['splintering arrow tip']='splintering arrow tips',['headless arrow']='headless shaft',['headless arrows']='headless shaft',['arrow shaft']='shaft',['arrow shafts']='shaft',['ascension fragments']='ascension fragment',['battlestaves']='battlestaff',['ground mud runes']='ground mud rune',['wyvern bonemeal']='ground wyvern bones',
  ['desert phoenix feather']='phoenix feather',['arbuck (unf)']='arbuck potion (unfinished)'}
 local function key(name)
     local n=bank.normalize(name)
