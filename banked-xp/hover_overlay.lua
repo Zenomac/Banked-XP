@@ -1,6 +1,7 @@
 -- One plugin-owned layer under static 1477:896, never under recycled hover rows.
 local M={}
 local owner,layer,label,plan,blocked
+local inspected=false
 local function root()
     local c=ui.Interfaces:GetComponent(96797568)
     if c and c.staticID==896 then return c end
@@ -31,6 +32,37 @@ function M.sync(header)
     local x,y=math.floor(xy.x-origin.x),math.floor(xy.y+plan.offset-origin.y)
     if x~=plan.x or y~=plan.y then layer:SetPos(x,y);plan.x,plan.y=x,y end
     return true
+end
+-- Read only, once per activation: visibleGlobal does not establish clipping
+-- or render order. Record both ancestor chains without changing native UI.
+local function inspect(header)
+    if inspected then return end
+    inspected=true
+    local function field(c,k)
+        local ok,value=pcall(function() return c[k] end)
+        return ok and tostring(value) or '?'
+    end
+    for _,entry in ipairs({{'owned',label},{'native',header}}) do
+        local c=entry[2]
+        local chain={}
+        for depth=1,8 do
+            if not c then break end
+            local ok,description,nextParent=pcall(function()
+                local xy=c.xyGlobal
+                return field(c,'staticID')..':'..field(c,'categoryID')..':'..field(c,'dynamicID')
+                    ..' bounds='..tostring(xy.x)..','..tostring(xy.y)..','..field(c,'width')..','..field(c,'height')
+                    ..' alpha='..field(c,'alpha')..' visible='..field(c,'visibleGlobal')
+                    ..' scroll='..field(c,'scrollX')..','..field(c,'scrollY')..','..field(c,'scrollWidth')..','..field(c,'scrollHeight'),c.parent
+            end)
+            if not ok then chain[#chain+1]='unavailable';break end
+            chain[#chain+1]=description;c=nextParent
+        end
+        print('[BXP render] '..entry[1]..' '..table.concat(chain,' <- '))
+    end
+    print('[BXP render] text font='..field(label,'font')..' nativeFont='..field(header,'font')
+        ..' object='..field(label,'associatedObjectID')..' maxLines='..field(label,'maxLines')
+        ..' spacing='..field(label,'lineSpacing')..' style='..field(label,'stylesheetID')
+        ..' align='..field(label,'alignHorizontal')..','..field(label,'alignVertical'))
 end
 function M.show(header,offset,width,height,font,spacing,content,styleSource)
     local current=root()
@@ -79,6 +111,7 @@ function M.show(header,offset,width,height,font,spacing,content,styleSource)
     if not M.sync(header) then return false end
     layer:MoveToFront()
     layer.hidden=false
+    inspect(header)
     return true
 end
 return M

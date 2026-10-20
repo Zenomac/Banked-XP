@@ -16,6 +16,9 @@ ui.Text.new=function(parent)
    rawset(self,key,value)
   end})
 end
+local savedPrint=print
+local renderLogs={}
+print=function(message) if message:find('[BXP render]',1,true) then renderLogs[#renderLogs+1]=message end end
 local m=require('hover_overlay')
 local header={visibleGlobal=true,xyGlobal={x=20,y=40}}
 assert(m.show(header,20,200,80,13,16,'XP'))
@@ -26,6 +29,9 @@ assert(m.show(header,20,200,80,13,16,'XP',{rgb=0xaabbcc}))
 assert(body.rgba==0xaabbccff,'native body tint copied with opaque alpha')
 for i=1,100 do header.xyGlobal.x=i;assert(m.sync(header)) end
 assert(creates==1,'cursor movement does not allocate')
+assert(#renderLogs==3,'render diagnostics run once, not on cursor updates or repeated shows')
+assert(renderLogs[1]:find('owned',1,true) and renderLogs[2]:find('native',1,true))
+print=savedPrint
 current=nil
 assert(not m.sync(header) and m.current()==nil)
 assert(destroys==0,'do not call Destroy on proxies from unloaded interfaces')

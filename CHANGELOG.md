@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.146.0**.
+Current plugin version: **0.147.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.147 — Read-only blank-text render diagnostic
+
+- v0.146 live logs show populated text, alpha 1 and visibility within 2–3 frames, but no drawn body. The colour/opacity change did not resolve the issue.
+- Print the owned label and native header ancestor bounds, visibility, opacity and scroll regions once per activation, plus text font, object association and layout configuration.
+- Preserve rendering and component lifecycle while gathering evidence for clipping, draw order or text configuration. No additional components, native mutations, network requests or text content logging. This is a diagnostic build, not a confirmed fix.
 
 ## v0.146 — Initialize owned text colour and opacity
 
