@@ -73,6 +73,6 @@ function M.register()
    if not ok and not M.drawWarned then print('[BXP total probe] Draw read error: '..tostring(err));M.drawWarned=true end
   end)
  end
- print('[BXP total probe] v0.109 read-only child/Logic/Draw discovery enabled; existing hovers remain active.')
+ print('[BXP total probe] v0.110 read-only child/Logic/Draw discovery enabled; existing hovers remain active.')
 end
 return M

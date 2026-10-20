@@ -200,7 +200,7 @@ local function paintTextTotal()
   local nativeStep=body.height/lines
   if nativeStep>=10 and nativeStep<=30 then lineHeight=math.ceil(nativeStep) end
  end
- local growth=lineHeight+4
+ local growth=lineHeight -- preserve the native top/bottom inset; no added bottom padding
  local textX,textY,textW,textH=body.xyGlobal.x,body.xyGlobal.y,body.width,body.height
  local layers={}
  for _,id in ipairs({0,1,11,12,13,14}) do

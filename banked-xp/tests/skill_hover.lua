@@ -183,9 +183,9 @@ end
 package.loaded.skill_summary.missingStorage=function() return false end
 callbacks.draw()
 assert(staticChildren[15].content:find('<br><col=e3d7bf>Banked XP: <col=e3d7bf>99,123,456</col>',1,true),'dedicated text tooltip gets neutral banked row')
-assert(staticChildren[22].position.y==52 and staticChildren[22].height==10,'native bottom corner moved without resizing')
-assert(staticChildren[20].height==42,'native centre fill expanded')
-assert(staticChildren[1].height==62 and staticChildren[15].height==45)
+assert(staticChildren[22].position.y==48 and staticChildren[22].height==10,'native bottom corner moved without resizing')
+assert(staticChildren[20].height==38,'native centre fill expanded')
+assert(staticChildren[1].height==58 and staticChildren[15].height==45)
 callbacks.clear()
 assert(staticChildren[22].position.y==33 and staticChildren[20].height==23 and staticChildren[1].height==43)
 assert(not staticChildren[15].content:find('Banked XP:',1,true),'dedicated tooltip restored')
@@ -209,8 +209,8 @@ ui.Interfaces.GetComponent=function(_,interface,id,category,dynamic)
 end
 callbacks.draw()
 assert(dynamicTotal.content:find('Banked XP:',1,true),'live dynamic text is selected')
-assert(staticChildren[14].height==52,'dynamic text clipping layer expands')
-assert(dynamicTotal.height==48 and staticChildren[22].position.y==53,'16px native row plus 4px padding')
+assert(staticChildren[14].height==48,'dynamic text clipping layer expands')
+assert(dynamicTotal.height==48 and staticChildren[22].position.y==49,'16px native row with original bottom padding')
 assert(staticChildren[15].content=='Tooltip text' and staticChildren[15].width==0,'template untouched')
 callbacks.clear();assert(dynamicTotal.height==32 and staticChildren[22].position.y==33)
 font.GetStringLineCount=nil
