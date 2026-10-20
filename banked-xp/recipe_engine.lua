@@ -7,7 +7,7 @@ for _,row in ipairs(require('skill_recipes')) do recipes[#recipes+1]=row end
 local preparations=require('wiki_preparations')
 local herbs=require('herbs').data
 local function copy(t) local c={};for k,v in pairs(t) do c[k]=v end;return c end
-local aliases={['ground mud runes']='ground mud rune',['wyvern bonemeal']='ground wyvern bones',
+local aliases={['headless arrow']='headless shaft',['headless arrows']='headless shaft',['arrow shaft']='shaft',['arrow shafts']='shaft',['ascension fragments']='ascension fragment',['battlestaves']='battlestaff',['ground mud runes']='ground mud rune',['wyvern bonemeal']='ground wyvern bones',
  ['desert phoenix feather']='phoenix feather',['arbuck (unf)']='arbuck potion (unfinished)'}
 local function key(name)
     local n=bank.normalize(name)

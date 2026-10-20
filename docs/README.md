@@ -1,6 +1,6 @@
 # Documentation
 
-Install the [banked-xp folder](../banked-xp). The [repository README](../README.md) describes current usage, and the [changelog](../CHANGELOG.md) covers every development build from v0.1 through v0.121.
+Install the [banked-xp folder](../banked-xp). The [repository README](../README.md) describes current usage, and the [changelog](../CHANGELOG.md) covers every development build from v0.1 through v0.122.
 
 ## Features and calculation limits
 
@@ -22,3 +22,5 @@ Install the [banked-xp folder](../banked-xp). The [repository README](../README.
 - [Historical read-only probe](READ_ONLY_PROBE.md)
 
 Some documents contain historical release notes. Their version labels identify when the described change was made; later entries and current usage take precedence. Reference datasets and tests remain under `banked-xp/data` and `banked-xp/tests`.
+
+- [Battlestaves, arrowheads, frames and fragments](SUPPLY_FAMILIES.md)

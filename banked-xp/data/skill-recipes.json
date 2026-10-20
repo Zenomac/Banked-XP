@@ -27084,33 +27084,6 @@
     "category": "Armour"
   },
   {
-    "id": "skill:Crafting:e293151fe4b1",
-    "skill": "Crafting",
-    "method": "Water battlestaff",
-    "xp": 100,
-    "level": 54,
-    "inputs": [
-      {
-        "name": "Battlestaff",
-        "qty": 1
-      },
-      {
-        "name": "Water orb",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Water battlestaff",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Crafting/data",
-    "label": "Water battlestaff",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Battlestaves"
-  },
-  {
     "id": "skill:Crafting:ad79b4cd17ba",
     "skill": "Crafting",
     "method": "Skeletal battlestaff of air",
@@ -27381,33 +27354,6 @@
     "category": "Battlestaves"
   },
   {
-    "id": "skill:Crafting:15de76a01767",
-    "skill": "Crafting",
-    "method": "Earth battlestaff",
-    "xp": 112.5,
-    "level": 58,
-    "inputs": [
-      {
-        "name": "Battlestaff",
-        "qty": 1
-      },
-      {
-        "name": "Earth orb",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Earth battlestaff",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Crafting/data",
-    "label": "Earth battlestaff",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Battlestaves"
-  },
-  {
     "id": "skill:Crafting:a53b2d14df4a",
     "skill": "Crafting",
     "method": "Necromancer's lava staff",
@@ -27511,87 +27457,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Crafting/data",
     "label": "Necromancer's water staff",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Battlestaves"
-  },
-  {
-    "id": "skill:Crafting:c6b8e396b157",
-    "skill": "Crafting",
-    "method": "Fire battlestaff",
-    "xp": 125,
-    "level": 62,
-    "inputs": [
-      {
-        "name": "Battlestaff",
-        "qty": 1
-      },
-      {
-        "name": "Fire orb",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Fire battlestaff",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Crafting/data",
-    "label": "Fire battlestaff",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Battlestaves"
-  },
-  {
-    "id": "skill:Crafting:8fd1dd0c015c",
-    "skill": "Crafting",
-    "method": "Air battlestaff",
-    "xp": 137.5,
-    "level": 66,
-    "inputs": [
-      {
-        "name": "Battlestaff",
-        "qty": 1
-      },
-      {
-        "name": "Air orb",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Air battlestaff",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Crafting/data",
-    "label": "Air battlestaff",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Battlestaves"
-  },
-  {
-    "id": "skill:Crafting:07ef15607b62",
-    "skill": "Crafting",
-    "method": "Armadyl battlestaff",
-    "xp": 150,
-    "level": 77,
-    "inputs": [
-      {
-        "name": "Battlestaff",
-        "qty": 1
-      },
-      {
-        "name": "Orb of Armadyl",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Armadyl battlestaff",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Crafting/data",
-    "label": "Armadyl battlestaff",
     "outputUnit": "actions",
     "xpUnit": "action",
     "category": "Battlestaves"
@@ -37445,68 +37310,6 @@
     "category": "Starbloom Armour"
   },
   {
-    "id": "skill:Fletching:9d68810badb8",
-    "skill": "Fletching",
-    "method": "Bronze arrow",
-    "xp": 34.5,
-    "level": 1,
-    "inputs": [
-      {
-        "name": "Bronze bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Bronze arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Bronze arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:b4b523e65fef",
-    "skill": "Fletching",
-    "method": "Adamant arrow",
-    "xp": 165,
-    "level": 40,
-    "inputs": [
-      {
-        "name": "Adamant bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Adamant arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Adamant arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
     "id": "skill:Fletching:675935ac8659",
     "skill": "Fletching",
     "method": "Mithril brutal",
@@ -37533,161 +37336,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Mithril brutal",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:888580af9a36",
-    "skill": "Fletching",
-    "method": "Rune arrow",
-    "xp": 202.5,
-    "level": 50,
-    "inputs": [
-      {
-        "name": "Rune bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Rune arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Rune arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:2ff16acb8463",
-    "skill": "Fletching",
-    "method": "Broad arrow",
-    "xp": 240,
-    "level": 52,
-    "inputs": [
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      },
-      {
-        "name": "Broad arrowheads",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Broad arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Broad arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:ff763d67b3a9",
-    "skill": "Fletching",
-    "method": "Fragment arrows",
-    "xp": 22.5,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Bronze arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      },
-      {
-        "name": "Ascension fragment",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Fragment arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Fragment arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:77c9ed66d3ef",
-    "skill": "Fletching",
-    "method": "Orikalkum arrow",
-    "xp": 240,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Orikalkum bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Orikalkum arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Orikalkum arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:29dd0bc209a3",
-    "skill": "Fletching",
-    "method": "Dragon arrow",
-    "xp": 240,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Dragon arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Dragon arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Dragon arrow",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Arrows - Scratch"
@@ -37724,37 +37372,6 @@
     "category": "Arrows - Scratch"
   },
   {
-    "id": "skill:Fletching:983b3a327992",
-    "skill": "Fletching",
-    "method": "Necronium arrow",
-    "xp": 258.75,
-    "level": 70,
-    "inputs": [
-      {
-        "name": "Necronium bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Necronium arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Necronium arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
     "id": "skill:Fletching:564e61be171a",
     "skill": "Fletching",
     "method": "Rune brutal",
@@ -37786,99 +37403,6 @@
     "category": "Arrows - Scratch"
   },
   {
-    "id": "skill:Fletching:261eee2f9bef",
-    "skill": "Fletching",
-    "method": "Ogre arrow",
-    "xp": 19.5,
-    "level": 5,
-    "inputs": [
-      {
-        "name": "Ogre arrow shaft",
-        "qty": 12
-      },
-      {
-        "name": "Wolf bones",
-        "qty": 3
-      },
-      {
-        "name": "Feather",
-        "qty": 48
-      }
-    ],
-    "output": {
-      "name": "Ogre arrow",
-      "qty": 12
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Ogre arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:0fc68f2053c1",
-    "skill": "Fletching",
-    "method": "Bane arrow",
-    "xp": 277.5,
-    "level": 80,
-    "inputs": [
-      {
-        "name": "Bane bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Bane arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Bane arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:1d3136f3a33d",
-    "skill": "Fletching",
-    "method": "Elder rune arrow",
-    "xp": 296.25,
-    "level": 90,
-    "inputs": [
-      {
-        "name": "Elder rune bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Elder rune arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Elder rune arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
     "id": "skill:Fletching:9a145c30da8c",
     "skill": "Fletching",
     "method": "Black stone arrows",
@@ -37905,72 +37429,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Black stone arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:2930ec0d4318",
-    "skill": "Fletching",
-    "method": "Dark arrow",
-    "xp": 277.5,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Dark arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Dark arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Dark arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:2d2a097a6541",
-    "skill": "Fletching",
-    "method": "Stalker arrow",
-    "xp": 540,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Dark arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      },
-      {
-        "name": "Stalker essence",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Stalker arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Stalker arrow",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Arrows - Scratch"
@@ -38240,64 +37698,6 @@
     "category": "Arrows - Scratch"
   },
   {
-    "id": "skill:Fletching:7f9ba37b15bb",
-    "skill": "Fletching",
-    "method": "Primal arrow",
-    "xp": 300,
-    "level": 100,
-    "inputs": [
-      {
-        "name": "Primal bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Eternal magic headless shaft",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Primal arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Primal arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:5b0e249535c4",
-    "skill": "Fletching",
-    "method": "Iron arrow",
-    "xp": 52.5,
-    "level": 10,
-    "inputs": [
-      {
-        "name": "Iron bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Iron arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Iron arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
     "id": "skill:Fletching:598defdacba8",
     "skill": "Fletching",
     "method": "Iron brutal",
@@ -38324,68 +37724,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Iron brutal",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:90de7fa0081a",
-    "skill": "Fletching",
-    "method": "Steel arrow",
-    "xp": 90,
-    "level": 20,
-    "inputs": [
-      {
-        "name": "Steel bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Steel arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Steel arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows - Scratch"
-  },
-  {
-    "id": "skill:Fletching:dc1795a24bc7",
-    "skill": "Fletching",
-    "method": "Mithril arrow",
-    "xp": 127.5,
-    "level": 30,
-    "inputs": [
-      {
-        "name": "Mithril bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Mithril arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Mithril arrow",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Arrows - Scratch"
@@ -38453,60 +37791,6 @@
     "category": "Arrows - Scratch"
   },
   {
-    "id": "skill:Fletching:1a311f02418a",
-    "skill": "Fletching",
-    "method": "Bronze arrow",
-    "xp": 19.5,
-    "level": 1,
-    "inputs": [
-      {
-        "name": "Bronze arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Bronze arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Bronze arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:dacd7ae06744",
-    "skill": "Fletching",
-    "method": "Adamant arrow",
-    "xp": 150,
-    "level": 40,
-    "inputs": [
-      {
-        "name": "Adamant arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Adamant arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Adamant arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
     "id": "skill:Fletching:716dc4529a9a",
     "skill": "Fletching",
     "method": "Mithril brutal",
@@ -38529,141 +37813,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Mithril brutal",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:1befbf5e6fca",
-    "skill": "Fletching",
-    "method": "Rune arrow",
-    "xp": 187.5,
-    "level": 50,
-    "inputs": [
-      {
-        "name": "Rune arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Rune arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Rune arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:7c07b96a763d",
-    "skill": "Fletching",
-    "method": "Broad arrow",
-    "xp": 225,
-    "level": 52,
-    "inputs": [
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      },
-      {
-        "name": "Broad arrowheads",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Broad arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Broad arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:7e83e52578d0",
-    "skill": "Fletching",
-    "method": "Fragment arrows",
-    "xp": 7.5,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Bronze arrow",
-        "qty": 15
-      },
-      {
-        "name": "Ascension fragment",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Fragment arrows",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Fragment arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:a820b9b9889c",
-    "skill": "Fletching",
-    "method": "Orikalkum arrow",
-    "xp": 225,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Orikalkum arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Orikalkum arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Orikalkum arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:4dc171f99004",
-    "skill": "Fletching",
-    "method": "Dragon arrow",
-    "xp": 225,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Dragon arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Dragon arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Dragon arrow",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Arrows"
@@ -38696,33 +37845,6 @@
     "category": "Arrows"
   },
   {
-    "id": "skill:Fletching:d76428586835",
-    "skill": "Fletching",
-    "method": "Necronium arrow",
-    "xp": 243.75,
-    "level": 70,
-    "inputs": [
-      {
-        "name": "Necronium arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Necronium arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Necronium arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
     "id": "skill:Fletching:c97fa2b99052",
     "skill": "Fletching",
     "method": "Rune brutal",
@@ -38750,87 +37872,6 @@
     "category": "Arrows"
   },
   {
-    "id": "skill:Fletching:dd76f3ce1abe",
-    "skill": "Fletching",
-    "method": "Ogre arrow",
-    "xp": 6,
-    "level": 5,
-    "inputs": [
-      {
-        "name": "Wolf bone arrowheads",
-        "qty": 6
-      },
-      {
-        "name": "Flighted ogre arrow",
-        "qty": 6
-      }
-    ],
-    "output": {
-      "name": "Ogre arrow",
-      "qty": 6
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Ogre arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:917f068deae5",
-    "skill": "Fletching",
-    "method": "Bane arrow",
-    "xp": 262.5,
-    "level": 80,
-    "inputs": [
-      {
-        "name": "Bane arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Bane arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Bane arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:85ce9b3c54d9",
-    "skill": "Fletching",
-    "method": "Elder rune arrow",
-    "xp": 281.25,
-    "level": 90,
-    "inputs": [
-      {
-        "name": "Elder rune arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Elder rune arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Elder rune arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
     "id": "skill:Fletching:f39cc7ee8c0e",
     "skill": "Fletching",
     "method": "Black stone arrows",
@@ -38853,60 +37894,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Black stone arrows",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:b00e9716718d",
-    "skill": "Fletching",
-    "method": "Dark arrow",
-    "xp": 262.5,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Dark arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Dark arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Dark arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:d030ec89797d",
-    "skill": "Fletching",
-    "method": "Stalker arrow",
-    "xp": 262.5,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Dark arrow",
-        "qty": 15
-      },
-      {
-        "name": "Stalker essence",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Stalker arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Stalker arrow",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Arrows"
@@ -39128,60 +38115,6 @@
     "category": "Arrows"
   },
   {
-    "id": "skill:Fletching:b55754dcb330",
-    "skill": "Fletching",
-    "method": "Primal arrow",
-    "xp": 300,
-    "level": 100,
-    "inputs": [
-      {
-        "name": "Primal arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Eternal magic headless shaft",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Primal arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Primal arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:694c6f9525e2",
-    "skill": "Fletching",
-    "method": "Iron arrow",
-    "xp": 37.5,
-    "level": 10,
-    "inputs": [
-      {
-        "name": "Iron arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Iron arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Iron arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
     "id": "skill:Fletching:9870f3edeba4",
     "skill": "Fletching",
     "method": "Iron brutal",
@@ -39204,60 +38137,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Iron brutal",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:05ba20bb4168",
-    "skill": "Fletching",
-    "method": "Steel arrow",
-    "xp": 75,
-    "level": 20,
-    "inputs": [
-      {
-        "name": "Steel arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Steel arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Steel arrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Arrows"
-  },
-  {
-    "id": "skill:Fletching:3979514f1896",
-    "skill": "Fletching",
-    "method": "Mithril arrow",
-    "xp": 112.5,
-    "level": 30,
-    "inputs": [
-      {
-        "name": "Mithril arrowheads",
-        "qty": 15
-      },
-      {
-        "name": "Headless arrow",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Mithril arrow",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Mithril arrow",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Arrows"
@@ -39571,37 +38450,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Emerald bolts",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Bolts - Scratch"
-  },
-  {
-    "id": "skill:Fletching:2a0200ad2b84",
-    "skill": "Fletching",
-    "method": "Fragment bolts",
-    "xp": 10,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Bronze bar",
-        "qty": 0.2
-      },
-      {
-        "name": "Feather",
-        "qty": 10
-      },
-      {
-        "name": "Ascension fragment",
-        "qty": 10
-      }
-    ],
-    "output": {
-      "name": "Fragment bolts",
-      "qty": 10
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Fragment bolts",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Bolts - Scratch"
@@ -40746,33 +39594,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Emerald bolts",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Bolts"
-  },
-  {
-    "id": "skill:Fletching:8ad4d34b8d5d",
-    "skill": "Fletching",
-    "method": "Fragment bolts",
-    "xp": 5,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Bronze bolts",
-        "qty": 10
-      },
-      {
-        "name": "Ascension fragment",
-        "qty": 10
-      }
-    ],
-    "output": {
-      "name": "Fragment bolts",
-      "qty": 10
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Fragment bolts",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Bolts"
@@ -48748,75 +47569,6 @@
     "category": "Miscellaneous"
   },
   {
-    "id": "skill:Fletching:a83667791a73",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 5,
-    "level": 1,
-    "inputs": [
-      {
-        "name": "Logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
-    "id": "skill:Fletching:53b28fc54c5e",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 11.2,
-    "level": 30,
-    "inputs": [
-      {
-        "name": "Teak logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 30
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
-    "id": "skill:Fletching:5a7f477bfd13",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 12.5,
-    "level": 40,
-    "inputs": [
-      {
-        "name": "Maple logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 35
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
     "id": "skill:Fletching:780b99f128f7",
     "skill": "Fletching",
     "method": "Pearl bolt tips",
@@ -48886,29 +47638,6 @@
     "category": "Unfinished projectiles"
   },
   {
-    "id": "skill:Fletching:73db1dc0718d",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 13.7,
-    "level": 50,
-    "inputs": [
-      {
-        "name": "Acadia logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 40
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
     "id": "skill:Fletching:c69ff87c9013",
     "skill": "Fletching",
     "method": "Sapphire bolt tips",
@@ -48955,29 +47684,6 @@
     "category": "Unfinished projectiles"
   },
   {
-    "id": "skill:Fletching:454062efe7de",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 15,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Mahogany logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 45
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
     "id": "skill:Fletching:7a4373b11971",
     "skill": "Fletching",
     "method": "Ruby bolt tips",
@@ -49001,33 +47707,6 @@
     "category": "Unfinished projectiles"
   },
   {
-    "id": "skill:Fletching:b2f6e55c33e5",
-    "skill": "Fletching",
-    "method": "Headless shaft",
-    "xp": 15,
-    "level": 1,
-    "inputs": [
-      {
-        "name": "Shaft",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Headless shaft",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Headless shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
     "id": "skill:Fletching:2b533bb14905",
     "skill": "Fletching",
     "method": "Diamond bolt tips",
@@ -49046,29 +47725,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Diamond bolt tips",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
-    "id": "skill:Fletching:f37df170011e",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 17.5,
-    "level": 70,
-    "inputs": [
-      {
-        "name": "Yew logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 50
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Unfinished projectiles"
@@ -49120,29 +47776,6 @@
     "category": "Unfinished projectiles"
   },
   {
-    "id": "skill:Fletching:2d07b5cadf7d",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 20,
-    "level": 80,
-    "inputs": [
-      {
-        "name": "Magic logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 55
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
     "id": "skill:Fletching:7a7d414f3828",
     "skill": "Fletching",
     "method": "Hydrix bolt tips",
@@ -49161,29 +47794,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Hydrix bolt tips",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
-    "id": "skill:Fletching:29a22bf588f0",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 22.5,
-    "level": 90,
-    "inputs": [
-      {
-        "name": "Elder logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 60
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Unfinished projectiles"
@@ -49261,33 +47871,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Headless dinarrow",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
-    "id": "skill:Fletching:f011daff6dd3",
-    "skill": "Fletching",
-    "method": "Headless shaft",
-    "xp": 15,
-    "level": 1,
-    "inputs": [
-      {
-        "name": "Grenwall spikes",
-        "qty": 15
-      },
-      {
-        "name": "Feather",
-        "qty": 15
-      }
-    ],
-    "output": {
-      "name": "Headless shaft",
-      "qty": 15
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Headless shaft",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Unfinished projectiles"
@@ -49393,29 +47976,6 @@
     "category": "Unfinished projectiles"
   },
   {
-    "id": "skill:Fletching:8a487ba949f3",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 7.5,
-    "level": 10,
-    "inputs": [
-      {
-        "name": "Oak logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 20
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
     "id": "skill:Fletching:19a1bf414a26",
     "skill": "Fletching",
     "method": "Opal bolt tips",
@@ -49434,29 +47994,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
     "label": "Opal bolt tips",
-    "outputUnit": "items",
-    "xpUnit": "item",
-    "category": "Unfinished projectiles"
-  },
-  {
-    "id": "skill:Fletching:088cad670a88",
-    "skill": "Fletching",
-    "method": "Shaft",
-    "xp": 10,
-    "level": 20,
-    "inputs": [
-      {
-        "name": "Willow logs",
-        "qty": 1
-      }
-    ],
-    "output": {
-      "name": "Shaft",
-      "qty": 25
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Fletching/data",
-    "label": "Shaft",
     "outputUnit": "items",
     "xpUnit": "item",
     "category": "Unfinished projectiles"
@@ -66025,29 +64562,6 @@
     "category": "Fort Forinthry - Processing"
   },
   {
-    "id": "skill:Construction:7b468b1e3ab5",
-    "skill": "Construction",
-    "method": "Willow frame",
-    "xp": 117,
-    "level": 20,
-    "inputs": [
-      {
-        "name": "Refined Willow planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Willow frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Willow frame",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
     "id": "skill:Construction:4ad572569078",
     "skill": "Construction",
     "method": "Willow frame",
@@ -66135,29 +64649,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
     "label": "Refined Teak planks",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
-    "id": "skill:Construction:7a4ba9557b84",
-    "skill": "Construction",
-    "method": "Teak frame",
-    "xp": 162,
-    "level": 30,
-    "inputs": [
-      {
-        "name": "Refined Teak planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Teak frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Teak frame",
     "outputUnit": "actions",
     "xpUnit": "action",
     "category": "Fort Forinthry - Processing"
@@ -66278,29 +64769,6 @@
     "category": "Fort Forinthry - Processing"
   },
   {
-    "id": "skill:Construction:be934d580f7a",
-    "skill": "Construction",
-    "method": "Maple frame",
-    "xp": 216,
-    "level": 40,
-    "inputs": [
-      {
-        "name": "Refined Maple planks",
-        "qty": 4
-      }
-    ],
-    "output": {
-      "name": "Maple frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Maple frame",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
     "id": "skill:Construction:3f3879be30e0",
     "skill": "Construction",
     "method": "Maple frame",
@@ -66393,29 +64861,6 @@
     "category": "Fort Forinthry - Processing"
   },
   {
-    "id": "skill:Construction:2ffcb5629daf",
-    "skill": "Construction",
-    "method": "Acadia frame",
-    "xp": 279,
-    "level": 50,
-    "inputs": [
-      {
-        "name": "Refined Acadia planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Acadia frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Acadia frame",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
     "id": "skill:Construction:eac80f42d03a",
     "skill": "Construction",
     "method": "Acadia frame",
@@ -66434,29 +64879,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
     "label": "Acadia frame",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
-    "id": "skill:Construction:48c4ffee2f9c",
-    "skill": "Construction",
-    "method": "Wooden frame",
-    "xp": 54,
-    "level": 1,
-    "inputs": [
-      {
-        "name": "Refined planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Wooden frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Wooden frame",
     "outputUnit": "actions",
     "xpUnit": "action",
     "category": "Fort Forinthry - Processing"
@@ -66526,29 +64948,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
     "label": "Refined Mahogany planks",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
-    "id": "skill:Construction:957bc107688a",
-    "skill": "Construction",
-    "method": "Mahogany frame",
-    "xp": 351,
-    "level": 60,
-    "inputs": [
-      {
-        "name": "Refined Mahogany planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Mahogany frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Mahogany frame",
     "outputUnit": "actions",
     "xpUnit": "action",
     "category": "Fort Forinthry - Processing"
@@ -66641,29 +65040,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
     "label": "Refined Yew planks",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
-    "id": "skill:Construction:a7c5e0c62d60",
-    "skill": "Construction",
-    "method": "Yew frame",
-    "xp": 432,
-    "level": 70,
-    "inputs": [
-      {
-        "name": "Refined Yew planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Yew frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Yew frame",
     "outputUnit": "actions",
     "xpUnit": "action",
     "category": "Fort Forinthry - Processing"
@@ -66784,29 +65160,6 @@
     "category": "Fort Forinthry - Processing"
   },
   {
-    "id": "skill:Construction:8957da8d8d2d",
-    "skill": "Construction",
-    "method": "Magic frame",
-    "xp": 522,
-    "level": 80,
-    "inputs": [
-      {
-        "name": "Refined Magic planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Magic frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Magic frame",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
     "id": "skill:Construction:dd94a80fa24d",
     "skill": "Construction",
     "method": "Magic frame",
@@ -66894,29 +65247,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
     "label": "Refined Elder planks",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
-    "id": "skill:Construction:a5fb15f0128a",
-    "skill": "Construction",
-    "method": "Elder frame",
-    "xp": 621,
-    "level": 90,
-    "inputs": [
-      {
-        "name": "Refined Elder planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Elder frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Elder frame",
     "outputUnit": "actions",
     "xpUnit": "action",
     "category": "Fort Forinthry - Processing"
@@ -67037,29 +65367,6 @@
     "category": "Fort Forinthry - Processing"
   },
   {
-    "id": "skill:Construction:03123a9baf61",
-    "skill": "Construction",
-    "method": "Eternal frame",
-    "xp": 720,
-    "level": 95,
-    "inputs": [
-      {
-        "name": "Refined Eternal planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Eternal frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Eternal frame",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
     "id": "skill:Construction:687382b7ad8f",
     "skill": "Construction",
     "method": "Eternal frame",
@@ -67147,29 +65454,6 @@
     "requirements": [],
     "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
     "label": "Refined Oak planks",
-    "outputUnit": "actions",
-    "xpUnit": "action",
-    "category": "Fort Forinthry - Processing"
-  },
-  {
-    "id": "skill:Construction:2151aec6fc6a",
-    "skill": "Construction",
-    "method": "Oak frame",
-    "xp": 81,
-    "level": 10,
-    "inputs": [
-      {
-        "name": "Refined Oak planks",
-        "qty": 3
-      }
-    ],
-    "output": {
-      "name": "Oak frame",
-      "qty": 1
-    },
-    "requirements": [],
-    "url": "https://runescape.wiki/w/Module:Skill_calc/Construction/data",
-    "label": "Oak frame",
     "outputUnit": "actions",
     "xpUnit": "action",
     "category": "Fort Forinthry - Processing"
@@ -101075,5 +99359,2205 @@
     "xpUnit": "item",
     "category": "Coverage audit",
     "id": "skill:Construction:audit121:694736d76c2469"
+  },
+  {
+    "skill": "Construction",
+    "method": "Acadia frame",
+    "xp": 279.0,
+    "level": 50.0,
+    "inputs": [
+      {
+        "name": "Refined Acadia planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Acadia frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Acadia_frame",
+    "label": "Acadia frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:b59fba0b50710e"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Adamant arrow",
+    "xp": 10.0,
+    "level": 40.0,
+    "inputs": [
+      {
+        "name": "Adamant arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Adamant arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Adamant_arrow",
+    "label": "Adamant arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:8be578b45ea1e9"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Air battlestaff",
+    "xp": 137.5,
+    "level": 66.0,
+    "inputs": [
+      {
+        "name": "Battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Air orb",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Air battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Air_battlestaff",
+    "label": "Air battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:c1912e2aabaff1"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Armadyl battlestaff",
+    "xp": 150.0,
+    "level": 77.0,
+    "inputs": [
+      {
+        "name": "Battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Orb of Armadyl",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Armadyl battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [
+      "Completed Ritual of the Mahjarrat"
+    ],
+    "url": "https://runescape.wiki/w/Armadyl_battlestaff",
+    "label": "Armadyl battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:50df155b18f42f"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Armadyl battlestaff",
+    "xp": 300.0,
+    "level": 77.0,
+    "inputs": [
+      {
+        "name": "Battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shards of Armadyl",
+        "qty": 100.0
+      }
+    ],
+    "output": {
+      "name": "Armadyl battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [
+      "Completed Ritual of the Mahjarrat"
+    ],
+    "url": "https://runescape.wiki/w/Armadyl_battlestaff",
+    "label": "Armadyl battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:35763e2a5220db"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 5.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 15.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:bb565b35831d31"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 7.5,
+    "level": 10.0,
+    "inputs": [
+      {
+        "name": "Oak logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 20.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:661541f6e8c64f"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 10.0,
+    "level": 20.0,
+    "inputs": [
+      {
+        "name": "Willow logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 25.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:a3aedc2eef65c0"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 11.2,
+    "level": 30.0,
+    "inputs": [
+      {
+        "name": "Teak logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 30.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:05ff7ef44e9402"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 12.5,
+    "level": 40.0,
+    "inputs": [
+      {
+        "name": "Maple logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 35.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:68a04f0acf43ca"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 13.7,
+    "level": 50.0,
+    "inputs": [
+      {
+        "name": "Acadia logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 40.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:6eb3e5a4c07116"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 15.0,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Mahogany logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 45.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:fdba9c1ab2370d"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 17.5,
+    "level": 70.0,
+    "inputs": [
+      {
+        "name": "Yew logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 50.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:38634b28d2faf5"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 20.0,
+    "level": 80.0,
+    "inputs": [
+      {
+        "name": "Magic logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 55.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:6e212355cb738a"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Shaft",
+    "xp": 22.5,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder logs",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shaft",
+      "qty": 60.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Arrow_shaft",
+    "label": "Shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:93bc4eb8905bcf"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Bane arrow",
+    "xp": 17.5,
+    "level": 80.0,
+    "inputs": [
+      {
+        "name": "Bane arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Bane arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Bane_arrow",
+    "label": "Bane arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:e11797f4d41353"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Broad arrow",
+    "xp": 15.0,
+    "level": 52.0,
+    "inputs": [
+      {
+        "name": "Broad arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Broad arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Learn how to make it from a slayer master"
+    ],
+    "url": "https://runescape.wiki/w/Broad_arrow",
+    "label": "Broad arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:affd476c257038"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Bronze arrow",
+    "xp": 1.3,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Bronze arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Bronze arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Bronze_arrow",
+    "label": "Bronze arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:d126aa840e7a93"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Dark arrow",
+    "xp": 17.5,
+    "level": 70.0,
+    "inputs": [
+      {
+        "name": "Dark arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Dark arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Dark_arrow",
+    "label": "Dark arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:4d8b247716c28e"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Dragon arrow",
+    "xp": 15.0,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Dragon arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Dragon arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Dragon_arrow",
+    "label": "Dragon arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:16710a3b8eccf0"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Earth battlestaff",
+    "xp": 112.5,
+    "level": 58.0,
+    "inputs": [
+      {
+        "name": "Battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Earth orb",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Earth battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Earth_battlestaff",
+    "label": "Earth battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:65d3ed27f2a449"
+  },
+  {
+    "skill": "Construction",
+    "method": "Elder frame",
+    "xp": 621.0,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Refined Elder planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Elder frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_frame",
+    "label": "Elder frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:2a4b59641d94a8"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder rune arrow",
+    "xp": 18.7,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder rune arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder rune arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Elder_rune_arrow",
+    "label": "Elder rune arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:fee39b83428ad0"
+  },
+  {
+    "skill": "Construction",
+    "method": "Eternal frame",
+    "xp": 720.0,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Refined Eternal planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Eternal frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Eternal_frame",
+    "label": "Eternal frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:42925b1b2299b3"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Fire battlestaff",
+    "xp": 125.0,
+    "level": 62.0,
+    "inputs": [
+      {
+        "name": "Battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Fire orb",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Fire battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Fire_battlestaff",
+    "label": "Fire battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:bcdfccac06077a"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Fragment arrows",
+    "xp": 0.5,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Bronze arrow",
+        "qty": 1
+      },
+      {
+        "name": "Ascension fragment",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Fragment arrows",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Fragment_arrows",
+    "label": "Fragment arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:a47a021428d194"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Fragment bolts",
+    "xp": 0.5,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Bronze bolts",
+        "qty": 1
+      },
+      {
+        "name": "Ascension fragment",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Fragment bolts",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Fragment_bolts",
+    "label": "Fragment bolts",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:a2ceb6eb4a0fb7"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Headless shaft",
+    "xp": 1.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Headless_arrow",
+    "label": "Headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:b72264492892f2"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Headless shaft",
+    "xp": 1.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Yellow feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Headless_arrow",
+    "label": "Headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:b8c8edfca3d92d"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Headless shaft",
+    "xp": 1.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Red feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Headless_arrow",
+    "label": "Headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:b940e7ae17b9ff"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Headless shaft",
+    "xp": 1.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Blue feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Headless_arrow",
+    "label": "Headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:9bb33366e083f0"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Headless shaft",
+    "xp": 1.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Stripy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Headless_arrow",
+    "label": "Headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:45b30864ee1de7"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Headless shaft",
+    "xp": 1.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Orange feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Headless_arrow",
+    "label": "Headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:d5212735403498"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Headless shaft",
+    "xp": 1.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Wimpy feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Headless shaft",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Headless_arrow",
+    "label": "Headless shaft",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:c2aeeed36f6f8f"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Iron arrow",
+    "xp": 2.5,
+    "level": 10.0,
+    "inputs": [
+      {
+        "name": "Iron arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Iron arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Iron_arrow",
+    "label": "Iron arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:485943c41fc8fe"
+  },
+  {
+    "skill": "Construction",
+    "method": "Magic frame",
+    "xp": 522.0,
+    "level": 80.0,
+    "inputs": [
+      {
+        "name": "Refined Magic planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Magic frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Magic_frame",
+    "label": "Magic frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:50d6d4c583aefb"
+  },
+  {
+    "skill": "Construction",
+    "method": "Mahogany frame",
+    "xp": 351.0,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Refined Mahogany planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Mahogany frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Mahogany_frame",
+    "label": "Mahogany frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:f04548c46658af"
+  },
+  {
+    "skill": "Construction",
+    "method": "Maple frame",
+    "xp": 216.0,
+    "level": 40.0,
+    "inputs": [
+      {
+        "name": "Refined Maple planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Maple frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Maple_frame",
+    "label": "Maple frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:9b66f595429088"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Mithril arrow",
+    "xp": 7.5,
+    "level": 30.0,
+    "inputs": [
+      {
+        "name": "Mithril arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Mithril arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Mithril_arrow",
+    "label": "Mithril arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:f0c10d83a4a4ee"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Necronium arrow",
+    "xp": 16.2,
+    "level": 70.0,
+    "inputs": [
+      {
+        "name": "Necronium arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Necronium arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Necronium_arrow",
+    "label": "Necronium arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:c10acd63521493"
+  },
+  {
+    "skill": "Construction",
+    "method": "Oak frame",
+    "xp": 81.0,
+    "level": 10.0,
+    "inputs": [
+      {
+        "name": "Refined Oak planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Oak frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Oak_frame",
+    "label": "Oak frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:20802777515094"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Ogre arrow",
+    "xp": 1.0,
+    "level": 5.0,
+    "inputs": [
+      {
+        "name": "Flighted ogre arrow",
+        "qty": 1
+      },
+      {
+        "name": "Wolf bone arrowheads",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Ogre arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Partially completed Big Chompy Bird Hunting"
+    ],
+    "url": "https://runescape.wiki/w/Ogre_arrow",
+    "label": "Ogre arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:a9a945a76164f7"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Orikalkum arrow",
+    "xp": 15.0,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Orikalkum arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Orikalkum arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Orikalkum_arrow",
+    "label": "Orikalkum arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:278168ee6a9c84"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Primal arrow",
+    "xp": 20.0,
+    "level": 100.0,
+    "inputs": [
+      {
+        "name": "Primal arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Eternal magic headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Primal arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Primal_arrow",
+    "label": "Primal arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:7eca1228d596de"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Rune arrow",
+    "xp": 12.5,
+    "level": 50.0,
+    "inputs": [
+      {
+        "name": "Rune arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Rune arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Rune_arrow",
+    "label": "Rune arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:1ad6fd21d64f4a"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Shade battlestaff of air",
+    "xp": 130.0,
+    "level": 85.0,
+    "inputs": [
+      {
+        "name": "Air battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shade skull",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shade battlestaff of air",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Skeletal_battlestaff_of_air",
+    "label": "Shade battlestaff of air",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:bdbb2b5eec2dad"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Shade battlestaff of earth",
+    "xp": 130.0,
+    "level": 85.0,
+    "inputs": [
+      {
+        "name": "Earth battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shade skull",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shade battlestaff of earth",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Skeletal_battlestaff_of_earth",
+    "label": "Shade battlestaff of earth",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:36d6aa2f969e30"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Shade battlestaff of fire",
+    "xp": 130.0,
+    "level": 85.0,
+    "inputs": [
+      {
+        "name": "Fire battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shade skull",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shade battlestaff of fire",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Skeletal_battlestaff_of_fire",
+    "label": "Shade battlestaff of fire",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:7eed742866f906"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Shade battlestaff of water",
+    "xp": 130.0,
+    "level": 85.0,
+    "inputs": [
+      {
+        "name": "Water battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shade skull",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shade battlestaff of water",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Skeletal_battlestaff_of_water",
+    "label": "Shade battlestaff of water",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:f2692c36583d15"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Shade lava battlestaff",
+    "xp": 130.0,
+    "level": 85.0,
+    "inputs": [
+      {
+        "name": "Lava battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shade skull",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shade lava battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Skeletal_lava_battlestaff",
+    "label": "Shade lava battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:d770b238993ee7"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Shade mud battlestaff",
+    "xp": 130.0,
+    "level": 85.0,
+    "inputs": [
+      {
+        "name": "Mud battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shade skull",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shade mud battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Skeletal_mud_battlestaff",
+    "label": "Shade mud battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:0617193751161e"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Shade steam battlestaff",
+    "xp": 130.0,
+    "level": 85.0,
+    "inputs": [
+      {
+        "name": "Steam battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Shade skull",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Shade steam battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Skeletal_steam_battlestaff",
+    "label": "Shade steam battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:7da3cf6b8bb262"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Stalker arrow",
+    "xp": 17.5,
+    "level": 95.0,
+    "inputs": [
+      {
+        "name": "Dark arrow",
+        "qty": 1
+      },
+      {
+        "name": "Stalker essence",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Stalker arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Stalker_arrow",
+    "label": "Stalker arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:f28974fa1f054c"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Steel arrow",
+    "xp": 5.0,
+    "level": 20.0,
+    "inputs": [
+      {
+        "name": "Steel arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Steel arrow",
+      "qty": 1
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Steel_arrow",
+    "label": "Steel arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:e6895a479fbaad"
+  },
+  {
+    "skill": "Construction",
+    "method": "Teak frame",
+    "xp": 162.0,
+    "level": 30.0,
+    "inputs": [
+      {
+        "name": "Refined Teak planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Teak frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Teak_frame",
+    "label": "Teak frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:06857fada536a8"
+  },
+  {
+    "skill": "Crafting",
+    "method": "Water battlestaff",
+    "xp": 100.0,
+    "level": 54.0,
+    "inputs": [
+      {
+        "name": "Battlestaff",
+        "qty": 1.0
+      },
+      {
+        "name": "Water orb",
+        "qty": 1.0
+      }
+    ],
+    "output": {
+      "name": "Water battlestaff",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Water_battlestaff",
+    "label": "Water battlestaff",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Crafting:audit122:afcf546a7ccd85"
+  },
+  {
+    "skill": "Construction",
+    "method": "Willow frame",
+    "xp": 117.0,
+    "level": 20.0,
+    "inputs": [
+      {
+        "name": "Refined Willow planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Willow frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Willow_frame",
+    "label": "Willow frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:3f7d55c3fb706e"
+  },
+  {
+    "skill": "Construction",
+    "method": "Wooden frame",
+    "xp": 54.0,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Refined planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Wooden frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Wooden_frame",
+    "label": "Wooden frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:372dded1b46bf3"
+  },
+  {
+    "skill": "Construction",
+    "method": "Yew frame",
+    "xp": 432.0,
+    "level": 70.0,
+    "inputs": [
+      {
+        "name": "Refined Yew planks",
+        "qty": 3.0
+      }
+    ],
+    "output": {
+      "name": "Yew frame",
+      "qty": 1.0
+    },
+    "requirements": [],
+    "url": "https://runescape.wiki/w/Yew_frame",
+    "label": "Yew frame",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Construction:audit122:4737cfe5849b6b"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Adamant arrow",
+    "xp": 11.0,
+    "level": 40.0,
+    "inputs": [
+      {
+        "name": "Adamant arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Adamant arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Adamant_arrow",
+    "label": "Adamant arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:795ef3c28f1a9e"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Bane arrow",
+    "xp": 18.5,
+    "level": 80.0,
+    "inputs": [
+      {
+        "name": "Bane arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Bane arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Bane_arrow",
+    "label": "Bane arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:4026d4281e6391"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Broad arrow",
+    "xp": 16.0,
+    "level": 52.0,
+    "inputs": [
+      {
+        "name": "Broad arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Broad arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Learn how to make it from a slayer master",
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Broad_arrow",
+    "label": "Broad arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:cfc705cc9288aa"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Bronze arrow",
+    "xp": 2.3,
+    "level": 1.0,
+    "inputs": [
+      {
+        "name": "Bronze arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Bronze arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Bronze_arrow",
+    "label": "Bronze arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:4ce485ca0aff52"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Dark arrow",
+    "xp": 18.5,
+    "level": 70.0,
+    "inputs": [
+      {
+        "name": "Dark arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Dark arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Dark_arrow",
+    "label": "Dark arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:e13b934a14dc91"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Dragon arrow",
+    "xp": 16.0,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Dragon arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Dragon arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Dragon_arrow",
+    "label": "Dragon arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:6a2463c827fb13"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Elder rune arrow",
+    "xp": 19.7,
+    "level": 90.0,
+    "inputs": [
+      {
+        "name": "Elder rune arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Elder rune arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Elder_rune_arrow",
+    "label": "Elder rune arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:88b78cf53cbd4d"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Fragment arrows",
+    "xp": 1.8,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Ascension fragment",
+        "qty": 1
+      },
+      {
+        "name": "Bronze arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Headless shaft",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Fragment arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Fragment_arrows",
+    "label": "Fragment arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:7993e9f7d078df"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Fragment arrows",
+    "xp": 2.8,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Ascension fragment",
+        "qty": 1
+      },
+      {
+        "name": "Bronze arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Fragment arrows",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Fragment_arrows",
+    "label": "Fragment arrows",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:99d01c48a33194"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Fragment bolts",
+    "xp": 1.0,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Ascension fragment",
+        "qty": 1
+      },
+      {
+        "name": "Bronze bolts (unf)",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Fragment bolts",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Fragment_bolts",
+    "label": "Fragment bolts",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:d342bbacba2c48"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Iron arrow",
+    "xp": 3.5,
+    "level": 10.0,
+    "inputs": [
+      {
+        "name": "Iron arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Iron arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Iron_arrow",
+    "label": "Iron arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:c3149bd1147aa8"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Mithril arrow",
+    "xp": 8.5,
+    "level": 30.0,
+    "inputs": [
+      {
+        "name": "Mithril arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Mithril arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Mithril_arrow",
+    "label": "Mithril arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:3c124ffb478035"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Necronium arrow",
+    "xp": 17.2,
+    "level": 70.0,
+    "inputs": [
+      {
+        "name": "Necronium arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Necronium arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Necronium_arrow",
+    "label": "Necronium arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:5e5837ae764108"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Orikalkum arrow",
+    "xp": 16.0,
+    "level": 60.0,
+    "inputs": [
+      {
+        "name": "Orikalkum arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Orikalkum arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Orikalkum_arrow",
+    "label": "Orikalkum arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:d8c6bd85506afd"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Rune arrow",
+    "xp": 13.5,
+    "level": 50.0,
+    "inputs": [
+      {
+        "name": "Rune arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Rune arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Rune_arrow",
+    "label": "Rune arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:e831c6a6f3beec"
+  },
+  {
+    "skill": "Fletching",
+    "method": "Steel arrow",
+    "xp": 6.0,
+    "level": 20.0,
+    "inputs": [
+      {
+        "name": "Steel arrowheads",
+        "qty": 1
+      },
+      {
+        "name": "Shaft",
+        "qty": 1
+      },
+      {
+        "name": "Feather",
+        "qty": 1
+      }
+    ],
+    "output": {
+      "name": "Steel arrow",
+      "qty": 1
+    },
+    "requirements": [
+      "Includes remaining preparation XP; no XP for already completed stages"
+    ],
+    "url": "https://runescape.wiki/w/Steel_arrow",
+    "label": "Steel arrow",
+    "outputUnit": "items",
+    "xpUnit": "item",
+    "category": "Battlestaff, arrowhead, frame and fragment audit",
+    "additionalXP": {},
+    "requiredLevels": {},
+    "id": "skill:Fletching:audit122:e470058515b472"
   }
 ]

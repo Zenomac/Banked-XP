@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.121.0**.
+Current plugin version: **0.122.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.122
+
+Verified battlestaves, arrowheads, Fort frames and Ascension fragment routes against item creation tables. Replaced 64 older records with 75 direct/preparation records. Added compatibility between Headless arrow/Headless shaft and Arrow shaft/Shaft names. Ammunition assembly accounts for partial stacks, preserves remaining preparation XP and distinguishes Ascension fragments from shards. Corrected the Maple frame requirement to three refined planks, Dark arrow level to 70 and Elder rune arrow XP to 18.7 per arrow. Existing ingredient-ownership filters remain in force; Fort building still requires wall segments. All 31 local Lua suites pass. No new runtime network calls or native UI changes.
 
 ## v0.121
 
