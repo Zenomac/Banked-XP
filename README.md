@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.114.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.115.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -36,7 +36,7 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.114.0**. [Complete changelog — v0.1 through v0.114](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.115.0**. [Complete changelog — v0.1 through v0.115](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
