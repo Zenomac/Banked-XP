@@ -16,7 +16,7 @@ end)
 if not skillLoaded then print('[banked-xp] Skill summary unavailable: '..tostring(skillError)) end
 local animaProbe=require("anima_probe")
 local hoverTiming=require("hover_timing")
-local hoverOverlay=require("hover_overlay")
+local animaFooter
 local catalog=require("catalog")
 local methods=require("methods")
 local hoverLayout=require("hover_layout")
@@ -97,11 +97,12 @@ local function resize(c,width,height)
     edits[#edits].afterSize=ui.Size.new(c.size)
 end
 local function restore(preserveNativeText)
-    hoverOverlay.hide()
+    local previousFooter=animaFooter
+    animaFooter=nil
     local currentText={}
     if preserveNativeText==true then
         for _,e in ipairs(edits) do
-            if e.p=='content' then currentText[e.c]=e.c.content end
+            if e.p=='content' and not (e.c==previousFooter and e.c.content==e.after) then currentText[e.c]=e.c.content end
         end
     end
     animaPaintKey,animaHeader,animaTitle=nil,nil,nil
@@ -165,7 +166,9 @@ end
 local function unchangedAnima()
     if not animaPaintKey or animaPaintKey~=animaKey() or #edits==0 then return false end
     if not animaHeader or not animaHeader.visibleGlobal or animaHeader.content~=animaTitle then return false end
-    if not hoverOverlay.current() then return false end
+    if not animaFooter then return false end
+    local live=ui.Interfaces:GetComponent(1477,902,0,animaFooter.dynamicID)
+    if live~=animaFooter or not live.visibleGlobal then return false end
     for _,e in ipairs(edits) do
         if e.c.hidden then return false end
         if e.p=='rect' or e.p=='resize' then
@@ -186,10 +189,10 @@ end
 local function paint()
     if selected and not MiniMenu.IsOpen() then
         local ok,unchanged=pcall(unchangedAnima)
-        if ok and unchanged and hoverOverlay.sync(animaHeader) then return end
+        if ok and unchanged then return end
     end
     animaPaintKey=nil
-    hoverOverlay.hide()
+    animaFooter=nil
     nativeFrame.hide()
     undoLayout()
     if not selected or MiniMenu.IsOpen() then restore();return end
@@ -230,7 +233,7 @@ local function paint()
     local ownedAnimaBody=applied==row and row.content==written
     local emptyAnimaBody=tradeableAnima and row.hidden==false and ((row.content or '')=='' or ownedAnimaBody)
         and row.parent and row.parent.visibleGlobal and header.visibleGlobal and footer.visibleGlobal
-    if row.type~=ui.ComponentType.LABEL or (not row.visibleGlobal and not emptyAnimaBody) then
+    if not tradeableAnima and (row.type~=ui.ComponentType.LABEL or (not row.visibleGlobal and not emptyAnimaBody)) then
         probe('middle row unavailable');restore();return
     end
     local originalRow=(applied==row and row.content==written) and saved or (row.content or '')
@@ -352,6 +355,16 @@ local function paint()
     local maxWidth=math.min(440,root and math.max(120,root.width-32) or 440)
     local plan=hoverLayout.plan(font,header.content,lines,detailText,footerText,
         nativeWidth,nativeHeight,maxWidth,header.lineSpacing,header.font,styles)
+    local combinedText,combinedHeight
+    if tradeableAnima then
+        if not footer.visibleGlobal or footer.hidden or #details>0 then probe('native footer unavailable');restore();return end
+        combinedText=text..'<br><br>'..footerText
+        local count=math.max(1,footerStyle.font:GetStringLineCount(combinedText,plan.width,false))
+        combinedHeight=math.ceil(footerStyle.font.maxAscent+footerStyle.font.maxDescent+(count-1)*footerStyle.spacing+2)
+        local adjusted={};for k,v in pairs(plan) do adjusted[k]=v end;plan=adjusted
+        plan.height=plan.bodyY+combinedHeight
+        plan.footerY=plan.height-plan.footerHeight
+    end
     -- Equipment details can contain native columns and precisely spaced rows.
     -- Translate the block intact rather than stacking/recentering every label.
     local preserveDetails=selected.skill~='Herblore' and #details>0
@@ -459,16 +472,23 @@ local function paint()
             edit(c,'maxLines',0)
         end
     end
-    box(footer,nativeX,nativeY+plan.footerY,plan.width,plan.footerHeight)
-    edit(footer,'content',footerText)
-    edit(footer,'maxLines',1)
+    if not tradeableAnima then
+        box(footer,nativeX,nativeY+plan.footerY,plan.width,plan.footerHeight)
+        edit(footer,'content',footerText)
+        edit(footer,'maxLines',1)
+    end
     edit(footer,'alignVertical',ui.AlignMode.TOPLEFT)
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
-    nativeFrame.apply(bg,header,footer,effectY,box,edit,tradeableAnima)
+    local frameFooter=tradeableAnima and {xyGlobal={x=nativeX,y=nativeY+plan.footerY}} or footer
+    nativeFrame.apply(bg,header,frameFooter,effectY,box,edit,tradeableAnima)
     if tradeableAnima then
-        if not hoverOverlay.show(header,plan.bodyY,plan.width,plan.bodyHeight,
-            bodyStyle.id,bodyStyle.spacing,text,details[1] or footer) then restore();return end
+        -- Reuse an already-rendered native label; never allocate UI children or
+        -- force visibility. Keep its native font and right alignment for this trial.
+        box(footer,nativeX,nativeY+plan.bodyY,plan.width,combinedHeight)
+        edit(footer,'content',combinedText)
+        edit(footer,'maxLines',0)
+        animaFooter=footer
         animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content
         hoverTiming.layout()
     end
@@ -481,10 +501,10 @@ local function safe(fn,...)
     end
 end
 Event.MiniMenuReady.Subscribe('bankedXpRowSelection',function(e) safe(detect,e) end)
-Event.Draw.Subscribe('bankedXpNativeRow',function() hoverTiming.draw();safe(paint);hoverTiming.finish(hoverOverlay.current() or applied) end)
+Event.Draw.Subscribe('bankedXpNativeRow',function() hoverTiming.draw();safe(paint);hoverTiming.finish(animaFooter or applied) end)
 Event.MiniMenuOpened.Subscribe('bankedXpRowClear',restore)
 function PluginShutdown()
-    hoverOverlay.destroy()
+
     nativeFrame.destroy()
     if skillHover then pcall(skillHover.restore) end
     restore()

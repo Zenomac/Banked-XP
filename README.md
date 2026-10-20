@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.153.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.154.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -36,7 +36,7 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.153.0**. [Complete changelog — v0.1 through v0.153](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.154.0**. [Complete changelog — v0.1 through v0.154](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
@@ -56,4 +56,4 @@ See the [API usage audit](docs/API_USAGE.md), [skill totals](docs/SKILL_TOTALS.m
 
 Read [local data and permissions](banked-xp/PRIVACY.md), [submission draft and blockers](docs/SUBMISSION.md), and [code review map](docs/CODE_REVIEW.md). This development build is not claimed to be Jagex-approved. A real author contact email and personal/provenance review remain required before submission.
 
-**v0.153 rendering diagnostic:** The tradeable-anima layer now uses client-assigned component IDs, matching the allocation pattern used by the existing divider renderer. Live-child checks use the exact returned IDs, including after native rebuilds. The cyan outline and two font controls remain temporarily so the in-game result can be compared with v0.152. This is an unconfirmed rendering trial; no extra API requests or per-frame allocations are introduced.
+**v0.154 native-label trial:** Tradeable anima now places XP information and the final options line in the existing visible native options label. No custom layer, text or canvas is created. The block intentionally retains native right alignment for this rendering test. In-game visibility is not yet confirmed. Other item tooltips keep their existing layout.

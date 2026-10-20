@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.153.0**.
+Current plugin version: **0.154.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.154 — Native options-label rendering trial
+
+- v0.153 still displayed no custom text or canvas. Tradeable anima now uses the already-visible native options label for XP text followed by the original options line; custom component creation is no longer used by the item-hover path.
+- Retain the native options font and right alignment for this trial; centered body formatting is deferred until rendering is confirmed. The invisible middle row stays untouched, and native visibility is never forced.
+- Measure the combined text once, preserve cursor positioning, and restore content on menu opening, switches and shutdown. Avoid preserving our own footer text across selection changes.
+- Local hover integration and syntax checks pass, including twelve god switches, stable measurements and restoration. In-game rendering remains unconfirmed.
 
 ## v0.153 — Client-assigned IDs for the hover layer
 

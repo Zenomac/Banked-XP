@@ -350,68 +350,14 @@ print('PASS: 100 client-interleaved relayouts keep native stat offsets and toolt
 
 
 
--- Tradeable body uses a singleton under the static root, not native rows.
+-- Tradeable anima uses the visible native footer, with no custom UI allocation.
 callbacks.MiniMenuOpened();labels[3]=nil
-local ownLayer,ownText
-local layerCreates,textCreates=0,0
-ui.Layer={new=function(parent,category,dynamic)
- assert(category==nil and dynamic==nil,'client allocates IDs')
- assert(parent==props,'owned layer shares native text branch')
- category,dynamic=0,17
- layerCreates=layerCreates+1
- ownLayer=component(999,parent,0,0,0,0)
- ownLayer.categoryID=category;ownLayer.dynamicID=dynamic
- function props:GetChild(c,d) if c==category and d==dynamic then return ownLayer end end
- return ownLayer
-end}
-ui.Text={new=function(parent,category,dynamic)
- assert(category==nil and dynamic==nil,'client allocates IDs')
- assert(parent==ownLayer,'text must use plugin-owned layer')
- category,dynamic=0,18
- textCreates=textCreates+1
- ownText=component(1000,parent,0,0,0,0)
- ownText.categoryID=category;ownText.dynamicID=dynamic
- function parent:GetChild(c,d) if c==category and d==dynamic then return ownText end end
- rawset(ownText,'readonlySpacing',true);ownText.content='';ownText.font=0;ownText.rgba=0;ownText.alpha=0
- return ownText
-end}
-ui.Sprite={new=function() error('no extra sprites') end}
-ui.TextDataConfig={new=function()
- local values={rgba=0,alpha=0}
- return setmetatable({}, {
-  __index=values,
-  __pairs=function() return next,values,nil end,
-  __newindex=function(_,key,value)
-   values[key]=value
-   if key=='rgba' then values.alpha=value%256
-   elseif key=='alpha' then values.rgba=math.floor(values.rgba/256)*256+value end
-  end})
-end}
-local originalTextNew=ui.Text.new
-ui.Text.new=function(...)
- local c=originalTextNew(...)
- c.glyphAlpha=0
- function c:SetConfig(cfg)
-  self.glyphAlpha=cfg.alpha
-  for k,v in pairs(cfg) do if k~='lineSpacing' then self[k]=v end end
- end
- return c
-end
-ui.Canvas={new=function(parent,category,dynamic)
- assert(category==nil and dynamic==nil,'client allocates IDs')
- category,dynamic=0,19
- local c=component(1001,parent,0,0,0,0)
- c.categoryID=category;c.dynamicID=dynamic
- local get=parent.GetChild
- function parent:GetChild(cat,dyn) if cat==category and dyn==dynamic then return c end;return get(self,cat,dyn) end
- function c:Clear() self.drawCount=0 end
- function c:AddOutline(...) self.drawCount=self.drawCount+1 end
- function c:AddText(...) self.drawCount=self.drawCount+1 end
- return c
-end}
-local overlay=require('hover_overlay')
+ui.Layer={new=function() error('tradeable hover must not allocate a layer') end}
+ui.Text={new=function() error('tradeable hover must not allocate text') end}
+ui.Canvas={new=function() error('tradeable hover must not allocate canvas') end}
 selected.inputPerPotion=3;selected.xpUnit='arrow'
 selected.note='Limited by: Dinarrow | Requires: Standard imbuing | Outfit: +0%'
+local nativeFooter=labels[2].content
 for cycle=1,3 do
  for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
   local title='Withdraw-All Resonant anima of '..god..' (tradeable)'
@@ -419,29 +365,28 @@ for cycle=1,3 do
   rawset(labels[1],'visibleGlobal',false)
   event.miniMenu.entries[1].componentData.objConfig={id=600+index,name='Resonant anima of '..god..' (tradeable)'}
   callbacks.MiniMenuReady(event)
-  local expectedWidth,measurements
+  local expectedWidth,measurements,firstContent
   for frame=1,20 do
    callbacks.Draw()
-   assert(ownText and ownText.visibleGlobal and ownText.content:find('XP',1,true),'owned XP visible on first draw despite invisible native body')
-   assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'native body untouched')
+   assert(labels[2].visibleGlobal and labels[2].content:find('XP',1,true),'native footer carries XP on first draw')
+   assert(labels[2].content:sub(-#nativeFooter)==nativeFooter,'options remain the final line')
+   assert(labels[2].alignHorizontal==2,'native options alignment retained for trial')
+   assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'invisible native body untouched')
    assert(labels[0].content==title,'native title unchanged')
-   assert(ownText.glyphAlpha==255 and ownText.alpha==1 and ownText.rgba%256==255,'owned text opacity initialized')
-   assert(ownText.font==labels[2].font,'same body font as normal tooltip')
-   assert(labels[2].xyGlobal.y>=ownText.xyGlobal.y+ownText.height+7,'options below owned text')
-   if frame==1 then expectedWidth=bg.width;measurements=widthCalls+lineCalls
-   else assert(bg.width==expectedWidth and widthCalls+lineCalls==measurements,'stable dimensions and cached measurements') end
+   if frame==1 then expectedWidth=bg.width;measurements=widthCalls+lineCalls;firstContent=labels[2].content
+   else
+    assert(bg.width==expectedWidth and labels[2].content==firstContent,'no accumulating text or width')
+    assert(widthCalls+lineCalls==measurements,'no repeated font measurement on stable hover')
+   end
   end
  end
 end
-assert(layerCreates==1 and textCreates==1,'switching all gods reuses the same owned components')
-local oldX=ownText.xyGlobal.x
+local oldX=labels[2].xyGlobal.x
 bubble.position.x=bubble.position.x+10
 callbacks.Draw()
-assert(ownText.xyGlobal.x==oldX+10,'owned text follows native cursor parent')
+assert(labels[2].xyGlobal.x==oldX+10,'native text follows cursor parent')
 callbacks.MiniMenuOpened()
-assert(not ownText.visibleGlobal and labels[1].content=='','menu opening hides owned text')
--- Restoring and disabling never writes or destroys native children.
+assert(labels[2].content==nativeFooter and labels[1].content=='','menu opening restores native labels')
 PluginShutdown()
-assert(ownLayer.destroyed,'shutdown destroys only our layer')
-assert(not labels[1].destroyed and not root.destroyed,'native components survive')
-print('PASS: singleton stable-parent body, first-frame visibility, direct switches, cursor tracking and shutdown')
+assert(not labels[1].destroyed and not labels[2].destroyed and not root.destroyed,'shutdown preserves native components')
+print('PASS: native-only anima text, switches, cached metrics, cursor tracking and restoration')
