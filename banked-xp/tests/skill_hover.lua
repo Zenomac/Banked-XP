@@ -108,66 +108,7 @@ callbacks.draw()
 assert(root.size.height==readyHeight+34,'Ready XP also gets 4px extra bottom padding')
 callbacks.clear();assert(root.size.height==readyHeight)
 print('PASS: 4px progress gap and 4px bottom padding with Banked XP or Ready XP, reversible sizing')
--- Total XP: inline and caption/value variants, with optional Bonus XP.
 package.loaded.skill_summary.totalLine=function() return 'Banked XP: 99,123,456' end
-package.loaded.skill_summary.missingStorage=function() return false end
-local function totalFixture(bonus,paired)
- hover.restore();for id in pairs(children) do children[id]=nil end
- root.size=size(150,bonus and 43 or 28)
- local bounds=require('native_frame').plan(150,root.size.height)
- for id=0,8 do local b=bounds[id];children[id]=c(b[1],b[2],b[3],b[4]) end
- children[9]=c(6,4,138,15,paired and 'Total XP:' or 'Total XP: 822,089,452')
- if paired then children[10]=c(6,4,136,15,'822,089,452') end
- if bonus then
-  children[11]=c(6,19,138,15,paired and 'Bonus XP:' or 'Bonus XP: <col=00ff00>187,024')
-  if paired then children[12]=c(6,19,136,15,'<col=00ff00>187,024') end
- end
-end
-for _,paired in ipairs({false,true}) do
- for _,bonus in ipairs({false,true}) do
-  totalFixture(bonus,paired)
-  local height=root.size.height
-  callbacks.draw()
-  local last=bonus and children[11] or children[9]
-  assert(last.content:find('<br><col=e3d7bf>Banked XP:',1,true),'total banked row follows last native XP row')
-  local val=paired and (bonus and children[12] or children[10]) or last
-  assert(val.content:find('<col=e3d7bf>99,123,456</col>',1,true),'neutral total after native green')
-  assert(root.size.height==height+19)
-  callbacks.clear();assert(root.size.height==height and not last.content:find('Banked XP:',1,true))
- end
-end
-totalFixture(true,false)
-package.loaded.skill_summary.missingStorage=function() return true end
-callbacks.draw();assert(children[11].content:find('<col=ff0000>99,123,456</col>',1,true))
-callbacks.clear()
-print('PASS: total-XP hover, bonus/no bonus, inline/paired rows, native colours, storage warning, padding and restoration')
-
-package.loaded.skill_summary.missingStorage=function() return false end
-totalFixture(false,false)
-children[9].content='Total XP: 822,089,452<br>Bonus XP: <col=00ff00>187,024'
-children[9].size.height=30
-callbacks.draw()
-assert(children[9].content:find('<br><col=e3d7bf>Banked XP: <col=e3d7bf>99,123,456</col>',1,true),'combined native text retains neutral added row')
-callbacks.clear()
-print('PASS: total XP and Bonus XP sharing a single native text component')
--- Total XP may render in another exported native hover root.
-local oldGet=ui.Interfaces.GetComponent
-ui.Interfaces.GetComponent=function(_,interface,static,category,id)
- if interface==1477 and static==904 then return children[id] end
- return nil
-end
-totalFixture(true,false)
-for _=1,12 do callbacks.draw() end
-assert(children[11].content:find('Banked XP:',1,true),'discover alternate native hover root')
-callbacks.clear()
-local oldCornerWidth=children[1].size.width
-children[1].size.width=12
-callbacks.draw()
-assert(not children[11].content:find('Banked XP:',1,true),'unrecognized frame is not modified')
-children[1].size.width=oldCornerWidth
-ui.Interfaces.GetComponent=oldGet
-print('PASS: alternate total tooltip root discovery and conservative frame-shape guard')
-
 -- The exported TEXT_TOOLTIP interface is separate from shared skill hovers.
 local staticChildren={}
 root.size=size(150,43)

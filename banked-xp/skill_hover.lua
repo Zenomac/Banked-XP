@@ -44,101 +44,6 @@ local function box(c,x,y,w,h)
  edits[#edits+1]={kind='box',c=c,size=beforeSize,position=beforePosition,afterSize=afterSize,afterPosition=afterPosition}
  c.size=afterSize;c.position=afterPosition
 end
--- Total-XP uses a shorter native tooltip. Recognize its actual text rather
--- than assuming the per-skill caption/value child IDs are present.
-local totalScopes={{1477,923},{1477,904},{1477,902},{1477,897},{1477,898},{1477,924},{320,16}}
-local totalScope,totalDraws=nil,0
-local function scopedGet(scope,id)
- local ok,c=pcall(function()
-  if id==nil then return ui.Interfaces:GetComponent(scope[1],scope[2]) end
-  return ui.Interfaces:GetComponent(scope[1],scope[2],0,id)
- end)
- return ok and c or nil
-end
-local function paintTotal(scope)
- local found,last,pair
- local components={}
- for id=-1,64 do
-  local c=scopedGet(scope,id>=0 and id or nil)
-  if c and c.visibleGlobal then
-   local ok,content=pcall(function() return c.content end)
-   if ok and type(content)=='string' then
-    local text=plain(content)
-    components[#components+1]={c=c,text=text,id=id}
-    if text:find('Total XP:',1,true) then found=c end
-   end
-  end
- end
- if not found then return false end
-
- local root=found.parent
- if not root then return false end
- last=found
- for _,record in ipairs(components) do
-  if record.c.parent==root and record.text:match('^%s*Bonus XP:') and record.c.xyGlobal.y>=last.xyGlobal.y then last=record.c end
- end
- -- A caption-only row has a numeric partner at the next native child ID.
- for _,record in ipairs(components) do
-  if record.c==last and record.text:match('^%s*[%a%s]+:%s*$') then
-   local v=scopedGet(scope,record.id+1)
-   if v and v.visibleGlobal and v.parent==root and plain(v.content):match('^%s*[%d,%.]+%s*$') then pair=v end
-  end
- end
- local frame={}
- for id=0,8 do
-  frame[id]=scopedGet(scope,id)
-  if not frame[id] or not frame[id].visibleGlobal then
-
-   return false
-  end
- end
- -- Accept only the segmented frame shape already established in the client.
- for id=1,4 do
-  if frame[id].width~=10 or frame[id].height~=10 then
-
-   return false
-  end
- end
- local x,y=frame[1].xyGlobal.x,frame[1].xyGlobal.y
- local w=frame[2].xyGlobal.x+frame[2].width-x
- local h=frame[3].xyGlobal.y+frame[3].height-y
- if w<80 or w>600 or h<20 or h>200 then return false end
- totalScope=scope
-
- local amount=summary.totalLine():gsub('^Banked XP:%s*','')
- local firstLine=found.content:match('^(.-)<[bB][rR]') or found.content
- local neutral=firstLine:match('<col=(%x+)>') or 'e3d7bf'
- local tag='<col='..neutral..'>'
- local shown=tag..amount..'</col>'
- if summary.missingStorage('Total') and amount:match('^[%d,%.]+$') then shown='<col=ff0000>'..amount..'</col>' end
- local font=config.Font.FromID(found.font)
- if not font then return false end
- local measureKey='total:'..w..':'..found.font..':'..amount
- if measureKey~=key then cachedWidth=math.max(w,font:GetStringWidth('Banked XP:')+font:GetStringWidth(amount)+20);key=measureKey end
- local lastY,lastH=last.xyGlobal.y,last.height
- local pairY,pairH=pair and pair.xyGlobal.y,pair and pair.height
- local valueText=pair and pair.content
- local lastText=last.content
- local growth=19 -- one native 15px row plus 4px bottom space
- local before=ui.Size.new(root.size)
- local after=ui.Size.new(root.size);after.width=after.width+cachedWidth-w;after.height=after.height+growth
- edits[#edits+1]={kind='size',c=root,before=before,after=after}
- local ox,oy=root.xyGlobal.x,root.xyGlobal.y;root.size=after
- local dx,dy=root.xyGlobal.x-ox,root.xyGlobal.y-oy
- x=x+dx;y=y+dy
- local bounds=require('native_frame').plan(cachedWidth,h+growth);bounds[0]={1,1,cachedWidth-2,h+growth-2}
- for id=0,8 do local b=bounds[id];box(frame[id],x+b[1],y+b[2],b[3],b[4]) end
- box(last,x+6,lastY+dy,cachedWidth-12,lastH+15)
- field(last,'maxLines',0);field(last,'alignVertical',0)
- field(last,'content',lastText..'<br>'..tag..'Banked XP:'..(pair and '</col>' or (' '..shown..'</col>')))
- if pair then
-  box(pair,x+6,pairY+dy,cachedWidth-14,pairH+15)
-  field(pair,'maxLines',0);field(pair,'alignVertical',0)
-  field(pair,'content',valueText..'<br>'..shown)
- end
- return true
-end
-
 -- The exported registry also defines TEXT_TOOLTIP (1486), distinct from
 -- the shared per-skill tooltip. Its native RS3 artwork uses static sprites.
 local function paintTextTotal()
@@ -223,18 +128,7 @@ end
 function M.paint()
  M.restore()
  if MiniMenu.IsOpen() then return end
- if summary.totalLine then
-  if paintTextTotal() then return end
-  totalDraws=totalDraws+1
-  if totalScope and paintTotal(totalScope) then return end
-  -- Probe alternate exported roots only while not rendering a total hover.
-  -- One bounded discovery pass every ten draws; a found scope is reused.
-  if totalDraws%10==1 then
-   for _,scope in ipairs(totalScopes) do
-    if scope~=totalScope and paintTotal(scope) then return end
-   end
-  end
- end
+ if summary.totalLine and paintTextTotal() then return end
  local heading,current,currentValue,remainder,remainderValue=get(9),get(10),get(11),get(14),get(15)
  if not heading or not current or not currentValue or not remainder or not remainderValue then return end
  if not heading.visibleGlobal or not current.visibleGlobal or not remainder.visibleGlobal then return end

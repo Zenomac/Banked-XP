@@ -154,7 +154,7 @@ function M.capture(bank)
     local sig=table.concat(parts,'\n')..'|'..policy
     age=0
     if sig==signature then lastStorageRevision=storage.revision();return true end
-    local got,slots=pcall(function() return bank:GetSlots() end)
+    local got,slots=pcall(function() return bankData.slots(bank) end)
     if not got or not slots then return false end
     local records={}
     for _,slot in pairs(slots) do
@@ -239,8 +239,9 @@ function M.tick()
         bankData.invalidate()
         M.capture({id=-990,isValid=true,GetSlots=function() return records end})
     end
-    if ticks%25==1 and snapshot and lastRecords and lastPolicy~=policyKey() then
-        lastPolicy=policyKey();totals=nil;signature=nil
+    local policy=ticks%25==1 and snapshot and lastRecords and policyKey() or nil
+    if policy and lastPolicy~=policy then
+        lastPolicy=policy;totals=nil;signature=nil
         local records,counts=lastRecords,snapshot
         job=newJob(records,counts)
     end

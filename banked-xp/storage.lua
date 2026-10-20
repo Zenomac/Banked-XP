@@ -3,6 +3,7 @@ local M={}
 local states={metal={label='Metal bank'},arch={label='Archaeology storage'}}
 local candidates={metal={'METAL_BANK'},arch={'ARCH_MATERIAL_STORAGE','ARCHAEOLOGY_MATERIAL_STORAGE','ARCH_MATERIALS','ARCHAEOLOGY_MATERIALS'}}
 local revision,ticks=0,0
+local pending={}
 local function safe(fn) local ok,v=pcall(fn);if ok then return v end end
 local function identify(name)
  name=(name or ''):upper()
@@ -81,20 +82,28 @@ function M.status()
 end
 function M.clear()
  for _,s in pairs(states) do s.records=nil;s.signature=nil;s.live=nil;s.cfg=nil end
- revision=revision+1
+ revision=revision+1;pending={}
 end
 function M.register()
  if M.registered then return end;M.registered=true
  for _,name in ipairs({'InventoryAdded','InventoryUpdated'}) do
-  if Event[name] then Event[name].Subscribe('bankedXpStorage',function(e) safe(function() M.observe(e and e.inv) end) end) end
+  if Event[name] then Event[name].Subscribe('bankedXpStorage',function(e)
+   local cfg=e and e.inv;local kind=cfg and identify(configName(cfg))
+   if kind then pending[kind]=cfg end
+  end) end
  end
  if Event.InventoryRemoved then Event.InventoryRemoved.Subscribe('bankedXpStorage',function(e)
   local kind=e and identify(configName(e.inv))
   local s=kind and states[kind]
+  if kind then pending[kind]=nil end
   if s and s.live then s.live=false;revision=revision+1 end
  end) end
  if Event.Logic then Event.Logic.Subscribe('bankedXpStorage',function()
-  ticks=ticks+1;if ticks%25==1 then safe(M.poll) end
+  ticks=ticks+1
+  local queued=pending;pending={}
+  for _,cfg in pairs(queued) do safe(function() M.observe(cfg) end) end
+  -- Events keep live changes immediate; this is only a five-second fallback.
+  if ticks%250==1 and next(queued)==nil then safe(M.poll) end
  end) end
  if Event.GameStateChanged then Event.GameStateChanged.Subscribe('bankedXpStorage',M.clear) end
 end

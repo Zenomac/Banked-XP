@@ -25,6 +25,7 @@ assert(bank.snapshot(base)['iron bar']==12,'metal bank adds to bank supplies')
 local rev=storage.revision();storage.poll();assert(storage.revision()==rev,'unchanged poll is stable')
 live[metal.id]=inv(metal,{slot('Iron bar',2351,4)})
 callbacks.InventoryUpdated.bankedXpStorage({inv=metal})
+callbacks.Logic.bankedXpStorage()
 assert(bank.snapshot(base)['iron bar']==6,'storage update invalidates merged bank cache')
 live[metal.id]=nil
 callbacks.InventoryRemoved.bankedXpStorage({inv=metal})

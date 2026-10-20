@@ -1,6 +1,6 @@
 # Documentation
 
-Install the [banked-xp folder](../banked-xp). The [repository README](../README.md) describes current usage, and the [changelog](../CHANGELOG.md) covers every development build from v0.1 through v0.111.
+Install the [banked-xp folder](../banked-xp). The [repository README](../README.md) describes current usage, and the [changelog](../CHANGELOG.md) covers every development build from v0.1 through v0.112.
 
 ## Features and calculation limits
 
@@ -17,6 +17,7 @@ Install the [banked-xp folder](../banked-xp). The [repository README](../README.
 
 - [Digsite audit](DIGSITE_AUDIT.md)
 - [Native skill renderer](NATIVE_SKILL_RENDERER.md)
+- [API usage audit](API_USAGE.md)
 - [Hover performance investigation](PERFORMANCE.md)
 - [Historical read-only probe](READ_ONLY_PROBE.md)
 

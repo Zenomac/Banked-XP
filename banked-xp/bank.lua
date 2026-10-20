@@ -4,7 +4,7 @@ local storage=require('storage')
 local lastStorageRevision=-1
 local tick=0
 local lastTick=-100
-local lastBank,lastSnapshot,lastBankKey
+local lastBank,lastSnapshot,lastBankKey,lastSlots
 local function norm(name)
     local value=string.lower(name or '')
     value=string.gsub(value,'<[^>]*>','')
@@ -13,7 +13,7 @@ local function norm(name)
     return value
 end
 M.normalize=norm
-function M.invalidate() lastTick=-100;lastSnapshot=nil end
+function M.invalidate() lastTick=-100;lastSnapshot=nil;lastSlots=nil end
 if Event and Event.Logic then
     Event.Logic.Subscribe('bankedXpBankClock',function() tick=tick+1 end)
 end
@@ -36,8 +36,12 @@ function M.snapshot(bank)
     end
     lastStorageRevision=storage.revision()
     lastBank,lastTick,lastBankKey=bank,tick,bankKey
-    lastSnapshot=counts
+    lastSnapshot=counts;lastSlots=slots
     return counts
+end
+function M.slots(bank)
+    if not M.snapshot(bank) then return nil end
+    return lastSlots
 end
 function M.count(counts,name)
     if name=='@bead' then
