@@ -54,7 +54,8 @@ function M.show(header,offset,width,height,font,spacing,content)
         end
     end
     if label.font~=font then label.font=font end
-    if label.lineSpacing~=spacing then label.lineSpacing=spacing end
+    -- lineSpacing is read-only, including on plugin-owned Text components.
+    -- Let the selected native font supply its default line spacing.
     for _,key in ipairs({'isShadowed','shadowRGBA'}) do
         local ok,value=pcall(function() return header[key] end)
         if ok and value~=nil then pcall(function() if label[key]~=value then label[key]=value end end) end

@@ -8,7 +8,14 @@ local function object(parent)
  Destroy=function() destroys=destroys+1 end}
 end
 ui.Layer.new=function(parent) creates=creates+1;return object(parent) end
-ui.Text.new=function(parent) return object(parent) end
+ui.Text.new=function(parent)
+ return setmetatable(object(parent),{
+  __index=function(_,key) if key=='lineSpacing' then return 0 end end,
+  __newindex=function(self,key,value)
+   assert(key~='lineSpacing','lineSpacing is read-only on owned Text too')
+   rawset(self,key,value)
+  end})
+end
 local m=require('hover_overlay')
 local header={visibleGlobal=true,xyGlobal={x=20,y=40}}
 assert(m.show(header,20,200,80,13,16,'XP'))

@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.144.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.145.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -36,7 +36,7 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.144.0**. [Complete changelog — v0.1 through v0.144](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.145.0**. [Complete changelog — v0.1 through v0.145](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
@@ -56,4 +56,4 @@ See the [API usage audit](docs/API_USAGE.md), [skill totals](docs/SKILL_TOTALS.m
 
 Read [local data and permissions](banked-xp/PRIVACY.md), [submission draft and blockers](docs/SUBMISSION.md), and [code review map](docs/CODE_REVIEW.md). This development build is not claimed to be Jagex-approved. A real author contact email and personal/provenance review remain required before submission.
 
-**v0.144 owned text trial:** Tradeable anima uses one reusable plugin-owned layer and text label under static interface component 1477:896. It shares the normal body font and layout planner, follows the visible native title, and leaves the delayed native body untouched. Owned components are excluded from native undo records and cleaned up on shutdown; interface replacement drops stale references. Timing diagnostics remain enabled. Live-client stability and latency require confirmation; v0.143 is the delayed-native-body fallback.
+**v0.145 owned text trial:** Tradeable anima uses one reusable plugin-owned layer and text label under static interface component 1477:896. It shares the normal body font and layout planner, follows the visible native title, and leaves the delayed native body untouched. Owned components are excluded from native undo records and cleaned up on shutdown; interface replacement drops stale references. Timing diagnostics remain enabled. Live-client stability and latency require confirmation; v0.143 is the delayed-native-body fallback.

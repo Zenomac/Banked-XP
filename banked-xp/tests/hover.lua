@@ -364,7 +364,7 @@ ui.Text={new=function(parent)
  assert(parent==ownLayer,'text must use plugin-owned layer')
  textCreates=textCreates+1
  ownText=component(1000,parent,0,0,0,0)
- rawset(ownText,'lineSpacing',0);ownText.content='';ownText.font=0
+ rawset(ownText,'readonlySpacing',true);ownText.content='';ownText.font=0
  return ownText
 end}
 ui.Sprite={new=function() error('no extra sprites') end}

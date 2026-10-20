@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.144.0**.
+Current plugin version: **0.145.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.145 — Fix owned text initialization
+
+- Remove the unsupported lineSpacing assignment on the plugin-owned text label, which aborted hover layout in v0.144. Use the selected font's default spacing.
+- Make both owned-text test fixtures reject lineSpacing writes, matching the reported client error.
+- Keep reusable components, native font selection, cursor tracking and bounded timing diagnostics. Live-client latency remains to be confirmed.
 
 ## v0.144 — Reusable owned XP text on static parent
 
