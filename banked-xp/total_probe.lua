@@ -6,10 +6,11 @@ local seen={}
 local function read(c,k) local ok,v=pcall(function() return c[k] end);if ok then return v end end
 local function get(...) local args={...};local ok,c=pcall(function() return ui.Interfaces:GetComponent(table.unpack(args)) end);if ok then return c end end
 local function clean(s) return (s:gsub('<[^>]*>','')) end
-function M.scan()
+function M.scan(phase)
+ phase=phase or 'Logic'
  local visible,texts,nodes=0,0,0
  for _,scope in ipairs(scopes) do
-  local budget=96
+  local budget,childLookups=96,160
   local visited={}
   local function inspect(c,depth,label)
    if not c or depth>4 or budget<=0 or visited[c] or not read(c,'visibleGlobal') then return end
@@ -25,7 +26,7 @@ function M.scan()
      seen[key]=true
      if isTotal then totalCount=totalCount+1 else genericCount=genericCount+1 end
      local xy=read(c,'xyGlobal') or {}
-     print('[BXP total probe] '..(isTotal and 'TOTAL MATCH ' or 'visible text ')..scope[1]..':'..scope[2]..' path='..label..' component='..tostring(read(c,'interfaceID'))..':'..tostring(read(c,'staticID'))..':'..tostring(read(c,'categoryID'))..':'..tostring(read(c,'dynamicID'))..' pos='..tostring(xy.x)..','..tostring(xy.y)..' size='..tostring(read(c,'width'))..'x'..tostring(read(c,'height'))..' font='..tostring(read(c,'font'))..' text='..text:sub(1,220))
+     print('[BXP total probe] '..(isTotal and 'TOTAL MATCH ' or 'visible text ')..scope[1]..':'..scope[2]..' phase='..phase..' path='..label..' component='..tostring(read(c,'interfaceID'))..':'..tostring(read(c,'staticID'))..':'..tostring(read(c,'categoryID'))..':'..tostring(read(c,'dynamicID'))..' pos='..tostring(xy.x)..','..tostring(xy.y)..' size='..tostring(read(c,'width'))..'x'..tostring(read(c,'height'))..' font='..tostring(read(c,'font'))..' text='..text:sub(1,220))
     end
    end
    -- Some native collections iterate; others expose children only by ID.
@@ -35,6 +36,18 @@ function M.scan()
      return budget<=0
     end) end)
    end
+   -- Direct collection lookup is a separate API path from Interfaces lookup.
+   -- Native iteration can return no children even when GetChild succeeds.
+   if depth<=1 then
+    for category=0,3 do
+     for id=0,31 do
+      if childLookups<=0 or budget<=0 then break end
+      childLookups=childLookups-1
+      local ok,child=pcall(function() return c:GetChild(category,id) end)
+      if ok then inspect(child,depth+1,label..'/child/'..category..'/'..id) end
+     end
+    end
+   end
   end
   inspect(get(scope[1],scope[2]),0,'static')
   for id=0,64 do
@@ -43,15 +56,23 @@ function M.scan()
   end
  end
  passes=passes+1
- if passes<=3 then print('[BXP total probe] Read-only pass '..passes..': visible roots='..visible..'; nodes='..nodes..'; text nodes='..texts..'. Hover total XP for at least one second.') end
+ if passes<=6 then print('[BXP total probe] '..phase..' read-only pass '..passes..': visible roots='..visible..'; nodes='..nodes..'; text nodes='..texts..'. Hover total XP for at least one second.') end
 end
 function M.register()
  if not Event.Logic then return end
  Event.Logic.Subscribe('bankedXpTotalDiscovery',function()
   ticks=ticks+1;if ticks%25~=1 then return end
-  local ok,err=pcall(M.scan)
+  local ok,err=pcall(M.scan,'Logic')
   if not ok and not M.warned then print('[BXP total probe] Read error: '..tostring(err));M.warned=true end
  end)
- print('[BXP total probe] v0.106 read-only nested discovery enabled; existing hovers remain active.')
+ if Event.Draw then
+  local draws=0
+  Event.Draw.Subscribe('bankedXpTotalDiscovery',function()
+   draws=draws+1;if draws%25~=1 then return end
+   local ok,err=pcall(M.scan,'Draw')
+   if not ok and not M.drawWarned then print('[BXP total probe] Draw read error: '..tostring(err));M.drawWarned=true end
+  end)
+ end
+ print('[BXP total probe] v0.107 read-only child/Logic/Draw discovery enabled; existing hovers remain active.')
 end
 return M

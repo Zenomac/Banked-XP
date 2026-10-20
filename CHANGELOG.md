@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.106.0**.
+Current plugin version: **0.107.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.107
+
+The v0.106 client probe saw visible roots but no Total XP text. Added bounded direct ComponentCollection:GetChild category lookup and a throttled read-only Draw-phase sample alongside Logic sampling. Probe lines identify their phase and child path. Existing rendering is unchanged; the location of the native total-XP text remains unresolved pending the new capture.
 
 ## v0.106
 
