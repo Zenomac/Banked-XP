@@ -351,6 +351,7 @@ print('PASS: 100 client-interleaved relayouts keep native stat offsets and toolt
 
 -- Reproduce the probe: visible title/footer, middle label visibleGlobal=false.
 callbacks.MiniMenuOpened()
+labels[3]=nil -- tradeable anima has no equipment stat block
 ui.Text={new=function() error('no text constructors') end}
 ui.Layer={new=function() error('no layer constructors') end}
 ui.Sprite={new=function() error('no sprite constructors') end}
@@ -372,13 +373,14 @@ for cycle=1,3 do
   callbacks.MiniMenuReady(event)
   for frame=1,20 do
    callbacks.Draw()
-   assert(labels[0].content:find('XP',1,true),'XP in visible native title on first and repeated draws')
-   assert(not labels[0].content:find('<br><br>',1,true),'no extra blank title line')
-   assert(labels[0].content:find('Uses 3 per arrow',1,true),'same consumption information as normal hover')
-   assert(labels[2].xyGlobal.y>=labels[0].xyGlobal.y+labels[0].height+7,'footer clear of body')
-   assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'middle label untouched')
+   assert(labels[1].content:find('XP',1,true),'XP in existing native body label')
+   assert(labels[0].content==title,'native title remains separate and unchanged')
+   assert(labels[1].content:find('Uses 3 per arrow',1,true),'same consumption information as normal hover')
+   assert(labels[2].xyGlobal.y>=labels[1].xyGlobal.y+labels[1].height+7,'footer clear of body')
+   assert(not labels[1].hidden,'never change native visibility flags')
+   assert(labels[1].font==labels[2].font,'same smaller native body font as non-tradeable renderer')
    assert(labels[0].font==12,'retain native title font and line advance')
-   assert(labels[0].content:find('</col><br><col=e3d7bf>Requires:',1,true),'notes on separate lines')
+   assert(labels[1].content:find('</col><br><col=e3d7bf>Requires:',1,true),'notes on separate lines')
    if frame==1 then
     expectedWidth=bg.width;measuredWidths=widthCalls;measuredLines=lineCalls;readCount=componentReads
    else
@@ -392,16 +394,16 @@ for cycle=1,3 do
   assert(labels[0].font==12,'original title font restored')
  end
 end
-print('PASS: observed hidden-middle layout uses title only; no constructors, unhiding or horizontal growth')
+print('PASS: empty native body uses shared renderer, separate title, smaller body font, no visibility changes or constructors')
 
 -- Switch directly between gods without opening/closing a menu.
 for index,god in ipairs({'Jas','Wen','Bik','Ful','Jas'}) do
  local title='Withdraw-All Resonant anima of '..god..' (tradeable)'
- labels[0].content=title
+ labels[0].content=title;labels[1].content=''
  event.miniMenu.entries[1].componentData.objConfig={id=800+index,name='Resonant anima of '..god..' (tradeable)'}
  callbacks.MiniMenuReady(event);callbacks.Draw()
  assert(labels[0].content:find(title,1,true),'direct switch keeps current item title')
- assert(labels[0].content:find('XP',1,true),'direct switch renders immediately')
+ assert(labels[1].content:find('XP',1,true),'direct switch renders immediately')
  local before=componentReads
  bubble.position.x=bubble.position.x+3
  callbacks.Draw()

@@ -26,7 +26,7 @@ if not noticeOK then print('[banked-xp] Optional Diango notice unavailable: '..t
 local warned = false
 local edits={}
 local nativeGeometry
-local animaPaintKey
+local animaPaintKey,animaHeader,animaTitle
 local function undoLayout()
     for i=#edits,1,-1 do
         local e=edits[i]
@@ -101,7 +101,7 @@ local function restore(preserveNativeText)
             if e.p=='content' then currentText[e.c]=e.c.content end
         end
     end
-    animaPaintKey=nil
+    animaPaintKey,animaHeader,animaTitle=nil,nil,nil
     nativeGeometry=nil
     nativeFrame.hide()
     undoLayout()
@@ -159,8 +159,10 @@ local function animaKey()
 end
 local function unchangedAnima()
     if not animaPaintKey or animaPaintKey~=animaKey() or #edits==0 then return false end
+    if not animaHeader or not animaHeader.visibleGlobal or animaHeader.content~=animaTitle then return false end
+    if not applied or applied.hidden or applied.content~=written then return false end
     for _,e in ipairs(edits) do
-        if not e.c.visibleGlobal then return false end
+        if e.c.hidden then return false end
         if e.p=='rect' or e.p=='resize' then
             local size=e.c.size
             for _,key in ipairs({'width','height','widthParentPc','heightParentPc'}) do
@@ -199,24 +201,15 @@ local function paint()
         if ok then return c end
     end
     local footer=optionalRow(2)
-    if require('bank').normalize(selectedName):match('^resonant anima of .+ %(tradeable%)$') then
-        for i=3,4 do
-            local c=optionalRow(i)
-            if c and c.visibleGlobal and (c.content or ''):gsub('<[^>]*>',''):match('^%s*%+%d+%s*options?') then footer=c end
-        end
-        if require('anima_hover').render(header,footer,selected,selectedName,quantity,box,edit,resize) then
-            animaPaintKey=animaKey()
-        else restore() end
-        return
-    end
+    local tradeableAnima=require('bank').normalize(selectedName):match('^resonant anima of .+ %(tradeable%)$')~=nil
     local candidates,details={},{}
-    for i=2,31 do
+    for i=2,(tradeableAnima and 4 or 31) do
         pcall(function()
             local c=optionalRow(i)
             if c and c.type==ui.ComponentType.LABEL then
                 local plain=(c.content or ''):gsub('<[^>]*>','')
                 if c.visibleGlobal and plain:match('^%s*%+%d+%s*options?') then footer=c end
-                if c.visibleGlobal and plain:find('%S') then candidates[#candidates+1]=c end
+                if c.visibleGlobal and plain:find('%S') and not (tradeableAnima and plain:match('^%s*%+%d+%s*options?')) then candidates[#candidates+1]=c end
             end
         end)
     end
@@ -225,11 +218,14 @@ local function paint()
         animaProbe.report(selectedName,reason,{[0]=header,[1]=row,[2]=footer,[3]=optionalRow(3)})
     end
     if not header or not row or not footer then probe('missing component');restore();return end
-    if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then probe('middle row unavailable');restore();return end
-    -- Reuse only a visible native label. A tradeable suffix is preserved in
-    -- that same label above XP; never create, unhide or reparent a component.
-    local normalizedName=require('bank').normalize(selectedName)
-    local tradeableAnima=normalizedName:match('^resonant anima of .+ %(tradeable%)$')~=nil
+    -- An empty native LABEL may report visibleGlobal=false because it has no
+    -- drawable content. Reuse it only when its own hidden flag is false and
+    -- its parent and the surrounding title/footer are already visible.
+    local emptyAnimaBody=tradeableAnima and row.hidden==false and (row.content or '')==''
+        and row.parent and row.parent.visibleGlobal and header.visibleGlobal and footer.visibleGlobal
+    if row.type~=ui.ComponentType.LABEL or (not row.visibleGlobal and not emptyAnimaBody) then
+        probe('middle row unavailable');restore();return
+    end
     local originalRow=(applied==row and row.content==written) and saved or (row.content or '')
     local suffix=require('bank').normalize(originalRow)
     local continuation=tradeableAnima and (suffix=='(tradeable)' or suffix=='(tradable)')
@@ -240,7 +236,6 @@ local function paint()
     local matchingName=require('bank').normalize(selectedName)
     matchingName=string.gsub(matchingName,'%s+','')
     if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then probe('title mismatch');restore();return end
-    probe('render path reached')
     local function number(n)
         return string.format('%.0f',n):reverse():gsub('(%d%d%d)','%1,'):reverse():gsub('^,','')
     end
@@ -460,6 +455,9 @@ local function paint()
         if current~=originalRow and current~=written then restore();return end
         applied=row;saved=originalRow;written=text
         row.content=text
+    end
+    if tradeableAnima then
+        animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content
     end
 end
 local function safe(fn,...)

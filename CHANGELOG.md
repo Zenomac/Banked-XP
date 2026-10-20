@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.139.0**.
+Current plugin version: **0.140.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.140 — Shared non-tradeable tooltip configuration
+
+- Remove the separate anima title-label renderer. Tradeable and non-tradeable items now use the same body font selection, hover layout planner, centered information, native heading and right-aligned footer.
+- Permit an existing empty native body label only when hidden=false and its parent/title/footer are visible. Do not create components or change visibility flags; live visibility after populating the label remains to be tested.
+- Keep stable-layout reuse, validate native title/body changes before reuse, limit tradeable detail inspection to three slots and remove success-probe logging.
+- Local regression coverage checks separate title/body, body font parity, direct switches, cursor movement and no repeated component scans on unchanged frames.
 
 ## v0.139 — Tradeable anima spacing and stable hover reuse
 
