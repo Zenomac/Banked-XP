@@ -70,10 +70,15 @@ local function inspect(header)
         end
         print('[BXP render] '..entry[1]..' '..table.concat(chain,' <- '))
     end
+    local configInfo=' textConfig=unavailable'
+    pcall(function()
+        local cfg=label:GetConfigCopy()
+        configInfo=' textConfigFont='..tostring(cfg.font)..' textConfigAlpha='..tostring(cfg.alpha)..' textConfigRGBA='..tostring(cfg.rgba)
+    end)
     print('[BXP render] text font='..field(label,'font')..' nativeFont='..field(header,'font')
         ..' object='..field(label,'associatedObjectID')..' maxLines='..field(label,'maxLines')
         ..' spacing='..field(label,'lineSpacing')..' style='..field(label,'stylesheetID')
-        ..' align='..field(label,'alignHorizontal')..','..field(label,'alignVertical'))
+        ..' align='..field(label,'alignHorizontal')..','..field(label,'alignVertical')..configInfo)
 end
 function M.show(header,offset,width,height,font,spacing,content,styleSource)
     local current=root()
@@ -100,20 +105,24 @@ function M.show(header,offset,width,height,font,spacing,content,styleSource)
             error('Cannot initialize XP text layer: '..tostring(err))
         end
     end
-    if label.font~=font then label.font=font end
-    -- A visible component can still draw transparent/black text. Initialize
-    -- colour explicitly from the native body style, including opaque alpha.
+    -- Initialize the text renderer itself, not just Component tint/opacity.
+    -- TextDataConfig carries its own colour and alpha used for glyph drawing.
+    local cfg
+    local copied,value=pcall(function() return (styleSource or header):GetConfigCopy() end)
+    if copied and value then cfg=value else cfg=ui.TextDataConfig.new() end
+    cfg.font=font
+    cfg.alignHorizontal=ui.AlignMode.CENTRE
+    cfg.alignVertical=ui.AlignMode.TOPLEFT
+    cfg.maxLines=0
     local ok,rgb=pcall(function() return (styleSource or header).rgb end)
     if not ok or type(rgb)~='number' then rgb=0xd8d3c5 end
-    local rgba=(rgb%0x1000000)*256+255
-    if label.rgba~=rgba then label.rgba=rgba end
-    if label.alpha~=1 then label.alpha=1 end
-    -- lineSpacing is read-only, including on plugin-owned Text components.
-    -- Let the selected native font supply its default line spacing.
-    for _,key in ipairs({'isShadowed','shadowRGBA'}) do
-        local ok,value=pcall(function() return header[key] end)
-        if ok and value~=nil then pcall(function() if label[key]~=value then label[key]=value end end) end
-    end
+    cfg.rgba=(rgb%0x1000000)*256+255
+    cfg.alpha=1
+    -- Some beta bindings omit lineSpacing on Text; configure it through the
+    -- documented config object when available, otherwise retain its default.
+    pcall(function() cfg.lineSpacing=spacing end)
+    label:SetConfig(cfg)
+    label.alpha=1
     width,height=math.ceil(width),math.ceil(height)
     if not plan or plan.width~=width or plan.height~=height then
         layer:SetSize(width,height);label:SetSize(width,height)

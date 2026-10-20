@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.149.0**.
+Current plugin version: **0.150.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.150 — Initialize glyph rendering through TextDataConfig
+
+- v0.149 creates its components successfully but remains blank in-game; moving the parent did not resolve it.
+- Use Text:SetConfig with a copy of the native body style when available, otherwise a new TextDataConfig. Explicitly set font, alignment, line count, text colour and text alpha.
+- Keep component opacity and lifecycle guards; report text config values in the bounded render diagnostic. No per-frame config writes on unchanged hovers.
+- Local fixtures distinguish glyph configuration from component opacity. These checks validate configuration and lifecycle, not the live renderer; in-game confirmation is still needed.
 
 ## v0.149 — Fix rejected component identifier
 

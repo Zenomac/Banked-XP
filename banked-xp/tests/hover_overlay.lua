@@ -24,6 +24,17 @@ ui.Text.new=function(parent,category,dynamic)
   end})
  parent.children={[category..':'..dynamic]=c};return c
 end
+ui.TextDataConfig={new=function() return {} end}
+local originalNew=ui.Text.new
+ui.Text.new=function(...)
+ local c=originalNew(...)
+ c.glyphAlpha=0
+ function c:SetConfig(cfg)
+  self.glyphAlpha=cfg.alpha
+  for k,v in pairs(cfg) do if k~='lineSpacing' then self[k]=v end end
+ end
+ return c
+end
 local savedPrint=print
 local renderLogs={}
 print=function(message) if message:find('[BXP render]',1,true) then renderLogs[#renderLogs+1]=message end end
@@ -31,6 +42,7 @@ local m=require('hover_overlay')
 local header={visibleGlobal=true,xyGlobal={x=20,y=40}}
 assert(m.show(header,20,200,80,13,16,'XP'))
 local body=m.current()
+assert(body.glyphAlpha==1,'glyph opacity must be configured independently of component opacity')
 assert(body.rgba==0xd8d3c5ff and body.alpha==1 and not body.hidden)
 assert(body.x==0 and body.y==0 and body.parent.alpha==1)
 assert(m.show(header,20,200,80,13,16,'XP',{rgb=0xaabbcc}))
