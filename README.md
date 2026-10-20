@@ -39,7 +39,7 @@ The current plugin version is **0.103.0**. [Complete changelog — v0.1 through 
 
 ## Development
 
-The complete plugin, data, documentation and 27 Lua test suites are under [banked-xp](banked-xp). Run each test in a separate Lua 5.4 process from that directory, for example:
+The installable plugin, reference data and 27 Lua test suites are under [banked-xp](banked-xp). Development and audit documentation lives in [docs](docs); the complete version history lives in [CHANGELOG.md](CHANGELOG.md). Run each test in a separate Lua 5.4 process from that directory, for example:
 
 ```sh
 cd banked-xp
@@ -48,5 +48,5 @@ for test in tests/*.lua; do lua "$test" || exit 1; done
 
 All 27 local suites passed for this version. Native client appearance and API availability require live testing.
 
-See [skill totals](banked-xp/SKILL_TOTALS.md), [storage](banked-xp/STORAGE.md) and [sources](banked-xp/SOURCES.md) for details.
+See [skill totals](docs/SKILL_TOTALS.md), [storage](docs/STORAGE.md) and [sources](docs/SOURCES.md) for details.
 

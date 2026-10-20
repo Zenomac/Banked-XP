@@ -1,6 +1,6 @@
 -- Visible, portable boost assumptions for the currently supported Herblore
 -- recipes. Never add a potential boost to an already boosted gameplay level.
--- The full 29-skill review is in BOOST_REVIEW.md; conditional/invisible boosts
+-- The full 29-skill review is in ../docs/BOOST_REVIEW.md; conditional/invisible boosts
 -- are not universal recipe unlocks and are not applied to unrelated methods.
 local M={}
 function M.herblore(base,current)
