@@ -1,32 +1,43 @@
--- One plugin-owned layer under static 1477:896, never under recycled hover rows.
+-- One owned layer inside the native tooltip content branch (static 1477:902).
 local M={}
 local owner,layer,label,plan,blocked
 local inspected=false
+local CATEGORY=0x425850 -- BXP; keep separate from native category-zero rows.
 local function root()
-    local c=ui.Interfaces:GetComponent(96797568)
-    if c and c.staticID==896 then return c end
+    local ok,c=pcall(function() return ui.Interfaces:GetComponent(1477,902) end)
+    if ok and c and c.staticID==902 then return c end
+end
+local function drop()
+    owner,layer,label,plan=nil,nil,nil,nil
+end
+local function live(current)
+    if not layer or not current or current~=owner then return false end
+    -- Look up live children before dereferencing proxies: native rebuilds can
+    -- remove dynamic children without replacing the static parent itself.
+    local ok,found=pcall(function() return current:GetChild(CATEGORY,0) end)
+    if not ok or found~=layer then return false end
+    local textOK,text=pcall(function() return found:GetChild(CATEGORY,1) end)
+    return textOK and text==label
 end
 function M.hide()
     plan=nil
     if layer then
-        if root()==owner then pcall(function() layer.hidden=true end)
-        else owner,layer,label=nil,nil,nil end
+        if live(root()) then pcall(function() layer.hidden=true end)
+        else drop() end
     end
 end
 function M.destroy()
-    local current=root()
-    if layer and current==owner then pcall(function() layer:Destroy() end) end
-    owner,layer,label,plan,blocked=nil,nil,nil,nil,nil
+    if live(root()) then pcall(function() layer:Destroy() end) end
+    drop();blocked=nil
 end
-function M.current() return plan and label or nil end
+function M.current()
+    if plan and not live(root()) then drop() end
+    return plan and label or nil
+end
 function M.sync(header)
     if not plan or not layer then return false end
     local current=root()
-    if current~=owner then
-        -- The old interface owns destruction of its children. Drop stale proxies.
-        owner,layer,label,plan=nil,nil,nil,nil
-        return false
-    end
+    if not live(current) then drop();return false end
     if not header or not header.visibleGlobal or not current.visibleGlobal then M.hide();return false end
     local xy,origin=header.xyGlobal,current.xyGlobal
     local x,y=math.floor(xy.x-origin.x),math.floor(xy.y+plan.offset-origin.y)
@@ -67,14 +78,15 @@ end
 function M.show(header,offset,width,height,font,spacing,content,styleSource)
     local current=root()
     if not current or not current.visibleGlobal or blocked then return false end
-    if owner~=current then owner,layer,label,plan=current,nil,nil,nil end
+    if layer and not live(current) then drop() end
+    if owner~=current then owner=current end
     if not layer then
         local created
         local ok,err=pcall(function()
-            created=ui.Layer.new(current)
+            created=ui.Layer.new(current,CATEGORY,0)
             created.hidden=true;created.clickthrough=true
             created.rgba=0xffffffff;created.alpha=1
-            local text=ui.Text.new(created)
+            local text=ui.Text.new(created,CATEGORY,1)
             text.clickthrough=true
             text:SetPos(0,0,0,0,0,0)
             text.hidden=false

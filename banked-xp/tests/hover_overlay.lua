@@ -1,20 +1,26 @@
 package.path='./?.lua;banked-xp/?.lua;'..package.path
-local current={staticID=896,visibleGlobal=true,xyGlobal={x=0,y=0}}
+local current={staticID=902,visibleGlobal=true,xyGlobal={x=0,y=0}}
+local function parentLookup(self,category,dynamic) return self.children and self.children[category..':'..dynamic] end
+current.GetChild=parentLookup
 local creates,destroys=0,0
 ui={Interfaces={GetComponent=function() return current end},AlignMode={CENTRE=1,TOPLEFT=0},Layer={},Text={}}
 local function object(parent)
- return {parent=parent,hidden=true,rgba=0,alpha=0,SetPos=function(self,x,y) self.x=x;self.y=y end,
+ return {parent=parent,GetChild=parentLookup,hidden=true,rgba=0,alpha=0,SetPos=function(self,x,y) self.x=x;self.y=y end,
  SetSize=function(self,w,h) self.w=w;self.h=h end,MoveToFront=function() end,
  Destroy=function() destroys=destroys+1 end}
 end
-ui.Layer.new=function(parent) creates=creates+1;return object(parent) end
-ui.Text.new=function(parent)
- return setmetatable(object(parent),{
+ui.Layer.new=function(parent,category,dynamic)
+ assert(parent.staticID==902 and category~=0 and dynamic==0)
+ creates=creates+1;local c=object(parent);parent.children={[category..':'..dynamic]=c};return c
+end
+ui.Text.new=function(parent,category,dynamic)
+ local c=setmetatable(object(parent),{
   __index=function(_,key) if key=='lineSpacing' then return 0 end end,
   __newindex=function(self,key,value)
    assert(key~='lineSpacing','lineSpacing is read-only on owned Text too')
    rawset(self,key,value)
   end})
+ parent.children={[category..':'..dynamic]=c};return c
 end
 local savedPrint=print
 local renderLogs={}
@@ -35,9 +41,16 @@ print=savedPrint
 current=nil
 assert(not m.sync(header) and m.current()==nil)
 assert(destroys==0,'do not call Destroy on proxies from unloaded interfaces')
-current={staticID=896,visibleGlobal=true,xyGlobal={x=0,y=0}}
+current={staticID=902,GetChild=parentLookup,visibleGlobal=true,xyGlobal={x=0,y=0}}
 assert(m.show(header,20,200,80,13,16,'XP'))
 assert(creates==2 and m.current()~=body,'new interface receives new owned components')
+-- Static parent survives while its dynamic children are removed by client.
+local stale=m.current();local staleLayer=stale.parent
+current.children={}
+setmetatable(staleLayer,{__index=function() error('stale proxy accessed') end,__newindex=function() error('stale proxy written') end})
+assert(m.current()==nil and not m.sync(header))
+assert(destroys==0,'never destroy an already-removed layer')
+assert(m.show(header,20,200,80,13,16,'XP') and creates==3,'rebuild only after confirmed removal')
 header.visibleGlobal=false
 assert(not m.sync(header) and m.current()==nil,'native hover disappearance hides owned text')
 m.destroy();assert(destroys==1)

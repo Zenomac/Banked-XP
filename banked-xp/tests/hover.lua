@@ -354,16 +354,18 @@ print('PASS: 100 client-interleaved relayouts keep native stat offsets and toolt
 callbacks.MiniMenuOpened();labels[3]=nil
 local ownLayer,ownText
 local layerCreates,textCreates=0,0
-ui.Layer={new=function(parent)
- assert(parent==root,'owned layer must use stable static root')
+ui.Layer={new=function(parent,category,dynamic)
+ assert(parent==props and category~=0 and dynamic==0,'owned layer must share native text branch with separate category')
  layerCreates=layerCreates+1
  ownLayer=component(999,parent,0,0,0,0)
+ function props:GetChild(c,d) if c==category and d==dynamic then return ownLayer end end
  return ownLayer
 end}
-ui.Text={new=function(parent)
+ui.Text={new=function(parent,category,dynamic)
  assert(parent==ownLayer,'text must use plugin-owned layer')
  textCreates=textCreates+1
  ownText=component(1000,parent,0,0,0,0)
+ function parent:GetChild(c,d) if c==category and d==dynamic then return ownText end end
  rawset(ownText,'readonlySpacing',true);ownText.content='';ownText.font=0;ownText.rgba=0;ownText.alpha=0
  return ownText
 end}

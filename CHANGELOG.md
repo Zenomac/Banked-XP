@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.147.0**.
+Current plugin version: **0.148.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.148 — Place owned text inside the tooltip content branch
+
+- v0.147 logs show populated opaque text at the intended coordinates, but under outer interface 1477:896; visible native text is under 1477:902. Draw order is the leading hypothesis, not a confirmed diagnosis.
+- Parent the reusable owned layer to static content container 1477:902 so it shares the native text render branch. Keep a separate dynamic category to avoid native category-zero row IDs.
+- Validate live layer and text membership before accessing cached proxies, hiding, synchronizing or destroying them. Drop stale references if native children disappear even when the static parent survives.
+- Local tests cover correct parent/category, reuse, cursor movement, parent replacement, same-parent child removal and shutdown. Live appearance and stability remain unverified.
 
 ## v0.147 — Read-only blank-text render diagnostic
 
