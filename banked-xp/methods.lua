@@ -197,12 +197,7 @@ function M.addMenu(menu,obj,options,base)
         local method=options[i]
         local id=method.id
         local presentation=policy.presentation(method)
-        -- Also handle labels supplied by older/cached recipe providers.
-        presentation=presentation:gsub('%s*%[([^%]]+)%]',function(tag)
-            local name=bankData.normalize(tag)
-            if name=='logs' or name:match(' logs$') or name:match(' log$') then return '' end
-            return ' ['..tag..']'
-        end)
+        presentation=menuStyle.contextLabel(presentation,obj.name)
         local label='<col=00ffff>BXP</col>: '..menuStyle.label(method,presentation,nameColor)
         if selected and selected.id==id then label=label..' [<col=00ff00>selected</col>]' end
         addEntry(menu,label,function() M.select(obj.id,id) end)

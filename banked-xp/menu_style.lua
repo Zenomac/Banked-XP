@@ -40,4 +40,15 @@ function M.label(method,label,color)
     if label:sub(1,#name)~=name then return label end
     return '<col='..color..'>'..name..'</col>'..label:sub(#name+1)
 end
+-- Hide ingredient tags that repeat the item already being inspected.
+function M.contextLabel(label,itemName)
+    local normalize=require('bank').normalize
+    local hovered=normalize(itemName)
+    return (label:gsub('%s*%[([^%]]+)%]',function(tag)
+        local name=normalize(tag)
+        local log=name=='logs' or name:match(' logs$') or name:match(' log$')
+        if name==hovered or log then return '' end
+        return ' ['..tag..']'
+    end))
+end
 return M

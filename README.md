@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.115.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.116.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -36,18 +36,18 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.115.0**. [Complete changelog — v0.1 through v0.115](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.116.0**. [Complete changelog — v0.1 through v0.116](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
-The installable plugin, reference data and 28 Lua test suites are under [banked-xp](banked-xp). Development and audit documentation lives in [docs](docs); the complete version history lives in [CHANGELOG.md](CHANGELOG.md). Run each test in a separate Lua 5.4 process from that directory, for example:
+The installable plugin, reference data and 29 Lua test suites are under [banked-xp](banked-xp). Development and audit documentation lives in [docs](docs); the complete version history lives in [CHANGELOG.md](CHANGELOG.md). Run each test in a separate Lua 5.4 process from that directory, for example:
 
 ```sh
 cd banked-xp
 for test in tests/*.lua; do lua "$test" || exit 1; done
 ```
 
-All 28 local suites passed for this version. Native client appearance and API availability require live testing.
+The 28-suite baseline passed in v0.112; subsequent label and selection checks, including the new contextual-label audit, pass. Native client appearance and API availability require live testing.
 
 See the [API usage audit](docs/API_USAGE.md), [skill totals](docs/SKILL_TOTALS.md), [storage](docs/STORAGE.md) and [sources](docs/SOURCES.md) for details.
 
