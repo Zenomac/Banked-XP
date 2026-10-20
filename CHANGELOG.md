@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.125.0**.
+Current plugin version: **0.126.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.126
+
+Stabilize equipment/ammunition hover geometry across client relayouts between Draw callbacks. Retain native header dimensions, detail-block offsets, frame inset and clipping-container geometry for the active tooltip; clear the baseline when the tooltip ends or its item/content changes. This prevents client-adjusted stat positions from becoming the next layout baseline. A client-interleaved regression fails on v0.125 and passes 100 redraws with stable width and offsets in v0.126. All 32 local suites pass; in-game confirmation remains pending.
 
 ## v0.125
 

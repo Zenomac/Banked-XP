@@ -23,6 +23,7 @@ local noticeOK,noticeError=pcall(function() require("startup_notice").register()
 if not noticeOK then print('[banked-xp] Optional Diango notice unavailable: '..tostring(noticeError)) end
 local warned = false
 local edits={}
+local nativeGeometry
 local function undoLayout()
     for i=#edits,1,-1 do
         local e=edits[i]
@@ -89,6 +90,7 @@ local function resize(c,width,height)
     c.size=ui.Size.new(math.ceil(width),math.ceil(height))
 end
 local function restore()
+    nativeGeometry=nil
     nativeFrame.hide()
     undoLayout()
     if applied then
@@ -258,7 +260,13 @@ local function paint()
     local footerText=string.gsub(footer.content or '', '<br%s*/?>', '')
     footerText=string.gsub(footerText,'[\r\n]','')
     local nativeX,nativeY=header.xyGlobal.x,header.xyGlobal.y
-    local nativeWidth,nativeHeight=header.width,header.height
+    -- The client may relayout its rows between draws using our expanded
+    -- parent. Keep one unmodified geometry baseline per native tooltip.
+    local geometryKey=table.concat({selectedName or '',header.content or '',tostring(header.font),table.concat(detailText,'\0')},'\1')
+    if not nativeGeometry or nativeGeometry.key~=geometryKey then
+        nativeGeometry={key=geometryKey,width=header.width,height=header.height,containers={}}
+    end
+    local nativeWidth,nativeHeight=nativeGeometry.width,nativeGeometry.height
     local root=ui.Interfaces:GetComponent(96797568)
     local maxWidth=math.min(440,root and math.max(120,root.width-32) or 440)
     local plan=hoverLayout.plan(font,header.content,lines,detailText,footerText,
@@ -278,6 +286,14 @@ local function paint()
             detailOriginY=math.min(detailOriginY,bounds.y)
             detailBottom=math.max(detailBottom,bounds.y+bounds.height)
         end
+        if nativeGeometry.details then
+            detailBounds=nativeGeometry.details.bounds
+            detailOriginX=nativeGeometry.details.x
+            detailOriginY=nativeGeometry.details.y
+            detailBottom=nativeGeometry.details.bottom
+        else
+            nativeGeometry.details={bounds=detailBounds,x=detailOriginX,y=detailOriginY,bottom=detailBottom}
+        end
         -- The layout plan is cached; copy before adjusting native block bounds.
         local adjusted={};for k,v in pairs(plan) do adjusted[k]=v end;plan=adjusted
         local start=plan.details[1].y
@@ -289,7 +305,10 @@ local function paint()
     end
     local bg=ui.Interfaces:GetComponent(96797572)
     local oldHeight=bg and bg.height or (footer.xyGlobal.y+footer.height-nativeY+12)
-    local frameWidth=plan.width+(bg and bg.width-nativeWidth or 16)
+    if not nativeGeometry.frameInset then
+        nativeGeometry.frameInset=math.min(32,math.max(8,bg and bg.width-nativeWidth or 16))
+    end
+    local frameWidth=plan.width+nativeGeometry.frameInset
     local topInset=bg and nativeY-bg.xyGlobal.y or 6
     local bottomInset=bg and bg.xyGlobal.y+bg.height-footer.xyGlobal.y-footer.height or 6
     -- Native standard footer inset is 8px. Larger values on expanded
@@ -304,7 +323,12 @@ local function paint()
             ..tostring(c.categoryID)..':'..tostring(c.dynamicID)
         if seen[key] then return end
         seen[key]=true
-        containers[#containers+1]={c=c,x=c.xyGlobal.x,y=c.xyGlobal.y,w=c.width,h=c.height}
+        local baseline=nativeGeometry.containers[key]
+        if not baseline then
+            baseline={w=c.width,h=c.height,left=nativeX-c.xyGlobal.x,top=nativeY-c.xyGlobal.y}
+            nativeGeometry.containers[key]=baseline
+        end
+        containers[#containers+1]={c=c,x=nativeX-baseline.left,y=nativeY-baseline.top,w=baseline.w,h=baseline.h}
     end
     local parent=row.parent
     for _=1,10 do

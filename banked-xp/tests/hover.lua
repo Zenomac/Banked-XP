@@ -69,7 +69,7 @@ function ui.Interfaces:GetComponent(a,b,c,d)
  if a==96797568 then return root end
  if a==96797572 then return bg end
  if b==900 and d~=nil then return nativeParts[d] end
- if b==902 and d~=nil then if d>3 then error('Missing native dynamic component') end;return labels[d] end
+ if b==902 and d~=nil then if not labels[d] then error('Missing native dynamic component') end;return labels[d] end
  if b==902 then return props end
  if b==899 then return bubble end
  if b==901 and d~=nil then return nativeRules[d] end
@@ -324,3 +324,22 @@ end
 callbacks.MiniMenuOpened()
 assert(labels[3].size.widthParentPc==1 and labels[3].position.xParentPc==0.5,'Native anchors restored')
 print('PASS: 100 repeated draws preserve percentage-anchored native stats without horizontal growth')
+
+-- The client relayouts individual rows between Draw callbacks. Those positions
+-- are legitimate native writes, so undo cannot simply overwrite them.
+labels[3].size=ui.Size.new(100,32);labels[3].position=ui.Pos.new(90,54)
+labels[4]=component(902,props,0,90,300,32);labels[4].dynamicID=4
+labels[4].type=2;labels[4].font=12;labels[4].alignHorizontal=0
+labels[4].content='Charge dinarrows with resonant anima to upgrade them.'
+callbacks.MiniMenuReady(event)
+local firstWidth,firstX
+for i=1,100 do
+ callbacks.Draw()
+ if i==1 then firstWidth=bg.width;firstX=labels[3].xyGlobal.x-labels[0].xyGlobal.x end
+ assert(bg.width==firstWidth,'Client relayout must not feed width back into tooltip sizing')
+ assert(labels[3].xyGlobal.x-labels[0].xyGlobal.x==firstX,'Native stat offset stays stable')
+ -- Simulate the client moving a stat row in response to the expanded panel.
+ local changed=ui.Pos.new(labels[3].position);changed.x=changed.x+12;labels[3].position=changed
+end
+callbacks.MiniMenuOpened();labels[4]=nil
+print('PASS: 100 client-interleaved relayouts keep native stat offsets and tooltip width stable')
