@@ -118,6 +118,16 @@ function M.estimate(obj,base,bank,count)
     -- A level-locked item may still show an informational hover. Keep this
     -- fallback out of the selectable options and skill-summary candidates.
     local levelPreview=false
+    local ingredientPreview=false
+    -- Arrow tips should remain identifiable even when no complete recipe is
+    -- available. This informational route never enters menus or summaries.
+    if not method and bankData.normalize(obj.name):match('arrow tips?$') then
+        for _,candidate in ipairs(engine.options(obj)) do
+            if candidate.category=='Specialist arrow tips' and #candidate.inputs==2 then
+                method=candidate;ingredientPreview=true;break
+            end
+        end
+    end
     if not method then
         local bestGap
         for _,candidate in ipairs(engine.options(obj)) do
@@ -150,6 +160,7 @@ function M.estimate(obj,base,bank,count)
     end
     if method.engine then
         local result=copy(engine.estimate(obj,method,counts))
+        result.ingredientPreview=ingredientPreview
         if not settings.showRecipeOnHover() and result.note then
             local prefix=result.note:match('^(Lv %d+; )') or ''
             local detail=result.limitingIngredient and ('Limited by: '..result.limitingIngredient) or 'Bank supplies'
@@ -162,6 +173,9 @@ function M.estimate(obj,base,bank,count)
             for skill,xp in pairs(method.additionalXP) do extra[#extra+1]=tostring(xp)..' '..skill..' XP per action' end
             table.sort(extra)
             if #extra>0 then result.note=(result.note and result.note..' | ' or '')..'Also grants: '..table.concat(extra,', ') end
+        end
+        if ingredientPreview then
+            result.note=(result.note and result.note..' | ' or '')..((result.total or 0)>0 and 'Recipe unavailable at current level; preview only' or 'Supplies missing; preview only')
         end
         local label,met=policy.presentation(method)
         result.method=label

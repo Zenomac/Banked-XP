@@ -22,3 +22,7 @@ Black stone, deathspore and splintering arrow tips now use verified per-arrow ro
 The old Elder headless arrow name resolves to Elder headless shaft. Singular tip names resolve to their plural item names. Missing supplies still follow the existing visibility setting. Black stone arrow creation requires the recipe unlock, which is not detected automatically.
 
 Sources: [Black stone arrows](https://runescape.wiki/w/Black_stone_arrows), [Deathspore arrows](https://runescape.wiki/w/Deathspore_arrows), [Splintering arrows](https://runescape.wiki/w/Splintering_arrows), [Elder headless shaft](https://runescape.wiki/w/Elder_headless_shaft). [Replacement records](audits/arrow-tips-0.123.json) retain source URLs and quantities. Seven older records were replaced with 31 direct/preparation routes; the multi-skill catalog contains 3,711 records. All 32 local Lua suites pass; live client verification remains outstanding.
+
+## Arrow-tip hover visibility — v0.124
+
+Black stone, deathspore and splintering arrow tips now retain an informational preview when availability filters leave no selectable recipe. The preview reports per-arrow XP and the recipe's supply/level information. Missing supplies do not add XP to skill totals, and unavailable choices remain hidden in the right-click menu. This is a scoped exception to hiding the entire hover when no recipe is available; other item families retain their existing behavior. All three tip-only bank cases are covered by local regression checks. Live-client confirmation is still required.

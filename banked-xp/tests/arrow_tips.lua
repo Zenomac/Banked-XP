@@ -27,4 +27,15 @@ for _,case in ipairs({{'Black stone',12.6,92},{'Deathspore',20,95},{'Splintering
  assert(e.key(name)==e.key(name:sub(1,-2)),'Singular tip alias')
 end
 assert(e.key('Elder headless arrow')==e.key('Elder headless shaft'),'Legacy shaft alias')
+local settings=require('settings');settings.setShowUnownedIngredients(false)
+for index,name in ipairs({'Black stone arrow tips','Deathspore arrow tips','Splintering arrow tips'}) do
+ local obj={id=990000+index,name=name}
+ local bank={GetSlots=function() return {{obj=obj,count=10}} end}
+ require('bank').invalidate()
+ local result,options=methods.estimate(obj,catalog.lookup(obj),bank,10)
+ assert(result.ingredientPreview and result.total==0 and result.xp>0,'Missing supplies retain informational hover')
+ assert(#options==0,'Unavailable recipes stay out of right-click menu')
+ assert(result.note:find('preview only',1,true),'Preview explains missing supplies')
+ assert(#methods.summaryCandidates(obj,catalog.lookup(obj),{[name:lower()]=10})==0,'Preview never enters banked totals')
+end
 print('PASS: three arrow-tip families, partial stacks, limiting supplies, preparation XP, levels, aliases and hover/menu options')

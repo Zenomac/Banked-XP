@@ -123,8 +123,8 @@ local function detect(event)
         estimate,options=methods.estimate(obj,method,bank,count)
 
         -- The exact same filtered options drive hover and right-click.
-        -- No available method means no plugin section, not a zero-XP warning.
-        if (not options or #options==0) and not (estimate and (estimate.artefactPreview or estimate.levelPreview)) then restore();return end
+        -- Explicit informational previews may render without selectable recipes.
+        if (not options or #options==0) and not (estimate and (estimate.artefactPreview or estimate.levelPreview or estimate.ingredientPreview)) then restore();return end
         selected=estimate;quantity=count
         methods.addMenu(event.miniMenu,obj,options,method)
         selectedName=string.lower(obj.name or "")

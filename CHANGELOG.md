@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.123.0**.
+Current plugin version: **0.124.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.124
+
+Retain an informational hover for specialist arrow tips when no recipe passes the availability filters. Shows per-arrow XP and missing-supply or level information. Unavailable recipes remain excluded from right-click choices and skill totals. Regression checks cover all three tip families with only tips in the bank and the unowned-ingredient setting disabled. All 32 local Lua suites pass. Live-client confirmation remains pending.
 
 ## v0.123
 
