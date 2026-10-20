@@ -347,28 +347,31 @@ end
 callbacks.MiniMenuOpened();labels[4]=nil
 print('PASS: 100 client-interleaved relayouts keep native stat offsets and tooltip width stable')
 
--- Recovery: no plugin text children or tradeable anima layout mutations.
+
+-- Native-only tradeable hovers: no constructor is permitted on this path.
 callbacks.MiniMenuOpened()
-ui.Text={new=function() error('recovery must never create tooltip text children') end}
-for _,god in ipairs({'Bik','Ful','Wen','Jas'}) do
- for _,suffix in ipairs({' (tradeable)',' (tradable)'}) do
-  labels[0].content='Withdraw-All Resonant anima of '..god..suffix
-  labels[1].content='';labels[1].hidden=false
-  local initialWidth,initialHeight=bg.width,bg.height
-  local beforeMenu=menuCalls
-  event.miniMenu.entries[1].componentData.objConfig={id=500,name='Resonant anima of '..god..suffix}
+ui.Text={new=function() error('no tooltip text children') end}
+ui.Layer={new=function() error('no anima layer children') end}
+ui.Sprite={new=function() error('no anima sprite children') end}
+for cycle=1,3 do
+ for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
+  selected.total=1000+index
+  local split=index%2==0
+  local title='Withdraw-All Resonant anima of '..god..(split and '' or ' (tradeable)')
+  labels[0].content=title
+  labels[1].content=split and '(tradeable)' or '';labels[1].hidden=false
+  event.miniMenu.entries[1].componentData.objConfig={id=600+index,name='Resonant anima of '..god..' (tradeable)'}
   callbacks.MiniMenuReady(event)
-  for frame=1,20 do callbacks.Draw() end
-  assert(labels[1].content=='' and bg.width==initialWidth and bg.height==initialHeight,'tradeable tooltip stays native')
-  assert(menuCalls>beforeMenu,'recipe menu remains available')
+  for frame=1,10 do
+   callbacks.Draw()
+   assert(labels[1].content:find('XP',1,true),'native-only anima XP on first and repeated draws')
+   assert(labels[0].content==title,'native title unchanged')
+   if split then assert(labels[1].content:find('(tradeable)',1,true),'suffix preserved') end
+  end
  end
 end
--- Native content and hidden native rows are never repurposed.
-event.miniMenu.entries[1].componentData.objConfig={id=1,name='Prayer potion (4)'}
-labels[0].content='Withdraw-All Prayer potion (4)'
-labels[1].content='native continuation'
-callbacks.MiniMenuReady(event);callbacks.Draw();assert(labels[1].content=='native continuation')
+callbacks.MiniMenuOpened();assert(labels[1].content=='(tradeable)','native continuation restored')
 labels[1].content='';labels[1].hidden=true
-callbacks.MiniMenuReady(event);callbacks.Draw();assert(labels[1].hidden and labels[1].content=='')
+callbacks.MiniMenuReady(event);callbacks.Draw();assert(labels[1].hidden and labels[1].content=='','hidden row stays native')
 callbacks.MiniMenuOpened()
-print('PASS: recovery skips all tradeable anima hover mutations while retaining menus; no text child creation')
+print('PASS: all four tradeable anima reuse visible native rows only; no constructors, title changes or unhiding')

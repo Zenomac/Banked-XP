@@ -40,7 +40,7 @@ local function spriteRule(key,x,y,width)
     end
     r.layer.hidden=false;r.layer:MoveToFront()
 end
-function M.apply(bg,header,footer,detailY,box,edit)
+function M.apply(bg,header,footer,detailY,box,edit,existingOnly)
     if not bg then return false end
     local parts={}
     for i=0,8 do
@@ -61,12 +61,12 @@ function M.apply(bg,header,footer,detailY,box,edit)
             box(c,x,y,width,2)
         else
             -- Missing/hidden native rules stay untouched. Draw our own rule.
-            spriteRule(key,x,y,width)
+            if not existingOnly then spriteRule(key,x,y,width) end
         end
     end
     divider(first,'header',header.xyGlobal.y+header.height+1)
     divider(last,'footer',footer.xyGlobal.y-4)
-    if detailY then spriteRule('effects',x,detailY,width) end
+    if detailY and not existingOnly then spriteRule('effects',x,detailY,width) end
     return true
 end
 return M

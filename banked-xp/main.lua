@@ -5,6 +5,7 @@ require('storage').register()
 local selected, applied, saved, written = nil, nil, nil, nil
 local quantity=nil
 local selectedName=nil
+local selectedID=nil
 require("settings_ui").register()
 -- Optional skill-hover integration must not prevent item hovers loading.
 local skillHover
@@ -89,7 +90,13 @@ local function resize(c,width,height)
     edits[#edits+1]={c=c,p='resize',before=ui.Size.new(c.size)}
     c.size=ui.Size.new(math.ceil(width),math.ceil(height))
 end
-local function restore()
+local function restore(preserveNativeText)
+    local currentText={}
+    if preserveNativeText==true then
+        for _,e in ipairs(edits) do
+            if e.p=='content' then currentText[e.c]=e.c.content end
+        end
+    end
     nativeGeometry=nil
     nativeFrame.hide()
     undoLayout()
@@ -100,6 +107,7 @@ local function restore()
         end)
     end
     applied,saved,written=nil,nil,nil
+    for c,value in pairs(currentText) do c.content=value end
 end
 local function compact(n)
     if n>=1000000 then return string.format('%.2fm',n/1000000) end
@@ -107,7 +115,8 @@ local function compact(n)
     return string.format('%.1f',n):gsub('%.0$','')
 end
 local function detect(event)
-    selected=nil;quantity=nil;selectedName=nil
+    local previousID=selectedID
+    selected=nil;quantity=nil;selectedName=nil;selectedID=nil
     if MiniMenu.IsOpen() then restore();return end
     local entries=event.miniMenu.entries
     local e=entries[#entries]
@@ -115,6 +124,7 @@ local function detect(event)
     local d=e.componentData
     if not d or not d.objConfig then restore();return end
     local obj=d.objConfig
+    if obj.id~=previousID then restore(true) end
     local method=catalog.lookup(obj)
     if not method then restore();return end
     local bank=Inventory.Find(config.Inv.BANK)
@@ -127,17 +137,9 @@ local function detect(event)
         -- The exact same filtered options drive hover and right-click.
         -- Explicit informational previews may render without selectable recipes.
         if (not options or #options==0) and not (estimate and (estimate.artefactPreview or estimate.levelPreview or estimate.ingredientPreview)) then restore();return end
-        selected=estimate;quantity=count
+        selected=estimate;quantity=count;selectedID=obj.id
         methods.addMenu(event.miniMenu,obj,options,method)
         selectedName=string.lower(obj.name or "")
-        -- Recovery v0.134: quarantine the crash-associated tradeable anima
-        -- tooltip path. Recipe/menu calculations above remain available.
-        local normalized=require('bank').normalize(obj.name)
-        if normalized:match('^resonant anima of .+ %(tradeable%)$') then
-            selected=nil;quantity=nil;selectedName=nil
-            restore()
-            return
-        end
     else
 
     end
@@ -174,11 +176,18 @@ local function paint()
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
     if not header or not row or not footer then restore();return end
     if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then restore();return end
-    if (row.content or '')~='' and row.content~=written then restore();return end
-    local plainTitle=string.gsub(header.content or '', '<[^>]*>', '')
+    -- Reuse only a visible native label. A tradeable suffix is preserved in
+    -- that same label above XP; never create, unhide or reparent a component.
+    local normalizedName=require('bank').normalize(selectedName)
+    local tradeableAnima=normalizedName:match('^resonant anima of .+ %(tradeable%)$')~=nil
+    local originalRow=(applied==row and row.content==written) and saved or (row.content or '')
+    local suffix=require('bank').normalize(originalRow)
+    local continuation=tradeableAnima and (suffix=='(tradeable)' or suffix=='(tradable)')
+    if originalRow~='' and not continuation then restore();return end
+    local plainTitle=require('bank').normalize((header.content or '')..(continuation and (' '..originalRow) or ''))
     local title=string.lower(plainTitle)
     title=string.gsub(title,'%s+','')
-    local matchingName=string.gsub(selectedName or '', '<[^>]*>', '')
+    local matchingName=require('bank').normalize(selectedName)
     matchingName=string.gsub(matchingName,'%s+','')
     if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then restore();return end
     local function number(n)
@@ -225,6 +234,7 @@ local function paint()
             end
         end
     end
+    if continuation then table.insert(lines,1,originalRow) end
     local text=table.concat(lines,'<br>')
     local fontOK,font=pcall(function() return config.Font.FromID(header.font) end)
     if not fontOK or not font then
@@ -392,12 +402,12 @@ local function paint()
     edit(footer,'alignVertical',ui.AlignMode.TOPLEFT)
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
-    nativeFrame.apply(bg,header,footer,effectY,box,edit)
+    nativeFrame.apply(bg,header,footer,effectY,box,edit,tradeableAnima)
     local current=row.content or ''
     if current~=text then
         -- Only take ownership of an empty row; don't replace native details.
-        if current~='' and current~=written then restore();return end
-        applied=row;saved='';written=text
+        if current~=originalRow and current~=written then restore();return end
+        applied=row;saved=originalRow;written=text
         row.content=text
     end
 end

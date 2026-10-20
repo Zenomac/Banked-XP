@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.134.0**.
+Current plugin version: **0.135.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.135 — Native-row tradeable anima trial
+
+- Restore tradeable anima XP only in an existing visible native middle label. Preserve a native tradeable suffix above XP and restore it on exit.
+- Create no text, layer or sprite children on the tradeable anima path. Keep missing/hidden native components untouched.
+- Preserve client text on item changes and test direct transitions, first/repeated draws and restoration for all four gods with constructors forbidden.
+- All 34 local suites pass. Native-client stability/latency are not established; v0.134 remains the recovery fallback.
 
 ## v0.134 — Crash recovery
 
