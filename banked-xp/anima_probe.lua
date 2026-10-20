@@ -10,6 +10,7 @@ end
 function M.report(name,reason,rows)
     name=require('bank').normalize(name)
     if not name:match('^resonant anima of .+ %(tradeable%)$') then return end
+    if (counts[name] or 0)>=3 then return end
     local parts={reason}
     for i=0,3 do
         local c=rows and rows[i]

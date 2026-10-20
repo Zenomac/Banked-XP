@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.141.0**.
+Current plugin version: **0.142.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.142 — Commit native text after final layout
+
+- Commit tradeable body content after its font, bounds and clipping containers reach their final values, allowing native text layout to use the completed geometry.
+- Keep the unchanged-layout fast path: no repeated content writes on settled hovers.
+- Stop exhausted diagnostic probes before reading native component fields.
+- Local tests verify that the final content assignment sees the final font/bounds and that 30 subsequent stable draws do not rewrite content. The effect on live-client delay is not measurable locally.
 
 ## v0.141 — Prevent delayed-visibility clear/retry cycle
 

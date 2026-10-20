@@ -458,6 +458,10 @@ local function paint()
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
     nativeFrame.apply(bg,header,footer,effectY,box,edit,tradeableAnima)
+    -- Native text layout can be cached when content is assigned. Commit it
+    -- again after font, bounds and clipping parents have their final values.
+    -- The unchanged-layout fast path skips this write on subsequent draws.
+    if tradeableAnima and applied==row and row.content==written then row.content=text end
     if tradeableAnima then
         animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content
     end

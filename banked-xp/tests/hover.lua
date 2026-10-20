@@ -426,3 +426,34 @@ end
 callbacks.MiniMenuOpened()
 assert(labels[1].content=='','original empty body restored')
 print('PASS: native relayout with delayed visibility retains XP without clear/retry oscillation')
+
+-- Content setters capture native font/bounds at assignment time.
+local body=labels[1]
+local mt=getmetatable(body);local baseIndex,baseNew=mt.__index,mt.__newindex
+local bodyText=body.content;rawset(body,'content',nil)
+local commits=0;local committedWidth,committedHeight,committedFont
+mt.__index=function(c,k)
+ if c==body and k=='content' then return bodyText end
+ return baseIndex(c,k)
+end
+mt.__newindex=function(c,k,v)
+ if c==body and k=='content' then
+  bodyText=v
+  if v:find('XP',1,true) then
+   commits=commits+1;committedWidth=c.width;committedHeight=c.height;committedFont=c.font
+  end
+  return
+ end
+ return baseNew(c,k,v)
+end
+labels[0].content='Withdraw-All Resonant anima of Wen (tradeable)'
+body.content=''
+callbacks.MiniMenuReady(event);callbacks.Draw()
+assert(committedWidth==body.width and committedHeight==body.height and committedFont==body.font,
+ 'final text commit must see final native font and bounds')
+local count=commits
+for i=1,30 do callbacks.Draw() end
+assert(commits==count,'unchanged hovers must not rewrite text')
+callbacks.MiniMenuOpened()
+mt.__index=baseIndex;mt.__newindex=baseNew;rawset(body,'content',bodyText)
+print('PASS: final native text commit follows geometry; no content writes during 30 stable draws')
