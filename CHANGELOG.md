@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.105.0**.
+Current plugin version: **0.106.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.106
+
+Added an isolated, read-only Logic probe for nested total-XP components after v0.105 produced no match messages. It inspects known shared hover roots and the Stats tooltip/frame/source roots through bounded iteration and direct child lookup. Reports initial scan counts, visible text and reserved Total XP matches. Probe initialization and scan errors are isolated from existing hovers. No new rendering behavior or UI allocations are introduced; locating the actual native total-XP tooltip remains pending client logs.
 
 ## v0.105
 

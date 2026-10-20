@@ -2,6 +2,8 @@
 -- Temporarily expands the native tooltip row and moves its footer below it.
 -- Reversible layout edits are undone before each frame and on exit.
 require('storage').register()
+local totalProbeOK,totalProbeError=pcall(function() require('total_probe').register() end)
+if not totalProbeOK then print('[BXP total probe] Initialization error: '..tostring(totalProbeError)) end
 local selected, applied, saved, written = nil, nil, nil, nil
 local quantity=nil
 local selectedName=nil
@@ -352,7 +354,7 @@ function PluginShutdown()
     if skillHover then pcall(skillHover.restore) end
     restore()
 end
-print('[banked-xp] 0.105 multi-skill recipe catalog. Hover bank supplies for supported skilling recipes. Base XP only; no XP/hr claim. Move off before disabling.')
+print('[banked-xp] 0.106 multi-skill recipe catalog. Hover bank supplies for supported skilling recipes. Base XP only; no XP/hr claim. Move off before disabling.')
 
 -- Temporary read-only discovery for extending the item catalog.
 -- Diagnostics retained in the folder; disabled during ordinary use.
