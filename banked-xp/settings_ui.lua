@@ -3,7 +3,7 @@ local M={}
 local function check(parent,label,value,hook,setter)
     local c=ui.Check.new(parent)
     c.stylesheetID=id.StyleSheet.CHECKBOX_DEFAULT
-    c:SetSize(0,34,1,0)
+    c:SetSize(0,28,1,0)
     c.alignment=ui.CheckAlignMode.LEFT;c.buttonSize=20
     c.label=label;c.text.maxLines=0;c.value=value
     c:Subscribe(ui.Hook.ONBUTTONPRESSED,hook,function(component,newValue)
@@ -19,10 +19,12 @@ local function check(parent,label,value,hook,setter)
 end
 function M.build(event)
     local panel=ui.Panel.new(event.component)
-    panel:SetPos(16,16);panel:SetSize(-32,-32,1,1)
+    panel:SetPos(12,12);panel:SetSize(-24,-24,1,1)
     -- The native window already supplies its title. Native checkbox styling
     -- supplies visible fonts; standalone DEFAULT text rows were blank spacers.
-    panel.isVertical=true;panel.spacing=4
+    -- Seven 28px controls + 20px note + seven 3px gaps = 237px.
+    -- With 12px top/bottom padding this fits the native settings viewport.
+    panel.isVertical=true;panel.spacing=3
     local first=check(panel,'Show recipes with missing ingredients.',settings.showUnownedIngredients(),
         'bankedXpOwnedIngredients',settings.setShowUnownedIngredients)
     local second=check(panel,'Show recipes above my level.',settings.showUnderlevelRecipes(),
@@ -34,7 +36,7 @@ function M.build(event)
     local fifth=check(panel,'Apply worn outfit XP bonuses.',settings.includeOutfitBonuses(),
         'bankedXpOutfitBonuses',settings.setIncludeOutfitBonuses)
     local note=ui.Text.new(panel)
-    note:SetSize(0,22,1,0)
+    note:SetSize(0,20,1,0)
     note.font=first.text.font
     -- Use an actual native italic font when this beta build exposes one.
     -- Unsupported HTML <i> tags can disappear or render literally in RS text.

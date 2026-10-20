@@ -84,14 +84,21 @@ print('PASS: default and saved setting, UI build/callbacks, owned alternatives, 
 assert(settings.showRecipeOnHover(),'new preference defaults on for existing settings')
 local checks=0
 for _,c in ipairs(constructors) do
- if c.kind=='check' then checks=checks+1;assert(c.size[2]==34) end
+ if c.kind=='check' then checks=checks+1;assert(c.size[2]>=c.buttonSize) end
  if c.kind=='text' then assert(c.content and c.content:find('Diango',1,true),'only Diango note added') end
  if c.label=='Show ingredients on hover.' then
   assert(c.value==true);c.callback(c,false);assert(not settings.showRecipeOnHover())
  end
 end
-assert(checks==7 and root.children[1].spacing==4)
-assert(checks*34+(checks-1)*4+22+32<=340,'all settings fit compact window')
+assert(checks==7)
+local panel=root.children[1]
+local contentHeight=0
+for _,child in ipairs(panel.children) do contentHeight=contentHeight+child.size[2] end
+contentHeight=contentHeight+(#panel.children-1)*panel.spacing
+-- The screenshot's native content viewport clips the old 320px layout.
+-- Measure actual children, including the note and its following gap.
+assert(contentHeight+panel.pos[2]*2<=280,'all controls fit native 280px viewport')
+assert(panel.children[#panel.children].label=='Clear saved preferences (resets settings).','reset remains reachable at the bottom')
 package.loaded.settings=nil;assert(not require('settings').showRecipeOnHover(),'recipe choice persists')
 
 local note

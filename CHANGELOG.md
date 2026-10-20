@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.159.0**.
+Current plugin version: **0.160.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.160 — Fit all settings in the native window
+
+- Reduce checkbox row height from 34 to 28 pixels, gaps from four to three pixels, outer padding from 16 to 12 pixels, and the Diango note row from 22 to 20 pixels.
+- All seven controls and the outfit note use 261 pixels including outer padding. Keep native fonts, 20px checkboxes, wording, order and callbacks unchanged.
+- Replace the old overly generous 340px layout assertion with a measurement of every actual child and gap against a 280px viewport, including the final reset control. In-game visual confirmation remains pending.
 
 ## v0.159 — Complete supplied Wiki pouch-table audit
 

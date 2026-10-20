@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.159.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.160.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer, Construction and Summoning. Coverage varies by item and method.
 
@@ -40,7 +40,7 @@ Summoning currently covers 94 familiar pouches (including six flower variants fo
 
 ## Version history
 
-The current plugin version is **0.159.0**. [Complete changelog — v0.1 through v0.159](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.160.0**. [Complete changelog — v0.1 through v0.160](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
