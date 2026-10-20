@@ -164,7 +164,7 @@ assert(labels[1].content=='' and labels[1].height==8)
 print('PASS: cursor movement between Draw frames, native position updates, stable measured formatting, native style guards and restoration')
 
 package.loaded.skill_hover={register=function() error('simulated skill integration failure',0) end,restore=function() end}
-local ok,err=pcall(dofile,'complete-v97/banked-xp/main.lua')
+local ok,err=pcall(dofile,assert(package.searchpath('main',package.path)))
 assert(ok,'optional skill feature must not block item startup: '..tostring(err))
 print('PASS: item startup survives optional skill-hover registration failure')
 
@@ -279,7 +279,7 @@ assert(labels[1].content:find('<col=ff9900>+3%<col=e3d7bf> Artisan outfit',1,tru
 callbacks.MiniMenuOpened();selected.note=oldNote
 print('PASS: percentage color ends immediately before outfit name')
 package.loaded.startup_notice={register=function() error('simulated unavailable chat API',0) end}
-local noticeOK,noticeError=pcall(dofile,'complete-v97/banked-xp/main.lua')
+local noticeOK,noticeError=pcall(dofile,assert(package.searchpath('main',package.path)))
 assert(noticeOK,'notification failure must not block XP plugin startup: '..tostring(noticeError))
 callbacks.MiniMenuReady(event);callbacks.Draw()
 assert(labels[1].content:find('Herblore XP',1,true),'notification failure must preserve working XP hover')
@@ -287,7 +287,7 @@ callbacks.MiniMenuOpened()
 print('PASS: failed optional notice preserves startup and XP hover')
 -- Native item names may contain a literal newline or a <br> soft wrap.
 package.loaded.startup_notice={register=function() end}
-dofile('complete-v97/banked-xp/main.lua')
+dofile(assert(package.searchpath('main',package.path)))
 for _,title in ipairs({'Withdraw-All Prayer potion<br>(4)','Withdraw-All Prayer potion\n(4)'}) do
  labels[0].content=title
  callbacks.MiniMenuReady(event);callbacks.Draw()

@@ -46,12 +46,6 @@ local function box(c,x,y,w,h)
 end
 -- Total-XP uses a shorter native tooltip. Recognize its actual text rather
 -- than assuming the per-skill caption/value child IDs are present.
-local totalProbeSeen,totalProbeCount={},0
-local function totalProbe(name,message)
- if totalProbeSeen[name] or totalProbeCount>=14 then return end
- totalProbeSeen[name]=true;totalProbeCount=totalProbeCount+1
- print('[BXP total probe] '..message)
-end
 local totalScopes={{1477,923},{1477,904},{1477,902},{1477,897},{1477,898},{1477,924},{320,16}}
 local totalScope,totalDraws=nil,0
 local function scopedGet(scope,id)
@@ -76,8 +70,7 @@ local function paintTotal(scope)
   end
  end
  if not found then return false end
- local scopeKey=scope[1]..':'..scope[2]
- totalProbe('found:'..scopeKey,'Matched '..scopeKey..'; text='..plain(found.content):sub(1,180)..'; font='..tostring(found.font))
+
  local root=found.parent
  if not root then return false end
  last=found
@@ -95,17 +88,14 @@ local function paintTotal(scope)
  for id=0,8 do
   frame[id]=scopedGet(scope,id)
   if not frame[id] or not frame[id].visibleGlobal then
-   totalProbe('frame:'..scopeKey,'No complete native frame at '..scopeKey..'; missing child '..id..'; no UI edits applied.')
+
    return false
   end
  end
  -- Accept only the segmented frame shape already established in the client.
  for id=1,4 do
   if frame[id].width~=10 or frame[id].height~=10 then
-   totalProbe('shape:'..scopeKey,'Unrecognized frame at '..scopeKey..'; corner '..id..'='..tostring(frame[id].width)..'x'..tostring(frame[id].height)..'; no UI edits applied.')
-   for _,record in ipairs(components) do
-    totalProbe('text:'..scopeKey..':'..record.id,'Text '..scopeKey..':'..record.id..' pos='..record.c.xyGlobal.x..','..record.c.xyGlobal.y..' size='..record.c.width..'x'..record.c.height..' text='..record.text:sub(1,140))
-   end
+
    return false
   end
  end
@@ -114,7 +104,7 @@ local function paintTotal(scope)
  local h=frame[3].xyGlobal.y+frame[3].height-y
  if w<80 or w>600 or h<20 or h>200 then return false end
  totalScope=scope
- totalProbe('render:'..scopeKey,'Rendering total XP with existing frame/text at '..scopeKey..'.')
+
  local amount=summary.totalLine():gsub('^Banked XP:%s*','')
  local firstLine=found.content:match('^(.-)<[bB][rR]') or found.content
  local neutral=firstLine:match('<col=(%x+)>') or 'e3d7bf'
@@ -168,7 +158,7 @@ local function paintTextTotal()
   if c.visibleGlobal and c.width>0 and c.height>0 and readable and type(text)=='string' and plain(text):find('Total XP:',1,true) then body=c;break end
  end
  if not body then return false end
- totalProbe('text-tooltip','TEXT_TOOLTIP 1486 matched; font='..tostring(body.font)..'; text='..plain(body.content):sub(1,180))
+
  local sprites={}
  for id=16,33 do
   local c=static(id)
@@ -177,7 +167,7 @@ local function paintTextTotal()
   end
  end
  if #sprites<8 then
-  totalProbe('text-tooltip-frame','1486 text found but RS3 frame unavailable; visible frame pieces='..#sprites..'; no edits applied.')
+
   return false
  end
  local font=config.Font.FromID(body.font)
@@ -226,7 +216,7 @@ local function paintTextTotal()
  end
  box(body,textX+dx,textY+dy,textW+dw,textH+lineHeight)
  field(body,'maxLines',0);field(body,'alignVertical',0);field(body,'content',text)
- totalProbe('text-tooltip-render','Rendering Banked XP in TEXT_TOOLTIP 1486; native text and static frame reused.')
+
  return true
 end
 
@@ -362,6 +352,5 @@ function M.register()
   if not ok then M.restore();if not M.warned then print('[BXP skill] Display error: '..tostring(err));M.warned=true end end
  end)
  if Event.MiniMenuOpened then Event.MiniMenuOpened.Subscribe('bankedXpSkillTotalsClear',M.restore) end
- print('[banked-xp] Skill totals use existing native text and frame components only; no UI children created.')
 end
 return M

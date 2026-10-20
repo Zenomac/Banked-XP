@@ -17,7 +17,7 @@ local function countString(n) return string.format('%.0f',n):reverse():gsub('(%d
 local function newJob(records,counts)
     local out={}
     for _,skill in ipairs(skillSupport.names) do out[skill]={min=0,max=0} end
-    return {records=records,counts=counts,index=1,phase='items',routes={},seen={},out=out,audit={},auditSeen={}}
+    return {records=records,counts=counts,index=1,phase='items',routes={},seen={},out=out,recipeSeen={}}
 
 end
 local function globalExtra(j,obj,skill,xp)
@@ -79,18 +79,13 @@ local function advanceOne(j)
             -- Resolve every supported skill independently of the catalogue's
             -- first skill match for multi-use supplies.
             for _,r in ipairs(engine.options(obj)) do
-                if supported[r.skill] and not j.auditSeen[r.id] then
-                    j.auditSeen[r.id]=true
-                    local a=j.audit[r.skill] or {matched=0,blocked=0,complete=0,samples={}}
-                    j.audit[r.skill]=a;a.matched=a.matched+1
-                    if #a.samples<2 then a.samples[#a.samples+1]=r.method end
+                if supported[r.skill] and not j.recipeSeen[r.id] then
+                    j.recipeSeen[r.id]=true
                     local policy=require('recipe_policy')
                     local state=policy.state(counts,r.skill)
                     local _,met=policy.presentation(r)
                     local eligible=met or (state.showBoostable and require('boosts').reachable(r,state))
-                    if not eligible then a.blocked=a.blocked+1
-                    elseif engine.inputsOwned(obj,r,counts) then
-                        a.complete=a.complete+1
+                    if eligible and engine.inputsOwned(obj,r,counts) then
                         if not seen[r.id] and not (obj.id==1517 and r.skill=='Firemaking') then seen[r.id]=true;routes[#routes+1]=r end
                     end
                 end
@@ -133,18 +128,6 @@ local function advanceOne(j)
             end
             out.Herblore.min=out.Herblore.min+(j.cleanXP or 0)
             out.Herblore.max=out.Herblore.max+(j.cleanXP or 0)
-            for _,skill in ipairs(skillSupport.names) do
-                local a=j.audit[skill] or {matched=0,blocked=0,complete=0,samples={}}
-                print('[BXP audit] '..skill..': XP='..countString(out[skill].max)..'; artefact-potential='..countString(out[skill].potential or 0)..'; level='..tostring(skillSupport.level(skill,'GetLevelGameplay'))..'; matched='..a.matched..'; level-blocked='..a.blocked..'; complete='..a.complete..'; examples='..table.concat(a.samples,', '))
-            end
-            local unknown={}
-            for _,record in ipairs(j.records) do
-                if #engine.options(record.obj)==0 then
-                    local name=record.obj.name or ''
-                    if name:lower():find('plank',1,true) or name:lower():find('protean',1,true) then unknown[#unknown+1]=name..'='..record.count end
-                end
-            end
-            if #unknown>0 then print('[BXP audit] Unmapped plank/protean items: '..table.concat(unknown,', ',1,math.min(#unknown,12))) end
             return out
         end
     elseif j.phase=='global' then

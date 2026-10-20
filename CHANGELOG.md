@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.110.0**.
+Current plugin version: **0.111.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.111
+
+Removed temporary total-tooltip probes, artefact tracing, disabled item-config diagnostics, storage-discovery logs, API recipe-verification chatter and bank-audit counters/scans. Normal hover and startup diagnostic messages are gone; useful failures still report errors. Calculations, API recipe validation, known storage detection, hovers and the optional Diango chat notice remain active. Removed the obsolete probe test and corrected archived main.lua paths in reload tests to resolve the current module. All 27 remaining suites pass.
 
 ## v0.110
 

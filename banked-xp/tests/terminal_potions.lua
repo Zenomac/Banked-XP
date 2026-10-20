@@ -1,4 +1,5 @@
 package.path='./?.lua;banked-xp/?.lua;'..package.path
+local reportDir=assert(package.searchpath('main',package.path)):gsub('main%.lua$','data/')
 -- Existing potion audit intentionally scopes the recipe provider to Herblore.
 package.preload.skill_recipes=function() return {} end
 PersistentDB={GetStructuredData=function() return {} end,SetStructuredData=function() return true end}
@@ -49,9 +50,9 @@ assert(catalog.lookup({id=99997,name='Overload (4)'}),'underlevel ingredients re
 assert(catalog.lookup({id=1517,name='Maple logs'}),'Firemaking remains supported')
 assert(catalog.lookup({id=99996,name='Grimy ranarr'}),'herb cleaning remains supported')
 table.sort(rows)
-local out=assert(io.open('complete-v97/banked-xp/data/terminal-potion-audit.csv','w'))
+local out=assert(io.open(reportDir..'terminal-potion-audit.csv','w'))
 out:write('Potion,Canonical key,Behavior,Downstream recipe IDs\n',table.concat(rows,'\n'),'\n');out:close()
-local report=assert(io.open('complete-v97/banked-xp/data/terminal-potion-audit.txt','w'))
+local report=assert(io.open(reportDir..'terminal-potion-audit.txt','w'))
 report:write(string.format('Catalog graph audit: %d recipe routes; %d distinct output families; %d terminal families hidden; %d upgradeable families retained; %d name/dose/flask cases checked.\n',#engine.recipes,terminal+upgradeable,terminal,upgradeable,cases))
 report:write('Scope: bundled normal-bank Potions catalog. No claim of all RuneScape crafting transformations outside that catalog.\n');report:close()
 print(string.format('PASS: %d routes, %d families (%d terminal / %d upgradeable), %d form checks; screenshot regression and upgrade retention',#engine.recipes,terminal+upgradeable,terminal,upgradeable,cases))

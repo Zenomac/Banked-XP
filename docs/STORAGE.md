@@ -1,3 +1,5 @@
+v0.111: Temporary runtime debugging has been removed. Earlier instructions in this document asking for [BXP total probe], [BXP storage], [BXP artefact], [BXP audit] or [xp-data] console output are historical and no longer apply. Known storage detection, native rendering, calculations and useful error reporting remain active. All 27 current local suites pass.
+
 v0.100: Compact skill hovers no longer show “(last scan)”. Only the Banked XP numeric value is red for Archaeology when its material storage has never been scanned this session, or Smithing when the metal bank has never been scanned. Captions and other skills retain their native colour. A successful empty scan counts; cached successful scans also retain normal colour. Scan flags reset on game-state changes/reload. Console and detailed storage status remain available. This supersedes earlier suffix instructions below.
 
 # Metal bank and Archaeology storage — v0.99 experiment

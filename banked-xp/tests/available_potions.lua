@@ -1,4 +1,5 @@
 package.path='./?.lua;banked-xp/?.lua;'..package.path
+local reportDir=assert(package.searchpath('main',package.path)):gsub('main%.lua$','data/')
 -- Existing potion audit intentionally scopes the recipe provider to Herblore.
 package.preload.skill_recipes=function() return {} end
 PersistentDB={GetStructuredData=function() return {} end,SetStructuredData=function() return true end}
@@ -40,6 +41,6 @@ assert(#methods.options(combat,catalog.lookup(combat),{})==0,'screenshot regress
 level=1;settings.setShowUnownedIngredients(true)
 local ovl={id=99992,name='Overload (4)'}
 assert(#methods.options(ovl,catalog.lookup(ovl),{})==0,'unmet level also hides all methods')
-local report=assert(io.open('complete-v97/banked-xp/data/recipe-availability-audit.txt','w'))
+local report=assert(io.open(reportDir..'recipe-availability-audit.txt','w'))
 report:write(string.format('Audited %d output families and %d dose/name/flask forms. %d terminal families have no plugin hover; %d upgradeable families have no available recipes with missing ingredients and the unowned setting off. %d upgradeable families retain previews with unowned setting on at level 120. Empty-options hover restores the complete native tooltip, and creates no menu entries.\n',families,forms,terminal,unavailable,enabled));report:close()
 print(string.format('PASS: availability audit of %d families / %d forms; %d terminal, %d missing-supply, %d opt-in previews; Combat potion and underlevel regressions',families,forms,terminal,unavailable,enabled))

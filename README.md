@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.110.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.111.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -26,7 +26,7 @@ The repository root is not the plugin folder: use the nested `banked-xp` directo
 
 ## Storage scanning
 
-Open the normal bank, metal bank and Archaeology material storage once after loading. Recognized storage contents feed the recipe planner. Look for `[BXP storage]` console messages.
+Open the normal bank, metal bank and Archaeology material storage once after loading. Recognized storage contents feed the recipe planner. Scan status remains available in relevant item details; unscanned storage makes the affected XP number red.
 
 Metal-bank access uses the documented container. Archaeology container discovery still requires in-game verification. Unavailable containers can use their last session scan, which may become stale. Unscanned storage makes the affected skill's Banked XP number red. Diango-only outfits are not detected.
 
@@ -36,18 +36,18 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.110.0**. [Complete changelog — v0.1 through v0.110](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.111.0**. [Complete changelog — v0.1 through v0.111](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
-The installable plugin, reference data and 28 Lua test suites are under [banked-xp](banked-xp). Development and audit documentation lives in [docs](docs); the complete version history lives in [CHANGELOG.md](CHANGELOG.md). Run each test in a separate Lua 5.4 process from that directory, for example:
+The installable plugin, reference data and 27 Lua test suites are under [banked-xp](banked-xp). Development and audit documentation lives in [docs](docs); the complete version history lives in [CHANGELOG.md](CHANGELOG.md). Run each test in a separate Lua 5.4 process from that directory, for example:
 
 ```sh
 cd banked-xp
 for test in tests/*.lua; do lua "$test" || exit 1; done
 ```
 
-All 28 local suites passed for this version. Native client appearance and API availability require live testing.
+All 27 local suites passed for this version. Native client appearance and API availability require live testing.
 
 See [skill totals](docs/SKILL_TOTALS.md), [storage](docs/STORAGE.md) and [sources](docs/SOURCES.md) for details.
 

@@ -62,7 +62,7 @@ function M.observe(obj,fallbackLookup)
                         local k=key(ingredient,fallback.method)
                         if not recipes[k] then
                             recipes[k]={obj=obj,output=normalized(obj.name)}
-                            print('[banked-xp] API recipe verified: '..tostring(obj.name))
+
                         end
                     end
                 end

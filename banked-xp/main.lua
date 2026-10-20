@@ -2,12 +2,9 @@
 -- Temporarily expands the native tooltip row and moves its footer below it.
 -- Reversible layout edits are undone before each frame and on exit.
 require('storage').register()
-local totalProbeOK,totalProbeError=pcall(function() require('total_probe').register() end)
-if not totalProbeOK then print('[BXP total probe] Initialization error: '..tostring(totalProbeError)) end
 local selected, applied, saved, written = nil, nil, nil, nil
 local quantity=nil
 local selectedName=nil
-local artefactTrace=require('artefact_trace')
 require("settings_ui").register()
 -- Optional skill-hover integration must not prevent item hovers loading.
 local skillHover
@@ -24,7 +21,7 @@ require("outfits").register()
 -- A reminder must never prevent the core XP plugin from loading.
 local noticeOK,noticeError=pcall(function() require("startup_notice").register() end)
 if not noticeOK then print('[banked-xp] Optional Diango notice unavailable: '..tostring(noticeError)) end
-local warned, reported = false, false
+local warned = false
 local edits={}
 local function undoLayout()
     for i=#edits,1,-1 do
@@ -117,22 +114,22 @@ local function detect(event)
     if not d or not d.objConfig then restore();return end
     local obj=d.objConfig
     local method=catalog.lookup(obj)
-    if not method then artefactTrace.log(obj.name,'No catalogue match; object ID '..tostring(obj.id));restore();return end
+    if not method then restore();return end
     local bank=Inventory.Find(config.Inv.BANK)
     local count=bank and bank:GetTotal(obj.id)
     if count and count>0 then
         local options
         local estimate
         estimate,options=methods.estimate(obj,method,bank,count)
-        artefactTrace.selection(obj,method,estimate,options,count)
+
         -- The exact same filtered options drive hover and right-click.
         -- No available method means no plugin section, not a zero-XP warning.
-        if (not options or #options==0) and not (estimate and estimate.artefactPreview) then artefactTrace.log(obj.name,'Hover blocked: no eligible options or preview');restore();return end
+        if (not options or #options==0) and not (estimate and estimate.artefactPreview) then restore();return end
         selected=estimate;quantity=count
         methods.addMenu(event.miniMenu,obj,options,method)
         selectedName=string.lower(obj.name or "")
     else
-        artefactTrace.log(obj.name,'Bank count unavailable: '..tostring(count)..', object ID '..tostring(obj.id))
+
     end
 end
 local function paint()
@@ -164,14 +161,14 @@ local function paint()
         end)
     end
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
-    if not header or not row or not footer then artefactTrace.log(selectedName,'Native layout missing: header='..tostring(header~=nil)..', row='..tostring(row~=nil)..', footer='..tostring(footer~=nil));restore();return end
-    if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then artefactTrace.log(selectedName,'Native details row unavailable: type='..tostring(row.type)..', visible='..tostring(row.visibleGlobal));restore();return end
+    if not header or not row or not footer then restore();return end
+    if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then restore();return end
     local plainTitle=string.gsub(header.content or '', '<[^>]*>', '')
     local title=string.lower(plainTitle)
     title=string.gsub(title,'%s+','')
     local matchingName=string.gsub(selectedName or '', '<[^>]*>', '')
     matchingName=string.gsub(matchingName,'%s+','')
-    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then artefactTrace.log(selectedName,'Native title mismatch: '..tostring(header.content));restore();return end
+    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then restore();return end
     local function number(n)
         return string.format('%.0f',n):reverse():gsub('(%d%d%d)','%1,'):reverse():gsub('^,','')
     end
@@ -182,7 +179,7 @@ local function paint()
     elseif selected.total~=nil then total=compact(selected.total)..' '..selected.skill..' XP'
     elseif selected.minXP then total=compact(quantity*selected.minXP)..' - '..compact(quantity*selected.maxXP)..' '..selected.skill..' XP'
     else total='Bank XP unavailable' end
-    artefactTrace.log(selectedName,'Native tooltip matched; rendering XP section')
+
     local nativeTextColour=(header.content or ''):match('<col=(%x+)>') or 'e3d7bf'
     local nativeTextTag='<col='..nativeTextColour..'>'
     local lines={
@@ -332,11 +329,6 @@ local function paint()
         if current~='' and current~=written then restore();return end
         applied=row;saved='';written=text
         row.content=text
-        if not reported then
-            print('[banked-xp] Measured native hover layout active: font metrics, wrapped lines, native details and footer.')
-            print('[banked-xp] Middle row size '..row.width..'x'..row.height..'; native background expanded with content.')
-            reported=true
-        end
     end
 end
 local function safe(fn,...)
@@ -354,8 +346,3 @@ function PluginShutdown()
     if skillHover then pcall(skillHover.restore) end
     restore()
 end
-print('[banked-xp] 0.110 multi-skill recipe catalog. Hover bank supplies for supported skilling recipes. Base XP only; no XP/hr claim. Move off before disabling.')
-
--- Temporary read-only discovery for extending the item catalog.
--- Diagnostics retained in the folder; disabled during ordinary use.
--- require("diagnostics")

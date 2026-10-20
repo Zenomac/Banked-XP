@@ -15,7 +15,7 @@ local function available()
  -- Older beta builds may expose the player entity but not IsAvailable.
  local success,entity=pcall(function() return Player.GetEntity() end)
  if success and entity then return true end
- report('waiting for player availability; '..tostring(value))
+
  return false
 end
 function M.check()
@@ -23,7 +23,7 @@ function M.check()
  if Plugin and Plugin.HasPermission and PluginPermissions then
   local ok,allowed=pcall(function() return Plugin.HasPermission(PluginPermissions.chatAccess) end)
   if not ok or not allowed then
-   report('chatAccess is not granted. Optional chat access is disabled; XP tooltips remain available.')
+
    return
   end
  end
@@ -32,7 +32,7 @@ function M.check()
   report('Chat.AddMessage failed: '..tostring(result));return
  end
  shown=true;lastError=nil
- print('[banked-xp] Diango notice queued to local chat. If hidden, check the chat tab/filter for plugin messages.')
+
 end
 function M.stateChanged(event)
  if not event then return end
@@ -41,7 +41,7 @@ function M.stateChanged(event)
 end
 function M.register()
  if registered then return end;registered=true
- print('[banked-xp] Diango chat notice enabled (v0.110).')
+
  if Event and Event.GameStateChanged then Event.GameStateChanged.Subscribe('bankedXpDiangoNotice',M.stateChanged) end
  if Event and Event.Logic then
   Event.Logic.Subscribe('bankedXpDiangoNotice',function()

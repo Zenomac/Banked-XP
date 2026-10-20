@@ -3,7 +3,6 @@ local M={}
 local states={metal={label='Metal bank'},arch={label='Archaeology storage'}}
 local candidates={metal={'METAL_BANK'},arch={'ARCH_MATERIAL_STORAGE','ARCHAEOLOGY_MATERIAL_STORAGE','ARCH_MATERIALS','ARCHAEOLOGY_MATERIALS'}}
 local revision,ticks=0,0
-local logged,unknownCount={},0
 local function safe(fn) local ok,v=pcall(fn);if ok then return v end end
 local function identify(name)
  name=(name or ''):upper()
@@ -19,7 +18,7 @@ local function read(kind,cfg)
  local s=states[kind]
  local inv=safe(function() return Inventory.Find(cfg) end)
  if not inv or safe(function() return inv.isValid end)==false then
-  if s.live then s.live=false;revision=revision+1;print('[BXP storage] '..s.label..': using last scan (container unavailable).') end
+  if s.live then s.live=false;revision=revision+1 end
   return false
  end
  local slots=safe(function() return inv:GetSlots() end)
@@ -35,7 +34,6 @@ local function read(kind,cfg)
  local sig=fingerprint(records)
  if sig~=s.signature or not s.live then
   revision=revision+1
-  print('[BXP storage] '..s.label..': scanned '..#records..' item types; config='..configName(cfg)..'; id='..tostring(safe(function() return inv.id end))..'.')
  end
  s.signature=sig;s.records=records;s.live=true;s.cfg=cfg
  return true
@@ -45,11 +43,7 @@ function M.observe(cfg)
  local name=configName(cfg)
  local kind=identify(name)
  if kind then read(kind,cfg);return end
- -- Bounded discovery only: do not count an unidentified container as supplies.
- if name~='' and name~='BANK' and name~='INV' and name~='WORN' and not logged[name] and unknownCount<12 then
-  logged[name]=true;unknownCount=unknownCount+1
-  print('[BXP storage probe] Inventory available: '..name..'; id='..tostring(safe(function() return cfg.id end))..' (not counted).')
- end
+
 end
 function M.poll()
  for kind,s in pairs(states) do
@@ -87,7 +81,7 @@ function M.status()
 end
 function M.clear()
  for _,s in pairs(states) do s.records=nil;s.signature=nil;s.live=nil;s.cfg=nil end
- revision=revision+1;logged={};unknownCount=0
+ revision=revision+1
 end
 function M.register()
  if M.registered then return end;M.registered=true
@@ -97,12 +91,11 @@ function M.register()
  if Event.InventoryRemoved then Event.InventoryRemoved.Subscribe('bankedXpStorage',function(e)
   local kind=e and identify(configName(e.inv))
   local s=kind and states[kind]
-  if s and s.live then s.live=false;revision=revision+1;print('[BXP storage] '..s.label..': using last scan (container removed).') end
+  if s and s.live then s.live=false;revision=revision+1 end
  end) end
  if Event.Logic then Event.Logic.Subscribe('bankedXpStorage',function()
   ticks=ticks+1;if ticks%25==1 then safe(M.poll) end
  end) end
  if Event.GameStateChanged then Event.GameStateChanged.Subscribe('bankedXpStorage',M.clear) end
- print('[BXP storage] Read-only metal/Archaeology scan enabled. Open each storage once; detection is not yet verified in-game.')
 end
 return M

@@ -1,3 +1,5 @@
+v0.111: Temporary runtime debugging has been removed. Earlier instructions in this document asking for [BXP total probe], [BXP storage], [BXP artefact], [BXP audit] or [xp-data] console output are historical and no longer apply. Known storage detection, native rendering, calculations and useful error reporting remain active. All 27 current local suites pass.
+
 # Historical v0.96 diagnostics
 
 This document describes the v0.96 diagnostic build. Native skill rendering returned in v0.97; later versions use the renderer described in NATIVE_SKILL_RENDERER.md.
