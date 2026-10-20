@@ -221,7 +221,8 @@ local function paint()
     -- An empty native LABEL may report visibleGlobal=false because it has no
     -- drawable content. Reuse it only when its own hidden flag is false and
     -- its parent and the surrounding title/footer are already visible.
-    local emptyAnimaBody=tradeableAnima and row.hidden==false and (row.content or '')==''
+    local ownedAnimaBody=applied==row and row.content==written
+    local emptyAnimaBody=tradeableAnima and row.hidden==false and ((row.content or '')=='' or ownedAnimaBody)
         and row.parent and row.parent.visibleGlobal and header.visibleGlobal and footer.visibleGlobal
     if row.type~=ui.ComponentType.LABEL or (not row.visibleGlobal and not emptyAnimaBody) then
         probe('middle row unavailable');restore();return
@@ -282,6 +283,14 @@ local function paint()
     end
     if continuation then table.insert(lines,1,originalRow) end
     local text=table.concat(lines,'<br>')
+    -- Set content before expanding the frame so the native label can lay out immediately.
+    local current=row.content or ''
+    if current~=text then
+        -- Only take ownership of an empty row; don't replace native details.
+        if current~=originalRow and current~=written then restore();return end
+        applied=row;saved=originalRow;written=text
+        row.content=text
+    end
     local fontOK,font=pcall(function() return config.Font.FromID(header.font) end)
     if not fontOK or not font then
         -- A font lookup failure should not erase supported XP information.
@@ -449,13 +458,6 @@ local function paint()
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
     nativeFrame.apply(bg,header,footer,effectY,box,edit,tradeableAnima)
-    local current=row.content or ''
-    if current~=text then
-        -- Only take ownership of an empty row; don't replace native details.
-        if current~=originalRow and current~=written then restore();return end
-        applied=row;saved=originalRow;written=text
-        row.content=text
-    end
     if tradeableAnima then
         animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content
     end

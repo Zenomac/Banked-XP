@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.140.0**.
+Current plugin version: **0.141.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.141 — Prevent delayed-visibility clear/retry cycle
+
+- Reproduce v0.140 clearing XP when the native client moves the body while visibleGlobal is still false.
+- Accept our already-owned body text through that transition, with hidden=false and visible parent/title/footer still required.
+- Populate the existing body before expanding the frame so text is available during the first layout.
+- Preserve shared non-tradeable formatting and stable-hover reuse. Regression fails on v0.140 and passes with this fix; native-client timing remains to be confirmed.
 
 ## v0.140 — Shared non-tradeable tooltip configuration
 

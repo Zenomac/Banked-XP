@@ -411,3 +411,18 @@ for index,god in ipairs({'Jas','Wen','Bik','Ful','Jas'}) do
 end
 callbacks.MiniMenuOpened()
 print('PASS: direct anima transitions and cursor movement reuse stable native layout')
+
+-- Client repositions the body before visibility catches up: keep our text.
+labels[0].content='Withdraw-All Resonant anima of Wen (tradeable)'
+labels[1].content='';labels[1].hidden=false
+rawset(labels[1],'visibleGlobal',false)
+event.miniMenu.entries[1].componentData.objConfig={id=901,name='Resonant anima of Wen (tradeable)'}
+callbacks.MiniMenuReady(event);callbacks.Draw()
+for frame=1,12 do
+ labels[1].position.x=labels[1].position.x+1
+ callbacks.Draw()
+ assert(labels[1].content:find('XP',1,true),'visibility lag during native relayout must not clear XP')
+end
+callbacks.MiniMenuOpened()
+assert(labels[1].content=='','original empty body restored')
+print('PASS: native relayout with delayed visibility retains XP without clear/retry oscillation')
