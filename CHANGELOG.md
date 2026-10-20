@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.150.0**.
+Current plugin version: **0.151.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.151 — Preserve opaque text RGBA alpha byte
+
+- v0.150 live config readback is 3822571265 (0xE3D7CF01), despite assigning an opaque RGBA colour before alpha=1. The config alpha assignment reduces the stored alpha byte to 1.
+- Remove cfg.alpha=1 and retain the explicit FF alpha byte in cfg.rgba. Component opacity remains separate.
+- Model the observed byte-alpha config behavior in both owned-text fixtures; require glyph alpha 255. This regression fails with the previous assignment.
+- Keep bounded render diagnostics for live confirmation; local tests cannot verify client pixels.
 
 ## v0.150 — Initialize glyph rendering through TextDataConfig
 

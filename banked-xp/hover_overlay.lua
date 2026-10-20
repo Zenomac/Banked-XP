@@ -117,7 +117,8 @@ function M.show(header,offset,width,height,font,spacing,content,styleSource)
     local ok,rgb=pcall(function() return (styleSource or header).rgb end)
     if not ok or type(rgb)~='number' then rgb=0xd8d3c5 end
     cfg.rgba=(rgb%0x1000000)*256+255
-    cfg.alpha=1
+    -- Client log confirms TextDataConfig alpha=1 rewrites RGBA to ...01.
+    -- Keep the explicit opaque FF byte; do not overwrite it via cfg.alpha.
     -- Some beta bindings omit lineSpacing on Text; configure it through the
     -- documented config object when available, otherwise retain its default.
     pcall(function() cfg.lineSpacing=spacing end)
