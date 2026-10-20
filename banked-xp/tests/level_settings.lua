@@ -17,12 +17,20 @@ local settings=require('settings');local policy=require('recipe_policy');local e
 assert(settings.showUnownedIngredients() and not settings.showUnderlevelRecipes(),'migrate ingredient setting, new default off')
 local super={id=950,name='Super adrenaline potion (2)'}
 local r=methods.estimate(super,catalog.lookup(super),{GetSlots=function() return {} end},1)
-assert(r.note=='More recipes unlocked in 11 levels','screenshot exact gap: '..r.note)
+assert(r.note:find('More recipes unlocked in 11 levels',1,true),'screenshot exact gap: '..r.note)
 local arch={id=951,name='Ancient gravel'};local base=catalog.lookup(arch)
 level=77
 assert(#methods.options(arch,base,{})==0,'off hides one level away')
 r=methods.estimate(arch,base,{GetSlots=function() return {} end},1)
-assert(r.note=='More recipes unlocked in 1 level','singular')
+assert(r.note:find('More recipes unlocked in 1 level',1,true),'singular')
+assert(r.levelPreview and r.note:find('<col=ff9900>Level Required: 78</col>',1,true))
+level=73
+r=methods.estimate(arch,base,{GetSlots=function() return {} end},1)
+assert(r.levelPreview and r.note:find('<col=ff0000>Level Required: 78</col>',1,true))
+level=74
+r=methods.estimate(arch,base,{GetSlots=function() return {} end},1)
+assert(r.note:find('<col=ff9900>Level Required: 78</col>',1,true),'four levels orange')
+level=77
 assert(settings.setShowUnderlevelRecipes(true))
 assert(#methods.options(arch,base,{})==1,'on enables one level preview')
 level=76;assert(#methods.options(arch,base,{})==1,'on enables two level preview')

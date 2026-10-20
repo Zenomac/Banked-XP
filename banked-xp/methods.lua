@@ -115,6 +115,21 @@ function M.estimate(obj,base,bank,count)
     outfits.observeBank(counts);outfits.refresh()
     local options=M.options(obj,base,counts)
     local method=chosen(obj,base,options)
+    -- A level-locked item may still show an informational hover. Keep this
+    -- fallback out of the selectable options and skill-summary candidates.
+    local levelPreview=false
+    if not method then
+        local bestGap
+        for _,candidate in ipairs(engine.options(obj)) do
+            local state=policy.state(counts,candidate.skill or base.skill)
+            local level=(candidate.masterCape or candidate.unboostable) and state.baseLevel or state.level
+            local gap=level and candidate.level and candidate.level-level
+            if gap and gap>0 and (settings.showUnownedIngredients() or engine.inputsOwned(obj,candidate,counts))
+                and (not bestGap or gap<bestGap) then
+                method=candidate;bestGap=gap;levelPreview=true
+            end
+        end
+    end
     if not method then
         local result=copy(base)
         if #engine.options(obj)>0 then
@@ -151,6 +166,13 @@ function M.estimate(obj,base,bank,count)
         end
         local boostNote=state.showBoostable and boosts.note(method,state)
         if boostNote then result.note=(result.note and result.note..' | ' or '')..boostNote end
+        local required=method.level
+        local effective=(method.masterCape or method.unboostable) and state.baseLevel or state.level
+        if required and effective and required>effective then
+            local color=required-effective>=5 and 'ff0000' or 'ff9900'
+            result.note=(result.note and result.note..' | ' or '')..'<col='..color..'>Level Required: '..tostring(required):gsub('%.0$','')..'</col>'
+            result.levelPreview=levelPreview
+        end
         local unlock=policy.nextUnlock(engine.options(obj),state)
         if unlock then result.note=(result.note and result.note..' | ' or '')..unlock end
         return result,options

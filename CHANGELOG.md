@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.117.0**.
+Current plugin version: **0.118.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.118
+
+Keep an informational recipe hover when recipes are hidden solely by their level requirements. The closest required-level recipe is previewed, respecting ingredient visibility settings. Missing levels show “Level Required: ###” in orange for gaps of 1–4 and red for gaps of 5 or more; cape/unboostable routes use the base level. Preview fallback recipes are not added to selectable methods or usable banked XP summaries. All 29 suites pass, including requirement colour boundaries.
 
 ## v0.117
 
