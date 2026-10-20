@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.157.0**.
+Current plugin version: **0.158.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.158 — Verified pouch follow-up
+
+- Add direct granite lobster recipes for granite (2kg) and granite (5kg); retain the 500g recipe. Do not assume automatic splitting.
+- Add verified conversion of owned Spirit wolf, Dreadfowl and Steel titan pouches into ten scrolls, with 0.1, 0.1 and 4.9 XP per consumed pouch respectively. Do not re-award infusion XP or recycle newly made pouch outputs into this calculation.
+- Summoning now has 103 routes. Keep unverified scroll conversions excluded: some available references mix creation, summoning and activation XP.
+- The requested Wiki page was blocked by retrieval. Document the partial review and sources rather than claiming a full table audit. Add regression checks for granite inputs and scroll batch accounting.
 
 ## v0.157 — Summoning and shared-item skill choices
 

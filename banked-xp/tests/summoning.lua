@@ -62,3 +62,22 @@ real=99;live=99
 methods.selectSkill(potato.id,'Herblore');assert(estimate().skill=='Herblore','switch back')
 methods.resetMemory();assert(stored.xpMethodsV1,'uses existing privacy-reset storage key')
 print('PASS: Summoning supplies, elder energy, dual use, menu skill switch, persistence, boost restriction and independent summary candidates')
+
+-- Alternate granite is a direct recipe, not an assumed automatic split.
+local granites={}
+for _,r in ipairs(engine.recipes) do
+ if r.skill=='Summoning' and r.method=='Granite lobster pouch' then
+  local name=r.inputs[4].name;granites[name]=true
+  local n=engine.estimate({name=name},r,{[name:lower()]=1,pouch=20,['crimson charm']=20,['spirit shards']=3320})
+  assert(n.craftable==1 and n.total==325.6,'one direct granite input consumes one piece')
+ end
+end
+assert(granites['Granite (500g)'] and granites['Granite (2kg)'] and granites['Granite (5kg)'])
+local scroll
+for _,r in ipairs(engine.options({name='Steel titan pouch'})) do if r.category=='Scroll conversion' then scroll=r end end
+assert(scroll and scroll.xp==4.9 and scroll.output.qty==10,'XP is per pouch, not per scroll')
+local conversion=engine.estimate({name='Steel titan pouch'},scroll,{['steel titan pouch']=10})
+assert(conversion.craftable==100 and math.abs(conversion.total-49)<0.000001,'finished pouches award conversion XP only')
+assert(engine.estimate({name='Steel titan pouch'},scroll,{}).total==0,'conversion requires owned finished pouches')
+assert(#engine.options({name='Steel Titan scroll (Steel of Legends)'})==0,'no repeated conversion of scroll output')
+print('PASS: all granite sizes; finished pouch conversion, per-batch XP and no output recycling')
