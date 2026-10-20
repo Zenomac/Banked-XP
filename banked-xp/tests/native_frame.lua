@@ -10,7 +10,7 @@ for _,size in ipairs({{320,94},{458,260},{180,140}}) do
 end
 print('PASS: native 10px corners, edge geometry and fill insets at base/expanded sizes')
 local parts,dividers,created={},{},{}
-for i=0,8 do parts[i]={type=i==0 and 1 or 3} end
+for i=0,8 do parts[i]={type=i==0 and 1 or 3,hidden=false} end
 local root={xyGlobal={x=0,y=0}}
 local function node()
  local c={}
@@ -42,3 +42,12 @@ for count=0,2 do
 end
 frame.destroy()
 print('PASS: native frame retained with zero, one or two divider components; replacement lifecycle and reuse')
+
+-- Hidden native components must remain hidden; only our own replacements show.
+frame.destroy();created={}
+parts[1].hidden=true
+dividers={[0]={type=3,hidden=true},[1]={type=3,hidden=false}}
+frame.apply(bg,header,footer,nil,box,edit)
+assert(parts[1].hidden and dividers[0].hidden,'native hidden state preserved')
+assert(#created==1 and not created[1].hidden,'plugin-owned rule replaces hidden divider')
+frame.destroy()

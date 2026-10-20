@@ -3,6 +3,8 @@ local logic,state,available,count=nil,nil,false,0
 Event={Logic={Subscribe=function(_,fn) logic=fn end},GameStateChanged={Subscribe=function(_,fn) state=fn end}}
 Player={IsAvailable=function() return available end}
 Chat={AddMessage=function(message) assert(message:find('Diango',1,true) and message:find('for this session',1,true));count=count+1 end}
+PluginPermissions={chatAccess=1}
+Plugin={HasPermission=function() return true end}
 local m=require('startup_notice');m.register();m.register()
 for i=1,50 do logic() end;assert(count==0,'no chat before login')
 available=true
@@ -26,3 +28,5 @@ Chat.AddMessage=function() error('simulated chat failure') end
 m.check();assert(count==3)
 Chat.AddMessage=add;m.check();assert(count==4,'retry after permission/error recovery')
 print('PASS: permission denial, chat failure and successful recovery')
+
+Plugin=nil;m.stateChanged({newState=20});m.stateChanged({newState=30});m.check();assert(count==4,'missing permission API fails closed')

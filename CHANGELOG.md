@@ -1,10 +1,18 @@
 # Changelog
 
-Current plugin version: **0.128.0**.
+Current plugin version: **0.129.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.129 — Guideline preparation
+
+- Preserve native frame/divider visibility; missing or hidden dividers use plugin-owned, click-through sprites.
+- Optional local chat notice now fails closed if permission checks are unavailable.
+- Add explicit saved-preference deletion with failure reporting and memory reset.
+- Include privacy/permissions documentation, submission draft and outstanding owner review checklist.
+- Separate full-folder install packaging from flat Mod.io draft packaging. No moderation approval claimed.
 
 ## v0.128
 

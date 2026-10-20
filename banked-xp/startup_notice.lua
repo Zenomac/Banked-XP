@@ -20,13 +20,12 @@ local function available()
 end
 function M.check()
  if shown or not available() then return end
- if Plugin and Plugin.HasPermission and PluginPermissions then
-  local ok,allowed=pcall(function() return Plugin.HasPermission(PluginPermissions.chatAccess) end)
-  if not ok or not allowed then
-
-   return
-  end
- end
+ -- Fail closed on builds without permission introspection.
+ if not (Plugin and Plugin.HasPermission and PluginPermissions) then return end
+ local granted,allowed=pcall(function()
+  return Plugin.HasPermission(PluginPermissions.chatAccess)
+ end)
+ if not granted or not allowed then return end
  local ok,result=pcall(function() return Chat.AddMessage(message) end)
  if not ok or result==false then
   report('Chat.AddMessage failed: '..tostring(result));return

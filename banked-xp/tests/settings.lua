@@ -90,8 +90,8 @@ for _,c in ipairs(constructors) do
   assert(c.value==true);c.callback(c,false);assert(not settings.showRecipeOnHover())
  end
 end
-assert(checks==6 and root.children[1].spacing==4)
-assert(checks*34+(checks-1)*4+22+32<=280,'all settings fit compact window')
+assert(checks==7 and root.children[1].spacing==4)
+assert(checks*34+(checks-1)*4+22+32<=340,'all settings fit compact window')
 package.loaded.settings=nil;assert(not require('settings').showRecipeOnHover(),'recipe choice persists')
 
 local note

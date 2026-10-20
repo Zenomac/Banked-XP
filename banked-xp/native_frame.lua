@@ -52,15 +52,15 @@ function M.apply(bg,header,footer,detailY,box,edit)
     for i=0,8 do
         local b=bounds[i]
         box(parts[i],bg.xyGlobal.x+b[1],bg.xyGlobal.y+b[2],b[3],b[4])
-        edit(parts[i],'hidden',false)
+        -- Never unhide a native component; the client owns its visibility.
     end
     -- Join the inner border instead of leaving a gap at each end.
     local x,width=bg.xyGlobal.x+1,bg.width-2
     local function divider(c,key,y)
-        if c and c.type==ui.ComponentType.SPRITE then
-            box(c,x,y,width,2);edit(c,'hidden',false)
+        if c and c.type==ui.ComponentType.SPRITE and c.hidden~=true then
+            box(c,x,y,width,2)
         else
-            if c then edit(c,'hidden',true) end
+            -- Missing/hidden native rules stay untouched. Draw our own rule.
             spriteRule(key,x,y,width)
         end
     end

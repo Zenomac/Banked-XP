@@ -1,5 +1,7 @@
 local M={}
-local values={showUnownedIngredients=false,showUnderlevelRecipes=false,showBoostableRecipes=false,showRecipeOnHover=true,includeOutfitBonuses=true,includeHandEquipment=true}
+local defaults={showUnownedIngredients=false,showUnderlevelRecipes=false,showBoostableRecipes=false,showRecipeOnHover=true,includeOutfitBonuses=true,includeHandEquipment=true}
+local values={}
+for key,value in pairs(defaults) do values[key]=value end
 local ok,stored=pcall(function() return PersistentDB:GetStructuredData('xpSettingsV1') end)
 if ok and type(stored)=='table' then
     for key in pairs(values) do if type(stored[key])=='boolean' then values[key]=stored[key] end end
@@ -23,4 +25,9 @@ function M.includeOutfitBonuses() return values.includeOutfitBonuses end
 function M.setIncludeOutfitBonuses(v) return set('includeOutfitBonuses',v) end
 function M.includeHandEquipment() return values.includeHandEquipment end
 function M.setIncludeHandEquipment(v) return set('includeHandEquipment',v) end
+-- Memory reset does not write preferences back after an erasure.
+function M.resetMemory()
+    for key,value in pairs(defaults) do values[key]=value end
+    require('bank').invalidate()
+end
 return M

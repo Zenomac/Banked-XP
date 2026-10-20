@@ -38,6 +38,13 @@ function M.select(objID,id)
     if not ok or not saved then print('[banked-xp] Shared method selected for this session; preference could not be saved.') end
     bankData.invalidate()
 end
+-- Called only by the explicit local-data reset control.
+function M.resetMemory()
+    choices={}
+    shared={}
+    revision=revision+1
+    bankData.invalidate()
+end
 local function identity(obj)
     local name=bankData.normalize(obj.name)
     local grimy=name:match('^grimy (.+)$')

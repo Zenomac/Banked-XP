@@ -49,6 +49,25 @@ function M.build(event)
     note.maxLines=1;note.clickthrough=true
     local sixth=check(panel,'Include equipped skilling tools.',settings.includeHandEquipment(),
         'bankedXpHandEquipment',settings.setIncludeHandEquipment)
+    -- This checkbox is a momentary action, reset immediately after activation.
+    local erase
+    erase=check(panel,'Clear saved preferences (resets settings).',false,'bankedXpErase',function(value)
+        if not value then return true end
+        local ok=require('privacy').erasePreferences()
+        first.value=settings.showUnownedIngredients()
+        second.value=settings.showUnderlevelRecipes()
+        third.value=settings.showBoostableRecipes()
+        fourth.value=settings.showRecipeOnHover()
+        fifth.value=settings.includeOutfitBonuses()
+        sixth.value=settings.includeHandEquipment()
+        erase.value=false
+        if ok then
+            print('Banked XP: saved preferences cleared. Disable the plugin to release session observations; clear before uninstalling.')
+        else
+            print('Banked XP: some saved preferences could not be deleted. Retry before uninstalling.')
+        end
+        return ok
+    end)
     return first,second,third,fourth,fifth,sixth
 end
 function M.register()
