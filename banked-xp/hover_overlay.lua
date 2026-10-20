@@ -1,6 +1,7 @@
 -- One owned layer inside the native tooltip content branch (static 1477:902).
 local M={}
 local owner,layer,label,plan,blocked
+local canvas,canvasKey
 local inspected=false
 local CATEGORY=148 -- Client IDs are bounded to 0..256; avoid native category zero.
 local function root()
@@ -9,6 +10,7 @@ local function root()
 end
 local function drop()
     owner,layer,label,plan=nil,nil,nil,nil
+    canvas,canvasKey=nil,nil
 end
 local function live(current)
     if not layer or not current or current~=owner then return false end
@@ -17,7 +19,9 @@ local function live(current)
     local ok,found=pcall(function() return current:GetChild(CATEGORY,0) end)
     if not ok or found~=layer then return false end
     local textOK,text=pcall(function() return found:GetChild(CATEGORY,1) end)
-    return textOK and text==label
+    if not textOK or text~=label then return false end
+    local canvasOK,foundCanvas=pcall(function() return found:GetChild(CATEGORY,2) end)
+    return canvasOK and foundCanvas==canvas
 end
 function M.hide()
     plan=nil
@@ -97,7 +101,10 @@ function M.show(header,offset,width,height,font,spacing,content,styleSource)
             text.hidden=false
             text.alignHorizontal=ui.AlignMode.CENTRE;text.alignVertical=ui.AlignMode.TOPLEFT
             text.maxLines=0
-            layer,label=created,text
+            local probe=ui.Canvas.new(created,CATEGORY,2)
+            probe:SetPos(0,0);probe.rgba=0xffffffff;probe.alpha=1
+            probe.hidden=false;probe.clickthrough=true
+            layer,label,canvas=created,text,probe
         end)
         if not ok then
             if created then pcall(function() created:Destroy() end) end
@@ -131,6 +138,18 @@ function M.show(header,offset,width,height,font,spacing,content,styleSource)
     if label.content~=content then label.content=content end
     plan={offset=offset,width=width,height=height}
     if not M.sync(header) then return false end
+    -- Temporary visual diagnostic: same bounds and parent, independent drawing
+    -- path, no markup/config objects, and one known-visible native font.
+    local key=table.concat({width,height,header.font,font},':')
+    if canvasKey~=key then
+        canvas:SetSize(width,height)
+        canvas:Clear()
+        canvas:AddOutline(1,1,math.max(1,width-2),math.max(1,height-2),2,0x00ffffff)
+        canvas:AddText(8,20,'BXP test: heading font',header.font,0xffffffff)
+        canvas:AddText(8,44,'BXP test: body font',font,0xffffffff)
+        canvasKey=key
+    end
+    canvas:MoveToFront()
     layer:MoveToFront()
     layer.hidden=false
     inspect(header)

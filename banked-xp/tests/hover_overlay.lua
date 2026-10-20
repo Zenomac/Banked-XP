@@ -45,11 +45,21 @@ ui.Text.new=function(...)
  end
  return c
 end
+local canvasCreates=0
+ui.Canvas={new=function(parent,category,dynamic)
+ assert(category==148 and dynamic==2)
+ canvasCreates=canvasCreates+1
+ local c=object(parent);parent.children[category..':'..dynamic]=c
+ function c:Clear() self.draws={} end
+ function c:AddOutline(...) self.draws[#self.draws+1]={'outline',...} end
+ function c:AddText(...) self.draws[#self.draws+1]={'text',...} end
+ return c
+end}
 local savedPrint=print
 local renderLogs={}
 print=function(message) if message:find('[BXP render]',1,true) then renderLogs[#renderLogs+1]=message end end
 local m=require('hover_overlay')
-local header={visibleGlobal=true,xyGlobal={x=20,y=40}}
+local header={font=28,visibleGlobal=true,xyGlobal={x=20,y=40}}
 assert(m.show(header,20,200,80,13,16,'XP'))
 local body=m.current()
 assert(body.glyphAlpha==255,'glyph opacity must be configured independently of component opacity')
@@ -58,7 +68,9 @@ assert(body.x==0 and body.y==0 and body.parent.alpha==1)
 assert(m.show(header,20,200,80,13,16,'XP',{rgb=0xaabbcc}))
 assert(body.rgba==0xaabbccff,'native body tint copied with opaque alpha')
 for i=1,100 do header.xyGlobal.x=i;assert(m.sync(header)) end
-assert(creates==1,'cursor movement does not allocate')
+assert(creates==1 and canvasCreates==1,'cursor movement does not allocate')
+local probe=body.parent:GetChild(148,2)
+assert(#probe.draws==3 and probe.draws[2][5]==28 and probe.draws[3][5]==13,'two font controls and outline, no accumulated draw commands')
 assert(#renderLogs==3,'render diagnostics run once, not on cursor updates or repeated shows')
 assert(renderLogs[1]:find('owned',1,true) and renderLogs[2]:find('native',1,true))
 print=savedPrint

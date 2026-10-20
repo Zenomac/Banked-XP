@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.151.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.152.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -36,7 +36,7 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.151.0**. [Complete changelog — v0.1 through v0.151](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.152.0**. [Complete changelog — v0.1 through v0.152](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
@@ -56,4 +56,4 @@ See the [API usage audit](docs/API_USAGE.md), [skill totals](docs/SKILL_TOTALS.m
 
 Read [local data and permissions](banked-xp/PRIVACY.md), [submission draft and blockers](docs/SUBMISSION.md), and [code review map](docs/CODE_REVIEW.md). This development build is not claimed to be Jagex-approved. A real author contact email and personal/provenance review remain required before submission.
 
-**v0.151 text configuration trial:** Tradeable anima uses one reusable plugin-owned layer inside static tooltip content container 1477:902, alongside the native text. It uses bounded category 148 (v0.148 used an oversized ID and could not create the layer), the normal body font and layout planner, and follows the native title. Every reuse checks live child membership before accessing owned components, including when the client rebuilds children under an unchanged parent. Text is initialized through TextDataConfig / SetConfig with opacity encoded as FF in RGBA; the beta config alpha setter is not used. Timing and one-time render diagnostics remain enabled. In-game appearance and stability still require confirmation.
+**v0.152 visual diagnostic:** Tradeable anima temporarily draws a cyan outline and two plain-text font controls on a reusable canvas inside the tooltip body. This separates canvas drawing from the blank Text component, using both the native heading font and body font. This is a diagnostic build, not a confirmed fix. Send a screenshot of the hover itself showing which controls appear.

@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.151.0**.
+Current plugin version: **0.152.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.152 — Visual canvas controls for the blank body
+
+- v0.151 live readback confirms text alpha 255; the user still sees a blank body. Opacity was not sufficient to resolve rendering.
+- Add one reusable, click-through diagnostic canvas in the same owned layer: cyan outline plus plain text with the native heading font and body font, using direct AddText arguments.
+- Cache draw commands by dimensions/fonts and validate the live canvas before reuse; its parent owns cleanup. Preserve existing tooltip calculations and native content.
+- This is a temporary visual diagnostic. A screenshot of the actual hover is required to distinguish area visibility, font rendering and Text-specific failure.
 
 ## v0.151 — Preserve opaque text RGBA alpha byte
 

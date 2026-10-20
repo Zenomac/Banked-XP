@@ -393,6 +393,16 @@ ui.Text.new=function(...)
  end
  return c
 end
+ui.Canvas={new=function(parent,category,dynamic)
+ assert(category==148 and dynamic==2)
+ local c=component(1001,parent,0,0,0,0)
+ local get=parent.GetChild
+ function parent:GetChild(cat,dyn) if cat==category and dyn==dynamic then return c end;return get(self,cat,dyn) end
+ function c:Clear() self.drawCount=0 end
+ function c:AddOutline(...) self.drawCount=self.drawCount+1 end
+ function c:AddText(...) self.drawCount=self.drawCount+1 end
+ return c
+end}
 local overlay=require('hover_overlay')
 selected.inputPerPotion=3;selected.xpUnit='arrow'
 selected.note='Limited by: Dinarrow | Requires: Standard imbuing | Outfit: +0%'
