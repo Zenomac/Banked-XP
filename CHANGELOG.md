@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.136.0**.
+Current plugin version: **0.137.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.137 — Observed non-visible middle-row workaround
+
+- User probe establishes visible title/footer but middle label hidden=false and visibleGlobal=false.
+- Render tradeable anima details within the existing visible title label, expanding existing frame components only; never create or unhide components on this path.
+- Preserve and restore the original title. Test the exact observed visibility state, first/repeated draws, all four gods and stable width.
+- All 35 local suites pass. Live stability and appearance remain unverified; v0.134 is the recovery fallback.
 
 ## v0.136 — Read-only tradeable hover diagnostics
 

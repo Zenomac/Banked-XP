@@ -348,30 +348,29 @@ callbacks.MiniMenuOpened();labels[4]=nil
 print('PASS: 100 client-interleaved relayouts keep native stat offsets and tooltip width stable')
 
 
--- Native-only tradeable hovers: no constructor is permitted on this path.
+
+-- Reproduce the probe: visible title/footer, middle label visibleGlobal=false.
 callbacks.MiniMenuOpened()
-ui.Text={new=function() error('no tooltip text children') end}
-ui.Layer={new=function() error('no anima layer children') end}
-ui.Sprite={new=function() error('no anima sprite children') end}
+ui.Text={new=function() error('no text constructors') end}
+ui.Layer={new=function() error('no layer constructors') end}
+ui.Sprite={new=function() error('no sprite constructors') end}
+local expectedWidth
 for cycle=1,3 do
  for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
   selected.total=1000+index
-  local split=index%2==0
-  local title='Withdraw-All Resonant anima of '..god..(split and '' or ' (tradeable)')
-  labels[0].content=title
-  labels[1].content=split and '(tradeable)' or '';labels[1].hidden=false
+  local title='Withdraw-All Resonant anima of '..god..' (tradeable)'
+  labels[0].content=title;labels[1].content='';labels[1].hidden=false
+  rawset(labels[1],'visibleGlobal',false)
   event.miniMenu.entries[1].componentData.objConfig={id=600+index,name='Resonant anima of '..god..' (tradeable)'}
   callbacks.MiniMenuReady(event)
-  for frame=1,10 do
+  for frame=1,20 do
    callbacks.Draw()
-   assert(labels[1].content:find('XP',1,true),'native-only anima XP on first and repeated draws')
-   assert(labels[0].content==title,'native title unchanged')
-   if split then assert(labels[1].content:find('(tradeable)',1,true),'suffix preserved') end
+   assert(labels[0].content:find('XP',1,true),'XP in visible native title on first and repeated draws')
+   assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'middle label untouched')
+   if frame==1 then expectedWidth=bg.width else assert(bg.width==expectedWidth,'width stable') end
   end
+  callbacks.MiniMenuOpened()
+  assert(labels[0].content==title,'native title restored')
  end
 end
-callbacks.MiniMenuOpened();assert(labels[1].content=='(tradeable)','native continuation restored')
-labels[1].content='';labels[1].hidden=true
-callbacks.MiniMenuReady(event);callbacks.Draw();assert(labels[1].hidden and labels[1].content=='','hidden row stays native')
-callbacks.MiniMenuOpened()
-print('PASS: all four tradeable anima reuse visible native rows only; no constructors, title changes or unhiding')
+print('PASS: observed hidden-middle layout uses title only; no constructors, unhiding or horizontal growth')

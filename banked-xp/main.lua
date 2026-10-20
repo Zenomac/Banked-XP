@@ -178,6 +178,10 @@ local function paint()
     local function probe(reason)
         animaProbe.report(selectedName,reason,{[0]=header,[1]=row,[2]=footer,[3]=optionalRow(3)})
     end
+    if require('bank').normalize(selectedName):match('^resonant anima of .+ %(tradeable%)$') then
+        if not require('anima_hover').render(header,footer,selected,selectedName,quantity,box,edit,resize) then restore() end
+        return
+    end
     if not header or not row or not footer then probe('missing component');restore();return end
     if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then probe('middle row unavailable');restore();return end
     -- Reuse only a visible native label. A tradeable suffix is preserved in
