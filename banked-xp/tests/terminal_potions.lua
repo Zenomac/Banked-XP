@@ -2,6 +2,7 @@ package.path='./?.lua;banked-xp/?.lua;'..package.path
 local reportDir=assert(package.searchpath('main',package.path)):gsub('main%.lua$','data/')
 -- Existing potion audit intentionally scopes the recipe provider to Herblore.
 package.preload.skill_recipes=function() return {} end
+package.preload.summoning_recipes=function() return {} end
 PersistentDB={GetStructuredData=function() return {} end,SetStructuredData=function() return true end}
 Player={GetLevelGameplay=function() return 120 end,GetLevelCapped=function() return 120 end};SkillType={HERBLORE=15,FIREMAKING=11}
 local engine=require('recipe_engine');local catalog=require('catalog');local methods=require('methods')

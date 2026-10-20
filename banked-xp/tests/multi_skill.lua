@@ -60,7 +60,7 @@ local chosenRoutes={
  find('Smithing','Bronze bar'),gem,
  find('Fletching','Willow shortbow (unstrung)'),
  restore,find('Firemaking','Elder logs'),find('Cooking','Shark'),
- find('Construction','Oak chair')}
+ find('Construction','Oak chair'),find('Summoning','Spirit wolf pouch')}
 for _,r in ipairs(engine.recipes) do
  if r.skill=='Farming' and r.inputs[1].name=='Guam seed' then chosenRoutes[#chosenRoutes+1]=r end
  if r.primalYield==1 then chosenRoutes[#chosenRoutes+1]=r end
@@ -90,7 +90,7 @@ local owned={['maple logs']=1000,['bowstring']=1000,['headless arrow']=1000,['fe
 methods.options(log,base,owned) -- warm per-bank recipe cache
 local started=os.clock()
 for _=1,100 do methods.options(log,base,owned) end
-print(string.format('PASS: ten-skill bank summary integration; 100 cached mixed-skill hover option calculations in %.3fs',os.clock()-started))
+print(string.format('PASS: eleven-skill bank summary integration; 100 cached mixed-skill hover option calculations in %.3fs',os.clock()-started))
 local outfitData=require('outfit_data');local outfits=require('outfits')
 local gear={}
 for _,name in ipairs(outfitData.Crafting.pieces) do gear[#gear+1]={obj={name=name},count=1} end

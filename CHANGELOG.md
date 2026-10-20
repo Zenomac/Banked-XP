@@ -1,10 +1,18 @@
 # Changelog
 
-Current plugin version: **0.156.0**.
+Current plugin version: **0.157.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.157 — Summoning and shared-item skill choices
+
+- Add 98 Summoning routes: 92 familiar pouches, six flower variants included, plus blank binding contracts. Require empty pouches, the correct charms, shards or elder energy, and tertiary ingredients. Use real levels for infusion, with no temporary-boost unlocks.
+- Add Summoning to skill and combined XP summaries using the existing shared-supply planner.
+- Add saved per-item `BXP: Use <skill>` right-click choices for all multi-skill ingredients. Show recipes for the active skill and append a `Dual-use:` hover note. Preserve all candidate skills for summaries and shared recipe defaults within the selected skill.
+- Keep the confirmed v0.156 native tooltip renderer and version-at-load console message. No new network requests, permissions or polling loops.
+- Cover ingredient shortages, elder energy, skill switching/persistence, summary independence and real-level restrictions with regression tests. In-game confirmation is pending.
 
 ## v0.156 — Divider above the options line
 

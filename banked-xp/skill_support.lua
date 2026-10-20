@@ -1,5 +1,5 @@
 local M={}
-M.names={'Herblore','Smithing','Crafting','Fletching','Archaeology','Farming','Firemaking','Cooking','Prayer','Construction'}
+M.names={'Herblore','Smithing','Crafting','Fletching','Archaeology','Farming','Firemaking','Cooking','Prayer','Construction','Summoning'}
 M.supported={};for _,name in ipairs(M.names) do M.supported[name]=true end
 function M.level(skill,method)
     local ok,value=pcall(function()

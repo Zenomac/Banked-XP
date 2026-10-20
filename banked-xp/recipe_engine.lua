@@ -4,6 +4,7 @@ local bank=require('bank')
 local recipes={}
 for _,row in ipairs(require('wiki_recipes')) do recipes[#recipes+1]=row end
 for _,row in ipairs(require('skill_recipes')) do recipes[#recipes+1]=row end
+for _,row in ipairs(require('summoning_recipes')) do recipes[#recipes+1]=row end
 local preparations=require('wiki_preparations')
 local herbs=require('herbs').data
 local function copy(t) local c={};for k,v in pairs(t) do c[k]=v end;return c end
@@ -91,7 +92,7 @@ for _,group in pairs(groups) do
         local present={}
         for _,i in ipairs(r.inputs) do present[i.name]=true end
         for name in pairs(common) do if not present[name] then common[name]=nil end end
-        if r.unboostable then hasImproved=true end
+        if r.unboostable and r.skill~='Summoning' then hasImproved=true end
         if #r.inputs==1 and r.inputs[1].name:find('(unfinished)',1,true) then hasUnfinished=true
         else
             for _,i in ipairs(r.inputs) do

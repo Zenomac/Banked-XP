@@ -1,8 +1,8 @@
 {
   "name": "Banked XP",
-  "version": "0.156.0",
+  "version": "0.157.0",
   "author": "Zenomac",
-  "description": "Banked base XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method. Optional XP estimates include detected worn skilling outfits.",
+  "description": "Banked base XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer, Construction and Summoning. Coverage varies by item and method. Optional XP estimates include detected worn skilling outfits.",
   "contactEmailAddress": "example@example.com",
   "requiredDependencies": {},
   "optionalDependencies": {},

@@ -1,6 +1,7 @@
 package.path='./?.lua;banked-xp/?.lua;'..package.path
 -- Existing potion audit intentionally scopes the recipe provider to Herblore.
 package.preload.skill_recipes=function() return {} end
+package.preload.summoning_recipes=function() return {} end
 -- The client binding rejects extra arguments that stock Lua ignores.
 local nativeLower=string.lower
 string.lower=function(value,...)

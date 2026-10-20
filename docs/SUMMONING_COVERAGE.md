@@ -1,0 +1,29 @@
+# Summoning coverage — introduced in v0.157
+
+The local catalog adds 98 routes: 92 distinct familiar pouches (the praying mantis has six flower recipes) and one blank binding-contract recipe. These records feed the existing ingredient planner, hover display, right-click recipes and eleven-skill summaries. No HTTP requests are made by this feature.
+
+## Data sources
+
+- [RuneHQ Summoning guide](https://www.runehq.com/skill/summoning): pouch names, levels, base infusion XP, charms, shard counts and tertiary ingredients. Retrieved 20 October 2026. Factual values were extracted; prose was not copied.
+- [RuneHQ binding contract](https://www.runehq.com/item/binding-contract): 10 XP for an empty contract; pouch, blue charm, 200 shards, two Blood of Orcus and two Hellfire metal. Dagon Bye is required. The level 45 requirement is for the lowest familiar, not blank-contract manufacture.
+- [Nightmare muspah pouch](https://runescape.fandom.com/wiki/Nightmare_muspah_pouch): 150 elder energy, rather than spirit shards; elder-charm pouches use this energy input.
+- [Praying mantis pouch](https://runescape.fandom.com/wiki/Praying_mantis_pouch): flowers except black and white. Red, yellow, blue, purple, orange and mixed variants are included.
+- [Summoning](https://runescape.fandom.com/wiki/Summoning): pouch creation uses the absolute skill level, not a temporary boost.
+- [Iron ingot](https://secure.runescape.com/m=itemdb_rs/Iron+ingot/viewitem?obj=47072) and [Steel ingot](https://runescape.wiki/w/Steel_ingot): titan recipes consume ingots. Raw bars are not treated as ingots without preparation.
+- [Marigolds](https://runescape.wiki/w/Marigolds): Bull ant tertiary. Limpwurt roots have no Summoning route in this catalog.
+
+The current Wiki main table was blocked from retrieval. RuneHQ's table was cross-checked against available individual-item references; this is not a claim of a complete audit of every current Summoning action.
+
+## Calculation boundaries
+
+- Base infusion XP only. No XP for using familiars, transforming pouches into scrolls, killing monsters to fill binding contracts, or recycling pouches into shards.
+- Meerkat and ghast pouches are excluded from infusion because they are acquired rather than infused.
+- Quest/mystery requirements are notes, not completion checks. Estimates assume those unlocks are satisfied.
+- Granite lobster uses banked granite (500g). Larger granite needs splitting first. Iron/steel titan uses banked ingots; forging them is not chained automatically.
+- No charm/shard-saving probabilities, Summoning cape effects, Amlodd bonuses, or Shaman outfit bonuses are added by this change.
+- Ingredient and level settings still filter recipes. A skill can be listed as a dual use even if its ingredients or level requirements are currently missing. Selecting it does not bypass those settings or produce XP from missing supplies.
+- Per-skill totals represent alternative uses of shared supplies. Combined total XP uses one shared budget. A saved item skill affects its hover/menu, not which skills the summary evaluates.
+
+## Validation
+
+Automated tests cover all imported recipes with full/empty supplies, selected skill persistence, actual ingredient shortages, elder-energy substitution, unboostable infusion levels, cross-skill summary candidates, and existing native hover regressions. Client rendering and item names still need in-game confirmation.

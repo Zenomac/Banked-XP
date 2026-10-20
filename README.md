@@ -1,8 +1,8 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.156.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.157.0**.
 
-Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
+Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer, Construction and Summoning. Coverage varies by item and method.
 
 ## Install
 
@@ -16,6 +16,8 @@ The repository root is not the plugin folder: use the nested `banked-xp` directo
 ## Features
 
 - Bank-item hover XP estimates and selectable recipe methods.
+- Summoning pouch infusion and blank binding-contract estimates, capped by owned pouches, charms, shards/elder energy and other ingredients.
+- Right-click **BXP: Use <skill>** on shared ingredients to choose the skill shown on hover. The choice is saved per item; **Dual-use:** lists its supported skills. Recipe choices still follow your level and ingredient settings.
 - Supply-aware ingredient checks and shared method preferences.
 - Level and optional boost filtering, with level-locked hover previews and coloured requirement warnings.
 - Detected worn outfit and supported equipped-tool bonuses.
@@ -34,9 +36,11 @@ Metal-bank access uses the documented container. Archaeology container discovery
 
 Totals use supported recipes and a deterministic greedy allocation of shared supplies within each skill. They are estimates, not a guaranteed global optimum or XP/hour claim. Different individual skill totals represent alternative uses of shared items. The total-XP hover instead uses one shared supply budget across supported skills; it includes Archaeology artefact potential assuming missing materials will be obtained. Stored bonus XP is not applied to the estimates.
 
+Summoning currently covers 92 familiar pouches (including six flower variants for praying mantis) and blank binding contracts: 98 routes. Scroll conversion, familiar-summoning XP, kills to fill contracts, and resource-saving effects are not included. Quest/mystery requirements are shown as notes; completion is not detected. See [Summoning coverage](docs/SUMMONING_COVERAGE.md).
+
 ## Version history
 
-The current plugin version is **0.156.0**. [Complete changelog — v0.1 through v0.156](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.157.0**. [Complete changelog — v0.1 through v0.157](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 

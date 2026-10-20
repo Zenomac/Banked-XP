@@ -75,7 +75,35 @@ function M.options(obj,base,counts)
     end
     return result
 end
-local function chosen(obj,base,options)
+-- Skill preference is local to this item. Keep recipe availability unfiltered
+-- for summaries and for switching back when the selected skill lacks supplies.
+local skillCache={}
+function M.skills(obj,base)
+    local key=bankData.normalize(obj.name)..':'..tostring(base and base.skill)
+    if skillCache[key] then return skillCache[key] end
+    local seen,list={},{}
+    local function add(skill) if skill and not seen[skill] then seen[skill]=true;list[#list+1]=skill end end
+    add(base and base.skill)
+    for _,r in ipairs(engine.options(obj)) do add(r.skill) end
+    table.sort(list);skillCache[key]=list
+    return list
+end
+local function forSkill(options,skill)
+    if not skill then return options end
+    local result={}
+    for _,r in ipairs(options) do if r.skill==skill then result[#result+1]=r end end
+    return result
+end
+local function preferredSkill(obj) return choices['skill:'..tostring(obj.id)] end
+function M.selectSkill(objID,skill)
+    if not require('skill_support').supported[skill] then return end
+    choices['skill:'..tostring(objID)]=skill
+    revision=revision+1
+    pcall(function() PersistentDB:SetStructuredData('xpMethodsV1',choices) end)
+    bankData.invalidate()
+end
+local function chosen(obj,base,options,ignoreSkill)
+    if not ignoreSkill then options=forSkill(options,preferredSkill(obj)) end
     for _,id in ipairs(shared) do
         for _,c in ipairs(options) do if c.id==id then return c end end
         local replacement=policy.replacement(id,options)
@@ -101,7 +129,7 @@ function M.summaryMethod(obj,base,counts)
             available[#available+1]=r
         end
     end
-    return chosen(obj,base,available)
+    return chosen(obj,base,available,true)
 end
 -- Skill totals use all usable methods, independently of item menu choices.
 function M.summaryCandidates(obj,base,counts)
@@ -121,6 +149,8 @@ function M.estimate(obj,base,bank,count)
     local counts=bankData.snapshot(bank)
     outfits.observeBank(counts);outfits.refresh()
     local options=M.options(obj,base,counts)
+    local requestedSkill=preferredSkill(obj)
+    local candidates=forSkill(engine.options(obj),requestedSkill)
     local method=chosen(obj,base,options)
     -- A level-locked item may still show an informational hover. Keep this
     -- fallback out of the selectable options and skill-summary candidates.
@@ -129,7 +159,7 @@ function M.estimate(obj,base,bank,count)
     -- Arrow tips should remain identifiable even when no complete recipe is
     -- available. This informational route never enters menus or summaries.
     if not method and (bankData.normalize(obj.name):match('arrow tips?$') or bankData.normalize(obj.name):match('^resonant anima of ')) then
-        for _,candidate in ipairs(engine.options(obj)) do
+        for _,candidate in ipairs(candidates) do
             if (candidate.category=='Specialist arrow tips' or candidate.category=='Resonant anima') and #candidate.inputs==2 then
                 method=candidate;ingredientPreview=true;break
             end
@@ -137,7 +167,7 @@ function M.estimate(obj,base,bank,count)
     end
     if not method then
         local bestGap
-        for _,candidate in ipairs(engine.options(obj)) do
+        for _,candidate in ipairs(candidates) do
             local state=policy.state(counts,candidate.skill or base.skill)
             local level=(candidate.masterCape or candidate.unboostable) and state.baseLevel or state.level
             local gap=level and candidate.level and candidate.level-level
@@ -149,17 +179,18 @@ function M.estimate(obj,base,bank,count)
     end
     if not method then
         local result=copy(base)
-        if #engine.options(obj)>0 then
+        result.skill=requestedSkill or base.skill
+        if #candidates>0 then
             result.method='No available recipes';result.xp=0;result.total=0
-            local level=require('skill_support').level(base.skill,'GetLevelGameplay')
+            local level=require('skill_support').level(result.skill,'GetLevelGameplay')
             local ok=level~=nil
-            if not ok or type(level)~='number' or level<1 then result.note=base.skill..' level unavailable'
-            elseif #policy.filter(engine.options(obj),policy.state(counts,base.skill))==0 then
-                result.note=policy.nextUnlock(engine.options(obj),policy.state(counts,base.skill)) or 'No recipes available at your level'
+            if not ok or type(level)~='number' or level<1 then result.note=result.skill..' level unavailable'
+            elseif #policy.filter(candidates,policy.state(counts,requestedSkill or base.skill))==0 then
+                result.note=policy.nextUnlock(candidates,policy.state(counts,requestedSkill or base.skill)) or 'No recipes available at your level'
             elseif not counts then result.note='Bank supplies unavailable'
             else
                 result.note='Missing or insufficient bank ingredients; enable unowned ingredients in settings to show more recipes'
-                local unlock=policy.nextUnlock(engine.options(obj),policy.state(counts,base.skill))
+                local unlock=policy.nextUnlock(candidates,policy.state(counts,requestedSkill or base.skill))
                 if unlock then result.note=result.note..' | '..unlock end
             end
         else result.total=count*(base.xp or 0) end
@@ -203,7 +234,7 @@ function M.estimate(obj,base,bank,count)
             result.method=result.method:gsub('(%[Lv %d+%])','<col='..color..'>%1</col>')
             result.levelPreview=levelPreview
         end
-        local unlock=policy.nextUnlock(engine.options(obj),state)
+        local unlock=policy.nextUnlock(candidates,state)
         if unlock then result.note=(result.note and result.note..' | ' or '')..unlock end
         return result,options
     end
@@ -226,7 +257,7 @@ function M.estimate(obj,base,bank,count)
         if result.xp then result.total=count*result.xp end
     else result.xp=method.xp;result.total=count*method.xp end
     if base.skill=='Herblore' then
-        local unlock=policy.nextUnlock(engine.options(obj),policy.state(counts,base.skill))
+        local unlock=policy.nextUnlock(candidates,policy.state(counts,requestedSkill or base.skill))
         if unlock then result.note=(result.note and result.note..' | ' or '')..unlock end
     end
     return result,options
@@ -242,6 +273,17 @@ function M.addMenu(menu,obj,options,base)
     menuStyle.prepare(menu)
     local nameColor=menuStyle.color(menu)
     local selected=chosen(obj,base or {},options)
+    local skills=M.skills(obj,base)
+    local active=preferredSkill(obj) or (selected and selected.skill) or (base and base.skill)
+    if #skills>1 then
+        for _,skill in ipairs(skills) do
+            local target=skill
+            local label='<col=00ffff>BXP</col>: Use '..skill
+            if skill==active then label=label..' [<col=00ff00>selected</col>]' end
+            addEntry(menu,label,function() M.selectSkill(obj.id,target);pages[obj.id]=1 end)
+        end
+        options=forSkill(options,active)
+    end
     local size=10
     local lastPage=math.max(1,math.ceil(#options/size))
     local page=math.min(pages[obj.id] or 1,lastPage)
@@ -265,6 +307,12 @@ local baseEstimate=M.estimate
 function M.estimate(...)
     local result,options=baseEstimate(...)
     result=require('archaeology').decorate(result,options,...)
+    local obj,base=...
+    local skills=M.skills(obj,base)
+    if result and #skills>1 then
+        result=copy(result)
+        result.note=(result.note and result.note..' | ' or '')..'Dual-use: '..table.concat(skills,' / ')
+    end
     if (not options or #options==0) and not (result and result.artefactPreview) then return result,options end
     return require('hand_equipment').decorate(outfits.decorate(result)),options
 end
