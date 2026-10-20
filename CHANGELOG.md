@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.160.0**.
+Current plugin version: **0.161.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.161 — Centered settings reset button
+
+- Replace the Clear saved preferences checkbox with a native button, horizontally centered and anchored 12px above the settings window bottom.
+- Reserve a separate footer area below the six settings and outfit note. Preserve the reset operation and refresh visible checkbox values after clicking.
+- Verify centering across window widths, bottom clearance, non-overlap and button callback without checkbox-value arguments.
 
 ## v0.160 — Fit all settings in the native window
 

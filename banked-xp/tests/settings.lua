@@ -58,8 +58,8 @@ local function make(kind,parent)
  constructors[#constructors+1]=c
  return c
 end
-ui={Panel={new=function(p) return make('panel',p) end},Text={new=function(p) return make('text',p) end},Check={new=function(p) return make('check',p) end},AlignMode={TOPLEFT=0},CheckAlignMode={LEFT=1},Hook={ONBUTTONPRESSED=2}}
-id={StyleSheet={DEFAULT=1,CHECKBOX_DEFAULT=2}}
+ui={Button={new=function(p) return make('button',p) end},Panel={new=function(p) return make('panel',p) end},Text={new=function(p) return make('text',p) end},Check={new=function(p) return make('check',p) end},AlignMode={TOPLEFT=0},CheckAlignMode={LEFT=1},Hook={ONBUTTONPRESSED=2}}
+id={StyleSheet={DEFAULT=1,CHECKBOX_DEFAULT=2,BUTTON_DEFAULT=3}}
 local settingsUI=require('settings_ui');settingsUI.register();assert(callbacks.bankedXpSettings)
 local root={children={}};callbacks.bankedXpSettings({component=root})
 local check,status
@@ -90,7 +90,7 @@ for _,c in ipairs(constructors) do
   assert(c.value==true);c.callback(c,false);assert(not settings.showRecipeOnHover())
  end
 end
-assert(checks==7)
+assert(checks==6)
 local panel=root.children[1]
 local contentHeight=0
 for _,child in ipairs(panel.children) do contentHeight=contentHeight+child.size[2] end
@@ -98,7 +98,16 @@ contentHeight=contentHeight+(#panel.children-1)*panel.spacing
 -- The screenshot's native content viewport clips the old 320px layout.
 -- Measure actual children, including the note and its following gap.
 assert(contentHeight+panel.pos[2]*2<=280,'all controls fit native 280px viewport')
-assert(panel.children[#panel.children].label=='Clear saved preferences (resets settings).','reset remains reachable at the bottom')
+local reset=root.children[2]
+assert(reset.kind=='button' and reset.label=='Clear saved preferences','reset is a separate native button')
+assert(reset.stylesheetID==id.StyleSheet.BUTTON_DEFAULT,'native button styling')
+for _,width in ipairs({400,580,800}) do
+ local left=reset.pos[1]+width*reset.pos[3]
+ assert(left+reset.size[1]/2==width/2,'button centered across window widths')
+end
+local buttonTop=reset.pos[2]+280*reset.pos[4]
+assert(panel.pos[2]+contentHeight<buttonTop,'options do not overlap reset button')
+assert(buttonTop+reset.size[2]==268,'button has 12px bottom margin')
 package.loaded.settings=nil;assert(not require('settings').showRecipeOnHover(),'recipe choice persists')
 
 local note
@@ -122,3 +131,14 @@ assert(outfitCheck and outfitCheck.value==true)
 outfitCheck.callback(outfitCheck,false)
 assert(not settings.includeOutfitBonuses(),'outfit setting toggles independently')
 package.loaded.settings=nil;assert(not require('settings').includeOutfitBonuses(),'outfit setting persists')
+
+local beforeReset={}
+for _,c in ipairs(constructors) do if c.kind=='check' then beforeReset[c.label]=c end end
+local originalErase=require('privacy').erasePreferences
+local invoked=0
+require('privacy').erasePreferences=function() invoked=invoked+1;return true end
+reset.callback(reset)
+assert(invoked==1,'button invokes reset without checkbox value argument')
+assert(beforeReset['Show ingredients on hover.'].value==settings.showRecipeOnHover(),'visible settings refresh after reset')
+require('privacy').erasePreferences=originalErase
+print('PASS: native reset button centered at bottom, reserved space and action callback')

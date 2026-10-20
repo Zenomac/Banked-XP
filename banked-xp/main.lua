@@ -1,4 +1,4 @@
-print('[banked-xp] Loaded v0.160.0 (Summoning and skill choices).')
+print('[banked-xp] Loaded v0.161.0 (Summoning and skill choices).')
 -- Native middle-row layout 0.49. Native cursor positioning is preserved.
 -- Temporarily expands the native tooltip row and moves its footer below it.
 -- Reversible layout edits are undone before each frame and on exit.

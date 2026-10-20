@@ -19,11 +19,11 @@ local function check(parent,label,value,hook,setter)
 end
 function M.build(event)
     local panel=ui.Panel.new(event.component)
-    panel:SetPos(12,12);panel:SetSize(-24,-24,1,1)
+    panel:SetPos(12,12);panel:SetSize(-24,-68,1,1)
     -- The native window already supplies its title. Native checkbox styling
     -- supplies visible fonts; standalone DEFAULT text rows were blank spacers.
-    -- Seven 28px controls + 20px note + seven 3px gaps = 237px.
-    -- With 12px top/bottom padding this fits the native settings viewport.
+    -- Reserve a separate bottom action area so the reset button does not
+    -- participate in the vertical checkbox layout.
     panel.isVertical=true;panel.spacing=3
     local first=check(panel,'Show recipes with missing ingredients.',settings.showUnownedIngredients(),
         'bankedXpOwnedIngredients',settings.setShowUnownedIngredients)
@@ -51,10 +51,14 @@ function M.build(event)
     note.maxLines=1;note.clickthrough=true
     local sixth=check(panel,'Include equipped skilling tools.',settings.includeHandEquipment(),
         'bankedXpHandEquipment',settings.setIncludeHandEquipment)
-    -- This checkbox is a momentary action, reset immediately after activation.
-    local erase
-    erase=check(panel,'Clear saved preferences (resets settings).',false,'bankedXpErase',function(value)
-        if not value then return true end
+    local erase=ui.Button.new(event.component)
+    erase.stylesheetID=id.StyleSheet.BUTTON_DEFAULT
+    erase:SetSize(300,32)
+    -- Percentage position anchors the button to the window, with half its
+    -- width subtracted to center it and 12px clearance below it.
+    erase:SetPos(-150,-44,0.5,1)
+    erase.label='Clear saved preferences'
+    erase:Subscribe(ui.Hook.ONBUTTONPRESSED,'bankedXpErase',function()
         local ok=require('privacy').erasePreferences()
         first.value=settings.showUnownedIngredients()
         second.value=settings.showUnderlevelRecipes()
@@ -62,7 +66,6 @@ function M.build(event)
         fourth.value=settings.showRecipeOnHover()
         fifth.value=settings.includeOutfitBonuses()
         sixth.value=settings.includeHandEquipment()
-        erase.value=false
         if ok then
             print('Banked XP: saved preferences cleared. Disable the plugin to release session observations; clear before uninstalling.')
         else
