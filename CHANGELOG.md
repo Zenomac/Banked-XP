@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.135.0**.
+Current plugin version: **0.136.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.136 — Read-only tradeable hover diagnostics
+
+- Keep v0.135 rendering unchanged; add bounded diagnostic snapshots identifying the blocked native row/title check.
+- At most three distinct local console snapshots per tradeable anima per load. No new tooltip components, network requests or account IDs; plugin XP text omitted.
+- All 35 local suites pass. This diagnostic build is not a fix or proof of live stability. Hover an affected item and provide the BXP hover probe lines to investigate.
 
 ## v0.135 — Native-row tradeable anima trial
 

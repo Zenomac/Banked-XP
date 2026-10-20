@@ -14,6 +14,7 @@ local skillLoaded,skillError=pcall(function()
     skillHover.register()
 end)
 if not skillLoaded then print('[banked-xp] Skill summary unavailable: '..tostring(skillError)) end
+local animaProbe=require("anima_probe")
 local catalog=require("catalog")
 local methods=require("methods")
 local hoverLayout=require("hover_layout")
@@ -126,7 +127,7 @@ local function detect(event)
     local obj=d.objConfig
     if obj.id~=previousID then restore(true) end
     local method=catalog.lookup(obj)
-    if not method then restore();return end
+    if not method then animaProbe.report(obj.name,'catalog miss');restore();return end
     local bank=Inventory.Find(config.Inv.BANK)
     local count=bank and bank:GetTotal(obj.id)
     if count and count>0 then
@@ -174,8 +175,11 @@ local function paint()
         end)
     end
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
-    if not header or not row or not footer then restore();return end
-    if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then restore();return end
+    local function probe(reason)
+        animaProbe.report(selectedName,reason,{[0]=header,[1]=row,[2]=footer,[3]=optionalRow(3)})
+    end
+    if not header or not row or not footer then probe('missing component');restore();return end
+    if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then probe('middle row unavailable');restore();return end
     -- Reuse only a visible native label. A tradeable suffix is preserved in
     -- that same label above XP; never create, unhide or reparent a component.
     local normalizedName=require('bank').normalize(selectedName)
@@ -183,13 +187,14 @@ local function paint()
     local originalRow=(applied==row and row.content==written) and saved or (row.content or '')
     local suffix=require('bank').normalize(originalRow)
     local continuation=tradeableAnima and (suffix=='(tradeable)' or suffix=='(tradable)')
-    if originalRow~='' and not continuation then restore();return end
+    if originalRow~='' and not continuation then probe('middle row occupied');restore();return end
     local plainTitle=require('bank').normalize((header.content or '')..(continuation and (' '..originalRow) or ''))
     local title=string.lower(plainTitle)
     title=string.gsub(title,'%s+','')
     local matchingName=require('bank').normalize(selectedName)
     matchingName=string.gsub(matchingName,'%s+','')
-    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then restore();return end
+    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then probe('title mismatch');restore();return end
+    probe('render path reached')
     local function number(n)
         return string.format('%.0f',n):reverse():gsub('(%d%d%d)','%1,'):reverse():gsub('^,','')
     end
