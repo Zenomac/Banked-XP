@@ -2,6 +2,8 @@
 
 Current plugin version: **0.103.0**. The release notes below retain the version in which each change was introduced; older entries describe historical behavior and may be superseded by later fixes. For installation and current behavior, see the repository README.
 
+For the complete v0.1–v0.103 history, see [CHANGELOG.md](../CHANGELOG.md).
+
 ## Release history (newest first)
 
 v0.103: Add 4px between the final target Remainder row and the existing progress components, plus 4px additional padding at the bottom of the skill tooltip. Without a target, only the bottom padding applies, including when Archaeology Ready XP is the final row. Native frame and parent clipping height grow with the added space. All changes restore on exit. All 27 local suites pass, including explicit padding and restoration assertions. In-game appearance remains to be checked.
@@ -86,3 +88,308 @@ Ownership evidence comes from positive bank, backpack and equipped-item observat
 0.79: Removed the separate available outfit bonus line; the colored active percentage remains.
 
 0.80: Outfit parentheses show the number of missing detected pieces: (N not owned), or (N not worn) when the complete regular set is confirmed owned. Fully worn sets show (0 not worn). Ownership refers to observed pieces; Diango-only unlock evidence remains unconfirmed.
+
+
+## Early release history — v0.1 to v0.75
+
+Recovered from the original saved development packages. Later entries above supersede historical behavior.
+
+## v0.75
+
+Set author metadata to Zenomac and added the then-current settings credit.
+
+## v0.74
+
+Added primal extract yields and primal fruit pulping recipes.
+
+## v0.73
+
+Recognized Cancel by its native action type and normalized its position after recipe entries.
+
+## v0.72
+
+Changed right-click prefixes to cyan BXP followed by a colon.
+
+## v0.71
+
+Used native menu subject-text colours for potion names and adjusted Cancel placement.
+
+## v0.70
+
+Matched plugin text to native effect/footer fonts and measured each section using its own font.
+
+## v0.69
+
+Expanded trailing-empty-stat normalization to whitespace, newlines and mixed break-tag variants.
+
+## v0.68
+
+Removed the hand-drawn border and separator fallback in favour of native artwork.
+
+## v0.67
+
+Trimmed trailing empty potion-description rows and tightened the effects-to-divider gap.
+
+## v0.66
+
+Normalized the options footer to a single measured line and limited inherited bottom padding.
+
+## v0.65
+
+Extended dividers to the inner border.
+
+## v0.64
+
+Reused the observed native fill, corners and edge sprites for the expanded item-tooltip frame.
+
+## v0.63
+
+Used the observed native separator IDs to suppress both unwanted separator sprites.
+
+## v0.62
+
+Restored the native background and added a read-only frame probe for the remaining divider.
+
+## v0.61
+
+Suppressed the plugin hover when no recipe survives the active availability filters.
+
+## v0.60
+
+Tried a replacement background for potion-effect tooltips; this experimental path was later removed in v0.62.
+
+## v0.59
+
+Extended native separator suppression to additional tooltip branches.
+
+## v0.58
+
+Restored the options footer’s native alignment while keeping the other text centered.
+
+## v0.57
+
+Centered text throughout enhanced item tooltips.
+
+## v0.56
+
+Adjusted native potion-effect dividers and conditionally centered stat-boosting potion information.
+
+## v0.55
+
+Audited terminal potion families and suppressed plugin hovers for finished products with no downstream recipes.
+
+## v0.54
+
+Expanded discovery of native skill-tooltip roots after the first skill-tab display did not appear.
+
+## v0.53
+
+Made normalization explicitly single-valued and replaced coroutine scanning with incremental Logic jobs.
+
+## v0.52
+
+Corrected string-normalization calls for the strict client binding and preserved original scan errors.
+
+## v0.51
+
+Introduced cached skill-tab banked XP for the supported Herblore, Prayer and Firemaking catalog.
+
+## v0.50
+
+Added the recipe-on-hover setting and compacted the settings layout.
+
+## v0.49
+
+Shortened right-click method labels and added full recipe information to the hover limiter.
+
+## v0.48
+
+Added optional boost-reachable recipes and documented conditional skill-boost assumptions.
+
+## v0.47
+
+Added cached hover layout, recipe-planning reductions and stable bank-container snapshot caching.
+
+## v0.46
+
+Separated requirements and limiters onto their own lines; made the decanting qualifier conditional.
+
+## v0.45
+
+Added underlevel-recipe settings and the next-unlock level countdown.
+
+## v0.44
+
+Replaced ingredient-presence checks with whole-batch supply validation across potion recipes.
+
+## v0.43
+
+Added the native settings page and a toggle for recipes with missing ingredients.
+
+## v0.42
+
+Hid level tags when the player meets the recipe requirement.
+
+## v0.41
+
+Corrected all master-cape recipe prerequisites to an effective level requirement of 120.
+
+## v0.40
+
+Unified level filtering across potion routes and suppressed inferior recipe variants when applicable.
+
+## v0.39
+
+Added shared compatible method preferences across related items.
+
+## v0.38
+
+Added live Herblore level filtering and excluded recipes at least three levels above the player.
+
+## v0.37
+
+Replaced numbered route labels with ingredient-based descriptions.
+
+## v0.36
+
+Expanded the Wiki potion catalog to 251 crafting routes from 190 bankable potion entries.
+
+## v0.35
+
+Added secondary-ingredient and supply hovers derived from the existing recipe graph.
+
+## v0.34
+
+Restored native cursor following and preserved client-updated positions during layout cleanup.
+
+## v0.33
+
+Avoided unsupported native-label property writes that caused the client new_index error.
+
+## v0.32
+
+Protected optional native-component lookups and restored missing hovers with a footer fallback.
+
+## v0.31
+
+Measured native-font layout for wrapped recipe information, native descriptions and the options footer.
+
+## v0.30
+
+Added unfinished-potion finishing and supported potion upgrades, including dose pooling after manual decanting.
+
+## v0.29
+
+Added persistent right-click method selection, Prayer methods and Maple bonfire choices.
+
+## v0.28
+
+Added a hybrid API-first recipe XP provider with bundled fallbacks and calibration checks.
+
+## v0.27
+
+Added herb cleaning and clean-herb potion potential across standard, Habitat and additional herb records.
+
+## v0.26
+
+Added restoration table identity and column-type diagnostics rather than assuming an XP column.
+
+## v0.25
+
+Added API-backed base Prayer XP for eligible bones and ashes, plus restoration-data diagnostics.
+
+## v0.24
+
+Read-only item-config diagnostics for bones, ashes, artefacts, herbs and potions; active coverage remained Maple logs.
+
+## v0.23
+
+Further native tooltip trim and corner refinement before expanding item coverage.
+
+## v0.22
+
+Further native tooltip border and corner layout refinement.
+
+## v0.21
+
+Revised hover-layer outlines and divider drawing for the expanded native tooltip.
+
+## v0.20
+
+Complete-folder development package with a manifest; continued native trim and border experiments for Maple logs.
+
+## v0.19
+
+Expanded additional clipping containers and refined native divider handling.
+
+## v0.18
+
+Expanded the native backing layer with the XP details.
+
+## v0.17
+
+Added method, bank quantity and per-log XP details beneath the Firemaking total.
+
+## v0.16
+
+Captured original container heights before resizing to avoid repeated growth from inherited anchors.
+
+## v0.15
+
+Restored and expanded native content-frame artwork previously mistaken for a separator.
+
+## v0.14
+
+Used native Size and Pos value objects for reversible layout edits.
+
+## v0.13
+
+Used frame-piece geometry rather than assumed dynamic-ID order to resize the background.
+
+## v0.12
+
+Separator visibility and left-alignment experiment for the native XP row.
+
+## v0.11
+
+Native fill and segmented border resizing to follow the expanded row.
+
+## v0.10
+
+Expanded the native middle row and moved the options footer below it, restoring layout on exit.
+
+## v0.9
+
+Native middle-row text experiment using the existing tooltip label, with reversible content edits.
+
+## v0.8
+
+Experimental native hover-text integration instead of a separate overlay.
+
+## v0.7
+
+Narrow attached-layout experiment aligned with the estimated native tooltip bounds.
+
+## v0.6
+
+Smaller plain font, tighter row spacing and reduced padding.
+
+## v0.5
+
+Native-inspired colours and font-config discovery for the hover.
+
+## v0.4
+
+Replaced the GroupBox with a plain layer and measured background to address extra framing and clipping.
+
+## v0.3
+
+Compact five-row XP box below the native item tooltip, supported-item filtering and thousands separators.
+
+## v0.2
+
+Cursor-following XP hover prototype with separate text rows and a click-through overlay.
+
+## v0.1
+
+Initial developer-world prototype for bank access and UI testing.

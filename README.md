@@ -35,7 +35,7 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.103.0**. [Release notes](banked-xp/README.md#release-history-newest-first) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.103.0**. [Complete changelog — v0.1 through v0.103](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
@@ -49,3 +49,4 @@ for test in tests/*.lua; do lua "$test" || exit 1; done
 All 27 local suites passed for this version. Native client appearance and API availability require live testing.
 
 See [skill totals](banked-xp/SKILL_TOTALS.md), [storage](banked-xp/STORAGE.md) and [sources](banked-xp/SOURCES.md) for details.
+
