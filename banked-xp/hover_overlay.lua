@@ -3,7 +3,8 @@ local M={}
 local owner,layer,label,plan,blocked
 local canvas,canvasKey
 local inspected=false
-local CATEGORY=148 -- Client IDs are bounded to 0..256; avoid native category zero.
+local layerID,textID,canvasID
+local function identity(c) return {c.categoryID,c.dynamicID} end
 local function root()
     local ok,c=pcall(function() return ui.Interfaces:GetComponent(1477,902) end)
     if ok and c and c.staticID==902 then return c end
@@ -11,16 +12,17 @@ end
 local function drop()
     owner,layer,label,plan=nil,nil,nil,nil
     canvas,canvasKey=nil,nil
+    layerID,textID,canvasID=nil,nil,nil
 end
 local function live(current)
     if not layer or not current or current~=owner then return false end
     -- Look up live children before dereferencing proxies: native rebuilds can
     -- remove dynamic children without replacing the static parent itself.
-    local ok,found=pcall(function() return current:GetChild(CATEGORY,0) end)
+    local ok,found=pcall(function() return current:GetChild(layerID[1],layerID[2]) end)
     if not ok or found~=layer then return false end
-    local textOK,text=pcall(function() return found:GetChild(CATEGORY,1) end)
+    local textOK,text=pcall(function() return found:GetChild(textID[1],textID[2]) end)
     if not textOK or text~=label then return false end
-    local canvasOK,foundCanvas=pcall(function() return found:GetChild(CATEGORY,2) end)
+    local canvasOK,foundCanvas=pcall(function() return found:GetChild(canvasID[1],canvasID[2]) end)
     return canvasOK and foundCanvas==canvas
 end
 function M.hide()
@@ -92,18 +94,20 @@ function M.show(header,offset,width,height,font,spacing,content,styleSource)
     if not layer then
         local created
         local ok,err=pcall(function()
-            created=ui.Layer.new(current,CATEGORY,0)
+            -- Let the client allocate IDs, as the existing native-frame rules do.
+            created=ui.Layer.new(current)
             created.hidden=true;created.clickthrough=true
             created.rgba=0xffffffff;created.alpha=1
-            local text=ui.Text.new(created,CATEGORY,1)
+            local text=ui.Text.new(created)
             text.clickthrough=true
             text:SetPos(0,0,0,0,0,0)
             text.hidden=false
             text.alignHorizontal=ui.AlignMode.CENTRE;text.alignVertical=ui.AlignMode.TOPLEFT
             text.maxLines=0
-            local probe=ui.Canvas.new(created,CATEGORY,2)
+            local probe=ui.Canvas.new(created)
             probe:SetPos(0,0);probe.rgba=0xffffffff;probe.alpha=1
             probe.hidden=false;probe.clickthrough=true
+            layerID,textID,canvasID=identity(created),identity(text),identity(probe)
             layer,label,canvas=created,text,probe
         end)
         if not ok then

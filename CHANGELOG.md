@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.152.0**.
+Current plugin version: **0.153.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.153 — Client-assigned IDs for the hover layer
+
+- Replaced manually assigned category 148 with client-assigned IDs for the tradeable-anima layer, text and diagnostic canvas. This tests a shared difference from the existing divider renderer after neither canvas nor text appeared in v0.152.
+- Store the actual returned IDs for live-child validation; retain stale-proxy guards, one-time creation, cursor following and shutdown cleanup.
+- Keep the cyan outline and heading/body font controls for in-game comparison. Rendering remains unconfirmed; local tests cannot validate the client renderer.
+- Verified syntax, hover integration, component reuse, parent unload/rebuild and partial-construction cleanup with non-contiguous allocated IDs.
 
 ## v0.152 — Visual canvas controls for the blank body
 

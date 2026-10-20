@@ -3,6 +3,14 @@ local current={staticID=902,visibleGlobal=true,xyGlobal={x=0,y=0}}
 local function parentLookup(self,category,dynamic) return self.children and self.children[category..':'..dynamic] end
 current.GetChild=parentLookup
 local creates,destroys=0,0
+local nextID=11
+local function allocate(parent,c)
+ -- Deliberately non-contiguous IDs; never infer IDs from creation order.
+ nextID=nextID+3;c.categoryID=0;c.dynamicID=nextID
+ parent.children=parent.children or {}
+ parent.children['0:'..nextID]=c
+ return c
+end
 ui={Interfaces={GetComponent=function() return current end},AlignMode={CENTRE=1,TOPLEFT=0},Layer={},Text={}}
 local function object(parent)
  return {parent=parent,GetChild=parentLookup,hidden=true,rgba=0,alpha=0,SetPos=function(self,x,y) self.x=x;self.y=y end,
@@ -10,19 +18,19 @@ local function object(parent)
  Destroy=function() destroys=destroys+1 end}
 end
 ui.Layer.new=function(parent,category,dynamic)
- assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
- assert(parent.staticID==902 and category~=0 and dynamic==0)
- creates=creates+1;local c=object(parent);parent.children={[category..':'..dynamic]=c};return c
+ assert(category==nil and dynamic==nil,'client allocates IDs')
+ assert(parent.staticID==902)
+ creates=creates+1;return allocate(parent,object(parent))
 end
 ui.Text.new=function(parent,category,dynamic)
- assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
+ assert(category==nil and dynamic==nil,'client allocates IDs')
  local c=setmetatable(object(parent),{
   __index=function(_,key) if key=='lineSpacing' then return 0 end end,
   __newindex=function(self,key,value)
    assert(key~='lineSpacing','lineSpacing is read-only on owned Text too')
    rawset(self,key,value)
   end})
- parent.children={[category..':'..dynamic]=c};return c
+ return allocate(parent,c)
 end
 ui.TextDataConfig={new=function()
  local values={rgba=0,alpha=0}
@@ -47,9 +55,9 @@ ui.Text.new=function(...)
 end
 local canvasCreates=0
 ui.Canvas={new=function(parent,category,dynamic)
- assert(category==148 and dynamic==2)
+ assert(category==nil and dynamic==nil,'client allocates IDs')
  canvasCreates=canvasCreates+1
- local c=object(parent);parent.children[category..':'..dynamic]=c
+ local c=allocate(parent,object(parent));parent.probe=c
  function c:Clear() self.draws={} end
  function c:AddOutline(...) self.draws[#self.draws+1]={'outline',...} end
  function c:AddText(...) self.draws[#self.draws+1]={'text',...} end
@@ -69,7 +77,7 @@ assert(m.show(header,20,200,80,13,16,'XP',{rgb=0xaabbcc}))
 assert(body.rgba==0xaabbccff,'native body tint copied with opaque alpha')
 for i=1,100 do header.xyGlobal.x=i;assert(m.sync(header)) end
 assert(creates==1 and canvasCreates==1,'cursor movement does not allocate')
-local probe=body.parent:GetChild(148,2)
+local probe=body.parent.probe
 assert(#probe.draws==3 and probe.draws[2][5]==28 and probe.draws[3][5]==13,'two font controls and outline, no accumulated draw commands')
 assert(#renderLogs==3,'render diagnostics run once, not on cursor updates or repeated shows')
 assert(renderLogs[1]:find('owned',1,true) and renderLogs[2]:find('native',1,true))

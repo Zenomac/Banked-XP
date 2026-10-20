@@ -355,18 +355,22 @@ callbacks.MiniMenuOpened();labels[3]=nil
 local ownLayer,ownText
 local layerCreates,textCreates=0,0
 ui.Layer={new=function(parent,category,dynamic)
- assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
- assert(parent==props and category~=0 and dynamic==0,'owned layer must share native text branch with separate category')
+ assert(category==nil and dynamic==nil,'client allocates IDs')
+ assert(parent==props,'owned layer shares native text branch')
+ category,dynamic=0,17
  layerCreates=layerCreates+1
  ownLayer=component(999,parent,0,0,0,0)
+ ownLayer.categoryID=category;ownLayer.dynamicID=dynamic
  function props:GetChild(c,d) if c==category and d==dynamic then return ownLayer end end
  return ownLayer
 end}
 ui.Text={new=function(parent,category,dynamic)
- assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
+ assert(category==nil and dynamic==nil,'client allocates IDs')
  assert(parent==ownLayer,'text must use plugin-owned layer')
+ category,dynamic=0,18
  textCreates=textCreates+1
  ownText=component(1000,parent,0,0,0,0)
+ ownText.categoryID=category;ownText.dynamicID=dynamic
  function parent:GetChild(c,d) if c==category and d==dynamic then return ownText end end
  rawset(ownText,'readonlySpacing',true);ownText.content='';ownText.font=0;ownText.rgba=0;ownText.alpha=0
  return ownText
@@ -394,8 +398,10 @@ ui.Text.new=function(...)
  return c
 end
 ui.Canvas={new=function(parent,category,dynamic)
- assert(category==148 and dynamic==2)
+ assert(category==nil and dynamic==nil,'client allocates IDs')
+ category,dynamic=0,19
  local c=component(1001,parent,0,0,0,0)
+ c.categoryID=category;c.dynamicID=dynamic
  local get=parent.GetChild
  function parent:GetChild(cat,dyn) if cat==category and dyn==dynamic then return c end;return get(self,cat,dyn) end
  function c:Clear() self.drawCount=0 end
