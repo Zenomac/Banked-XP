@@ -274,7 +274,7 @@ local function paint()
     -- Equipment details can contain native columns and precisely spaced rows.
     -- Translate the block intact rather than stacking/recentering every label.
     local preserveDetails=selected.skill~='Herblore' and #details>0
-    local detailOriginX,detailOriginY,detailBottom
+    local detailOriginX,detailOriginY,detailBottom,detailWidth
     local detailBounds={}
     if preserveDetails then
         detailOriginX,detailOriginY,detailBottom=math.huge,math.huge,-math.huge
@@ -301,6 +301,7 @@ local function paint()
         plan.height=plan.footerY+plan.footerHeight
         local right=0
         for _,b in ipairs(detailBounds) do right=math.max(right,b.x-detailOriginX+b.width) end
+        detailWidth=right
         plan.width=math.max(plan.width,right)
     end
     local bg=ui.Interfaces:GetComponent(96797572)
@@ -362,8 +363,11 @@ local function paint()
             -- Parents were resized above. Reading live percentage-anchored
             -- geometry here would apply their expansion a second time.
             local b=detailBounds[i]
-            box(c,nativeX+b.x-detailOriginX,
+            local centeredInset=(plan.width-detailWidth)/2
+            box(c,nativeX+centeredInset+b.x-detailOriginX,
                 nativeY+plan.details[1].y+b.y-detailOriginY,b.width,b.height)
+            -- Center full-width prose rows, retaining native stat columns.
+            if b.width>=detailWidth-2 then edit(c,'alignHorizontal',alignment) end
         else
             edit(c,'content',detailText[i])
             box(c,nativeX,nativeY+d.y,plan.width,d.height)

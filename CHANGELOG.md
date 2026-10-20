@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.126.0**.
+Current plugin version: **0.127.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.127
+
+Center the preserved native stat/description block beneath the XP section, using its stable measured width. Center full-width description lines while retaining narrower native stat-column spacing. The options footer retains its native alignment. Keeps the v0.126 baseline that stops horizontal growth. All 32 local suites pass, including centered description geometry and footer alignment during 100 client-interleaved redraws. Live-client confirmation remains pending.
 
 ## v0.126
 

@@ -303,7 +303,7 @@ labels[3].alignHorizontal=0;labels[3].font=12
 local nativeStatWidth,nativeStatHeight=labels[3].width,labels[3].height
 callbacks.MiniMenuReady(event);callbacks.Draw()
 assert(labels[3].width==nativeStatWidth and labels[3].height==nativeStatHeight)
-assert(labels[3].font==12 and labels[3].alignHorizontal==0)
+assert(labels[3].font==12 and labels[3].alignHorizontal==ui.AlignMode.CENTRE)
 assert(labels[3].content=='Damage: 100<br>Accuracy: 200')
 callbacks.MiniMenuOpened()
 print('PASS: native equipment stat dimensions, font, alignment and content preserved')
@@ -337,6 +337,9 @@ for i=1,100 do
  callbacks.Draw()
  if i==1 then firstWidth=bg.width;firstX=labels[3].xyGlobal.x-labels[0].xyGlobal.x end
  assert(bg.width==firstWidth,'Client relayout must not feed width back into tooltip sizing')
+ assert(math.abs((labels[4].xyGlobal.x+labels[4].width/2)-(labels[0].xyGlobal.x+labels[0].width/2))<=0.5,'Native description block centered beneath XP')
+ assert(labels[4].alignHorizontal==ui.AlignMode.CENTRE,'Description lines centered')
+ assert(labels[2].alignHorizontal==2,'Options footer remains right aligned')
  assert(labels[3].xyGlobal.x-labels[0].xyGlobal.x==firstX,'Native stat offset stays stable')
  -- Simulate the client moving a stat row in response to the expanded panel.
  local changed=ui.Pos.new(labels[3].position);changed.x=changed.x+12;labels[3].position=changed
