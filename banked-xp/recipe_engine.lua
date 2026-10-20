@@ -117,7 +117,9 @@ for _,group in pairs(groups) do
                     if key(i.name):match('^dose:') then alternate=i.name;break end
                 end
             end
-            if alternate then tags[#tags+1]=alternate end
+            -- Log variants are already identified by the hovered bank item.
+            local logTag=alternate and (key(alternate)=='logs' or key(alternate):match(' logs$') or key(alternate):match(' log$'))
+            if alternate and not logTag then tags[#tags+1]=alternate end
         end
         r.shortLabel=r.method
         if #tags>0 then r.shortLabel=r.shortLabel..' ['..table.concat(tags,', ')..']' end

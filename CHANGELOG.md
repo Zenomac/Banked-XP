@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.113.0**.
+Current plugin version: **0.114.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.114
+
+Removed redundant log ingredient tags such as [Maple logs] from recipe method labels. Other ingredient tags and meaningful variant labels remain.
 
 ## v0.113
 
