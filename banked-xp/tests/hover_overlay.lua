@@ -3,7 +3,7 @@ local current={staticID=896,visibleGlobal=true,xyGlobal={x=0,y=0}}
 local creates,destroys=0,0
 ui={Interfaces={GetComponent=function() return current end},AlignMode={CENTRE=1,TOPLEFT=0},Layer={},Text={}}
 local function object(parent)
- return {parent=parent,hidden=true,SetPos=function(self,x,y) self.x=x;self.y=y end,
+ return {parent=parent,hidden=true,rgba=0,alpha=0,SetPos=function(self,x,y) self.x=x;self.y=y end,
  SetSize=function(self,w,h) self.w=w;self.h=h end,MoveToFront=function() end,
  Destroy=function() destroys=destroys+1 end}
 end
@@ -20,6 +20,10 @@ local m=require('hover_overlay')
 local header={visibleGlobal=true,xyGlobal={x=20,y=40}}
 assert(m.show(header,20,200,80,13,16,'XP'))
 local body=m.current()
+assert(body.rgba==0xd8d3c5ff and body.alpha==1 and not body.hidden)
+assert(body.x==0 and body.y==0 and body.parent.alpha==1)
+assert(m.show(header,20,200,80,13,16,'XP',{rgb=0xaabbcc}))
+assert(body.rgba==0xaabbccff,'native body tint copied with opaque alpha')
 for i=1,100 do header.xyGlobal.x=i;assert(m.sync(header)) end
 assert(creates==1,'cursor movement does not allocate')
 current=nil

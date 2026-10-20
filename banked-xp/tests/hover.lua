@@ -364,7 +364,7 @@ ui.Text={new=function(parent)
  assert(parent==ownLayer,'text must use plugin-owned layer')
  textCreates=textCreates+1
  ownText=component(1000,parent,0,0,0,0)
- rawset(ownText,'readonlySpacing',true);ownText.content='';ownText.font=0
+ rawset(ownText,'readonlySpacing',true);ownText.content='';ownText.font=0;ownText.rgba=0;ownText.alpha=0
  return ownText
 end}
 ui.Sprite={new=function() error('no extra sprites') end}
@@ -384,6 +384,7 @@ for cycle=1,3 do
    assert(ownText and ownText.visibleGlobal and ownText.content:find('XP',1,true),'owned XP visible on first draw despite invisible native body')
    assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'native body untouched')
    assert(labels[0].content==title,'native title unchanged')
+   assert(ownText.alpha==1 and ownText.rgba%256==255,'owned text opacity initialized')
    assert(ownText.font==labels[2].font,'same body font as normal tooltip')
    assert(labels[2].xyGlobal.y>=ownText.xyGlobal.y+ownText.height+7,'options below owned text')
    if frame==1 then expectedWidth=bg.width;measurements=widthCalls+lineCalls

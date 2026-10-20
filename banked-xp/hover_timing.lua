@@ -14,7 +14,7 @@ local function emit(reason)
     print('[BXP timing] '..a.name..' end='..reason..' frames='..a.frames
         ..' ready='..tostring(a.ready)..' layout='..tostring(a.layout)
         ..' visible='..tostring(a.visible)..' builds='..a.builds..' detects='..a.detects
-        ..' lastGate='..(a.gate or 'none')..cpu)
+        ..' lastGate='..(a.gate or 'none')..(a.render or '')..cpu)
 end
 function M.begin(name)
     name=require('bank').normalize(name)
@@ -38,6 +38,14 @@ function M.finish(body)
     if not active then return end
     local ok,visible=pcall(function() return body and body.visibleGlobal end)
     if ok and visible and active.layout then active.visible=active.visible or active.frames end
+    if body then
+        pcall(function()
+            local xy=body.xyGlobal
+            active.render=' textLength='..tostring(#(body.content or ''))
+                ..' rgba='..tostring(body.rgba)..' alpha='..tostring(body.alpha)
+                ..' bounds='..tostring(xy.x)..','..tostring(xy.y)..','..tostring(body.width)..','..tostring(body.height)
+        end)
+    end
     if active.frames>=120 or (active.visible and active.frames-active.visible>=30) then emit('sampled') end
 end
 return M

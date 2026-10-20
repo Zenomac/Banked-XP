@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.145.0**.
+Current plugin version: **0.146.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.146 — Initialize owned text colour and opacity
+
+- User logs report component visibility within 1–4 frames, but the tooltip body remains blank. Visibility flags do not prove that pixels are drawn.
+- Explicitly initialize the owned layer tint/opacity and text position, copy native body text colour with opaque alpha, and retain the shared font and alignment.
+- Extend bounded timing samples with text length, colour, alpha and bounds to distinguish render configuration from delayed visibility. No text contents or bank quantities are logged.
+- Local tests cover initially transparent components, native colour copying and existing lifecycle checks. In-game appearance remains unverified.
 
 ## v0.145 — Fix owned text initialization
 

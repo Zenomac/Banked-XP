@@ -468,7 +468,7 @@ local function paint()
     nativeFrame.apply(bg,header,footer,effectY,box,edit,tradeableAnima)
     if tradeableAnima then
         if not hoverOverlay.show(header,plan.bodyY,plan.width,plan.bodyHeight,
-            bodyStyle.id,bodyStyle.spacing,text) then restore();return end
+            bodyStyle.id,bodyStyle.spacing,text,details[1] or footer) then restore();return end
         animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content
         hoverTiming.layout()
     end

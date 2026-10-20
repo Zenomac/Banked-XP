@@ -32,7 +32,7 @@ function M.sync(header)
     if x~=plan.x or y~=plan.y then layer:SetPos(x,y);plan.x,plan.y=x,y end
     return true
 end
-function M.show(header,offset,width,height,font,spacing,content)
+function M.show(header,offset,width,height,font,spacing,content,styleSource)
     local current=root()
     if not current or not current.visibleGlobal or blocked then return false end
     if owner~=current then owner,layer,label,plan=current,nil,nil,nil end
@@ -41,8 +41,11 @@ function M.show(header,offset,width,height,font,spacing,content)
         local ok,err=pcall(function()
             created=ui.Layer.new(current)
             created.hidden=true;created.clickthrough=true
+            created.rgba=0xffffffff;created.alpha=1
             local text=ui.Text.new(created)
             text.clickthrough=true
+            text:SetPos(0,0,0,0,0,0)
+            text.hidden=false
             text.alignHorizontal=ui.AlignMode.CENTRE;text.alignVertical=ui.AlignMode.TOPLEFT
             text.maxLines=0
             layer,label=created,text
@@ -54,6 +57,13 @@ function M.show(header,offset,width,height,font,spacing,content)
         end
     end
     if label.font~=font then label.font=font end
+    -- A visible component can still draw transparent/black text. Initialize
+    -- colour explicitly from the native body style, including opaque alpha.
+    local ok,rgb=pcall(function() return (styleSource or header).rgb end)
+    if not ok or type(rgb)~='number' then rgb=0xd8d3c5 end
+    local rgba=(rgb%0x1000000)*256+255
+    if label.rgba~=rgba then label.rgba=rgba end
+    if label.alpha~=1 then label.alpha=1 end
     -- lineSpacing is read-only, including on plugin-owned Text components.
     -- Let the selected native font supply its default line spacing.
     for _,key in ipairs({'isShadowed','shadowRGBA'}) do
