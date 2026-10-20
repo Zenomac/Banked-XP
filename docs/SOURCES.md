@@ -77,3 +77,7 @@ Startup notice API: https://developer.runescape.com/rs/game/chat.html ; https://
 Archaeology restoration and outfit audit: see ARCHAEOLOGY.md.
 
 Digsite/hotspot coverage and sources: see DIGSITE_AUDIT.md and both archaeology audit CSVs.
+
+## v0.121 coverage audit
+
+See [coverage](COVERAGE.md) and [retrieval manifest](audits/sources-0.121.json) for the 20 October 2026 Wiki review. Extracted factual recipe records and source URLs are in [the additions file](audits/additions-0.121.json); no Wiki implementation code is bundled.

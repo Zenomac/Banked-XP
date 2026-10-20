@@ -25,6 +25,7 @@ local function globalExtra(j,obj,skill,xp)
     local id='total:'..skill..':'..tostring(obj.id)
     local k=engine.key(obj.name)
     j.globalExtras[id]={id=id,skill=skill,xp=xp,inputs={{name=obj.name,qty=1}},inputsNormalized={{key=k,name=obj.name,qty=1}},keys={[k]=true}}
+    return j.globalExtras[id]
 end
 local function advanceOne(j)
     local out,routes,seen,counts=j.out,j.routes,j.seen,j.counts
@@ -71,9 +72,9 @@ local function advanceOne(j)
                     end
                 end
                 if bestHi>0 then
-                    out[base.skill].min=out[base.skill].min+bestLo
-                    out[base.skill].max=out[base.skill].max+bestHi
-                    globalExtra(j,obj,base.skill,bestHi/n)
+                    local route=globalExtra(j,obj,base.skill,bestHi/n)
+                    route.minXP=bestLo/n
+                    if not seen[route.id] then seen[route.id]=true;routes[#routes+1]=route end
                 end
             end
             -- Resolve every supported skill independently of the catalogue's
@@ -84,7 +85,7 @@ local function advanceOne(j)
                     local policy=require('recipe_policy')
                     local state=policy.state(counts,r.skill)
                     local _,met=policy.presentation(r)
-                    local eligible=met or (state.showBoostable and require('boosts').reachable(r,state))
+                    local eligible=policy.requirementsMet(r) and (met or (state.showBoostable and require('boosts').reachable(r,state)))
                     if eligible and engine.inputsOwned(obj,r,counts) then
                         if not seen[r.id] and not (obj.id==1517 and r.skill=='Firemaking') then seen[r.id]=true;routes[#routes+1]=r end
                     end
@@ -110,6 +111,7 @@ local function advanceOne(j)
             for _,route in pairs(j.globalExtras or {}) do j.globalRoutes[#j.globalRoutes+1]=route end
             table.sort(j.globalRoutes,higher)
             j.globalPortfolio=engine.newPortfolio(counts)
+            j.globalPortfolio.includeSecondary=true
             j.portfolios={}
             for _,skill in ipairs(skillSupport.names) do j.portfolios[skill]=engine.newPortfolio(counts) end
             j.index=1;j.phase='routes' 
@@ -122,7 +124,7 @@ local function advanceOne(j)
             out._totalBySkill=j.globalPortfolio.bySkill or {}
             out._totalBySkill.Herblore=(out._totalBySkill.Herblore or 0)+(j.cleanXP or 0)
             for skill,portfolio in pairs(j.portfolios) do
-                out[skill].min=out[skill].min+portfolio.total
+                out[skill].min=out[skill].min+(portfolio.minTotal or portfolio.total)
                 out[skill].max=out[skill].max+portfolio.total
                 out[skill].routes=portfolio.used
             end

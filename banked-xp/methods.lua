@@ -49,7 +49,7 @@ function M.options(obj,base,counts)
     if base.skill=='Herblore' then
         local herb,grimy=identity(obj)
         if grimy then result[#result+1]={id='clean',method='Clean herb',xp=base.xp,cleaning=true,skill='Herblore'} end
-    elseif base.skill=='Prayer' then
+    elseif base.skill=='Prayer' and (base.method=='Bury bones' or base.method=='Scatter ashes') then
         result={{id='basic',method=base.method,multiplier=1,skill='Prayer'},
             {id='gilded0',method='Gilded altar: 0 burners',multiplier=2.5,skill='Prayer'},
             {id='gilded1',method='Gilded altar: 1 burner',multiplier=3,skill='Prayer'},
@@ -157,6 +157,12 @@ function M.estimate(obj,base,bank,count)
             -- Replace presentation only; the shared recipe estimate stays cached.
             result.note=prefix..detail..(result.note:match(' | .*$') or '')
         end
+        if method.additionalXP then
+            local extra={}
+            for skill,xp in pairs(method.additionalXP) do extra[#extra+1]=tostring(xp)..' '..skill..' XP per action' end
+            table.sort(extra)
+            if #extra>0 then result.note=(result.note and result.note..' | ' or '')..'Also grants: '..table.concat(extra,', ') end
+        end
         local label,met=policy.presentation(method)
         result.method=label
         if result.note then result.note=result.note:gsub('^Lv %d+; ','') end
@@ -166,6 +172,9 @@ function M.estimate(obj,base,bank,count)
         end
         local boostNote=state.showBoostable and boosts.note(method,state)
         if boostNote then result.note=(result.note and result.note..' | ' or '')..boostNote end
+        for skill,required in pairs(method.requiredLevels or {}) do
+            result.note=(result.note and result.note..' | ' or '')..'Requires '..skill..' level '..tostring(required):gsub('%.0$','')
+        end
         local required=method.level
         local effective=(method.masterCape or method.unboostable) and state.baseLevel or state.level
         if required and effective and required>effective then

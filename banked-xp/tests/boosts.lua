@@ -27,17 +27,17 @@ local ordinary={level=110,requirements={},method='Test',output={name='Test'},id=
 assert(boosts.reachable(ordinary,{baseLevel=104,level=104}))
 ordinary.level=111;assert(not boosts.reachable(ordinary,{baseLevel=104,level=104}))
 ordinary.level=115;assert(not boosts.reachable(ordinary,{baseLevel=104,level=110}),'current boost cannot be boosted again')
-local capes,improved=0,0
+local capes,improved,tiers=0,0,0
 for _,r in ipairs(e.recipes) do
  if r.masterCape or r.unboostable then
   local real=r.level-6
   local state={baseLevel=real,level=r.level,showBoostable=true,showUnderlevel=false,best=true}
   assert(#policy.filter({r},state)==0,'boost bypassed real level '..r.id)
   state.baseLevel=r.level;assert(#policy.filter({r},state)==1,'real requirement '..r.id)
-  if r.masterCape then capes=capes+1 else improved=improved+1 end
+  if r.masterCape then capes=capes+1 elseif r.tierGroup then tiers=tiers+1 else improved=improved+1 end
  end
 end
-assert(capes==6 and improved==13,'all nonboostable variants audited')
+assert(capes==6 and improved==13 and tiers>0,'all nonboostable variants and protean tiers audited')
 -- Independent preview setting still permits only 1-2-level previews.
 base=110;current=110
 settings.setShowBoostableRecipes(false);settings.setShowUnderlevelRecipes(true)

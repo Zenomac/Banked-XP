@@ -6,9 +6,16 @@ local settings=require('settings')
 local boosts=require('boosts')
 local skillSupport=require('skill_support')
 local function readLevel(method,skill) return skillSupport.level(skill,method) end
+function M.requirementsMet(r)
+    for skill,required in pairs(r.requiredLevels or {}) do
+        local level=readLevel('GetLevelGameplay',skill)
+        if not level or level<required then return false end
+    end
+    return true
+end
 function M.presentation(r)
     local level=readLevel((r.masterCape or r.unboostable) and 'GetLevelCapped' or 'GetLevelGameplay',r.skill)
-    local met=level and r.level and level>=r.level
+    local met=level and r.level and level>=r.level and M.requirementsMet(r)
     local label=r.shortLabel or r.label or r.method
     if met then
         label=label:gsub('%[Lv %d+, ([^%]]+)%]','[%1]'):gsub('%s*%[Lv %d+%]','')
@@ -115,8 +122,23 @@ function M.filter(options,state)
         local met=difference<=0 and not (realOnly and rs.baseKnown==false)
         local preview=rs.showUnderlevel and difference>0 and difference<3 and not (realOnly and rs.baseKnown==false)
         local boost=rs.showBoostable and not realOnly and boosts.reachable(r,rs)
-        if met or preview or boost then eligible[#eligible+1]=r end
+        if M.requirementsMet(r) and (met or preview or boost) and (not r.maxLevel or (effective and effective<=r.maxLevel)) then eligible[#eligible+1]=r end
     end
+    -- Level-scaled items expose one current tier, not every lower XP tier.
+    local tiers={}
+    for _,r in ipairs(eligible) do
+        if r.tierGroup then
+            local rs=states[r.skill] or state
+            local level=rs.baseLevel or rs.level or 0
+            local old=tiers[r.tierGroup]
+            local met=r.level<=level
+            local oldMet=old and old.level<=level
+            if not old or (met and not oldMet) or (met==oldMet and ((met and r.level>old.level) or (not met and r.level<old.level))) then tiers[r.tierGroup]=r end
+        end
+    end
+    local collapsed={}
+    for _,r in ipairs(eligible) do if not r.tierGroup or tiers[r.tierGroup]==r then collapsed[#collapsed+1]=r end end
+    eligible=collapsed
     if not state.best then return eligible end
     local result={}
     local groups={}

@@ -1,0 +1,2036 @@
+{
+  "reviewed": "2026-10-20",
+  "sources": [
+    {
+      "page": "Accursed acadia incense sticks",
+      "url": "https://runescape.wiki/w/Accursed_acadia_incense_sticks",
+      "bytes": 102119,
+      "status": "ok",
+      "sha256": "d2db05a2378b1292170ca7d187ef8c73a825969870c4f77e6a094677c2523d4f"
+    },
+    {
+      "page": "Accursed maple incense sticks",
+      "url": "https://runescape.wiki/w/Accursed_maple_incense_sticks",
+      "bytes": 92924,
+      "status": "ok",
+      "sha256": "0b7c3cfad274082f8de17f56aa11d51cf9b44c3565f0fe2fcee03f1a6cdc3c06"
+    },
+    {
+      "page": "Avantoe incense sticks",
+      "url": "https://runescape.wiki/w/Avantoe_incense_sticks",
+      "bytes": 98047,
+      "status": "ok",
+      "sha256": "802f4bb485e79f3cd362c3f16d760fc7895bb4228384980e609db932c032494d"
+    },
+    {
+      "page": "Bloodweed incense sticks",
+      "url": "https://runescape.wiki/w/Bloodweed_incense_sticks",
+      "bytes": 98330,
+      "status": "ok",
+      "sha256": "5065e0bbee695b523f08f344c6a8052b62bc5b67d50cb5e87c23af631ecd4403"
+    },
+    {
+      "page": "Cadantine incense sticks",
+      "url": "https://runescape.wiki/w/Cadantine_incense_sticks",
+      "bytes": 99480,
+      "status": "ok",
+      "sha256": "36153e3520f5dd74adb19d9f7274101cedd513dfe86cc41c061ed082ea1827e9"
+    },
+    {
+      "page": "Dwarf weed incense sticks",
+      "url": "https://runescape.wiki/w/Dwarf_weed_incense_sticks",
+      "bytes": 101025,
+      "status": "ok",
+      "sha256": "7dd9c2c3e339ac9a587c7f283a749069299d79a369b69a630ac8e0a971436702"
+    },
+    {
+      "page": "Fellstalk incense sticks",
+      "url": "https://runescape.wiki/w/Fellstalk_incense_sticks",
+      "bytes": 97034,
+      "status": "ok",
+      "sha256": "71734479f9ddebe6dd4792a64367e5820e46d470ac4c5dee6323d7bdf946667d"
+    },
+    {
+      "page": "Guam incense sticks",
+      "url": "https://runescape.wiki/w/Guam_incense_sticks",
+      "bytes": 97607,
+      "status": "ok",
+      "sha256": "e7f40586c2c33c89764469a7adb61f45f8b28cde5e2e79163b6c18db0211ccf7"
+    },
+    {
+      "page": "Harralander incense sticks",
+      "url": "https://runescape.wiki/w/Harralander_incense_sticks",
+      "bytes": 98341,
+      "status": "ok",
+      "sha256": "634c3177148d220e6877047474550d40383b27f48a49681e465c4a6342f83f08"
+    },
+    {
+      "page": "Impious incense sticks",
+      "url": "https://runescape.wiki/w/Impious_incense_sticks",
+      "bytes": 95931,
+      "status": "ok",
+      "sha256": "98bca8443c2606f9bed09f04fb5fae53825219ae185dc09bc34afcf12988aefb"
+    },
+    {
+      "page": "Impious oak incense sticks",
+      "url": "https://runescape.wiki/w/Impious_oak_incense_sticks",
+      "bytes": 92686,
+      "status": "ok",
+      "sha256": "08fddc0d6fd79e01c3d247247b4745847b875866e1c9462c9e81523f84a485a0"
+    },
+    {
+      "page": "Impious willow incense sticks",
+      "url": "https://runescape.wiki/w/Impious_willow_incense_sticks",
+      "bytes": 93206,
+      "status": "ok",
+      "sha256": "44fb11cab008d0b0673e289c69f91a2aea4a2049f36c1721590886510d4f7834"
+    },
+    {
+      "page": "Infernal magic incense sticks",
+      "url": "https://runescape.wiki/w/Infernal_magic_incense_sticks",
+      "bytes": 94635,
+      "status": "ok",
+      "sha256": "d0b0f437675330e8c4527876929253037a2f3c2275a2d9033f7804b2ee36c1de"
+    },
+    {
+      "page": "Infernal yew incense sticks",
+      "url": "https://runescape.wiki/w/Infernal_yew_incense_sticks",
+      "bytes": 96630,
+      "status": "ok",
+      "sha256": "ac0ba78301d1623713a379eff2aec8daf03a8090775eaba03a6aa024d9ebf746"
+    },
+    {
+      "page": "Irit incense sticks",
+      "url": "https://runescape.wiki/w/Irit_incense_sticks",
+      "bytes": 106721,
+      "status": "ok",
+      "sha256": "33a0ada62bcc960e18b14211524ed8935ae6b8392a100936c2034122c49f514e"
+    },
+    {
+      "page": "Kwuarm incense sticks",
+      "url": "https://runescape.wiki/w/Kwuarm_incense_sticks",
+      "bytes": 107693,
+      "status": "ok",
+      "sha256": "062cce603a613f0d2350dbf7e3ad7fc79d38cad932c0e3d6883e4bd6c72974d2"
+    },
+    {
+      "page": "Lantadyme incense sticks",
+      "url": "https://runescape.wiki/w/Lantadyme_incense_sticks",
+      "bytes": 165085,
+      "status": "ok",
+      "sha256": "28e545a4137f2d08d1f90325283a3bd296bc2afd98f5323cba813841b98d0a11"
+    },
+    {
+      "page": "Marrentill incense sticks",
+      "url": "https://runescape.wiki/w/Marrentill_incense_sticks",
+      "bytes": 107191,
+      "status": "ok",
+      "sha256": "c338f9dbd5eea7d5a9a41a3104f98af105639ad054417711b48da7e65211ae04"
+    },
+    {
+      "page": "Off-hand primal crossbow",
+      "url": "https://runescape.wiki/w/Off-hand_primal_crossbow",
+      "bytes": 248789,
+      "status": "ok",
+      "sha256": "66d15569dc11c781617685c5dcb03aad6aa7d6f12f40bdf39968f9ab20a6b0ee"
+    },
+    {
+      "page": "Off-hand primal crossbow Mk. 5",
+      "url": "https://runescape.wiki/w/Off-hand_primal_crossbow_Mk._5",
+      "bytes": 261928,
+      "status": "ok",
+      "sha256": "e2f6cbb56b3c80d2576f3de4b7b0eef0b2e1dc7ca986ba9b06683cfca18271d2"
+    },
+    {
+      "page": "Platinum bar",
+      "url": "https://runescape.wiki/w/Platinum_bar",
+      "bytes": 119280,
+      "status": "ok",
+      "sha256": "5b16038687e53b444acf902b7f449fd4a22ad6714769e6e9de4ed5d6bcea7bdd"
+    },
+    {
+      "page": "Primal 2h sword",
+      "url": "https://runescape.wiki/w/Primal_2h_sword",
+      "bytes": 224618,
+      "status": "ok",
+      "sha256": "472d25df8ffc315501987f28d265d5b0ec4d737c0ed02ceb05316ddcd6fb4084"
+    },
+    {
+      "page": "Primal 2h sword + 1",
+      "url": "https://runescape.wiki/w/Primal_2h_sword_%2B_1",
+      "bytes": 227844,
+      "status": "ok",
+      "sha256": "5731391df33f7b758c0694818ab774b3b5c664889e1ba70499e6735cb02a8df4"
+    },
+    {
+      "page": "Primal 2h sword + 2",
+      "url": "https://runescape.wiki/w/Primal_2h_sword_%2B_2",
+      "bytes": 227933,
+      "status": "ok",
+      "sha256": "4f5ebdfb010dd10da8a64897e00d4bc50017405226ca0ce3c53c6f8b9a3b47c4"
+    },
+    {
+      "page": "Primal 2h sword + 3",
+      "url": "https://runescape.wiki/w/Primal_2h_sword_%2B_3",
+      "bytes": 227980,
+      "status": "ok",
+      "sha256": "9e5df59e3e6cccf32338580b4e0d4c8e3c471eaf05889e9757b94db8d04c84e6"
+    },
+    {
+      "page": "Primal 2h sword + 4",
+      "url": "https://runescape.wiki/w/Primal_2h_sword_%2B_4",
+      "bytes": 227990,
+      "status": "ok",
+      "sha256": "766480772df86d6b9560120df8de926b323ecc36917d0d67697557b794d58f6c"
+    },
+    {
+      "page": "Primal 2h sword + 5",
+      "url": "https://runescape.wiki/w/Primal_2h_sword_%2B_5",
+      "bytes": 228799,
+      "status": "ok",
+      "sha256": "c361643e022089f5f9966f6b0412e7e56f419e6a64e19564d61aba336e3b13e3"
+    },
+    {
+      "page": "Primal armoured boots",
+      "url": "https://runescape.wiki/w/Primal_armoured_boots",
+      "bytes": 196497,
+      "status": "ok",
+      "sha256": "7055c5cc199b463642aa0de6d898a34ac0e950db1194776a4853f7895481901b"
+    },
+    {
+      "page": "Primal armoured boots + 1",
+      "url": "https://runescape.wiki/w/Primal_armoured_boots_%2B_1",
+      "bytes": 201382,
+      "status": "ok",
+      "sha256": "465e66553a46773590dba1335d8b0a21c45c2078513b9ee861c4b7c08a724c82"
+    },
+    {
+      "page": "Primal armoured boots + 2",
+      "url": "https://runescape.wiki/w/Primal_armoured_boots_%2B_2",
+      "bytes": 201640,
+      "status": "ok",
+      "sha256": "4e4335f68939203229ca35ec4db25eff209dd51789c42cb20eb3abce454cdfa9"
+    },
+    {
+      "page": "Primal armoured boots + 3",
+      "url": "https://runescape.wiki/w/Primal_armoured_boots_%2B_3",
+      "bytes": 201660,
+      "status": "ok",
+      "sha256": "43189d956eda198294667c83ab7aa44ff5814a5feb5becbdd7587cdedb58c235"
+    },
+    {
+      "page": "Primal armoured boots + 4",
+      "url": "https://runescape.wiki/w/Primal_armoured_boots_%2B_4",
+      "bytes": 201693,
+      "status": "ok",
+      "sha256": "aa4e4753f352f49357a22d2da41fe6f288c65802cdf73ee1be83cf35cdb3bc9c"
+    },
+    {
+      "page": "Primal armoured boots + 5",
+      "url": "https://runescape.wiki/w/Primal_armoured_boots_%2B_5",
+      "bytes": 207698,
+      "status": "ok",
+      "sha256": "6905d8ff8e86dc7936c5c5fe3851f5e4d62f8b1a6ef58cdec43f44bf62b32e5a"
+    },
+    {
+      "page": "Primal bar",
+      "url": "https://runescape.wiki/w/Primal_bar",
+      "bytes": 443759,
+      "status": "ok",
+      "sha256": "d59792cfd2448567a8bbbe36affc413ea41b3632920fa85dc1375a51dc79c398"
+    },
+    {
+      "page": "Primal burial armoured boots",
+      "url": "https://runescape.wiki/w/Primal_burial_armoured_boots",
+      "bytes": 183781,
+      "status": "ok",
+      "sha256": "40376bad4f95e690164844246da7bd12127e403d8a62aeb97d1ae15bcc983484"
+    },
+    {
+      "page": "Primal burial full helm",
+      "url": "https://runescape.wiki/w/Primal_burial_full_helm",
+      "bytes": 181307,
+      "status": "ok",
+      "sha256": "a9dce0ec01ff701733b05dd70c7e33f239788bcb44df1a585184c1fe605f42b2"
+    },
+    {
+      "page": "Primal burial gauntlets",
+      "url": "https://runescape.wiki/w/Primal_burial_gauntlets",
+      "bytes": 181112,
+      "status": "ok",
+      "sha256": "c050d00b8f7b5cdf30681d40617e7771f687d3aa34345c19cbd5b61a219646e9"
+    },
+    {
+      "page": "Primal burial platebody",
+      "url": "https://runescape.wiki/w/Primal_burial_platebody",
+      "bytes": 181536,
+      "status": "ok",
+      "sha256": "0d0eb7460dce7a862ee7a5fd1967b35a453763910493f998230c86e7c7dfb8f9"
+    },
+    {
+      "page": "Primal burial platelegs",
+      "url": "https://runescape.wiki/w/Primal_burial_platelegs",
+      "bytes": 181921,
+      "status": "ok",
+      "sha256": "37d8fa71c0e40f5f47ca36770f6543fe3be2a4f21c871f6babe95a5ee46f46af"
+    },
+    {
+      "page": "Primal burial set",
+      "url": "https://runescape.wiki/w/Primal_burial_set",
+      "bytes": 182171,
+      "status": "ok",
+      "sha256": "4f0ca59735ce7ae0eca91449c2efbf43538d8b2c987ff7795712fd040932322d"
+    },
+    {
+      "page": "Primal crossbow",
+      "url": "https://runescape.wiki/w/Primal_crossbow",
+      "bytes": 247681,
+      "status": "ok",
+      "sha256": "01617325d8eff6ea2dd7dc63322c975ab5ea0314edc9b666847252d2344f971c"
+    },
+    {
+      "page": "Primal crossbow Mk. 5",
+      "url": "https://runescape.wiki/w/Primal_crossbow_Mk._5",
+      "bytes": 260220,
+      "status": "ok",
+      "sha256": "b78970f1f13665fb80cac7bb1a3061b8c0c38ad5ed4927f14e65bc58c005b81a"
+    },
+    {
+      "page": "Primal full helm",
+      "url": "https://runescape.wiki/w/Primal_full_helm",
+      "bytes": 258261,
+      "status": "ok",
+      "sha256": "928b7711b040c62addec37b6f467bba55bc42acb4155cc306b5d0f98f9f2d5be"
+    },
+    {
+      "page": "Primal full helm + 1",
+      "url": "https://runescape.wiki/w/Primal_full_helm_%2B_1",
+      "bytes": 263465,
+      "status": "ok",
+      "sha256": "5cf1bfbad8b2ea086b374a5ac7ff88777902a08a5ae6e3ac29734a542fde7eaf"
+    },
+    {
+      "page": "Primal full helm + 2",
+      "url": "https://runescape.wiki/w/Primal_full_helm_%2B_2",
+      "bytes": 263243,
+      "status": "ok",
+      "sha256": "25f5b752cf6f47c72b57f66c8303904f91eea5efa6190a70047bf3517e2ef3f0"
+    },
+    {
+      "page": "Primal full helm + 3",
+      "url": "https://runescape.wiki/w/Primal_full_helm_%2B_3",
+      "bytes": 263692,
+      "status": "ok",
+      "sha256": "9c3df671808b32b2f3c3aaf1deb29bd7fe96ab2ee951e019f2d88da10e3ac444"
+    },
+    {
+      "page": "Primal full helm + 4",
+      "url": "https://runescape.wiki/w/Primal_full_helm_%2B_4",
+      "bytes": 263765,
+      "status": "ok",
+      "sha256": "5d5e9ac34974e62da4dec5f3e3c32c5b2cb9ddefe347114239f7f5d5b6e48364"
+    },
+    {
+      "page": "Primal full helm + 5",
+      "url": "https://runescape.wiki/w/Primal_full_helm_%2B_5",
+      "bytes": 269807,
+      "status": "ok",
+      "sha256": "1001a5bb3bba834f715170942d998e78698bce16b885dc888c463ec53397184e"
+    },
+    {
+      "page": "Primal gauntlets",
+      "url": "https://runescape.wiki/w/Primal_gauntlets",
+      "bytes": 196166,
+      "status": "ok",
+      "sha256": "8d0179d090b809deac131b10aefebe6d18cf2c9de1571eaac2ddec9be9eaa072"
+    },
+    {
+      "page": "Primal gauntlets + 1",
+      "url": "https://runescape.wiki/w/Primal_gauntlets_%2B_1",
+      "bytes": 200361,
+      "status": "ok",
+      "sha256": "e47e09f347753926b0bc75832f34d3c2ddf3f795382a229fe30ccf70d0a7d29a"
+    },
+    {
+      "page": "Primal gauntlets + 2",
+      "url": "https://runescape.wiki/w/Primal_gauntlets_%2B_2",
+      "bytes": 200606,
+      "status": "ok",
+      "sha256": "e315efa1182f0d629299352bd2b8ade2ff2d5f91d2c87cd48411d8614e14d449"
+    },
+    {
+      "page": "Primal gauntlets + 3",
+      "url": "https://runescape.wiki/w/Primal_gauntlets_%2B_3",
+      "bytes": 200732,
+      "status": "ok",
+      "sha256": "987bf34029917c4d599a8c7488628ad99cb9993f585a047489416bfd66b7d383"
+    },
+    {
+      "page": "Primal gauntlets + 4",
+      "url": "https://runescape.wiki/w/Primal_gauntlets_%2B_4",
+      "bytes": 200685,
+      "status": "ok",
+      "sha256": "e71d2097becbddddcdf5db0bab51473fd01f5656f87c76dc65e4a59b0901729a"
+    },
+    {
+      "page": "Primal gauntlets + 5",
+      "url": "https://runescape.wiki/w/Primal_gauntlets_%2B_5",
+      "bytes": 206722,
+      "status": "ok",
+      "sha256": "d45f525f5e5832f011bb12ab08892bb109570ae31439c7b4404883020a1c518e"
+    },
+    {
+      "page": "Primal hatchet",
+      "url": "https://runescape.wiki/w/Primal_hatchet",
+      "bytes": 187132,
+      "status": "ok",
+      "sha256": "5d3146756a352a6428010e6a2f333b7d20a45148f18720aff43eb47afc24d260"
+    },
+    {
+      "page": "Primal hatchet +1",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal hatchet +2",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal hatchet +3",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal hatchet +4",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal hatchet +5",
+      "url": "https://runescape.wiki/w/Primal_hatchet_%2B5",
+      "bytes": 187423,
+      "status": "ok",
+      "sha256": "5556fc976cd1da9507123beadb0163f35eb4fb1be1da57bc92ac2a6467222806"
+    },
+    {
+      "page": "Primal kiteshield",
+      "url": "https://runescape.wiki/w/Primal_kiteshield",
+      "bytes": 239075,
+      "status": "ok",
+      "sha256": "2e4b66aa99dac82bf7e54438ec8bc33d0b34bc1bf3186fb1517c1d16d312f1d4"
+    },
+    {
+      "page": "Primal kiteshield + 1",
+      "url": "https://runescape.wiki/w/Primal_kiteshield_%2B_1",
+      "bytes": 243823,
+      "status": "ok",
+      "sha256": "3320fd126dc93547c93c51dcb97314101e869fb69479b3956dd3ccddb0c578a5"
+    },
+    {
+      "page": "Primal kiteshield + 2",
+      "url": "https://runescape.wiki/w/Primal_kiteshield_%2B_2",
+      "bytes": 243903,
+      "status": "ok",
+      "sha256": "0b23485b1dfa9b2710f730e6ef988b82094c13fbc722c354c01392d230bf99e2"
+    },
+    {
+      "page": "Primal kiteshield + 3",
+      "url": "https://runescape.wiki/w/Primal_kiteshield_%2B_3",
+      "bytes": 243951,
+      "status": "ok",
+      "sha256": "065abe8691226eed325fa771428e61107d2921e0cef967fbb880502d8c31a555"
+    },
+    {
+      "page": "Primal kiteshield + 4",
+      "url": "https://runescape.wiki/w/Primal_kiteshield_%2B_4",
+      "bytes": 243969,
+      "status": "ok",
+      "sha256": "f55399e9a84c55e8fe357ad0d634736ceaabd7c21816d59d4510c16311445fc9"
+    },
+    {
+      "page": "Primal kiteshield + 5",
+      "url": "https://runescape.wiki/w/Primal_kiteshield_%2B_5",
+      "bytes": 243637,
+      "status": "ok",
+      "sha256": "f9d52cd27607d2be938becb4bb37a6088d76e41523f7567a0623ddd7e17d7b2e"
+    },
+    {
+      "page": "Primal mattock",
+      "url": "https://runescape.wiki/w/Primal_mattock",
+      "bytes": 36432,
+      "status": "ok",
+      "sha256": "d9b625b385e26c772c8dca016b4f3e051c23d2cfe8f55085618574a19dbf740e"
+    },
+    {
+      "page": "Primal mattock +1",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock +2",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock +3",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock +4",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock +5",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal off hand warhammer",
+      "url": "https://runescape.wiki/w/Primal_off_hand_warhammer",
+      "bytes": 196436,
+      "status": "ok",
+      "sha256": "806caaa2deeabc188f7fc5699b568f7880085c3fceb77df98f8d7d78a3c2755a"
+    },
+    {
+      "page": "Primal off hand warhammer + 1",
+      "url": "https://runescape.wiki/w/Primal_off_hand_warhammer_%2B_1",
+      "bytes": 198174,
+      "status": "ok",
+      "sha256": "94c1788deab7baa2e1a76499400aad09e2b6d4f1c290a0ab0d9a3ec275fb949e"
+    },
+    {
+      "page": "Primal off hand warhammer + 2",
+      "url": "https://runescape.wiki/w/Primal_off_hand_warhammer_%2B_2",
+      "bytes": 198780,
+      "status": "ok",
+      "sha256": "e628679f82be13645100fc86c856ad1348f9c5803ccc4946f6e0605108cf76b3"
+    },
+    {
+      "page": "Primal off hand warhammer + 3",
+      "url": "https://runescape.wiki/w/Primal_off_hand_warhammer_%2B_3",
+      "bytes": 198824,
+      "status": "ok",
+      "sha256": "22ba29e91d1568865b5234289354f855bd947136eea266f0829982854598360f"
+    },
+    {
+      "page": "Primal off hand warhammer + 4",
+      "url": "https://runescape.wiki/w/Primal_off_hand_warhammer_%2B_4",
+      "bytes": 198861,
+      "status": "ok",
+      "sha256": "f1128e6d4d01f287b7e1792b6dcc2bd85fb210632cead44f90af3d88b4cf55af"
+    },
+    {
+      "page": "Primal off hand warhammer + 5",
+      "url": "https://runescape.wiki/w/Primal_off_hand_warhammer_%2B_5",
+      "bytes": 198160,
+      "status": "ok",
+      "sha256": "52554dd7720eadc894fb70e0b6f6c9f39d660e888d97bc631383fb584035b820"
+    },
+    {
+      "page": "Primal ore box",
+      "url": "https://runescape.wiki/w/Primal_ore_box",
+      "bytes": 226315,
+      "status": "ok",
+      "sha256": "ad988039a771249bcccc397819cbbff336c0c63ffa028cd2ff4f20df3383b862"
+    },
+    {
+      "page": "Primal pickaxe",
+      "url": "https://runescape.wiki/w/Primal_pickaxe",
+      "bytes": 168165,
+      "status": "ok",
+      "sha256": "74fd8ae64712e86274493797970c4558c8edc3b58be2911f4d2e6602f9904f5f"
+    },
+    {
+      "page": "Primal pickaxe +1",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal pickaxe +2",
+      "url": "https://runescape.wiki/w/Primal_pickaxe_%2B2",
+      "bytes": 173528,
+      "status": "ok",
+      "sha256": "587a6c6ef15c6921b1f850c58034a5316d5ceaaa44d42d5fca9bd15f3d9900bf"
+    },
+    {
+      "page": "Primal pickaxe +3",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal pickaxe +4",
+      "url": "https://runescape.wiki/w/Primal_pickaxe_%2B4",
+      "bytes": 173562,
+      "status": "ok",
+      "sha256": "41adf038c3f52fcd1f7e4557f9f9a33352dac584450f21ae46b6a1537ba8c88d"
+    },
+    {
+      "page": "Primal pickaxe +5",
+      "url": "https://runescape.wiki/w/Primal_pickaxe_%2B5",
+      "bytes": 173191,
+      "status": "ok",
+      "sha256": "a42da038efec11c4ba2bc187266bf1bff6aede8d24fa4273868c39f26cbe3413"
+    },
+    {
+      "page": "Primal platebody",
+      "url": "https://runescape.wiki/w/Primal_platebody",
+      "bytes": 240394,
+      "status": "ok",
+      "sha256": "d47c1fce728b26a172507d4636565a5df56a45ba49f645c9d134e013ae3fb6a3"
+    },
+    {
+      "page": "Primal platebody + 1",
+      "url": "https://runescape.wiki/w/Primal_platebody_%2B_1",
+      "bytes": 244634,
+      "status": "ok",
+      "sha256": "38883ff528f99766095443db277fc20b62c8890be823e0abbfb68361ed22d1ba"
+    },
+    {
+      "page": "Primal platebody + 2",
+      "url": "https://runescape.wiki/w/Primal_platebody_%2B_2",
+      "bytes": 244824,
+      "status": "ok",
+      "sha256": "06318ede57f14e88070a1ee765e8a7b8672baeecb92e9d2c79196a4e34045d9d"
+    },
+    {
+      "page": "Primal platebody + 3",
+      "url": "https://runescape.wiki/w/Primal_platebody_%2B_3",
+      "bytes": 244823,
+      "status": "ok",
+      "sha256": "3ab4cf04650f4e695365a8e3dc0dcedc838ed031597f0fb9f7d0068b3456a895"
+    },
+    {
+      "page": "Primal platebody + 4",
+      "url": "https://runescape.wiki/w/Primal_platebody_%2B_4",
+      "bytes": 244994,
+      "status": "ok",
+      "sha256": "559ab4355be180b17126fd51cf931d521f73759fbf21e9d7d7ede2766d878051"
+    },
+    {
+      "page": "Primal platebody + 5",
+      "url": "https://runescape.wiki/w/Primal_platebody_%2B_5",
+      "bytes": 250988,
+      "status": "ok",
+      "sha256": "9c49c8a4f66c4db78d7040ba1ca57bb8136bba3d865884936c2a091aa3afcc6b"
+    },
+    {
+      "page": "Primal platelegs",
+      "url": "https://runescape.wiki/w/Primal_platelegs",
+      "bytes": 255666,
+      "status": "ok",
+      "sha256": "968e2a2c24c520511dc4be8bea738d083f74c60ebb3c5f6690735ca1822affdd"
+    },
+    {
+      "page": "Primal platelegs + 1",
+      "url": "https://runescape.wiki/w/Primal_platelegs_%2B_1",
+      "bytes": 260784,
+      "status": "ok",
+      "sha256": "7c41b280041b4b2cb7db19627510d74adb20848ca873c814a62cdf1de8713928"
+    },
+    {
+      "page": "Primal platelegs + 2",
+      "url": "https://runescape.wiki/w/Primal_platelegs_%2B_2",
+      "bytes": 260856,
+      "status": "ok",
+      "sha256": "edb8ffb297e08f18910d9a31e69da25c5009e50c4039b2c45f9cd18a1ca71091"
+    },
+    {
+      "page": "Primal platelegs + 3",
+      "url": "https://runescape.wiki/w/Primal_platelegs_%2B_3",
+      "bytes": 260845,
+      "status": "ok",
+      "sha256": "004fad8bb7ce9c39426c4a2c6703fe2337e9404b9923cada4a01d71a3abe04ca"
+    },
+    {
+      "page": "Primal platelegs + 4",
+      "url": "https://runescape.wiki/w/Primal_platelegs_%2B_4",
+      "bytes": 260911,
+      "status": "ok",
+      "sha256": "e7d4365943f1ebd0cff4a460ac5ea24a0734a91b868c79a1ff97b35472d08920"
+    },
+    {
+      "page": "Primal platelegs + 5",
+      "url": "https://runescape.wiki/w/Primal_platelegs_%2B_5",
+      "bytes": 266866,
+      "status": "ok",
+      "sha256": "0d7e2d01a95c8147ae7e3af6705f55951b2c8e7cb48b9220305c67bc75e59888"
+    },
+    {
+      "page": "Primal warhammer",
+      "url": "https://runescape.wiki/w/Primal_warhammer",
+      "bytes": 208791,
+      "status": "ok",
+      "sha256": "1de935002efc8e58c8bf48d613ea4dfc943707bf4781bc18829c77beb93537ec"
+    },
+    {
+      "page": "Primal warhammer + 1",
+      "url": "https://runescape.wiki/w/Primal_warhammer_%2B_1",
+      "bytes": 205551,
+      "status": "ok",
+      "sha256": "cd1312602ea1c04f358049c0d270709553520f2d9ad723b0ce2736c2b4687e87"
+    },
+    {
+      "page": "Primal warhammer + 2",
+      "url": "https://runescape.wiki/w/Primal_warhammer_%2B_2",
+      "bytes": 206079,
+      "status": "ok",
+      "sha256": "621adec2bba9e88cfd3eaf9435597642c50c57d38ea641df4ac967a55428efb5"
+    },
+    {
+      "page": "Primal warhammer + 3",
+      "url": "https://runescape.wiki/w/Primal_warhammer_%2B_3",
+      "bytes": 206149,
+      "status": "ok",
+      "sha256": "8327a6da0108c117f5a5d4cb863a7125323d960d7b2cc1b5f27e6c9b2485c52d"
+    },
+    {
+      "page": "Primal warhammer + 4",
+      "url": "https://runescape.wiki/w/Primal_warhammer_%2B_4",
+      "bytes": 206176,
+      "status": "ok",
+      "sha256": "7bcff4da0442103a15b1274ee61af7efa24d6c0eae88498ba22abea0f973a783"
+    },
+    {
+      "page": "Primal warhammer + 5",
+      "url": "https://runescape.wiki/w/Primal_warhammer_%2B_5",
+      "bytes": 205541,
+      "status": "ok",
+      "sha256": "09fc3a8c509c7981587b5b346bf000ce075f4fcdf026536998e2ee84429b2bef"
+    },
+    {
+      "page": "Ranarr incense sticks",
+      "url": "https://runescape.wiki/w/Ranarr_incense_sticks",
+      "bytes": 103180,
+      "status": "ok",
+      "sha256": "393401a47da7b99cf34eb32ec092dbf133f895d542b29087c407f7c100f1a164"
+    },
+    {
+      "page": "Snapdragon incense sticks",
+      "url": "https://runescape.wiki/w/Snapdragon_incense_sticks",
+      "bytes": 98234,
+      "status": "ok",
+      "sha256": "0e098b7451fe939397a328a80c70cde777377bdd20c774fd89f38420efac57b7"
+    },
+    {
+      "page": "Spirit weed incense sticks",
+      "url": "https://runescape.wiki/w/Spirit_weed_incense_sticks",
+      "bytes": 103762,
+      "status": "ok",
+      "sha256": "ad42d4df38e2490247ad16eb8e3fa581468813ea7073df7627bee4ac2a8cf49a"
+    },
+    {
+      "page": "Tarromin incense sticks",
+      "url": "https://runescape.wiki/w/Tarromin_incense_sticks",
+      "bytes": 109629,
+      "status": "ok",
+      "sha256": "679ba3e9cb39f74805b7caed5507b091330676a18727092bc577f1583703d55e"
+    },
+    {
+      "page": "Toadflax incense sticks",
+      "url": "https://runescape.wiki/w/Toadflax_incense_sticks",
+      "bytes": 98080,
+      "status": "ok",
+      "sha256": "8bdda549a6966be25d9a0ae041530d2948af84da451eaf962be70b8a7c8dac88"
+    },
+    {
+      "page": "Torstol incense sticks",
+      "url": "https://runescape.wiki/w/Torstol_incense_sticks",
+      "bytes": 103601,
+      "status": "ok",
+      "sha256": "d9f42e9d48ec0423fb187c94799a6446c8252a99bd02394d60361a0edf2f20f2"
+    },
+    {
+      "page": "Wergali incense sticks",
+      "url": "https://runescape.wiki/w/Wergali_incense_sticks",
+      "bytes": 99640,
+      "status": "ok",
+      "sha256": "a786814851ee9b10097ed35ad3223f6cb7b2ef714d10d15ea365d63c0973896e"
+    },
+    {
+      "page": "Acadia incense sticks",
+      "url": "https://runescape.wiki/w/Acadia_incense_sticks",
+      "bytes": 85419,
+      "status": "ok",
+      "sha256": "7ce9ac551a8bbf64268359614c103622ff0c0d57d9868c378b6f7f753940901e"
+    },
+    {
+      "page": "Accursed urn",
+      "url": "https://runescape.wiki/w/Accursed_urn",
+      "bytes": 155912,
+      "status": "ok",
+      "sha256": "b16c0bf0a13e574470bf92677862f2d3b70912bd23eafc022ad5b6b8bc876ffd"
+    },
+    {
+      "page": "Arc gumbo",
+      "url": "https://runescape.wiki/w/Arc_gumbo",
+      "bytes": 111965,
+      "status": "ok",
+      "sha256": "a00f45a8eb55b8516ca2e11d73bfd1d5363f28cc03bf20c252fd6d3aa8d78752"
+    },
+    {
+      "page": "Arctic pyre logs",
+      "url": "https://runescape.wiki/w/Arctic_pyre_logs",
+      "bytes": 168207,
+      "status": "ok",
+      "sha256": "9adc60396c7620a384ac264fdc25f519e5f910de1f64be75d70feb3d4530ae59"
+    },
+    {
+      "page": "Asgarnian ale",
+      "url": "https://runescape.wiki/w/Asgarnian_ale",
+      "bytes": 110992,
+      "status": "ok",
+      "sha256": "79fa416cfcf520fed09b634deec33131707392a494cd1331078ba6e93033872e"
+    },
+    {
+      "page": "Axeman's folly",
+      "url": "https://runescape.wiki/w/Axeman%27s_folly",
+      "bytes": 99255,
+      "status": "ok",
+      "sha256": "9ab51209178539bc46fdddf5c57d7de829da213a667eda69f89887ea5f4933d5"
+    },
+    {
+      "page": "Blood'n'tar snelm",
+      "url": "https://runescape.wiki/w/Blood%27n%27tar_snelm",
+      "bytes": 35330,
+      "status": "ok",
+      "sha256": "b51d57528e38967b79c24502d92f575d05c9eecba297e1f4a3807bb4ffff3bb3"
+    },
+    {
+      "page": "Bruise blue snelm",
+      "url": "https://runescape.wiki/w/Bruise_blue_snelm",
+      "bytes": 35407,
+      "status": "ok",
+      "sha256": "82a50826c773287e25d74a4b61219e824a03f6ee1394ebdaa8b0d2176ea0bc70"
+    },
+    {
+      "page": "Casket-salvaging scrimshaw",
+      "url": "https://runescape.wiki/w/Casket-salvaging_scrimshaw",
+      "bytes": 242549,
+      "status": "ok",
+      "sha256": "681b804dfbf4782840a1b7462c41fadf0a7bfd44c72f09dc20ff9d3252fa7e6e"
+    },
+    {
+      "page": "Cheese and tomato batta",
+      "url": "https://runescape.wiki/w/Cheese_and_tomato_batta",
+      "bytes": 197702,
+      "status": "ok",
+      "sha256": "a7b17098fcc64b31c52c9e0d24b8ff57441ccc527e7cd48eb67678d23689c635"
+    },
+    {
+      "page": "Cheese wheel",
+      "url": "https://runescape.wiki/w/Cheese_wheel",
+      "bytes": 116744,
+      "status": "ok",
+      "sha256": "0f37e5670d5036821adf4579a6d6d7dfc69a814f9e5abc445d4dcda9f2d81a6f"
+    },
+    {
+      "page": "Chef's delight",
+      "url": "https://runescape.wiki/w/Chef%27s_delight",
+      "bytes": 105745,
+      "status": "ok",
+      "sha256": "eb64df7aa6cda2b86ef82c5b51bd949394efe441a5b924ff2e3bb4df5874dab1"
+    },
+    {
+      "page": "Cider",
+      "url": "https://runescape.wiki/w/Cider",
+      "bytes": 103534,
+      "status": "ok",
+      "sha256": "ad26d6917d385bc3d560de474e857dae363877bddc8ce6ab9c0564e67aa9de43"
+    },
+    {
+      "page": "Cooked pekin",
+      "url": "https://runescape.wiki/w/Cooked_pekin",
+      "bytes": 90176,
+      "status": "ok",
+      "sha256": "c46bf2f60556dbb79c13ece0a98f9c2920e807c5473d85bca6263ec40a8ceb5a"
+    },
+    {
+      "page": "Cracked divination urn",
+      "url": "https://runescape.wiki/w/Cracked_divination_urn",
+      "bytes": 118354,
+      "status": "ok",
+      "sha256": "7620fb6f847f01a4a5ef797e199a38c6a068700c7d634306a885ac12c415b1b5"
+    },
+    {
+      "page": "Cracked farming urn",
+      "url": "https://runescape.wiki/w/Cracked_farming_urn",
+      "bytes": 116658,
+      "status": "ok",
+      "sha256": "9d43ec2fba5e28691bbc1a5bbec4e224eb06b45bd17f1a401723e56209c397a4"
+    },
+    {
+      "page": "Cracked fishing urn",
+      "url": "https://runescape.wiki/w/Cracked_fishing_urn",
+      "bytes": 118467,
+      "status": "ok",
+      "sha256": "706dcf6fcc1cbe17900580372e72d65126bf3d6f665f263432cc01e5df30fe70"
+    },
+    {
+      "page": "Cracked hunter urn",
+      "url": "https://runescape.wiki/w/Cracked_hunter_urn",
+      "bytes": 126583,
+      "status": "ok",
+      "sha256": "1ce2b6552b58e6ae83854dcfdb845ea28844ff4fd9f33fa879f00084c11a980d"
+    },
+    {
+      "page": "Cracked mining urn",
+      "url": "https://runescape.wiki/w/Cracked_mining_urn",
+      "bytes": 116505,
+      "status": "ok",
+      "sha256": "6367a71d143c492998205fb1eede9a011d74f7116d131e6949bf0f94886d9a09"
+    },
+    {
+      "page": "Cracked runecrafting urn",
+      "url": "https://runescape.wiki/w/Cracked_runecrafting_urn",
+      "bytes": 130167,
+      "status": "ok",
+      "sha256": "9a633bda05caf5a67963f30bb39e87a1c095ea6d2d0084eb05fb56024801d41b"
+    },
+    {
+      "page": "Cracked smithing urn",
+      "url": "https://runescape.wiki/w/Cracked_smithing_urn",
+      "bytes": 120561,
+      "status": "ok",
+      "sha256": "9e22bae226639f17b0bc22f165dab886872006d2d8e57a772f52ad98d5c8ac56"
+    },
+    {
+      "page": "Cracked woodcutting urn",
+      "url": "https://runescape.wiki/w/Cracked_woodcutting_urn",
+      "bytes": 118845,
+      "status": "ok",
+      "sha256": "da63cd11a8ea1fa031709801dbd4247ad43a0d091beda7dd463f312d36409b2c"
+    },
+    {
+      "page": "Cryptbloom boots",
+      "url": "https://runescape.wiki/w/Cryptbloom_boots",
+      "bytes": 167195,
+      "status": "ok",
+      "sha256": "a6cb84838843d0a4e933f3b30609c3dcea45d8978f66cecbc8a9dbca2282a205"
+    },
+    {
+      "page": "Cryptbloom bottoms",
+      "url": "https://runescape.wiki/w/Cryptbloom_bottoms",
+      "bytes": 196713,
+      "status": "ok",
+      "sha256": "63cbc52af1483b40daa4a56bc94e00914807debda4116ea675beff93d73269fe"
+    },
+    {
+      "page": "Cryptbloom gloves",
+      "url": "https://runescape.wiki/w/Cryptbloom_gloves",
+      "bytes": 170186,
+      "status": "ok",
+      "sha256": "d1d9b357a66c7abe6d7d22faa1cd840778e7e2ef458139e0323d74d0a8837e69"
+    },
+    {
+      "page": "Cryptbloom helm",
+      "url": "https://runescape.wiki/w/Cryptbloom_helm",
+      "bytes": 193975,
+      "status": "ok",
+      "sha256": "4b254f2680aef43667ca604654c173b0db540b778cf3264a5892a087be2c2e7a"
+    },
+    {
+      "page": "Cryptbloom top",
+      "url": "https://runescape.wiki/w/Cryptbloom_top",
+      "bytes": 195080,
+      "status": "ok",
+      "sha256": "05d6f6ee05367f98ea7d4bcf2ee3b645977d3513082d5abbd05baf5af24c9425"
+    },
+    {
+      "page": "Death Lotus dart",
+      "url": "https://runescape.wiki/w/Death_Lotus_dart",
+      "bytes": 261679,
+      "status": "ok",
+      "sha256": "57d80a2fde2386632a979823579513799826899acd3678d8c8d9b2dceafbd56a"
+    },
+    {
+      "page": "Decorated divination urn",
+      "url": "https://runescape.wiki/w/Decorated_divination_urn",
+      "bytes": 144744,
+      "status": "ok",
+      "sha256": "0994c44a73cf01f21658b8eb6719e3fc927c920f052d449bea7958863ce47a64"
+    },
+    {
+      "page": "Decorated farming urn",
+      "url": "https://runescape.wiki/w/Decorated_farming_urn",
+      "bytes": 118126,
+      "status": "ok",
+      "sha256": "a3f65b5bb760b251fa61fa856a80e2c975b0b4866166d24dbe278cdfed0d50b5"
+    },
+    {
+      "page": "Decorated fishing urn",
+      "url": "https://runescape.wiki/w/Decorated_fishing_urn",
+      "bytes": 147872,
+      "status": "ok",
+      "sha256": "2563abd99910e7349af72e37ee364eea46bd7a80fc450ecee5067454aa054c42"
+    },
+    {
+      "page": "Decorated hunter urn",
+      "url": "https://runescape.wiki/w/Decorated_hunter_urn",
+      "bytes": 225812,
+      "status": "ok",
+      "sha256": "b00c7cb4c4c78da08f7a7fa9547b2a720eee7bd4dd4c884289692379d56fd9b5"
+    },
+    {
+      "page": "Decorated mining urn",
+      "url": "https://runescape.wiki/w/Decorated_mining_urn",
+      "bytes": 120983,
+      "status": "ok",
+      "sha256": "8ba10d1633e28f2857715ea44a6cc25983f78359c5168b267cb5e71f80add06b"
+    },
+    {
+      "page": "Decorated runecrafting urn",
+      "url": "https://runescape.wiki/w/Decorated_runecrafting_urn",
+      "bytes": 170317,
+      "status": "ok",
+      "sha256": "91798e8bf9ffb1395074168ec67fc96ebea0f5de19ccbe69d4e168cb373140c7"
+    },
+    {
+      "page": "Decorated smithing urn",
+      "url": "https://runescape.wiki/w/Decorated_smithing_urn",
+      "bytes": 213275,
+      "status": "ok",
+      "sha256": "42bae71f06996092814fcfe0dd0a92a0b38e1b7e9c696ed993f025beccb354e4"
+    },
+    {
+      "page": "Decorated woodcutting urn",
+      "url": "https://runescape.wiki/w/Decorated_woodcutting_urn",
+      "bytes": 136021,
+      "status": "ok",
+      "sha256": "8ef787bcb6550504ae20a9eafc0c7db2d1c734923757c6e0c387fa85ba645dd4"
+    },
+    {
+      "page": "Demonic sigil",
+      "url": "https://runescape.wiki/w/Demonic_sigil",
+      "bytes": 95370,
+      "status": "ok",
+      "sha256": "e270cad9a72ee482b436f0030da3d11dab65eb41f529ee8d07d01aec19ceea85"
+    },
+    {
+      "page": "Dragon bitter",
+      "url": "https://runescape.wiki/w/Dragon_bitter",
+      "bytes": 113212,
+      "status": "ok",
+      "sha256": "62bbe1f39d7ba5a589ab085dce578792699f81a6050915e6fa8ac24561b8a258"
+    },
+    {
+      "page": "Dwarven stout",
+      "url": "https://runescape.wiki/w/Dwarven_stout",
+      "bytes": 126793,
+      "status": "ok",
+      "sha256": "f71acbe2e4e279c1c2df2e95161aeef23d38e30f0ac57f669d081f3994d808cd"
+    },
+    {
+      "page": "Elder pyre logs",
+      "url": "https://runescape.wiki/w/Elder_pyre_logs",
+      "bytes": 173877,
+      "status": "ok",
+      "sha256": "70b535217288195cd378263d7556affceae5b3a840367023f76b2b31f4111e4a"
+    },
+    {
+      "page": "Eldritch crossbow",
+      "url": "https://runescape.wiki/w/Eldritch_crossbow",
+      "bytes": 257549,
+      "status": "ok",
+      "sha256": "f77da9e79182008cbb015fd7252facec503fe4102fe85e7bd338b7225967a50f"
+    },
+    {
+      "page": "Elite sirenic chaps",
+      "url": "https://runescape.wiki/w/Elite_sirenic_chaps",
+      "bytes": 186055,
+      "status": "ok",
+      "sha256": "538a8d576cf7930c83a22e946b933075d032aefe7e6cf50d4fa44b0472182e2b"
+    },
+    {
+      "page": "Elite sirenic hauberk",
+      "url": "https://runescape.wiki/w/Elite_sirenic_hauberk",
+      "bytes": 190067,
+      "status": "ok",
+      "sha256": "b5eaeb2603083b74919d05c70d6590b37f7f19b113fd5c4d13c65f3a927cee4e"
+    },
+    {
+      "page": "Elite sirenic mask",
+      "url": "https://runescape.wiki/w/Elite_sirenic_mask",
+      "bytes": 178611,
+      "status": "ok",
+      "sha256": "15783a0f90b469724997deba9c19beef4c3feb11f84e6f013d4b6f7b658807c5"
+    },
+    {
+      "page": "Energy-gathering scrimshaw",
+      "url": "https://runescape.wiki/w/Energy-gathering_scrimshaw",
+      "bytes": 229864,
+      "status": "ok",
+      "sha256": "0fc801b7435c24da3b46f1169c5c6574bc6e8ce0d091cfa902aeeef92317373c"
+    },
+    {
+      "page": "Eucalyptus pyre logs",
+      "url": "https://runescape.wiki/w/Eucalyptus_pyre_logs",
+      "bytes": 172154,
+      "status": "ok",
+      "sha256": "25b5c95fd3a302f7b29a101d568b4c5e8fbfa0061bc24317f387e888e771de14"
+    },
+    {
+      "page": "Exquisite divination urn",
+      "url": "https://runescape.wiki/w/Exquisite_divination_urn",
+      "bytes": 145606,
+      "status": "ok",
+      "sha256": "c7b2fde2665565871bcf80da1623e65ef46c4f8d35575ae3010aa375d47bdba5"
+    },
+    {
+      "page": "Exquisite farming urn",
+      "url": "https://runescape.wiki/w/Exquisite_farming_urn",
+      "bytes": 121956,
+      "status": "ok",
+      "sha256": "463da403c3053abde1946343b48abe4f7b8c1f6500ad315c38e5df1927e1dd1b"
+    },
+    {
+      "page": "Exquisite fishing urn",
+      "url": "https://runescape.wiki/w/Exquisite_fishing_urn",
+      "bytes": 144251,
+      "status": "ok",
+      "sha256": "c31c5d185041cf1bd1c269a9cff543658cbb946cc694c52bb4e077097885541f"
+    },
+    {
+      "page": "Exquisite hunter urn",
+      "url": "https://runescape.wiki/w/Exquisite_hunter_urn",
+      "bytes": 226160,
+      "status": "ok",
+      "sha256": "9dbdae56f4b714a02655ad52de22241b3b14d82bac851b07159475dab204613d"
+    },
+    {
+      "page": "Exquisite mining urn",
+      "url": "https://runescape.wiki/w/Exquisite_mining_urn",
+      "bytes": 116890,
+      "status": "ok",
+      "sha256": "a2b70c5302694cea90d2b157457a1fd251529f5964eac2c50aebc405806f4f6d"
+    },
+    {
+      "page": "Exquisite runecrafting urn",
+      "url": "https://runescape.wiki/w/Exquisite_runecrafting_urn",
+      "bytes": 169298,
+      "status": "ok",
+      "sha256": "afbdaf2c01e8ab4698b996beb497f72a6447ac269cc1d464c69d6039232f2b65"
+    },
+    {
+      "page": "Exquisite smithing urn",
+      "url": "https://runescape.wiki/w/Exquisite_smithing_urn",
+      "bytes": 212015,
+      "status": "ok",
+      "sha256": "f167b0271f557e6ecd9db07ac8c0fb44cda8a8b17d1bd3b52635a68c7bd8b485"
+    },
+    {
+      "page": "Exquisite woodcutting urn",
+      "url": "https://runescape.wiki/w/Exquisite_woodcutting_urn",
+      "bytes": 130269,
+      "status": "ok",
+      "sha256": "273bc2c4abeb5bc64cb9c6530437e679371e1d7c7c68e5c82d0e73afaa5575a2"
+    },
+    {
+      "page": "Fish oil",
+      "url": "https://runescape.wiki/w/Fish_oil",
+      "bytes": 137201,
+      "status": "ok",
+      "sha256": "e1c107b1f5b049505456168b0ff53d85b60da06bb26b7738a79e1be0d489817c"
+    },
+    {
+      "page": "Fragile divination urn",
+      "url": "https://runescape.wiki/w/Fragile_divination_urn",
+      "bytes": 121813,
+      "status": "ok",
+      "sha256": "f8298242a72ea44340d377a139e0df2d2e15d3f976a26b56aed00c79d143c9c0"
+    },
+    {
+      "page": "Fragile farming urn",
+      "url": "https://runescape.wiki/w/Fragile_farming_urn",
+      "bytes": 116501,
+      "status": "ok",
+      "sha256": "e6c9be5a4a5c56da53f68b1081e95c5599f23767d053490a3bcac9088ca9d427"
+    },
+    {
+      "page": "Fragile fishing urn",
+      "url": "https://runescape.wiki/w/Fragile_fishing_urn",
+      "bytes": 122328,
+      "status": "ok",
+      "sha256": "fa95ca9f126ee847967e77f7e9907dcf3e8dea4652930a937ea3934057a2ebef"
+    },
+    {
+      "page": "Fragile hunter urn",
+      "url": "https://runescape.wiki/w/Fragile_hunter_urn",
+      "bytes": 137048,
+      "status": "ok",
+      "sha256": "fabaefaa60b77b86f707624a58524fd6bb479014fdcacfc6b020625b1c2cf6ea"
+    },
+    {
+      "page": "Fragile mining urn",
+      "url": "https://runescape.wiki/w/Fragile_mining_urn",
+      "bytes": 116302,
+      "status": "ok",
+      "sha256": "a86dcf387954b791e2933681f3c5e8bf2e4212a9226d9fdb53e59a32e82be4c0"
+    },
+    {
+      "page": "Fragile runecrafting urn",
+      "url": "https://runescape.wiki/w/Fragile_runecrafting_urn",
+      "bytes": 145871,
+      "status": "ok",
+      "sha256": "6e804910e9ef12d931d2eee20f5cdeefd5a1138d08286c9d39f847d7ad38e1d0"
+    },
+    {
+      "page": "Fragile smithing urn",
+      "url": "https://runescape.wiki/w/Fragile_smithing_urn",
+      "bytes": 124159,
+      "status": "ok",
+      "sha256": "35bb9333d36486a795dde6ea05e7f286ddbbff9b41cbd1c38729c5b98e35dd6b"
+    },
+    {
+      "page": "Fragile woodcutting urn",
+      "url": "https://runescape.wiki/w/Fragile_woodcutting_urn",
+      "bytes": 120845,
+      "status": "ok",
+      "sha256": "027305193a335a616058a1388207ee73f86353957231233f87f769dbe65ac8b2"
+    },
+    {
+      "page": "Gem-finding scrimshaw",
+      "url": "https://runescape.wiki/w/Gem-finding_scrimshaw",
+      "bytes": 228351,
+      "status": "ok",
+      "sha256": "e128ac461e6ecffa55b07ee20c7aaae95137178468cd35cfafa45154b4a6bd1b"
+    },
+    {
+      "page": "Greenman's ale",
+      "url": "https://runescape.wiki/w/Greenman%27s_ale",
+      "bytes": 122485,
+      "status": "ok",
+      "sha256": "5330d30a08a816b9df4d7a33c470452d16bfe8f574d00b0071fb2f0b1ce25efd"
+    },
+    {
+      "page": "Holy symbol",
+      "url": "https://runescape.wiki/w/Holy_symbol",
+      "bytes": 206204,
+      "status": "ok",
+      "sha256": "9885530cb692e32036d8f40c1a1e65a1cfb5ee4aee460f3401712607399aead8"
+    },
+    {
+      "page": "Impious urn",
+      "url": "https://runescape.wiki/w/Impious_urn",
+      "bytes": 154761,
+      "status": "ok",
+      "sha256": "cc527c2bf463c366dbc6aac7faec2f4f1abe52cb075e029cd5454e02e8c8d384"
+    },
+    {
+      "page": "Infernal urn",
+      "url": "https://runescape.wiki/w/Infernal_urn",
+      "bytes": 160250,
+      "status": "ok",
+      "sha256": "a7686e1ca57ae1f2a1b5c4fcb14313dbe21d103a249b1b53b820d8f9dd46a909"
+    },
+    {
+      "page": "Jug of bad wine",
+      "url": "https://runescape.wiki/w/Jug_of_bad_wine",
+      "bytes": 81060,
+      "status": "ok",
+      "sha256": "22804d5762b3f32121dc2295db8eea527e16bdd0950ca8630f5dbdc3f5a39a20"
+    },
+    {
+      "page": "Juju gumbo",
+      "url": "https://runescape.wiki/w/Juju_gumbo",
+      "bytes": 121648,
+      "status": "ok",
+      "sha256": "9706f5541e6b8857cd91f9a4d0eecc584d765c885a8c81457760b089895ef738"
+    },
+    {
+      "page": "Karambwan",
+      "url": "https://runescape.wiki/w/Karambwan",
+      "bytes": 35777,
+      "status": "ok",
+      "sha256": "a2d8911a4a96b324f0caabed5f0cce77552f6e08de89c0ae87cca49814c5e5bb"
+    },
+    {
+      "page": "Light orb",
+      "status": "cached",
+      "sha256": "5527ae32de5c2ed5dfcbafcadbe58b9ed00719120577bbe5ab8c3d524ac9c2ad"
+    },
+    {
+      "page": "Log-splitting scrimshaw",
+      "url": "https://runescape.wiki/w/Log-splitting_scrimshaw",
+      "bytes": 235694,
+      "status": "ok",
+      "sha256": "b2eea9a8ff5b00f689b350d8088d3d3025706c16be6797bea289214f8358ef6b"
+    },
+    {
+      "page": "Magic incense sticks",
+      "url": "https://runescape.wiki/w/Magic_incense_sticks",
+      "bytes": 86096,
+      "status": "ok",
+      "sha256": "e9e352de03e157a03f690e283e7b13be440f3f6fce00bd17cbb16d8ceed715db"
+    },
+    {
+      "page": "Magic pyre logs",
+      "url": "https://runescape.wiki/w/Magic_pyre_logs",
+      "bytes": 181673,
+      "status": "ok",
+      "sha256": "10fd5d8d99b5288c615a073b17e2ffd4d84b988843ae0f84fcac0892881c5444"
+    },
+    {
+      "page": "Mahogany pyre logs",
+      "url": "https://runescape.wiki/w/Mahogany_pyre_logs",
+      "bytes": 177487,
+      "status": "ok",
+      "sha256": "e4b552e70aa4ea9606eb3078d9c3f0e3c7803d024a0d5ba7102c6b03ed645b9a"
+    },
+    {
+      "page": "Maple incense sticks",
+      "url": "https://runescape.wiki/w/Maple_incense_sticks",
+      "bytes": 84449,
+      "status": "ok",
+      "sha256": "373e9303dacc6746d868b9f65607b8f39cddcb1e932c2626c9ffb34ee45cac4c"
+    },
+    {
+      "page": "Maple pyre logs",
+      "url": "https://runescape.wiki/w/Maple_pyre_logs",
+      "bytes": 176192,
+      "status": "ok",
+      "sha256": "4ef8706d45fa7e3afb3e3e6ff152f97703c0c350cef074d81a692b4649427fe6"
+    },
+    {
+      "page": "Memory-crushing scrimshaw",
+      "url": "https://runescape.wiki/w/Memory-crushing_scrimshaw",
+      "bytes": 230368,
+      "status": "ok",
+      "sha256": "6e5e152db03416580b71d305e4d83fcdc25917a194614e6fa03558a891c0275d"
+    },
+    {
+      "page": "Moonlight mead",
+      "url": "https://runescape.wiki/w/Moonlight_mead",
+      "bytes": 132886,
+      "status": "ok",
+      "sha256": "16d033e55f0e5c9d7c7743a83a441f42bee569bd5a20c277102d9b68c0bbbd77"
+    },
+    {
+      "page": "Myre snelm",
+      "url": "https://runescape.wiki/w/Myre_snelm",
+      "bytes": 35064,
+      "status": "ok",
+      "sha256": "eb08b3a7146bb0fcd9b7a14bf1e9fb5133573906c9bd7ac758c4f9b99db79aa9"
+    },
+    {
+      "page": "Oak incense sticks",
+      "url": "https://runescape.wiki/w/Oak_incense_sticks",
+      "bytes": 84242,
+      "status": "ok",
+      "sha256": "18d1b6c332397305c596791a5d7564c9fc98302f6c44889b512a90988a136860"
+    },
+    {
+      "page": "Oak pyre logs",
+      "url": "https://runescape.wiki/w/Oak_pyre_logs",
+      "bytes": 170597,
+      "status": "ok",
+      "sha256": "fcb58403100be4a4206c126b74ddefdfa7b70b772914246e1fd507c876542def"
+    },
+    {
+      "page": "Ochre snelm",
+      "url": "https://runescape.wiki/w/Ochre_snelm",
+      "bytes": 35170,
+      "status": "ok",
+      "sha256": "d406e833b85c8c65c612d9231694de2d0a136eb379106d48f8e633aef5abfe85"
+    },
+    {
+      "page": "Off-hand Death Lotus dart",
+      "url": "https://runescape.wiki/w/Off-hand_Death_Lotus_dart",
+      "bytes": 249635,
+      "status": "ok",
+      "sha256": "7bfc2b0a832ed422ec937fcf26f768ac62a54cedff2f43fb3f8eeeb8d370a1d6"
+    },
+    {
+      "page": "Pernix's quiver",
+      "url": "https://runescape.wiki/w/Pernix%27s_quiver",
+      "bytes": 215381,
+      "status": "ok",
+      "sha256": "d2aef74b3792d6d8144b0b2484059d430b3d12d6b49698e9f6f247b411541a5b"
+    },
+    {
+      "page": "Pigswill",
+      "url": "https://runescape.wiki/w/Pigswill",
+      "bytes": 111092,
+      "status": "ok",
+      "sha256": "74cc27a5c2c2e326c2c801c52cf90e7ea21d4bbafc633fd8115154279485ca6a"
+    },
+    {
+      "page": "Plain divination urn",
+      "url": "https://runescape.wiki/w/Plain_divination_urn",
+      "bytes": 125738,
+      "status": "ok",
+      "sha256": "abd128e53d19ff5f21d77a89c0976267f8197d545ed682b06cd7ce44fa1a9937"
+    },
+    {
+      "page": "Plain farming urn",
+      "url": "https://runescape.wiki/w/Plain_farming_urn",
+      "bytes": 116122,
+      "status": "ok",
+      "sha256": "ddb01ca1ddc45fbf219a0f6840c6b87261c2aab704e898148cdd09233336da14"
+    },
+    {
+      "page": "Plain fishing urn",
+      "url": "https://runescape.wiki/w/Plain_fishing_urn",
+      "bytes": 126842,
+      "status": "ok",
+      "sha256": "883c5e1b60a77cecb051795e6be47ba04af646f35bc79ea84f73fabec393f95d"
+    },
+    {
+      "page": "Plain hunter urn",
+      "url": "https://runescape.wiki/w/Plain_hunter_urn",
+      "bytes": 152701,
+      "status": "ok",
+      "sha256": "e9489b4509678ca00a50c71c582dc3d104943bc5c25eff6e088cf791c96b7575"
+    },
+    {
+      "page": "Plain mining urn",
+      "url": "https://runescape.wiki/w/Plain_mining_urn",
+      "bytes": 118686,
+      "status": "ok",
+      "sha256": "73dee44c0f5a8ab898ac98d52a5a4811a794729ac44d6244e3257ea47ba55c29"
+    },
+    {
+      "page": "Plain runecrafting urn",
+      "url": "https://runescape.wiki/w/Plain_runecrafting_urn",
+      "bytes": 157276,
+      "status": "ok",
+      "sha256": "8d1b91b3834d314a1ce114cebfcd540eb3d54ada0995f1b17de26f6f57b9acb1"
+    },
+    {
+      "page": "Plain smithing urn",
+      "url": "https://runescape.wiki/w/Plain_smithing_urn",
+      "bytes": 166018,
+      "status": "ok",
+      "sha256": "bf380fd08d783ef9e72aefa3291674bf65c30f72131962b23442a3627b0e71f3"
+    },
+    {
+      "page": "Plain woodcutting urn",
+      "url": "https://runescape.wiki/w/Plain_woodcutting_urn",
+      "bytes": 127361,
+      "status": "ok",
+      "sha256": "fe7ed8178e4523c2f023748b72d1401f4e7dc03176fbd9569590733e576fca2d"
+    },
+    {
+      "page": "Poison karambwan",
+      "url": "https://runescape.wiki/w/Poison_karambwan",
+      "bytes": 137459,
+      "status": "ok",
+      "sha256": "6b56ad816b02c614843c6a2e029a905126bf15c503d20aaa762e5abaf3a7a758"
+    },
+    {
+      "page": "Poorly-cooked bird meat",
+      "url": "https://runescape.wiki/w/Poorly-cooked_bird_meat",
+      "bytes": 101489,
+      "status": "ok",
+      "sha256": "d1b866e69cbff3f1476de124e5638a52d99a45f8b51070eb33e3071babbb51f4"
+    },
+    {
+      "page": "Pyre logs",
+      "status": "cached",
+      "sha256": "d9453d68d96caab80da073006788227c163350b55f45f4086fca9555f660c93c"
+    },
+    {
+      "page": "Rock-crushing scrimshaw",
+      "url": "https://runescape.wiki/w/Rock-crushing_scrimshaw",
+      "bytes": 228280,
+      "status": "ok",
+      "sha256": "9f9d9b2ccbbfc895214e71b15225d8cff7961e48119fb4c7a12d9fb0b93a6a76"
+    },
+    {
+      "page": "Sana's fyrtorch",
+      "url": "https://runescape.wiki/w/Sana%27s_fyrtorch",
+      "bytes": 134402,
+      "status": "ok",
+      "sha256": "9f211c14b67aa01a9d443cc033193170a6019fd3fecbdeab9ef6c784bccdb6a1"
+    },
+    {
+      "page": "Scrimshaw of attack",
+      "url": "https://runescape.wiki/w/Scrimshaw_of_attack",
+      "bytes": 235784,
+      "status": "ok",
+      "sha256": "67404a1e03d4faee761ddc22c0e6ca26ea3e28d81df52235ad85387cfde8bd91"
+    },
+    {
+      "page": "Scrimshaw of cruelty",
+      "url": "https://runescape.wiki/w/Scrimshaw_of_cruelty",
+      "bytes": 231087,
+      "status": "ok",
+      "sha256": "cb281c67ea05f1ce5d23205c3bd93a44b4fb43ae5c5c8e26b921f1c0608df3ef"
+    },
+    {
+      "page": "Scrimshaw of magic",
+      "url": "https://runescape.wiki/w/Scrimshaw_of_magic",
+      "bytes": 234444,
+      "status": "ok",
+      "sha256": "d6fc000645c0723ffa514732cf429e518970361c51e1a368720e5b1cb337b89d"
+    },
+    {
+      "page": "Scrimshaw of ranging",
+      "url": "https://runescape.wiki/w/Scrimshaw_of_ranging",
+      "bytes": 232807,
+      "status": "ok",
+      "sha256": "73b7a5f58ff8f94ab7767a93093453d5848be3835b3f5f0797799478fbe834fe"
+    },
+    {
+      "page": "Scrimshaw of the elements",
+      "url": "https://runescape.wiki/w/Scrimshaw_of_the_elements",
+      "bytes": 228110,
+      "status": "ok",
+      "sha256": "7b2de9c93f7add6891397632f6711892322e9d7f3c30d222544fb6b5d5d9af51"
+    },
+    {
+      "page": "Scrimshaw of vampyrism",
+      "url": "https://runescape.wiki/w/Scrimshaw_of_vampyrism",
+      "bytes": 228152,
+      "status": "ok",
+      "sha256": "e814ce18bc0f60654c831f38a44fbbcbfdcfc869b6a25bd3951f38e94c17b0d6"
+    },
+    {
+      "page": "Shark soup",
+      "url": "https://runescape.wiki/w/Shark_soup",
+      "bytes": 120441,
+      "status": "ok",
+      "sha256": "3381ef3b7f592e32ee4c6950c30753153df7bb5c456a73e3dd022b019f2aa470"
+    },
+    {
+      "page": "Sharp shell shard",
+      "status": "cached",
+      "sha256": "30a307035d7b3497d3cfa86500743c9eb793e21eac34827aa91afabbcfffca6b"
+    },
+    {
+      "page": "Slayer's respite",
+      "url": "https://runescape.wiki/w/Slayer%27s_respite",
+      "bytes": 107978,
+      "status": "ok",
+      "sha256": "a18cb99db69bc7774725b2bc8074fdd28637d947b6244de07f43d9707b134235"
+    },
+    {
+      "page": "Spicy stew",
+      "url": "https://runescape.wiki/w/Spicy_stew",
+      "bytes": 210389,
+      "status": "ok",
+      "sha256": "77641e69f108d8c09b9b227706b1cbcd78855c314030badb2626ec7fc236c507"
+    },
+    {
+      "page": "Spider on shaft",
+      "url": "https://runescape.wiki/w/Spider_on_shaft",
+      "bytes": 128299,
+      "status": "ok",
+      "sha256": "6aaacb7d125b9d1b80272021327df1f5880c183fdf3fc57fa2df1460813e7340"
+    },
+    {
+      "page": "Strong divination urn",
+      "url": "https://runescape.wiki/w/Strong_divination_urn",
+      "bytes": 131548,
+      "status": "ok",
+      "sha256": "91bf3312b0a0bc07192efe2f196d645f7354f1e1cebd5a93399277f491e32338"
+    },
+    {
+      "page": "Strong farming urn",
+      "url": "https://runescape.wiki/w/Strong_farming_urn",
+      "bytes": 116506,
+      "status": "ok",
+      "sha256": "4e7fa396e830292a610e8b12bdb65f91cc03acda17fb6d280a4bf22530a7da64"
+    },
+    {
+      "page": "Strong fishing urn",
+      "url": "https://runescape.wiki/w/Strong_fishing_urn",
+      "bytes": 134432,
+      "status": "ok",
+      "sha256": "986d45eefaba91cbad16dd153d816b895183d2631192e5f44e269d516a68c429"
+    },
+    {
+      "page": "Strong hunter urn",
+      "url": "https://runescape.wiki/w/Strong_hunter_urn",
+      "bytes": 170186,
+      "status": "ok",
+      "sha256": "3a9b7b7679d75a909e4a210db94faeded599cc381e8a1cb437c4005e802aae02"
+    },
+    {
+      "page": "Strong mining urn",
+      "url": "https://runescape.wiki/w/Strong_mining_urn",
+      "bytes": 118700,
+      "status": "ok",
+      "sha256": "18f25464a835366a5f9b059602a9b40038a245baad6c2b9f0ca0def072191e36"
+    },
+    {
+      "page": "Strong runecrafting urn",
+      "url": "https://runescape.wiki/w/Strong_runecrafting_urn",
+      "bytes": 162298,
+      "status": "ok",
+      "sha256": "f94028dafdfb00706103ca7289dc7e06332069bbf29dbcb6108ed42b852fec6d"
+    },
+    {
+      "page": "Strong smithing urn",
+      "url": "https://runescape.wiki/w/Strong_smithing_urn",
+      "bytes": 183441,
+      "status": "ok",
+      "sha256": "77380ab5a28e930e7e75d254220b4342842057e8205e823b7e06173035164d7a"
+    },
+    {
+      "page": "Strong woodcutting urn",
+      "url": "https://runescape.wiki/w/Strong_woodcutting_urn",
+      "bytes": 127643,
+      "status": "ok",
+      "sha256": "79f3d1e8f2adb08561dc0d2d84ae721d6cb79cda852822f0d5c39c9cfbe6f3fd"
+    },
+    {
+      "page": "Superior Death Lotus tabi",
+      "url": "https://runescape.wiki/w/Superior_Death_Lotus_tabi",
+      "bytes": 274655,
+      "status": "ok",
+      "sha256": "0e768f4661c656f50e92f33a7296431170162f5a71c58f64b44794012f9d6478"
+    },
+    {
+      "page": "Superior Death Lotus tekoh",
+      "url": "https://runescape.wiki/w/Superior_Death_Lotus_tekoh",
+      "bytes": 282471,
+      "status": "ok",
+      "sha256": "b0fba6bb0f3e593990a38f7ecf8df0f8354a3e5bf4cab620878920282fb66d89"
+    },
+    {
+      "page": "Superior scrimshaw of aggression",
+      "url": "https://runescape.wiki/w/Superior_scrimshaw_of_aggression",
+      "bytes": 234606,
+      "status": "ok",
+      "sha256": "840a8d1356bfc471e6fe770bc6b10dd13df4953b6bb8934b7cd7a6c9172f746f"
+    },
+    {
+      "page": "Superior scrimshaw of corruption",
+      "url": "https://runescape.wiki/w/Superior_scrimshaw_of_corruption",
+      "bytes": 234867,
+      "status": "ok",
+      "sha256": "6a064959f2af50efee51d0462b8719b41c305c0d3d7a217a004d3235fee07777"
+    },
+    {
+      "page": "Superior scrimshaw of sacrifice",
+      "url": "https://runescape.wiki/w/Superior_scrimshaw_of_sacrifice",
+      "bytes": 238449,
+      "status": "ok",
+      "sha256": "7ebe8defbe46abe51b304e0ce5598db446caffdbdfa8723e98a21bd0054baf2b"
+    },
+    {
+      "page": "Teak pyre logs",
+      "url": "https://runescape.wiki/w/Teak_pyre_logs",
+      "bytes": 174339,
+      "status": "ok",
+      "sha256": "74ef330e2afaaa7af703ddec04104b95f9acba03e1a60f1be83f78d22b66bb5e"
+    },
+    {
+      "page": "Tree-shaking scrimshaw",
+      "url": "https://runescape.wiki/w/Tree-shaking_scrimshaw",
+      "bytes": 233771,
+      "status": "ok",
+      "sha256": "f13c0fed1b0ca11cf9ef77f3c3b32720acbd6af5260d2a203fe9e76910dc5294"
+    },
+    {
+      "page": "Unholy symbol",
+      "url": "https://runescape.wiki/w/Unholy_symbol",
+      "bytes": 197917,
+      "status": "ok",
+      "sha256": "ff156b4ffd6464debf27f8575462d86d949d4f07f67548ce08fa5c1fe27e6665"
+    },
+    {
+      "page": "Upgraded bone blowpipe",
+      "url": "https://runescape.wiki/w/Upgraded_bone_blowpipe",
+      "bytes": 196285,
+      "status": "ok",
+      "sha256": "74913c4f7c7acb99a26ca8cadb76654de69f5deb454111de72a2aa4f4cc7a791"
+    },
+    {
+      "page": "Whopper-baiting scrimshaw",
+      "url": "https://runescape.wiki/w/Whopper-baiting_scrimshaw",
+      "bytes": 257652,
+      "status": "ok",
+      "sha256": "ed8881764c83fc9becc2e8278b5f45756e9c7bb1362e3c7667fd82937ae3ae99"
+    },
+    {
+      "page": "Willow incense sticks",
+      "url": "https://runescape.wiki/w/Willow_incense_sticks",
+      "bytes": 84495,
+      "status": "ok",
+      "sha256": "38367c34d92333ed76cb9992312caa43e00bb36af326f0667450bfbd0896d939"
+    },
+    {
+      "page": "Willow pyre logs",
+      "url": "https://runescape.wiki/w/Willow_pyre_logs",
+      "bytes": 171608,
+      "status": "ok",
+      "sha256": "9c66296b5dfee9843d208643ef69d65e6710c2363f549e23c0230cbfcb5d48a0"
+    },
+    {
+      "page": "Wizard's mind bomb",
+      "url": "https://runescape.wiki/w/Wizard%27s_mind_bomb",
+      "bytes": 113402,
+      "status": "ok",
+      "sha256": "603b82985956d29dc18004a3b1162813394f980c508380ade2edb5f4a86a5b26"
+    },
+    {
+      "page": "Wobbegong oil",
+      "url": "https://runescape.wiki/w/Wobbegong_oil",
+      "bytes": 117972,
+      "status": "ok",
+      "sha256": "4c3948715533536e44c6eda97f95ebaf5041bd36f98412f7a746ba30184c6f1f"
+    },
+    {
+      "page": "Yew incense sticks",
+      "url": "https://runescape.wiki/w/Yew_incense_sticks",
+      "bytes": 84186,
+      "status": "ok",
+      "sha256": "75834b3a2389c9e7b4fb4adbe4a238f9808094cba9c33d06a062826529cf3f23"
+    },
+    {
+      "page": "Yew pyre logs",
+      "url": "https://runescape.wiki/w/Yew_pyre_logs",
+      "bytes": 176147,
+      "status": "ok",
+      "sha256": "7aca008ce971226ac9b17088b7f69622a03bd5be23ab6f741cd02b0f367de4a4"
+    },
+    {
+      "page": "Potions",
+      "url": "https://runescape.wiki/w/Potions",
+      "bytes": 800189,
+      "status": "ok",
+      "sha256": "7ecad0aa1f2604bf544a4c7cc81573785c6cfd24da01cc79b3a1ddb1516f6b77"
+    },
+    {
+      "page": "Herb",
+      "url": "https://runescape.wiki/w/Herb",
+      "bytes": 138417,
+      "status": "ok",
+      "sha256": "9936dfd89374d844ebc0aa098b095231dd5dabd618fb3cf28d0c7607b92ebb15"
+    },
+    {
+      "page": "Seeds",
+      "url": "https://runescape.wiki/w/Seeds",
+      "bytes": 375946,
+      "status": "ok",
+      "sha256": "3d28b91d728c3847af4d80470b217ef0bcdada837328e4f4a1a93f51370e2a2b"
+    },
+    {
+      "page": "Artefacts",
+      "url": "https://runescape.wiki/w/Artefacts",
+      "bytes": 1079494,
+      "status": "ok",
+      "sha256": "0945388f69e2fcff06588a062d3adc699d71b9c83ad3ce84c0be95265e03e80d"
+    },
+    {
+      "page": "Incense sticks",
+      "url": "https://runescape.wiki/w/Incense_sticks",
+      "bytes": 157353,
+      "status": "ok",
+      "sha256": "88f6abdb8862717ce5dd6ee78e2a210c3c83e63efe9a00d1528b3372de4a7302"
+    },
+    {
+      "page": "Pyre logs",
+      "url": "https://runescape.wiki/w/Pyre_logs",
+      "bytes": 192628,
+      "status": "ok",
+      "sha256": "d9453d68d96caab80da073006788227c163350b55f45f4086fca9555f660c93c"
+    },
+    {
+      "page": "Bonfire",
+      "url": "https://runescape.wiki/w/Bonfire",
+      "bytes": 131647,
+      "status": "ok",
+      "sha256": "a2fcdb8ea91dbffc45316ea0f51ed81e40722f688046b4b4d8f69f5f77b9c530"
+    },
+    {
+      "page": "Bones",
+      "url": "https://runescape.wiki/w/Bones",
+      "bytes": 1052238,
+      "status": "ok",
+      "sha256": "80bedf86eb62026944e83f81611acdf0edd92d7111f0b6c83f979503e631f4e8"
+    },
+    {
+      "page": "Ashes",
+      "url": "https://runescape.wiki/w/Ashes",
+      "bytes": 203767,
+      "status": "ok",
+      "sha256": "99a0338b237633facb58feb8e773de1d63ffdcce3656245619e110a655b5cd97"
+    },
+    {
+      "page": "Protean items",
+      "url": "https://runescape.wiki/w/Protean_items",
+      "bytes": 116763,
+      "status": "ok",
+      "sha256": "db2915ab33f51b19d003e5e2fdfdaa30a420ebd6828e6d3887b9f66cda657817"
+    },
+    {
+      "page": "Smelting",
+      "url": "https://runescape.wiki/w/Smelting",
+      "bytes": 424943,
+      "status": "ok",
+      "sha256": "7ee349c2768c40c69318af131b31fb156de2513ca397c3c59874de5e77812c19"
+    },
+    {
+      "page": "Construction",
+      "url": "https://runescape.wiki/w/Construction",
+      "bytes": 434943,
+      "status": "ok",
+      "sha256": "95cd8f47260e9164cef7cfdcd991cb371722d8a31c37e766552e74cf9afe53a8"
+    },
+    {
+      "page": "Primal bar",
+      "url": "https://runescape.wiki/w/Primal_bar",
+      "bytes": 443759,
+      "status": "ok",
+      "sha256": "d59792cfd2448567a8bbbe36affc413ea41b3632920fa85dc1375a51dc79c398"
+    },
+    {
+      "page": "Light orb",
+      "url": "https://runescape.wiki/w/Light_orb",
+      "bytes": 136507,
+      "status": "ok",
+      "sha256": "5527ae32de5c2ed5dfcbafcadbe58b9ed00719120577bbe5ab8c3d524ac9c2ad"
+    },
+    {
+      "page": "Sharp shell shard",
+      "url": "https://runescape.wiki/w/Sharp_shell_shard",
+      "bytes": 162719,
+      "status": "ok",
+      "sha256": "30a307035d7b3497d3cfa86500743c9eb793e21eac34827aa91afabbcfffca6b"
+    },
+    {
+      "page": "Protean plank",
+      "url": "https://runescape.wiki/w/Protean_plank",
+      "bytes": 344367,
+      "status": "ok",
+      "sha256": "2e8c70c90f25c2c820e4f0c0a9ac377f11e8e6c16172a9071547e373eb88704d"
+    },
+    {
+      "page": "Protean protein",
+      "url": "https://runescape.wiki/w/Protean_protein",
+      "bytes": 175262,
+      "status": "ok",
+      "sha256": "ef3b0f73bd3d04dbf6dca83252a0b7fbeb2dfdbad2f37c4c5cce0d137af0f88e"
+    },
+    {
+      "page": "Protean hide",
+      "url": "https://runescape.wiki/w/Protean_hide",
+      "bytes": 383604,
+      "status": "ok",
+      "sha256": "63b9db66a18fee69b053b90f348ca62da5fc98d24212d8b0efda91a25949f31c"
+    },
+    {
+      "page": "Protean logs",
+      "url": "https://runescape.wiki/w/Protean_logs",
+      "bytes": 410625,
+      "status": "ok",
+      "sha256": "492d97f8f5e289be7d8d64513ae924db4ef2db6846859ff0a6bd59124c1f53eb"
+    },
+    {
+      "page": "Protean shake",
+      "url": "https://runescape.wiki/w/Protean_shake",
+      "bytes": 178646,
+      "status": "ok",
+      "sha256": "eb911041a7c1c46bf458495af1f326572f4b8cf31ab1978c9e12b4fb071f59bf"
+    },
+    {
+      "page": "Protean bar",
+      "url": "https://runescape.wiki/w/Protean_bar",
+      "bytes": 389577,
+      "status": "ok",
+      "sha256": "a0c9542b8402003975a08a6f348a02e26fe0aa98303134364066ea5ba8c4d1eb"
+    },
+    {
+      "page": "Unstable protean plank",
+      "url": "https://runescape.wiki/w/Unstable_protean_plank",
+      "bytes": 235529,
+      "status": "ok",
+      "sha256": "f0ad1162e327c72b6971c21a3b6e482529600e8942a187d1cc514020c5905396"
+    },
+    {
+      "page": "Unstable protean protein",
+      "url": "https://runescape.wiki/w/Unstable_protean_protein",
+      "bytes": 235137,
+      "status": "ok",
+      "sha256": "8396961d29032bb7143d539f78d9871a8543a7d29805d4142a28ab5008721050"
+    },
+    {
+      "page": "Unstable protean hide",
+      "url": "https://runescape.wiki/w/Unstable_protean_hide",
+      "bytes": 255648,
+      "status": "ok",
+      "sha256": "eab62c51153eee26ade601ca03d04bca028e19bdc9aeca9294253ef3020974a7"
+    },
+    {
+      "page": "Unstable protean logs",
+      "url": "https://runescape.wiki/w/Unstable_protean_logs",
+      "bytes": 280056,
+      "status": "ok",
+      "sha256": "88ccf64aac12254c86a69bb61ce09d081702f8cffc09765f6d6049e5e44ea561"
+    },
+    {
+      "page": "Unstable protean shake",
+      "url": "https://runescape.wiki/w/Unstable_protean_shake",
+      "bytes": 235837,
+      "status": "ok",
+      "sha256": "982c2f448575586908411c23db46ddb1e2462453b1a0d8410a8aac533f71a93f"
+    },
+    {
+      "page": "Unstable protean bar",
+      "url": "https://runescape.wiki/w/Unstable_protean_bar",
+      "bytes": 262040,
+      "status": "ok",
+      "sha256": "7aea2aded50906f3aa610663117f62076d9d3830ff5baab9c4df2b571cc92348"
+    },
+    {
+      "page": "Wooden incense sticks",
+      "url": "https://runescape.wiki/w/Wooden_incense_sticks",
+      "bytes": 84627,
+      "status": "ok",
+      "sha256": "83f4c8be01237c66c9937602554f0d3c6d2f502a7aae543229430780c3a945da"
+    },
+    {
+      "page": "Impious incense sticks",
+      "url": "https://runescape.wiki/w/Impious_incense_sticks",
+      "bytes": 95931,
+      "status": "ok",
+      "sha256": "98bca8443c2606f9bed09f04fb5fae53825219ae185dc09bc34afcf12988aefb"
+    },
+    {
+      "page": "Guam incense sticks",
+      "url": "https://runescape.wiki/w/Guam_incense_sticks",
+      "bytes": 97607,
+      "status": "ok",
+      "sha256": "e7f40586c2c33c89764469a7adb61f45f8b28cde5e2e79163b6c18db0211ccf7"
+    },
+    {
+      "page": "Primal hatchet + 1",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal hatchet + 2",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal hatchet + 3",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal hatchet + 4",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock + 1",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock + 2",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock + 3",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock + 4",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal mattock + 5",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Primal pickaxe + 1",
+      "url": "https://runescape.wiki/w/Primal_pickaxe_%2B_1",
+      "bytes": 173157,
+      "status": "ok",
+      "sha256": "536eaa60e19ca19d47a8c6bedfabd305e9ad9f3aae791fcfcd9fcf2159935667"
+    },
+    {
+      "page": "Primal pickaxe + 3",
+      "url": "https://runescape.wiki/w/Primal_pickaxe_%2B_3",
+      "bytes": 173257,
+      "status": "ok",
+      "sha256": "d0f0387bcc02f91f7f6a3747250bfdc1ca7cf9a028932fbe124b068ceffadfae"
+    },
+    {
+      "page": "Primal hatchet + 5",
+      "status": "HTTP Error 404: Not Found",
+      "sha256": null
+    },
+    {
+      "page": "Smithing",
+      "url": "https://runescape.wiki/w/Smithing",
+      "bytes": 424612,
+      "status": "ok",
+      "sha256": "c8c1fa660db6cc6d3d6011778910a65ebfd276916c96d2526dac3637330978d6"
+    },
+    {
+      "page": "Primal equipment",
+      "url": "https://runescape.wiki/w/Primal_equipment",
+      "bytes": 314055,
+      "status": "ok",
+      "sha256": "5f738551e0fc6e394844d9d4e63d91b9b4763334fc5ac55aef65c61998102c92"
+    },
+    {
+      "page": "Herblore",
+      "url": "https://runescape.wiki/w/Herblore",
+      "bytes": 296986,
+      "status": "ok",
+      "sha256": "d9df202396eea2b019e552207a74a5470e2cdb7d49709fcee4549a5fdabee446"
+    },
+    {
+      "page": "Crafting",
+      "url": "https://runescape.wiki/w/Crafting",
+      "bytes": 1133860,
+      "status": "ok",
+      "sha256": "35c4809e61a4dc668e48b1a99becb9cb17c068e1f99b195043d00f7aa1b5a915"
+    },
+    {
+      "page": "Fletching",
+      "url": "https://runescape.wiki/w/Fletching",
+      "bytes": 447104,
+      "status": "ok",
+      "sha256": "de987d410c2fe2c9d5a7ee24084092870d326c905e0486d9a8b2526c2a8957db"
+    },
+    {
+      "page": "Cooking",
+      "url": "https://runescape.wiki/w/Cooking",
+      "bytes": 403168,
+      "status": "ok",
+      "sha256": "41595a18224a5724eb69a08b0c2732fc30bbd0796d0e5a8737fbdb4d1fbf7f35"
+    },
+    {
+      "page": "Farming",
+      "url": "https://runescape.wiki/w/Farming",
+      "bytes": 621113,
+      "status": "ok",
+      "sha256": "ee3ebb039e4ec2205cada670658ec7f46add1dfec1dc35dcce2f8e5c6e8bbab6"
+    },
+    {
+      "page": "Firemaking",
+      "url": "https://runescape.wiki/w/Firemaking",
+      "bytes": 371577,
+      "status": "ok",
+      "sha256": "df946fd24ec881e64d6aa6ea9551dc3a13322f1aacb38381656134fa2f70bef5"
+    },
+    {
+      "page": "Prayer",
+      "url": "https://runescape.wiki/w/Prayer",
+      "bytes": 560989,
+      "status": "ok",
+      "sha256": "32ee4b099667d5c06f454310336839120cce56028c05e8d5e3a9f299957bf79f"
+    },
+    {
+      "page": "Nails",
+      "url": "https://runescape.wiki/w/Nails",
+      "bytes": 115432,
+      "status": "ok",
+      "sha256": "8d752079657e15362a7923d385e2e6d7630df7ec4f6053d1a14c2a7bc546905a"
+    }
+  ]
+}

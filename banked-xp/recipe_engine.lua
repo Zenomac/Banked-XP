@@ -281,10 +281,17 @@ function M.allocatePortfolio(state,r)
     if lo>0 then
         assert(consumeMany(relevant,r.inputsNormalized,lo,{},{}))
         for k in pairs(r.keys) do available[k]=relevant[k] or 0 end
+        state.minTotal=(state.minTotal or state.total)+lo*(r.minXP or r.xp)
         state.total=state.total+lo*r.xp;state.used=state.used+1
         state.bySkill=state.bySkill or {}
         local skill=r.skill or 'Herblore'
         state.bySkill[skill]=(state.bySkill[skill] or 0)+lo*r.xp
+        if state.includeSecondary then
+            for other,xp in pairs(r.additionalXP or {}) do
+                state.bySkill[other]=(state.bySkill[other] or 0)+lo*xp
+                state.total=state.total+lo*xp
+            end
+        end
     end
 end
 function M.portfolio(routes,counts)

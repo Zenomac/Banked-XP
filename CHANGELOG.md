@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.120.0**.
+Current plugin version: **0.121.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.121
+
+Audited all ten supported skills against calculator indexes and targeted creation tables. Added 552 recipe/level-tier records, including Primal Smithing, platinum smelting, incense, pyre-log preparation, proteans, brewing, scrimshaws and equipment; 159 new ingredient names are indexed. Removed 12 Cooking urn reward records that were not immediate recipe XP. Protean menus select the current real-level tier. Incense retains both skills' XP without duplicating supplies, and legacy Prayer/log methods share recipe budgets. Updated coverage documentation with item-level dispositions and explicit remaining gaps. All 30 local Lua suites pass; live game verification remains outstanding. No runtime network calls added.
 
 ## v0.120
 
