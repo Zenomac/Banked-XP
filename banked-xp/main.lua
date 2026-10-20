@@ -22,6 +22,14 @@ require("outfits").register()
 local noticeOK,noticeError=pcall(function() require("startup_notice").register() end)
 if not noticeOK then print('[banked-xp] Optional Diango notice unavailable: '..tostring(noticeError)) end
 local warned = false
+local animaDiagnostics={}
+local function animaDiagnostic(name,reason)
+    if not name or not name:lower():find('resonant anima',1,true) then return end
+    local key=name..':'..reason
+    if animaDiagnostics[key] then return end
+    animaDiagnostics[key]=true
+    print('[BXP anima] '..name..': '..reason)
+end
 local edits={}
 local ownedRow
 local nativeGeometry
@@ -118,7 +126,7 @@ local function detect(event)
     if not d or not d.objConfig then restore();return end
     local obj=d.objConfig
     local method=catalog.lookup(obj)
-    if not method then restore();return end
+    if not method then animaDiagnostic(obj.name,'no catalog match');restore();return end
     local bank=Inventory.Find(config.Inv.BANK)
     local count=bank and bank:GetTotal(obj.id)
     if count and count>0 then
@@ -143,7 +151,8 @@ local function paint()
     -- ID from the user's exported registry. Dynamic children are validated
     -- every frame because the game can reuse these IDs for other content.
     local header=ui.Interfaces:GetComponent(1477,902,0,0)
-    local row=ui.Interfaces:GetComponent(1477,902,0,1)
+    local rowOK,row=pcall(function() return ui.Interfaces:GetComponent(1477,902,0,1) end)
+    if not rowOK then row=nil end
     -- Native dynamic rows may throw for missing IDs, and the options
     -- label may be rendered by the client without literal content text.
     -- Keep the proven slot-2 footer as a fallback; optional rows must never
@@ -166,9 +175,20 @@ local function paint()
     end
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
     if not header or not footer or not header.visibleGlobal then restore();return end
+    -- A wrapped native item name can occupy the would-be XP row. Keep its
+    -- suffix in the header and use our own row rather than discarding text.
+    local continuation=row and row.content or ''
+    local normalizedContinuation=require('bank').normalize(continuation)
+    local splitAnima=selectedName and selectedName:find('resonant anima of ',1,true)
+        and (normalizedContinuation=='(tradeable)' or normalizedContinuation=='(tradable)')
+    if splitAnima then
+        edit(header,'content',(header.content or '')..'<br>'..continuation)
+        edit(row,'content','')
+    end
+    local occupied=row and row.content~='' and row.content~=nil and row.content~=written
     -- Some item tooltips have no visible middle row. Never unhide a native
     -- label: use a plugin-owned, click-through text component in its place.
-    if not row or row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then
+    if splitAnima or occupied or not row or row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then
         local parent=header.parent
         if not parent or not parent.visibleGlobal then restore();return end
         if ownedRow and ownedRow.parent~=parent then ownedRow:Destroy();ownedRow=nil end
@@ -178,6 +198,7 @@ local function paint()
             ownedRow.font=header.font
             ownedRow.content=''
         end
+        if occupied and row.visibleGlobal then table.insert(details,1,row) end
         row=ownedRow
         row.hidden=false
     elseif ownedRow then ownedRow.hidden=true end
@@ -186,7 +207,10 @@ local function paint()
     title=string.gsub(title,'%s+','')
     local matchingName=require('bank').normalize(selectedName or '')
     matchingName=string.gsub(matchingName,'%s+','')
-    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then restore();return end
+    if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then
+        animaDiagnostic(selectedName,'native title mismatch: '..plainTitle)
+        restore();return
+    end
     local function number(n)
         return string.format('%.0f',n):reverse():gsub('(%d%d%d)','%1,'):reverse():gsub('^,','')
     end

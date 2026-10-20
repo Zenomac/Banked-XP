@@ -364,3 +364,19 @@ callbacks.MiniMenuReady(event);callbacks.Draw()
 assert(replacement and replacement.content:find('XP',1,true),'hidden middle row gets plugin-owned XP')
 assert(labels[1].hidden,'native middle row stays hidden')
 callbacks.MiniMenuOpened();assert(replacement.hidden,'owned row hides on exit')
+
+-- Each tradeable suffix can occupy a separate native row, not just a <br>.
+for _,god in ipairs({'Bik','Ful','Wen','Jas'}) do
+ callbacks.MiniMenuOpened()
+ labels[0].content='Withdraw-All Resonant anima of '..god
+ labels[1].hidden=false;labels[1].content='(tradeable)'
+ event.miniMenu.entries[1].componentData.objConfig.name='Resonant anima of '..god..' (tradeable)'
+ callbacks.MiniMenuReady(event)
+ for i=1,10 do
+  callbacks.Draw()
+  assert(replacement.content:find('XP',1,true) and not replacement.hidden,'split '..god..' XP stays visible')
+  assert(labels[0].content:find('(tradeable)',1,true),'tradeable suffix preserved in header')
+ end
+ callbacks.MiniMenuOpened()
+ assert(labels[0].content=='Withdraw-All Resonant anima of '..god and labels[1].content=='(tradeable)','split native title restored')
+end

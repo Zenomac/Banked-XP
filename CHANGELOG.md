@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.130.0**.
+Current plugin version: **0.131.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.131 — Wrapped tradeable anima titles
+
+- Handle a tradeable suffix occupying the native middle row: preserve it in the title and render XP in a plugin-owned row.
+- Preserve other occupied native rows as details; safely handle an absent middle component.
+- Add repeated-draw tests for split titles for all four gods and bounded diagnostics for anima catalog/title mismatches.
 
 ## v0.130 — Tradeable anima hover compatibility
 
