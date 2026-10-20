@@ -159,7 +159,7 @@ function M.estimate(obj,base,bank,count)
         end
         local label,met=policy.presentation(method)
         result.method=label
-        if met and result.note then result.note=result.note:gsub('^Lv %d+; ','') end
+        if result.note then result.note=result.note:gsub('^Lv %d+; ','') end
         local state=policy.state(counts,method.skill)
         if (method.masterCape or method.unboostable) and not met then
             result.note=(result.note and result.note..' | ' or '')..'Requires real '..method.skill..' level '..tostring(method.level):gsub('%.0$','')..'; cannot be boosted'
