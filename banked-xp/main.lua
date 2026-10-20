@@ -15,6 +15,7 @@ local skillLoaded,skillError=pcall(function()
 end)
 if not skillLoaded then print('[banked-xp] Skill summary unavailable: '..tostring(skillError)) end
 local animaProbe=require("anima_probe")
+local hoverTiming=require("hover_timing")
 local catalog=require("catalog")
 local methods=require("methods")
 local hoverLayout=require("hover_layout")
@@ -129,6 +130,7 @@ local function detect(event)
     local d=e.componentData
     if not d or not d.objConfig then restore();return end
     local obj=d.objConfig
+    hoverTiming.begin(obj.name)
     if obj.id~=previousID then restore(true) end
     local method=catalog.lookup(obj)
     if not method then animaProbe.report(obj.name,'catalog miss');restore();return end
@@ -145,6 +147,7 @@ local function detect(event)
         selected=estimate;quantity=count;selectedID=obj.id
         methods.addMenu(event.miniMenu,obj,options,method)
         selectedName=string.lower(obj.name or "")
+        hoverTiming.ready()
     else
 
     end
@@ -215,7 +218,7 @@ local function paint()
     end
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
     local function probe(reason)
-        animaProbe.report(selectedName,reason,{[0]=header,[1]=row,[2]=footer,[3]=optionalRow(3)})
+        hoverTiming.gate(reason)
     end
     if not header or not row or not footer then probe('missing component');restore();return end
     -- An empty native LABEL may report visibleGlobal=false because it has no
@@ -464,6 +467,7 @@ local function paint()
     if tradeableAnima and applied==row and row.content==written then row.content=text end
     if tradeableAnima then
         animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content
+        hoverTiming.layout()
     end
 end
 local function safe(fn,...)
@@ -474,7 +478,7 @@ local function safe(fn,...)
     end
 end
 Event.MiniMenuReady.Subscribe('bankedXpRowSelection',function(e) safe(detect,e) end)
-Event.Draw.Subscribe('bankedXpNativeRow',function() safe(paint) end)
+Event.Draw.Subscribe('bankedXpNativeRow',function() hoverTiming.draw();safe(paint);hoverTiming.finish(applied) end)
 Event.MiniMenuOpened.Subscribe('bankedXpRowClear',restore)
 function PluginShutdown()
     nativeFrame.destroy()

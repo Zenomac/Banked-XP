@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.142.0**.
+Current plugin version: **0.143.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.143 — Bounded hover timing diagnostic
+
+- Preserve v0.142 rendering; replace transition-row dumps with a single timing summary per tradeable anima name per plugin load.
+- Count frames to selection-ready, layout application and reported body visibility, plus rebuilds and selection events. End after 120 frames or 30 frames following visibility, or on switching items.
+- Include cumulative preparation CPU time only if os.clock is available; explicitly label it CPU time, not wall latency. Continue safely without the clock API.
+- Local console only: no bank quantities, XP values, account identifiers, persistence or network requests. This is a diagnostic release, not a verified latency fix.
 
 ## v0.142 — Commit native text after final layout
 
