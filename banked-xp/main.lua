@@ -62,6 +62,9 @@ local function edit(c,p,value)
     -- Native LABEL proxies expose fewer style setters than plugin ui.Text.
     -- An unknown member can read as nil but rejects writes via __newindex.
     if not readable or old==nil or old==value then return end
+    -- Plugin-owned text needs no native-state rollback. Reverting its font
+    -- and geometry each Draw repeatedly invalidates the client text layout.
+    if c==ownedRow then c[p]=value;return end
     local before=old
     if p=='height' then
         before=ui.Size.new(c.size)
@@ -88,13 +91,21 @@ end
 -- layout, place text inside its native parent. The parent itself retains
 -- its client-controlled position so it can follow the cursor.
 local function box(c,x,y,width,height)
-    edits[#edits+1]={c=c,p='rect',before={size=ui.Size.new(c.size),position=ui.Pos.new(c.position)}}
+    if c~=ownedRow then
+        edits[#edits+1]={c=c,p='rect',before={size=ui.Size.new(c.size),position=ui.Pos.new(c.position)}}
+    end
     local parent=c.parent
     local origin=parent and parent.xyGlobal or {x=0,y=0}
-    c.size=ui.Size.new(math.ceil(width),math.ceil(height))
+    if c~=ownedRow or c.width~=math.ceil(width) or c.height~=math.ceil(height) then
+        c.size=ui.Size.new(math.ceil(width),math.ceil(height))
+    end
     local position=ui.Pos.new(math.floor(x-origin.x),math.floor(y-origin.y))
-    edits[#edits].after=ui.Pos.new(position)
-    c.position=position
+    if c~=ownedRow then edits[#edits].after=ui.Pos.new(position) end
+    local same=true
+    for _,field in ipairs({'x','y','xParentPc','yParentPc','xSelfPc','ySelfPc'}) do
+        if c.position[field]~=position[field] then same=false;break end
+    end
+    if not same then c.position=position end
 end
 local function resize(c,width,height)
     edits[#edits+1]={c=c,p='resize',before=ui.Size.new(c.size)}
@@ -274,6 +285,21 @@ local function paint()
         end
     end
     local text=table.concat(lines,'<br>')
+    -- Publish the prepared text before expanding the frame, avoiding a blank
+    -- expanded bubble while the native client schedules text layout.
+    if applied and applied~=row then
+        if applied.content==written then applied.content=saved end
+        applied,saved,written=nil,nil,nil
+    end
+    local current=row.content or '' 
+    if current~=text then
+        -- Only take ownership of an empty row; don't replace native details.
+        if current~='' and current~=written then restore();return end
+        applied=row;saved='';written=text
+        row.content=text
+    end
+    if row==ownedRow then row:MoveToFront() end
+
     local fontOK,font=pcall(function() return config.Font.FromID(header.font) end)
     if not fontOK or not font then
         -- A font lookup failure should not erase supported XP information.
@@ -441,17 +467,7 @@ local function paint()
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
     nativeFrame.apply(bg,header,footer,effectY,box,edit)
-    if applied and applied~=row then
-        if applied.content==written then applied.content=saved end
-        applied,saved,written=nil,nil,nil
-    end
-    local current=row.content or '' 
-    if current~=text then
-        -- Only take ownership of an empty row; don't replace native details.
-        if current~='' and current~=written then restore();return end
-        applied=row;saved='';written=text
-        row.content=text
-    end
+
 end
 local function safe(fn,...)
     local ok,err=pcall(fn,...)

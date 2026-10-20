@@ -412,3 +412,22 @@ for index,god in ipairs({'Ful','Bik','Jas','Wen','Ful'}) do
  assert(not active.hidden and active.content:find('XP',1,true),'immediate native/owned handoff '..god)
 end
 callbacks.MiniMenuOpened()
+
+-- The body must be populated on the first matching Draw, before the frame
+-- expands. Do not restore the plugin-owned font between identical frames.
+callbacks.MiniMenuOpened()
+labels[0].content='Withdraw-All Resonant anima of Jas'
+labels[1].content='(tradeable)';labels[1].hidden=false
+labels[2].font=12
+event.miniMenu.entries[1].componentData.objConfig={id=1200,name='Resonant anima of Jas (tradeable)'}
+local frameModule=require('native_frame')
+local originalApply=frameModule.apply
+frameModule.apply=function(...)
+ assert(replacement and replacement.content:find('XP',1,true),'text ready before frame expansion')
+ return originalApply(...)
+end
+callbacks.MiniMenuReady(event);callbacks.Draw()
+assert(replacement.content:find('XP',1,true) and not replacement.hidden,'first matching frame contains XP')
+for i=1,25 do callbacks.Draw() end
+frameModule.apply=originalApply
+callbacks.MiniMenuOpened()
