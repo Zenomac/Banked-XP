@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.131.0**.
+Current plugin version: **0.132.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.132 — Clear stale hover state on item changes
+
+- Preserve newly client-written native text when undoing the previous item's layout.
+- Clear inactive plugin-owned text and release the previous row when switching between native and plugin-owned rows.
+- Test sequential and immediate switches across tradeable anima with different estimates; immediate switching fails on v0.131 and passes after this fix.
+- Log title mismatches only after ten consecutive frames, avoiding normal one-frame title lag noise.
 
 ## v0.131 — Wrapped tradeable anima titles
 

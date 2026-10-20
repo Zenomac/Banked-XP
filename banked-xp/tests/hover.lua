@@ -380,3 +380,35 @@ for _,god in ipairs({'Bik','Ful','Wen','Jas'}) do
  callbacks.MiniMenuOpened()
  assert(labels[0].content=='Withdraw-All Resonant anima of '..god and labels[1].content=='(tradeable)','split native title restored')
 end
+
+-- Switch between native and plugin-owned rows WITHOUT a menu-close event.
+-- The client may still display the previous item's title for one draw.
+for cycle=1,3 do
+ for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
+  local name='Resonant anima of '..god..' (tradeable)'
+  event.miniMenu.entries[1].componentData.objConfig={id=800+index,name=name}
+  callbacks.MiniMenuReady(event)
+  callbacks.Draw() -- old native title; never show the new item's XP here
+  labels[0].content='Withdraw-All '..(index%2==0 and 'Resonant anima of '..god or name)
+  labels[1].content=index%2==0 and '(tradeable)' or ''
+  labels[1].hidden=false
+  for frame=1,5 do callbacks.Draw() end
+  local active=index%2==0 and replacement or labels[1]
+  assert(active.content:find('XP',1,true),'sequential hover '..god..' renders without menu close')
+ end
+end
+callbacks.MiniMenuOpened()
+
+-- Immediate updates with DIFFERENT estimates must clear the inactive owned row.
+for index,god in ipairs({'Ful','Bik','Jas','Wen','Ful'}) do
+ selected.total=1000+index
+ local split=index%2==1
+ labels[0].content='Withdraw-All Resonant anima of '..god..(split and '' or ' (tradeable)')
+ labels[1].content=split and '(tradeable)' or ''
+ event.miniMenu.entries[1].componentData.objConfig={id=900+index,name='Resonant anima of '..god..' (tradeable)'}
+ callbacks.MiniMenuReady(event)
+ for frame=1,3 do callbacks.Draw() end
+ local active=split and replacement or labels[1]
+ assert(not active.hidden and active.content:find('XP',1,true),'immediate native/owned handoff '..god)
+end
+callbacks.MiniMenuOpened()

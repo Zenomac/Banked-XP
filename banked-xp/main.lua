@@ -5,6 +5,8 @@ require('storage').register()
 local selected, applied, saved, written = nil, nil, nil, nil
 local quantity=nil
 local selectedName=nil
+local selectedID=nil
+local titleMismatchFrames=0
 require("settings_ui").register()
 -- Optional skill-hover integration must not prevent item hovers loading.
 local skillHover
@@ -98,8 +100,16 @@ local function resize(c,width,height)
     edits[#edits+1]={c=c,p='resize',before=ui.Size.new(c.size)}
     c.size=ui.Size.new(math.ceil(width),math.ceil(height))
 end
-local function restore()
-    if ownedRow then pcall(function() ownedRow.hidden=true end) end
+local function restore(preserveNativeText)
+    -- The client may already have replaced a reused label for the next item.
+    -- On selection changes, keep that new text even if it equals our last edit.
+    local currentText={}
+    if preserveNativeText==true then
+        for _,e in ipairs(edits) do
+            if e.p=='content' and e.c~=ownedRow then currentText[e.c]=e.c.content end
+        end
+    end
+    if ownedRow then pcall(function() ownedRow.hidden=true;ownedRow.content='' end) end
     nativeGeometry=nil
     nativeFrame.hide()
     undoLayout()
@@ -110,6 +120,7 @@ local function restore()
         end)
     end
     applied,saved,written=nil,nil,nil
+    for c,value in pairs(currentText) do c.content=value end
 end
 local function compact(n)
     if n>=1000000 then return string.format('%.2fm',n/1000000) end
@@ -117,7 +128,8 @@ local function compact(n)
     return string.format('%.1f',n):gsub('%.0$','')
 end
 local function detect(event)
-    selected=nil;quantity=nil;selectedName=nil
+    local previousID,previousName=selectedID,selectedName
+    selected=nil;quantity=nil;selectedName=nil;selectedID=nil
     if MiniMenu.IsOpen() then restore();return end
     local entries=event.miniMenu.entries
     local e=entries[#entries]
@@ -125,6 +137,10 @@ local function detect(event)
     local d=e.componentData
     if not d or not d.objConfig then restore();return end
     local obj=d.objConfig
+    if obj.id~=previousID or string.lower(obj.name or '')~=previousName then
+        restore(true)
+        titleMismatchFrames=0
+    end
     local method=catalog.lookup(obj)
     if not method then animaDiagnostic(obj.name,'no catalog match');restore();return end
     local bank=Inventory.Find(config.Inv.BANK)
@@ -137,7 +153,7 @@ local function detect(event)
         -- The exact same filtered options drive hover and right-click.
         -- Explicit informational previews may render without selectable recipes.
         if (not options or #options==0) and not (estimate and (estimate.artefactPreview or estimate.levelPreview or estimate.ingredientPreview)) then restore();return end
-        selected=estimate;quantity=count
+        selected=estimate;quantity=count;selectedID=obj.id
         methods.addMenu(event.miniMenu,obj,options,method)
         selectedName=string.lower(obj.name or "")
     else
@@ -208,9 +224,11 @@ local function paint()
     local matchingName=require('bank').normalize(selectedName or '')
     matchingName=string.gsub(matchingName,'%s+','')
     if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then
-        animaDiagnostic(selectedName,'native title mismatch: '..plainTitle)
+        titleMismatchFrames=titleMismatchFrames+1
+        if titleMismatchFrames==10 then animaDiagnostic(selectedName,'persistent native title mismatch: '..plainTitle) end
         restore();return
     end
+    titleMismatchFrames=0
     local function number(n)
         return string.format('%.0f',n):reverse():gsub('(%d%d%d)','%1,'):reverse():gsub('^,','')
     end
@@ -423,7 +441,11 @@ local function paint()
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
     nativeFrame.apply(bg,header,footer,effectY,box,edit)
-    local current=row.content or ''
+    if applied and applied~=row then
+        if applied.content==written then applied.content=saved end
+        applied,saved,written=nil,nil,nil
+    end
+    local current=row.content or '' 
     if current~=text then
         -- Only take ownership of an empty row; don't replace native details.
         if current~='' and current~=written then restore();return end
