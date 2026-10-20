@@ -1,10 +1,18 @@
 # Changelog
 
-Current plugin version: **0.143.0**.
+Current plugin version: **0.144.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.144 — Reusable owned XP text on static parent
+
+- User timing shows layout on frames 2–4, native body visibility only on frames 65–75, and two builds per sample.
+- Render tradeable XP through one plugin-owned layer/text pair under static 1477:896. Use the existing shared font and layout plan; leave the native body content, geometry and visibility untouched.
+- Keep owned components outside the native undo stack, reuse them across item switches, synchronize cursor position, and hide on restoration/menu opening.
+- Drop stale proxies when the parent interface changes; destroy only owned live layers on shutdown. Partial constructor failure cleans up and blocks per-frame allocation retries.
+- Local lifecycle tests cover first-draw visibility with an invisible native body, all gods, repeated draws, cursor movement, parent replacement, shutdown and failed construction. Live-client stability and latency are unverified; native-body v0.143 remains a fallback.
 
 ## v0.143 — Bounded hover timing diagnostic
 

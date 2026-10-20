@@ -16,6 +16,7 @@ end)
 if not skillLoaded then print('[banked-xp] Skill summary unavailable: '..tostring(skillError)) end
 local animaProbe=require("anima_probe")
 local hoverTiming=require("hover_timing")
+local hoverOverlay=require("hover_overlay")
 local catalog=require("catalog")
 local methods=require("methods")
 local hoverLayout=require("hover_layout")
@@ -96,6 +97,7 @@ local function resize(c,width,height)
     edits[#edits].afterSize=ui.Size.new(c.size)
 end
 local function restore(preserveNativeText)
+    hoverOverlay.hide()
     local currentText={}
     if preserveNativeText==true then
         for _,e in ipairs(edits) do
@@ -163,7 +165,7 @@ end
 local function unchangedAnima()
     if not animaPaintKey or animaPaintKey~=animaKey() or #edits==0 then return false end
     if not animaHeader or not animaHeader.visibleGlobal or animaHeader.content~=animaTitle then return false end
-    if not applied or applied.hidden or applied.content~=written then return false end
+    if not hoverOverlay.current() then return false end
     for _,e in ipairs(edits) do
         if e.c.hidden then return false end
         if e.p=='rect' or e.p=='resize' then
@@ -184,9 +186,10 @@ end
 local function paint()
     if selected and not MiniMenu.IsOpen() then
         local ok,unchanged=pcall(unchangedAnima)
-        if ok and unchanged then return end
+        if ok and unchanged and hoverOverlay.sync(animaHeader) then return end
     end
     animaPaintKey=nil
+    hoverOverlay.hide()
     nativeFrame.hide()
     undoLayout()
     if not selected or MiniMenu.IsOpen() then restore();return end
@@ -288,7 +291,7 @@ local function paint()
     local text=table.concat(lines,'<br>')
     -- Set content before expanding the frame so the native label can lay out immediately.
     local current=row.content or ''
-    if current~=text then
+    if not tradeableAnima and current~=text then
         -- Only take ownership of an empty row; don't replace native details.
         if current~=originalRow and current~=written then restore();return end
         applied=row;saved=originalRow;written=text
@@ -425,6 +428,7 @@ local function paint()
     end
     box(header,nativeX,nativeY,plan.width,plan.headerHeight)
     edit(header,'alignHorizontal',alignment)
+    if not tradeableAnima then
     box(row,nativeX,nativeY+plan.bodyY,plan.width,plan.bodyHeight)
     edit(row,'font',bodyStyle.id)
     edit(row,'alignHorizontal',alignment)
@@ -434,6 +438,7 @@ local function paint()
     for _,p in ipairs({'isShadowed','shadowRGBA'}) do
         local ok,value=pcall(function() return header[p] end)
         if ok and value~=nil then edit(row,p,value) end
+    end
     end
     for i,c in ipairs(details) do
         local d=plan.details[i]
@@ -461,11 +466,9 @@ local function paint()
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
     nativeFrame.apply(bg,header,footer,effectY,box,edit,tradeableAnima)
-    -- Native text layout can be cached when content is assigned. Commit it
-    -- again after font, bounds and clipping parents have their final values.
-    -- The unchanged-layout fast path skips this write on subsequent draws.
-    if tradeableAnima and applied==row and row.content==written then row.content=text end
     if tradeableAnima then
+        if not hoverOverlay.show(header,plan.bodyY,plan.width,plan.bodyHeight,
+            bodyStyle.id,bodyStyle.spacing,text) then restore();return end
         animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content
         hoverTiming.layout()
     end
@@ -478,9 +481,10 @@ local function safe(fn,...)
     end
 end
 Event.MiniMenuReady.Subscribe('bankedXpRowSelection',function(e) safe(detect,e) end)
-Event.Draw.Subscribe('bankedXpNativeRow',function() hoverTiming.draw();safe(paint);hoverTiming.finish(applied) end)
+Event.Draw.Subscribe('bankedXpNativeRow',function() hoverTiming.draw();safe(paint);hoverTiming.finish(hoverOverlay.current() or applied) end)
 Event.MiniMenuOpened.Subscribe('bankedXpRowClear',restore)
 function PluginShutdown()
+    hoverOverlay.destroy()
     nativeFrame.destroy()
     if skillHover then pcall(skillHover.restore) end
     restore()

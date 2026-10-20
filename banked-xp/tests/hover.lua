@@ -349,111 +349,57 @@ print('PASS: 100 client-interleaved relayouts keep native stat offsets and toolt
 
 
 
--- Reproduce the probe: visible title/footer, middle label visibleGlobal=false.
-callbacks.MiniMenuOpened()
-labels[3]=nil -- tradeable anima has no equipment stat block
-ui.Text={new=function() error('no text constructors') end}
-ui.Layer={new=function() error('no layer constructors') end}
-ui.Sprite={new=function() error('no sprite constructors') end}
-local componentReads=0
-local originalGet=ui.Interfaces.GetComponent
-ui.Interfaces.GetComponent=function(self,...)
- componentReads=componentReads+1;return originalGet(self,...)
-end
-local expectedWidth,measuredWidths,measuredLines,readCount
+
+-- Tradeable body uses a singleton under the static root, not native rows.
+callbacks.MiniMenuOpened();labels[3]=nil
+local ownLayer,ownText
+local layerCreates,textCreates=0,0
+ui.Layer={new=function(parent)
+ assert(parent==root,'owned layer must use stable static root')
+ layerCreates=layerCreates+1
+ ownLayer=component(999,parent,0,0,0,0)
+ return ownLayer
+end}
+ui.Text={new=function(parent)
+ assert(parent==ownLayer,'text must use plugin-owned layer')
+ textCreates=textCreates+1
+ ownText=component(1000,parent,0,0,0,0)
+ rawset(ownText,'lineSpacing',0);ownText.content='';ownText.font=0
+ return ownText
+end}
+ui.Sprite={new=function() error('no extra sprites') end}
+local overlay=require('hover_overlay')
 selected.inputPerPotion=3;selected.xpUnit='arrow'
-selected.note='Limited by: Dinarrow | Requires: Standard imbuing | Outfit: <col=ff0000>+0%</col> Fletcher'
+selected.note='Limited by: Dinarrow | Requires: Standard imbuing | Outfit: +0%'
 for cycle=1,3 do
  for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
-  selected.total=1000+index
   local title='Withdraw-All Resonant anima of '..god..' (tradeable)'
   labels[0].content=title;labels[1].content='';labels[1].hidden=false
   rawset(labels[1],'visibleGlobal',false)
   event.miniMenu.entries[1].componentData.objConfig={id=600+index,name='Resonant anima of '..god..' (tradeable)'}
   callbacks.MiniMenuReady(event)
+  local expectedWidth,measurements
   for frame=1,20 do
    callbacks.Draw()
-   assert(labels[1].content:find('XP',1,true),'XP in existing native body label')
-   assert(labels[0].content==title,'native title remains separate and unchanged')
-   assert(labels[1].content:find('Uses 3 per arrow',1,true),'same consumption information as normal hover')
-   assert(labels[2].xyGlobal.y>=labels[1].xyGlobal.y+labels[1].height+7,'footer clear of body')
-   assert(not labels[1].hidden,'never change native visibility flags')
-   assert(labels[1].font==labels[2].font,'same smaller native body font as non-tradeable renderer')
-   assert(labels[0].font==12,'retain native title font and line advance')
-   assert(labels[1].content:find('</col><br><col=e3d7bf>Requires:',1,true),'notes on separate lines')
-   if frame==1 then
-    expectedWidth=bg.width;measuredWidths=widthCalls;measuredLines=lineCalls;readCount=componentReads
-   else
-    assert(bg.width==expectedWidth,'width stable')
-    assert(widthCalls==measuredWidths and lineCalls==measuredLines,'warm draws must not remeasure text')
-    assert(componentReads==readCount,'unchanged hover must not scan or rebuild native components')
-   end
+   assert(ownText and ownText.visibleGlobal and ownText.content:find('XP',1,true),'owned XP visible on first draw despite invisible native body')
+   assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'native body untouched')
+   assert(labels[0].content==title,'native title unchanged')
+   assert(ownText.font==labels[2].font,'same body font as normal tooltip')
+   assert(labels[2].xyGlobal.y>=ownText.xyGlobal.y+ownText.height+7,'options below owned text')
+   if frame==1 then expectedWidth=bg.width;measurements=widthCalls+lineCalls
+   else assert(bg.width==expectedWidth and widthCalls+lineCalls==measurements,'stable dimensions and cached measurements') end
   end
-  callbacks.MiniMenuOpened()
-  assert(labels[0].content==title,'native title restored')
-  assert(labels[0].font==12,'original title font restored')
  end
 end
-print('PASS: empty native body uses shared renderer, separate title, smaller body font, no visibility changes or constructors')
-
--- Switch directly between gods without opening/closing a menu.
-for index,god in ipairs({'Jas','Wen','Bik','Ful','Jas'}) do
- local title='Withdraw-All Resonant anima of '..god..' (tradeable)'
- labels[0].content=title;labels[1].content=''
- event.miniMenu.entries[1].componentData.objConfig={id=800+index,name='Resonant anima of '..god..' (tradeable)'}
- callbacks.MiniMenuReady(event);callbacks.Draw()
- assert(labels[0].content:find(title,1,true),'direct switch keeps current item title')
- assert(labels[1].content:find('XP',1,true),'direct switch renders immediately')
- local before=componentReads
- bubble.position.x=bubble.position.x+3
- callbacks.Draw()
- assert(componentReads==before,'cursor parent movement reuses relative layout')
-end
+assert(layerCreates==1 and textCreates==1,'switching all gods reuses the same owned components')
+local oldX=ownText.xyGlobal.x
+bubble.position.x=bubble.position.x+10
+callbacks.Draw()
+assert(ownText.xyGlobal.x==oldX+10,'owned text follows native cursor parent')
 callbacks.MiniMenuOpened()
-print('PASS: direct anima transitions and cursor movement reuse stable native layout')
-
--- Client repositions the body before visibility catches up: keep our text.
-labels[0].content='Withdraw-All Resonant anima of Wen (tradeable)'
-labels[1].content='';labels[1].hidden=false
-rawset(labels[1],'visibleGlobal',false)
-event.miniMenu.entries[1].componentData.objConfig={id=901,name='Resonant anima of Wen (tradeable)'}
-callbacks.MiniMenuReady(event);callbacks.Draw()
-for frame=1,12 do
- labels[1].position.x=labels[1].position.x+1
- callbacks.Draw()
- assert(labels[1].content:find('XP',1,true),'visibility lag during native relayout must not clear XP')
-end
-callbacks.MiniMenuOpened()
-assert(labels[1].content=='','original empty body restored')
-print('PASS: native relayout with delayed visibility retains XP without clear/retry oscillation')
-
--- Content setters capture native font/bounds at assignment time.
-local body=labels[1]
-local mt=getmetatable(body);local baseIndex,baseNew=mt.__index,mt.__newindex
-local bodyText=body.content;rawset(body,'content',nil)
-local commits=0;local committedWidth,committedHeight,committedFont
-mt.__index=function(c,k)
- if c==body and k=='content' then return bodyText end
- return baseIndex(c,k)
-end
-mt.__newindex=function(c,k,v)
- if c==body and k=='content' then
-  bodyText=v
-  if v:find('XP',1,true) then
-   commits=commits+1;committedWidth=c.width;committedHeight=c.height;committedFont=c.font
-  end
-  return
- end
- return baseNew(c,k,v)
-end
-labels[0].content='Withdraw-All Resonant anima of Wen (tradeable)'
-body.content=''
-callbacks.MiniMenuReady(event);callbacks.Draw()
-assert(committedWidth==body.width and committedHeight==body.height and committedFont==body.font,
- 'final text commit must see final native font and bounds')
-local count=commits
-for i=1,30 do callbacks.Draw() end
-assert(commits==count,'unchanged hovers must not rewrite text')
-callbacks.MiniMenuOpened()
-mt.__index=baseIndex;mt.__newindex=baseNew;rawset(body,'content',bodyText)
-print('PASS: final native text commit follows geometry; no content writes during 30 stable draws')
+assert(not ownText.visibleGlobal and labels[1].content=='','menu opening hides owned text')
+-- Restoring and disabling never writes or destroys native children.
+PluginShutdown()
+assert(ownLayer.destroyed,'shutdown destroys only our layer')
+assert(not labels[1].destroyed and not root.destroyed,'native components survive')
+print('PASS: singleton stable-parent body, first-frame visibility, direct switches, cursor tracking and shutdown')
