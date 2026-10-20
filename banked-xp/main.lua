@@ -354,7 +354,7 @@ function PluginShutdown()
     if skillHover then pcall(skillHover.restore) end
     restore()
 end
-print('[banked-xp] 0.107 multi-skill recipe catalog. Hover bank supplies for supported skilling recipes. Base XP only; no XP/hr claim. Move off before disabling.')
+print('[banked-xp] 0.108 multi-skill recipe catalog. Hover bank supplies for supported skilling recipes. Base XP only; no XP/hr claim. Move off before disabling.')
 
 -- Temporary read-only discovery for extending the item catalog.
 -- Diagnostics retained in the folder; disabled during ordinary use.

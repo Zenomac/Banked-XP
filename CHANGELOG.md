@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.107.0**.
+Current plugin version: **0.108.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.108
+
+Added a dedicated total-XP renderer for TEXT_TOOLTIP interface 1486, discovered in the exported component registry after probes only found individual skills at 1477:923. Recognizes Total XP content in static text 14/15 and extends the existing RS3 static background/border sprites. Preserves native corners, resets added text colour and restores all changes on exit. Added 1486 roots to the read-only probe. All 28 local suites pass; actual client visibility remains to be confirmed.
 
 ## v0.107
 

@@ -167,3 +167,29 @@ assert(not children[11].content:find('Banked XP:',1,true),'unrecognized frame is
 children[1].size.width=oldCornerWidth
 ui.Interfaces.GetComponent=oldGet
 print('PASS: alternate total tooltip root discovery and conservative frame-shape guard')
+
+-- The exported TEXT_TOOLTIP interface is separate from shared skill hovers.
+local staticChildren={}
+root.size=size(150,43)
+for _,id in ipairs({0,1,11,12,13}) do staticChildren[id]=c(0,0,150,43) end
+staticChildren[15]=c(6,4,138,30,'Total XP: 822,089,452<br>Bonus XP: <col=00ff00>187,024')
+local grid={{0,0,10,10},{10,0,130,10},{140,0,10,10},{0,10,10,23},{10,10,130,23},{140,10,10,23},{0,33,10,10},{10,33,130,10},{140,33,10,10}}
+for n,b in ipairs(grid) do staticChildren[15+n]=c(b[1],b[2],b[3],b[4]) end
+local getterBefore=ui.Interfaces.GetComponent
+ui.Interfaces.GetComponent=function(_,interface,id,category,dynamic)
+ if interface==1486 and category==nil then return staticChildren[id] end
+ return nil
+end
+package.loaded.skill_summary.missingStorage=function() return false end
+callbacks.draw()
+assert(staticChildren[15].content:find('<br><col=e3d7bf>Banked XP: <col=e3d7bf>99,123,456</col>',1,true),'dedicated text tooltip gets neutral banked row')
+assert(staticChildren[22].position.y==52 and staticChildren[22].height==10,'native bottom corner moved without resizing')
+assert(staticChildren[20].height==42,'native centre fill expanded')
+assert(staticChildren[1].height==62 and staticChildren[15].height==45)
+callbacks.clear()
+assert(staticChildren[22].position.y==33 and staticChildren[20].height==23 and staticChildren[1].height==43)
+assert(not staticChildren[15].content:find('Banked XP:',1,true),'dedicated tooltip restored')
+staticChildren[15].content='Unrelated tooltip'
+callbacks.draw();assert(staticChildren[1].height==43,'other text tooltips untouched')
+ui.Interfaces.GetComponent=getterBefore
+print('PASS: dedicated TEXT_TOOLTIP 1486, unclosed bonus colour reset, static frame growth, original corner sizes, restoration and unrelated tooltip guard')

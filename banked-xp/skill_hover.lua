@@ -149,10 +149,82 @@ local function paintTotal(scope)
  return true
 end
 
+-- The exported registry also defines TEXT_TOOLTIP (1486), distinct from
+-- the shared per-skill tooltip. Its native RS3 artwork uses static sprites.
+local function paintTextTotal()
+ local function static(id)
+  local ok,c=pcall(function() return ui.Interfaces:GetComponent(1486,id) end)
+  return ok and c or nil
+ end
+ local body
+ for _,id in ipairs({15,14}) do
+  local c=static(id)
+  local ok,text=pcall(function() return c and c.content end)
+  if c and c.visibleGlobal and ok and type(text)=='string' and plain(text):find('Total XP:',1,true) then body=c;break end
+ end
+ if not body then return false end
+ totalProbe('text-tooltip','TEXT_TOOLTIP 1486 matched; font='..tostring(body.font)..'; text='..plain(body.content):sub(1,180))
+ local sprites={}
+ for id=16,33 do
+  local c=static(id)
+  if id~=25 and c and c.visibleGlobal and c.width>0 and c.height>0 then
+   sprites[#sprites+1]={id=id,c=c,x=c.xyGlobal.x,y=c.xyGlobal.y,w=c.width,h=c.height}
+  end
+ end
+ if #sprites<8 then
+  totalProbe('text-tooltip-frame','1486 text found but RS3 frame unavailable; visible frame pieces='..#sprites..'; no edits applied.')
+  return false
+ end
+ local font=config.Font.FromID(body.font)
+ if not font then return false end
+ local raw=body.content
+ local firstLine=raw:match('^(.-)<[bB][rR]') or raw
+ local neutral=firstLine:match('<col=(%x+)>') or 'e3d7bf'
+ local amount=summary.totalLine():gsub('^Banked XP:%s*','')
+ local tag='<col='..neutral..'>'
+ local shown=tag..amount..'</col>'
+ if summary.missingStorage('Total') and amount:match('^[%d,%.]+$') then shown='<col=ff0000>'..amount..'</col>' end
+ local text=raw..'<br>'..tag..'Banked XP: '..shown..'</col>'
+ local lineWidth=font:GetStringWidth('Banked XP: '..amount)
+ local dw=math.max(0,math.ceil(lineWidth+2-body.width))
+ local lineHeight=15
+ local ok,fh=pcall(function() return font:GetStringHeight() end)
+ if ok and type(fh)=='number' and fh>=10 and fh<=30 then lineHeight=fh end
+ local growth=lineHeight+4
+ local textX,textY,textW,textH=body.xyGlobal.x,body.xyGlobal.y,body.width,body.height
+ local layers={}
+ for _,id in ipairs({0,1,11,12,13}) do
+  local c=static(id)
+  if c and c.visibleGlobal then layers[#layers+1]={c=c,size=ui.Size.new(c.size)} end
+ end
+ local anchor=static(1) or body.parent
+ local ax,ay=anchor.xyGlobal.x,anchor.xyGlobal.y
+ for _,entry in ipairs(layers) do
+  local after=ui.Size.new(entry.size);after.width=after.width+dw;after.height=after.height+growth
+  edits[#edits+1]={kind='size',c=entry.c,before=entry.size,after=after}
+  entry.c.size=after
+ end
+ local dx,dy=anchor.xyGlobal.x-ax,anchor.xyGlobal.y-ay
+ -- Static 16..24: NW,N,NE,W,centre,E,SW,S,SE.
+ -- Static 26..33: NW,N,NE,W,E,SW,S,SE.
+ local right={[18]=true,[21]=true,[24]=true,[28]=true,[30]=true,[33]=true}
+ local bottom={[22]=true,[23]=true,[24]=true,[31]=true,[32]=true,[33]=true}
+ local stretchW={[17]=true,[20]=true,[23]=true,[27]=true,[32]=true}
+ local stretchH={[19]=true,[20]=true,[21]=true,[29]=true,[30]=true}
+ for _,v in ipairs(sprites) do
+  box(v.c,v.x+dx+(right[v.id] and dw or 0),v.y+dy+(bottom[v.id] and growth or 0),v.w+(stretchW[v.id] and dw or 0),v.h+(stretchH[v.id] and growth or 0))
+ end
+ box(body,textX+dx,textY+dy,textW+dw,textH+lineHeight)
+ field(body,'maxLines',0);field(body,'alignVertical',0);field(body,'content',text)
+ totalProbe('text-tooltip-render','Rendering Banked XP in TEXT_TOOLTIP 1486; native text and static frame reused.')
+ return true
+end
+
 function M.paint()
  M.restore()
  if MiniMenu.IsOpen() then return end
  if summary.totalLine then
+  if paintTextTotal() then return end
   totalDraws=totalDraws+1
   if totalScope and paintTotal(totalScope) then return end
   -- Probe alternate exported roots only while not rendering a total hover.

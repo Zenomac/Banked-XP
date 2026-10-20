@@ -1,6 +1,6 @@
 -- Temporary, read-only total-XP discovery. Never changes native UI.
 local M={}
-local scopes={{1477,923},{1477,924},{1477,904},{1477,902},{1477,901},{1477,900},{1477,899},{1477,897},{1477,898},{320,16},{320,17},{320,13},{320,11},{320,0}}
+local scopes={{1486,15},{1486,14},{1486,1},{1486,11},{1477,923},{1477,924},{1477,904},{1477,902},{1477,901},{1477,900},{1477,899},{1477,897},{1477,898},{320,16},{320,17},{320,13},{320,11},{320,0}}
 local ticks,passes,genericCount,totalCount=0,0,0,0
 local seen={}
 local function read(c,k) local ok,v=pcall(function() return c[k] end);if ok then return v end end
@@ -73,6 +73,6 @@ function M.register()
    if not ok and not M.drawWarned then print('[BXP total probe] Draw read error: '..tostring(err));M.drawWarned=true end
   end)
  end
- print('[BXP total probe] v0.107 read-only child/Logic/Draw discovery enabled; existing hovers remain active.')
+ print('[BXP total probe] v0.108 read-only child/Logic/Draw discovery enabled; existing hovers remain active.')
 end
 return M
