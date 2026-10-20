@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.103.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.104.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -20,6 +20,7 @@ The repository root is not the plugin folder: use the nested `banked-xp` directo
 - Level and optional boost filtering.
 - Detected worn outfit and supported equipped-tool bonuses.
 - Per-skill banked XP in native skill tooltips, above target information.
+- Combined Banked XP below Bonus XP when hovering total XP, sharing supplies across skills.
 - Archaeology artefact potential XP and separate supply-limited Ready XP.
 - Experimental metal-bank and Archaeology material-storage scanning.
 
@@ -31,11 +32,11 @@ Metal-bank access uses the documented container. Archaeology container discovery
 
 ## Calculation limits
 
-Totals use supported recipes and a deterministic greedy allocation of shared supplies within each skill. They are estimates, not a guaranteed global optimum or XP/hour claim. Different skill totals represent alternative uses of shared items. Stored bonus XP is not applied to the estimates.
+Totals use supported recipes and a deterministic greedy allocation of shared supplies within each skill. They are estimates, not a guaranteed global optimum or XP/hour claim. Different individual skill totals represent alternative uses of shared items. The total-XP hover instead uses one shared supply budget across supported skills; it includes Archaeology artefact potential assuming missing materials will be obtained. Stored bonus XP is not applied to the estimates.
 
 ## Version history
 
-The current plugin version is **0.103.0**. [Complete changelog — v0.1 through v0.103](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.104.0**. [Complete changelog — v0.1 through v0.104](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 

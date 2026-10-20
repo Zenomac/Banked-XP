@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.103.0**.
+Current plugin version: **0.104.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
-These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.103. Historical instructions in older notes may have been superseded.
+These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.104. Historical instructions in older notes may have been superseded.
+
+## v0.104
+
+Added Banked XP beneath Bonus XP in the total-XP hover (or beneath Total XP without a bonus row). The combined estimate uses one shared supply budget across supported skills and includes the same Archaeology artefact-potential assumption. Calculation stays incremental on Logic; Draw uses completed results. Native text/frame components are reused, with neutral added text, storage-warning colours, bottom padding and reversible edits.
 
 ## v0.103
 

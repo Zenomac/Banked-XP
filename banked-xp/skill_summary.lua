@@ -20,6 +20,12 @@ local function newJob(records,counts)
     return {records=records,counts=counts,index=1,phase='items',routes={},seen={},out=out,audit={},auditSeen={}}
 
 end
+local function globalExtra(j,obj,skill,xp)
+    j.globalExtras=j.globalExtras or {}
+    local id='total:'..skill..':'..tostring(obj.id)
+    local k=engine.key(obj.name)
+    j.globalExtras[id]={id=id,skill=skill,xp=xp,inputs={{name=obj.name,qty=1}},inputsNormalized={{key=k,name=obj.name,qty=1}},keys={[k]=true}}
+end
 local function advanceOne(j)
     local out,routes,seen,counts=j.out,j.routes,j.seen,j.counts
     if j.phase=='items' then
@@ -44,6 +50,7 @@ local function advanceOne(j)
                     end
                 end
                 out.Archaeology.potential=(out.Archaeology.potential or 0)+n*best
+                if best>0 then globalExtra(j,obj,'Archaeology',best) end
             end
             local base=catalog.lookup(obj)
             if base and supported[base.skill] then
@@ -66,6 +73,7 @@ local function advanceOne(j)
                 if bestHi>0 then
                     out[base.skill].min=out[base.skill].min+bestLo
                     out[base.skill].max=out[base.skill].max+bestHi
+                    globalExtra(j,obj,base.skill,bestHi/n)
                 end
             end
             -- Resolve every supported skill independently of the catalogue's
@@ -94,13 +102,19 @@ local function advanceOne(j)
             -- Prefer the highest XP per primary ingredient, with total XP
             -- as a tie-breaker. This is a deterministic greedy estimate, not
             -- a proof of the mathematical optimum for all shared recipes.
-            table.sort(routes,function(a,b)
+            local function higher(a,b)
                 local ax=a.xp/((a.inputs and a.inputs[1] and a.inputs[1].qty) or 1)
                 local bx=b.xp/((b.inputs and b.inputs[1] and b.inputs[1].qty) or 1)
                 if ax~=bx then return ax>bx end
                 if a.xp~=b.xp then return a.xp>b.xp end
                 return a.id<b.id
-            end)
+            end
+            table.sort(routes,higher)
+            j.globalRoutes={}
+            for _,route in ipairs(routes) do if route.skill~='Archaeology' then j.globalRoutes[#j.globalRoutes+1]=route end end
+            for _,route in pairs(j.globalExtras or {}) do j.globalRoutes[#j.globalRoutes+1]=route end
+            table.sort(j.globalRoutes,higher)
+            j.globalPortfolio=engine.newPortfolio(counts)
             j.portfolios={}
             for _,skill in ipairs(skillSupport.names) do j.portfolios[skill]=engine.newPortfolio(counts) end
             j.index=1;j.phase='routes' 
@@ -109,6 +123,9 @@ local function advanceOne(j)
         local route=routes[j.index]
         if route then engine.allocatePortfolio(j.portfolios[route.skill or 'Herblore'],route);j.index=j.index+1
         else
+            if not j.globalDone then j.phase='global';j.index=1;return end
+            out._totalBySkill=j.globalPortfolio.bySkill or {}
+            out._totalBySkill.Herblore=(out._totalBySkill.Herblore or 0)+(j.cleanXP or 0)
             for skill,portfolio in pairs(j.portfolios) do
                 out[skill].min=out[skill].min+portfolio.total
                 out[skill].max=out[skill].max+portfolio.total
@@ -130,6 +147,10 @@ local function advanceOne(j)
             if #unknown>0 then print('[BXP audit] Unmapped plank/protean items: '..table.concat(unknown,', ',1,math.min(#unknown,12))) end
             return out
         end
+    elseif j.phase=='global' then
+        local route=j.globalRoutes[j.index]
+        if route then engine.allocatePortfolio(j.globalPortfolio,route);j.index=j.index+1
+        else j.globalDone=true;j.phase='routes';j.index=#routes+1 end
     end
 end
 local function policyKey()
@@ -193,7 +214,20 @@ function M.tooltipLine(skill)
     local text=(line:gsub(' %([^%)]*%)$',''))
     return text
 end
-function M.missingStorage(skill) return storage.missingForSkill(skill) end
+function M.totalLine()
+    if not snapshot then return 'Banked XP: Scan bank' end
+    if not totals then return 'Banked XP: Calculating...' end
+    local total=0
+    for skill,xp in pairs(totals._totalBySkill or {}) do
+        local percent=outfits.percent(skill)+require('hand_equipment').percent(skill)
+        total=total+xp*(1+percent/100)
+    end
+    return 'Banked XP: '..countString(total)
+end
+function M.missingStorage(skill)
+    if skill=='Total' then return storage.missingForSkill('Smithing') or storage.missingForSkill('Archaeology') end
+    return storage.missingForSkill(skill)
+end
 function M.tooltipExtra(skill)
     if skill~='Archaeology' or not totals then return nil end
     local t=totals[skill]
