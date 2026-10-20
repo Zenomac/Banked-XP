@@ -10,6 +10,13 @@ local function norm(name)
     value=string.gsub(value,'<[^>]*>','')
     value=string.gsub(value,'’',"'")
     value=string.gsub(value,'%)%s*%(',') (')
+    -- Client markup/wrapping must not change inventory identity.
+    value=string.gsub(value,'%s+',' ')
+    value=string.gsub(value,'^%s*(.-)%s*$','%1')
+    if value:match('^resonant anima of ') then
+        value=string.gsub(value,'%s*%(%s*tradable%s*%)',' (tradeable)')
+        value=string.gsub(value,'%s*%(%s*tradeable%s*%)',' (tradeable)')
+    end
     return value
 end
 M.normalize=norm

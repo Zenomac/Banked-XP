@@ -23,6 +23,7 @@ local noticeOK,noticeError=pcall(function() require("startup_notice").register()
 if not noticeOK then print('[banked-xp] Optional Diango notice unavailable: '..tostring(noticeError)) end
 local warned = false
 local edits={}
+local ownedRow
 local nativeGeometry
 local function undoLayout()
     for i=#edits,1,-1 do
@@ -90,6 +91,7 @@ local function resize(c,width,height)
     c.size=ui.Size.new(math.ceil(width),math.ceil(height))
 end
 local function restore()
+    if ownedRow then pcall(function() ownedRow.hidden=true end) end
     nativeGeometry=nil
     nativeFrame.hide()
     undoLayout()
@@ -163,12 +165,26 @@ local function paint()
         end)
     end
     for _,c in ipairs(candidates) do if c~=footer then details[#details+1]=c end end
-    if not header or not row or not footer then restore();return end
-    if row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then restore();return end
-    local plainTitle=string.gsub(header.content or '', '<[^>]*>', '')
+    if not header or not footer or not header.visibleGlobal then restore();return end
+    -- Some item tooltips have no visible middle row. Never unhide a native
+    -- label: use a plugin-owned, click-through text component in its place.
+    if not row or row.type~=ui.ComponentType.LABEL or not row.visibleGlobal then
+        local parent=header.parent
+        if not parent or not parent.visibleGlobal then restore();return end
+        if ownedRow and ownedRow.parent~=parent then ownedRow:Destroy();ownedRow=nil end
+        if not ownedRow then
+            ownedRow=ui.Text.new(parent)
+            ownedRow.clickthrough=true
+            ownedRow.font=header.font
+            ownedRow.content=''
+        end
+        row=ownedRow
+        row.hidden=false
+    elseif ownedRow then ownedRow.hidden=true end
+    local plainTitle=require('bank').normalize(header.content or '')
     local title=string.lower(plainTitle)
     title=string.gsub(title,'%s+','')
-    local matchingName=string.gsub(selectedName or '', '<[^>]*>', '')
+    local matchingName=require('bank').normalize(selectedName or '')
     matchingName=string.gsub(matchingName,'%s+','')
     if not title:find('withdraw',1,true) or not selectedName or selectedName=='' or not title:find(matchingName,1,true) then restore();return end
     local function number(n)
@@ -402,6 +418,7 @@ Event.MiniMenuReady.Subscribe('bankedXpRowSelection',function(e) safe(detect,e) 
 Event.Draw.Subscribe('bankedXpNativeRow',function() safe(paint) end)
 Event.MiniMenuOpened.Subscribe('bankedXpRowClear',restore)
 function PluginShutdown()
+    if ownedRow then ownedRow:Destroy();ownedRow=nil end
     nativeFrame.destroy()
     if skillHover then pcall(skillHover.restore) end
     restore()

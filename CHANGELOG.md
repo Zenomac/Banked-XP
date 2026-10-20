@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.129.0**.
+Current plugin version: **0.130.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.130 — Tradeable anima hover compatibility
+
+- Normalize tradeable/tradable anima spelling, markup and whitespace without combining untradeable inventory.
+- Provide a plugin-owned, click-through XP row when the native middle row is absent or hidden; preserve native visibility.
+- Add regressions for all four gods and wrapped tradeable hover titles. No recipe XP changes.
 
 ## v0.129 — Guideline preparation
 

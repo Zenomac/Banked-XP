@@ -29,3 +29,15 @@ for gi,god in ipairs({'Bik','Ful','Wen','Jas'}) do
  local total=e.portfolio(directs,counts);assert(total==19,'Both anima variants share dinarrows once')
 end
 print('PASS: eight anima variants, exact ratios and XP, partial stacks, previews, level gates and shared dinarrows')
+
+for _,god in ipairs({'Bik','Ful','Wen','Jas'}) do
+ local canonical='Resonant anima of '..god..' (tradeable)'
+ for _,name in ipairs({canonical,'  '..canonical..' ', 'Resonant anima of '..god..' (tradable)', '<col=ffff00>Resonant anima of '..god..'</col> (tradeable)'}) do
+  local obj={id=99999,name=name}
+  local direct
+  for _,recipe in ipairs(e.options(obj)) do if recipe.category=='Resonant anima' and #recipe.inputs==2 then direct=recipe;break end end
+  assert(direct and catalog.lookup(obj),'tradeable alias recognized')
+  assert(e.estimate(obj,direct,{[name]=6,dinarrow=5}).total==38,'formatted tradeable stock counted')
+  assert(e.key(name)~=e.key('Resonant anima of '..god),'tradeable not pooled with untradeable')
+ end
+end

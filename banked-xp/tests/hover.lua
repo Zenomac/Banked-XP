@@ -346,3 +346,21 @@ for i=1,100 do
 end
 callbacks.MiniMenuOpened();labels[4]=nil
 print('PASS: 100 client-interleaved relayouts keep native stat offsets and tooltip width stable')
+
+-- Tradeable names may have whitespace/markup; an empty native middle row
+-- may be hidden. Render a plugin-owned row without changing native visibility.
+callbacks.MiniMenuOpened()
+local replacement
+ui.Text={new=function(parent)
+ replacement=component(996,parent,0,0,184,16)
+ replacement.font=12;replacement.content='';replacement.alignHorizontal=0
+ return replacement
+end}
+labels[0].content='Withdraw-All <col=ffff00>Resonant anima of Jas<br>(tradeable)</col>'
+labels[1].hidden=true
+labels[3].content=''
+event.miniMenu.entries[1].componentData.objConfig.name='Resonant anima of Jas (tradable) '
+callbacks.MiniMenuReady(event);callbacks.Draw()
+assert(replacement and replacement.content:find('XP',1,true),'hidden middle row gets plugin-owned XP')
+assert(labels[1].hidden,'native middle row stays hidden')
+callbacks.MiniMenuOpened();assert(replacement.hidden,'owned row hides on exit')
