@@ -43,7 +43,7 @@ function menu:Swap(a,b) self.entries[a],self.entries[b]=self.entries[b],self.ent
 methods.addMenu(menu,b,methods.options(b,baseB),baseB)
 local markers=0
 for _,entry in ipairs(menu.entries) do
- if entry.verbText:find('[selected]',1,true) then
+ if entry.verbText:find('[<col=00ff00>selected</col>]',1,true) then
   markers=markers+1;assert(entry.verbText:find('Ectofuntus',1,true),'effective shared marker')
  end
 end

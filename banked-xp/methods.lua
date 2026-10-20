@@ -198,7 +198,7 @@ function M.addMenu(menu,obj,options,base)
         local id=method.id
         local presentation=policy.presentation(method)
         local label='<col=00ffff>BXP</col>: '..menuStyle.label(method,presentation,nameColor)
-        if selected and selected.id==id then label=label..' [selected]' end
+        if selected and selected.id==id then label=label..' [<col=00ff00>selected</col>]' end
         addEntry(menu,label,function() M.select(obj.id,id) end)
     end
     if lastPage>1 then
