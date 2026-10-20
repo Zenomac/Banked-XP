@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.108.0**.
+Current plugin version: **0.109.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.109
+
+Targeted the live-captured total-XP label at 1486:14:0:0 (font 27, 125×32). Static text 15 was a zero-sized template, so v0.108 did not find the rendered text. The renderer now prefers the exact dynamic child, excludes zero-sized templates and expands dynamic text layer 14 with the native frame. Added row spacing is derived from native text height and measured line count. All 28 suites pass, including the captured shape; in-game rendering still requires confirmation.
 
 ## v0.108
 

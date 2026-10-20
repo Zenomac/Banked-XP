@@ -193,3 +193,26 @@ staticChildren[15].content='Unrelated tooltip'
 callbacks.draw();assert(staticChildren[1].height==43,'other text tooltips untouched')
 ui.Interfaces.GetComponent=getterBefore
 print('PASS: dedicated TEXT_TOOLTIP 1486, unclosed bonus colour reset, static frame growth, original corner sizes, restoration and unrelated tooltip guard')
+
+-- Exact live capture: static 15 is only a template; real text is dynamic.
+staticChildren[15].content='Tooltip text';staticChildren[15].size=size(0,0)
+local dynamicTotal=c(6,4,125,32,'Total XP: 822,089,452<br>Bonus XP: <col=00ff00>187,024')
+dynamicTotal.font=27
+config.Font.FromID=function(id) assert(id==27 or id==207);return font end
+staticChildren[14]=c(6,4,125,32)
+font.GetStringLineCount=function() return 2 end
+ui.Interfaces.GetComponent=function(_,interface,id,category,dynamic)
+ if interface==1486 then
+  if id==14 and category==0 and dynamic==0 then return dynamicTotal end
+  if category==nil then return staticChildren[id] end
+ end
+end
+callbacks.draw()
+assert(dynamicTotal.content:find('Banked XP:',1,true),'live dynamic text is selected')
+assert(staticChildren[14].height==52,'dynamic text clipping layer expands')
+assert(dynamicTotal.height==48 and staticChildren[22].position.y==53,'16px native row plus 4px padding')
+assert(staticChildren[15].content=='Tooltip text' and staticChildren[15].width==0,'template untouched')
+callbacks.clear();assert(dynamicTotal.height==32 and staticChildren[22].position.y==33)
+font.GetStringLineCount=nil
+ui.Interfaces.GetComponent=getterBefore
+print('PASS: captured 1486:14:0:0 text, zero-sized template exclusion, measured 16px rows and restoration')

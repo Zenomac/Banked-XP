@@ -157,10 +157,15 @@ local function paintTextTotal()
   return ok and c or nil
  end
  local body
- for _,id in ipairs({15,14}) do
-  local c=static(id)
-  local ok,text=pcall(function() return c and c.content end)
-  if c and c.visibleGlobal and ok and type(text)=='string' and plain(text):find('Total XP:',1,true) then body=c;break end
+ -- Client capture: actual text is 1486:14:0:0 (font 27, 125x32),
+ -- while static 15 is a zero-sized template containing 'Tooltip text'.
+ local candidates={}
+ local ok,dynamic=pcall(function() return ui.Interfaces:GetComponent(1486,14,0,0) end)
+ if ok and dynamic then candidates[#candidates+1]=dynamic end
+ for _,id in ipairs({15,14}) do local c=static(id);if c then candidates[#candidates+1]=c end end
+ for _,c in ipairs(candidates) do
+  local readable,text=pcall(function() return c.content end)
+  if c.visibleGlobal and c.width>0 and c.height>0 and readable and type(text)=='string' and plain(text):find('Total XP:',1,true) then body=c;break end
  end
  if not body then return false end
  totalProbe('text-tooltip','TEXT_TOOLTIP 1486 matched; font='..tostring(body.font)..'; text='..plain(body.content):sub(1,180))
@@ -190,12 +195,17 @@ local function paintTextTotal()
  local lineHeight=15
  local ok,fh=pcall(function() return font:GetStringHeight() end)
  if ok and type(fh)=='number' and fh>=10 and fh<=30 then lineHeight=fh end
+ local measured,lines=pcall(function() return font:GetStringLineCount(raw,body.width) end)
+ if measured and type(lines)=='number' and lines>=1 then
+  local nativeStep=body.height/lines
+  if nativeStep>=10 and nativeStep<=30 then lineHeight=math.ceil(nativeStep) end
+ end
  local growth=lineHeight+4
  local textX,textY,textW,textH=body.xyGlobal.x,body.xyGlobal.y,body.width,body.height
  local layers={}
- for _,id in ipairs({0,1,11,12,13}) do
+ for _,id in ipairs({0,1,11,12,13,14}) do
   local c=static(id)
-  if c and c.visibleGlobal then layers[#layers+1]={c=c,size=ui.Size.new(c.size)} end
+  if c and c~=body and c.visibleGlobal then layers[#layers+1]={c=c,size=ui.Size.new(c.size)} end
  end
  local anchor=static(1) or body.parent
  local ax,ay=anchor.xyGlobal.x,anchor.xyGlobal.y
