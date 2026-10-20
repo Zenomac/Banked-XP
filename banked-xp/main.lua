@@ -267,12 +267,16 @@ local function paint()
     -- Translate the block intact rather than stacking/recentering every label.
     local preserveDetails=selected.skill~='Herblore' and #details>0
     local detailOriginX,detailOriginY,detailBottom
+    local detailBounds={}
     if preserveDetails then
         detailOriginX,detailOriginY,detailBottom=math.huge,math.huge,-math.huge
-        for _,c in ipairs(details) do
-            detailOriginX=math.min(detailOriginX,c.xyGlobal.x)
-            detailOriginY=math.min(detailOriginY,c.xyGlobal.y)
-            detailBottom=math.max(detailBottom,c.xyGlobal.y+c.height)
+        for i,c in ipairs(details) do
+            local xy=c.xyGlobal
+            local bounds={x=xy.x,y=xy.y,width=c.width,height=c.height}
+            detailBounds[i]=bounds
+            detailOriginX=math.min(detailOriginX,bounds.x)
+            detailOriginY=math.min(detailOriginY,bounds.y)
+            detailBottom=math.max(detailBottom,bounds.y+bounds.height)
         end
         -- The layout plan is cached; copy before adjusting native block bounds.
         local adjusted={};for k,v in pairs(plan) do adjusted[k]=v end;plan=adjusted
@@ -280,7 +284,7 @@ local function paint()
         plan.footerY=start+(detailBottom-detailOriginY)+6
         plan.height=plan.footerY+plan.footerHeight
         local right=0
-        for _,c in ipairs(details) do right=math.max(right,c.xyGlobal.x-detailOriginX+c.width) end
+        for _,b in ipairs(detailBounds) do right=math.max(right,b.x-detailOriginX+b.width) end
         plan.width=math.max(plan.width,right)
     end
     local bg=ui.Interfaces:GetComponent(96797572)
@@ -331,8 +335,11 @@ local function paint()
     for i,c in ipairs(details) do
         local d=plan.details[i]
         if preserveDetails then
-            box(c,nativeX+c.xyGlobal.x-detailOriginX,
-                nativeY+plan.details[1].y+c.xyGlobal.y-detailOriginY,c.width,c.height)
+            -- Parents were resized above. Reading live percentage-anchored
+            -- geometry here would apply their expansion a second time.
+            local b=detailBounds[i]
+            box(c,nativeX+b.x-detailOriginX,
+                nativeY+plan.details[1].y+b.y-detailOriginY,b.width,b.height)
         else
             edit(c,'content',detailText[i])
             box(c,nativeX,nativeY+d.y,plan.width,d.height)

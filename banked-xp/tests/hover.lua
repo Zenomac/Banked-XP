@@ -307,3 +307,20 @@ assert(labels[3].font==12 and labels[3].alignHorizontal==0)
 assert(labels[3].content=='Damage: 100<br>Accuracy: 200')
 callbacks.MiniMenuOpened()
 print('PASS: native equipment stat dimensions, font, alignment and content preserved')
+
+-- Percentage-anchored stat rows must be measured before parent expansion.
+labels[3].size=ui.Size.new(-16,32);labels[3].size.widthParentPc=1
+labels[3].position=ui.Pos.new(0,54);labels[3].position.xParentPc=0.5;labels[3].position.xSelfPc=-0.5
+local expectedWidth=labels[3].width
+callbacks.MiniMenuReady(event)
+local stableWidth,stableOffset
+for i=1,100 do
+ callbacks.Draw()
+ assert(labels[3].width==expectedWidth,'Parent expansion must not enlarge native stat row')
+ local offset=labels[3].xyGlobal.x-labels[0].xyGlobal.x
+ if i==1 then stableWidth=bg.width;stableOffset=offset end
+ assert(bg.width==stableWidth and offset==stableOffset,'Tooltip geometry must not drift across repeated draws')
+end
+callbacks.MiniMenuOpened()
+assert(labels[3].size.widthParentPc==1 and labels[3].position.xParentPc==0.5,'Native anchors restored')
+print('PASS: 100 repeated draws preserve percentage-anchored native stats without horizontal growth')

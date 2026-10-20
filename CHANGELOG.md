@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.124.0**.
+Current plugin version: **0.125.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.125
+
+Fix horizontal expansion and stat displacement in equipment/ammunition hovers such as Dinarrows. Capture native detail positions and dimensions before resizing parent containers, then use that snapshot for the translated stat block. Previously percentage-anchored rows were measured after parent expansion and grew again. A new regression fails against v0.124 and passes 100 consecutive redraws with stable width and offsets; native anchors restore afterward. All 32 local Lua suites pass. Live client confirmation remains pending.
 
 ## v0.124
 
