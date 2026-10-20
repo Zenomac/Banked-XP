@@ -150,3 +150,20 @@ callbacks.draw()
 assert(children[9].content:find('<br><col=e3d7bf>Banked XP: <col=e3d7bf>99,123,456</col>',1,true),'combined native text retains neutral added row')
 callbacks.clear()
 print('PASS: total XP and Bonus XP sharing a single native text component')
+-- Total XP may render in another exported native hover root.
+local oldGet=ui.Interfaces.GetComponent
+ui.Interfaces.GetComponent=function(_,interface,static,category,id)
+ if interface==1477 and static==904 then return children[id] end
+ return nil
+end
+totalFixture(true,false)
+for _=1,12 do callbacks.draw() end
+assert(children[11].content:find('Banked XP:',1,true),'discover alternate native hover root')
+callbacks.clear()
+local oldCornerWidth=children[1].size.width
+children[1].size.width=12
+callbacks.draw()
+assert(not children[11].content:find('Banked XP:',1,true),'unrecognized frame is not modified')
+children[1].size.width=oldCornerWidth
+ui.Interfaces.GetComponent=oldGet
+print('PASS: alternate total tooltip root discovery and conservative frame-shape guard')

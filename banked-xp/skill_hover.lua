@@ -46,21 +46,38 @@ local function box(c,x,y,w,h)
 end
 -- Total-XP uses a shorter native tooltip. Recognize its actual text rather
 -- than assuming the per-skill caption/value child IDs are present.
-local function paintTotal()
+local totalProbeSeen,totalProbeCount={},0
+local function totalProbe(name,message)
+ if totalProbeSeen[name] or totalProbeCount>=14 then return end
+ totalProbeSeen[name]=true;totalProbeCount=totalProbeCount+1
+ print('[BXP total probe] '..message)
+end
+local totalScopes={{1477,923},{1477,904},{1477,902},{1477,897},{1477,898},{1477,924},{320,16}}
+local totalScope,totalDraws=nil,0
+local function scopedGet(scope,id)
+ local ok,c=pcall(function()
+  if id==nil then return ui.Interfaces:GetComponent(scope[1],scope[2]) end
+  return ui.Interfaces:GetComponent(scope[1],scope[2],0,id)
+ end)
+ return ok and c or nil
+end
+local function paintTotal(scope)
  local found,last,pair
  local components={}
- for id=9,48 do
-  local c=get(id)
+ for id=-1,64 do
+  local c=scopedGet(scope,id>=0 and id or nil)
   if c and c.visibleGlobal then
    local ok,content=pcall(function() return c.content end)
    if ok and type(content)=='string' then
     local text=plain(content)
     components[#components+1]={c=c,text=text,id=id}
-    if text:match('^%s*Total XP:%s*[%d,%.]*') then found=c end
+    if text:find('Total XP:',1,true) then found=c end
    end
   end
  end
  if not found then return false end
+ local scopeKey=scope[1]..':'..scope[2]
+ totalProbe('found:'..scopeKey,'Matched '..scopeKey..'; text='..plain(found.content):sub(1,180)..'; font='..tostring(found.font))
  local root=found.parent
  if not root then return false end
  last=found
@@ -70,16 +87,34 @@ local function paintTotal()
  -- A caption-only row has a numeric partner at the next native child ID.
  for _,record in ipairs(components) do
   if record.c==last and record.text:match('^%s*[%a%s]+:%s*$') then
-   local v=get(record.id+1)
+   local v=scopedGet(scope,record.id+1)
    if v and v.visibleGlobal and v.parent==root and plain(v.content):match('^%s*[%d,%.]+%s*$') then pair=v end
   end
  end
  local frame={}
- for id=0,8 do frame[id]=get(id);if not frame[id] or not frame[id].visibleGlobal then return false end end
+ for id=0,8 do
+  frame[id]=scopedGet(scope,id)
+  if not frame[id] or not frame[id].visibleGlobal then
+   totalProbe('frame:'..scopeKey,'No complete native frame at '..scopeKey..'; missing child '..id..'; no UI edits applied.')
+   return false
+  end
+ end
+ -- Accept only the segmented frame shape already established in the client.
+ for id=1,4 do
+  if frame[id].width~=10 or frame[id].height~=10 then
+   totalProbe('shape:'..scopeKey,'Unrecognized frame at '..scopeKey..'; corner '..id..'='..tostring(frame[id].width)..'x'..tostring(frame[id].height)..'; no UI edits applied.')
+   for _,record in ipairs(components) do
+    totalProbe('text:'..scopeKey..':'..record.id,'Text '..scopeKey..':'..record.id..' pos='..record.c.xyGlobal.x..','..record.c.xyGlobal.y..' size='..record.c.width..'x'..record.c.height..' text='..record.text:sub(1,140))
+   end
+   return false
+  end
+ end
  local x,y=frame[1].xyGlobal.x,frame[1].xyGlobal.y
  local w=frame[2].xyGlobal.x+frame[2].width-x
  local h=frame[3].xyGlobal.y+frame[3].height-y
  if w<80 or w>600 or h<20 or h>200 then return false end
+ totalScope=scope
+ totalProbe('render:'..scopeKey,'Rendering total XP with existing frame/text at '..scopeKey..'.')
  local amount=summary.totalLine():gsub('^Banked XP:%s*','')
  local firstLine=found.content:match('^(.-)<[bB][rR]') or found.content
  local neutral=firstLine:match('<col=(%x+)>') or 'e3d7bf'
@@ -117,7 +152,17 @@ end
 function M.paint()
  M.restore()
  if MiniMenu.IsOpen() then return end
- if summary.totalLine and paintTotal() then return end
+ if summary.totalLine then
+  totalDraws=totalDraws+1
+  if totalScope and paintTotal(totalScope) then return end
+  -- Probe alternate exported roots only while not rendering a total hover.
+  -- One bounded discovery pass every ten draws; a found scope is reused.
+  if totalDraws%10==1 then
+   for _,scope in ipairs(totalScopes) do
+    if scope~=totalScope and paintTotal(scope) then return end
+   end
+  end
+ end
  local heading,current,currentValue,remainder,remainderValue=get(9),get(10),get(11),get(14),get(15)
  if not heading or not current or not currentValue or not remainder or not remainderValue then return end
  if not heading.visibleGlobal or not current.visibleGlobal or not remainder.visibleGlobal then return end

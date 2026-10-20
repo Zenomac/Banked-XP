@@ -41,7 +41,7 @@ function M.stateChanged(event)
 end
 function M.register()
  if registered then return end;registered=true
- print('[banked-xp] Diango chat notice enabled (v0.104).')
+ print('[banked-xp] Diango chat notice enabled (v0.105).')
  if Event and Event.GameStateChanged then Event.GameStateChanged.Subscribe('bankedXpDiangoNotice',M.stateChanged) end
  if Event and Event.Logic then
   Event.Logic.Subscribe('bankedXpDiangoNotice',function()

@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.104.0**.
+Current plugin version: **0.105.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
-These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.104. Historical instructions in older notes may have been superseded.
+These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.105
+
+Expanded total-XP hover discovery to the exported tooltip/info/hover roots, scanning both static text and dynamic children 0–64. Discovery is throttled and a working root is reused. Read-only [BXP total probe] messages identify matched text and frame failures. Rendering proceeds only with the established 10px-corner native frame shape. This addresses the missing v0.104 display path; actual client visibility is still unconfirmed.
 
 ## v0.104
 
