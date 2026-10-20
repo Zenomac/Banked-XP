@@ -1,6 +1,6 @@
 # Banked XP
 
-RuneScape 3 client plugin by **Zenomac**. Current version: **0.154.0**.
+RuneScape 3 client plugin by **Zenomac**. Current version: **0.155.0**.
 
 Shows banked XP estimates and supply-aware recipe choices for Herblore, Smithing, Crafting, Fletching, Archaeology, Farming, Firemaking, Cooking, Prayer and Construction. Coverage varies by item and method.
 
@@ -36,7 +36,7 @@ Totals use supported recipes and a deterministic greedy allocation of shared sup
 
 ## Version history
 
-The current plugin version is **0.154.0**. [Complete changelog — v0.1 through v0.154](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+The current plugin version is **0.155.0**. [Complete changelog — v0.1 through v0.155](CHANGELOG.md) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
 
 ## Development
 
@@ -56,4 +56,4 @@ See the [API usage audit](docs/API_USAGE.md), [skill totals](docs/SKILL_TOTALS.m
 
 Read [local data and permissions](banked-xp/PRIVACY.md), [submission draft and blockers](docs/SUBMISSION.md), and [code review map](docs/CODE_REVIEW.md). This development build is not claimed to be Jagex-approved. A real author contact email and personal/provenance review remain required before submission.
 
-**v0.154 native-label trial:** Tradeable anima now places XP information and the final options line in the existing visible native options label. No custom layer, text or canvas is created. The block intentionally retains native right alignment for this rendering test. In-game visibility is not yet confirmed. Other item tooltips keep their existing layout.
+**v0.155 anima formatting:** The native options-label rendering introduced in v0.154 is confirmed visible in-game. XP text is now centered, with measured nonbreaking-space padding on the final options line to retain its right-edge placement. A missing footer divider uses the existing sprite-rule renderer and follows the cursor. The console prints the executable build version on every load/reload. This release's alignment and divider appearance still need in-game confirmation.

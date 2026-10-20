@@ -352,7 +352,8 @@ print('PASS: 100 client-interleaved relayouts keep native stat offsets and toolt
 
 -- Tradeable anima uses the visible native footer, with no custom UI allocation.
 callbacks.MiniMenuOpened();labels[3]=nil
-ui.Layer={new=function() error('tradeable hover must not allocate a layer') end}
+local dividerLayers=0
+ui.Layer={new=function(parent) dividerLayers=dividerLayers+1;return component(996,parent,0,0,0,0) end}
 ui.Text={new=function() error('tradeable hover must not allocate text') end}
 ui.Canvas={new=function() error('tradeable hover must not allocate canvas') end}
 selected.inputPerPotion=3;selected.xpUnit='arrow'
@@ -370,7 +371,8 @@ for cycle=1,3 do
    callbacks.Draw()
    assert(labels[2].visibleGlobal and labels[2].content:find('XP',1,true),'native footer carries XP on first draw')
    assert(labels[2].content:sub(-#nativeFooter)==nativeFooter,'options remain the final line')
-   assert(labels[2].alignHorizontal==2,'native options alignment retained for trial')
+   assert(labels[2].alignHorizontal==ui.AlignMode.CENTRE,'XP body centered')
+   assert(labels[2].content:find('\194\160',1,true),'only options line receives nonbreaking padding')
    assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'invisible native body untouched')
    assert(labels[0].content==title,'native title unchanged')
    if frame==1 then expectedWidth=bg.width;measurements=widthCalls+lineCalls;firstContent=labels[2].content
@@ -381,6 +383,7 @@ for cycle=1,3 do
   end
  end
 end
+assert(dividerLayers<=1,'only one reusable footer divider layer')
 local oldX=labels[2].xyGlobal.x
 bubble.position.x=bubble.position.x+10
 callbacks.Draw()

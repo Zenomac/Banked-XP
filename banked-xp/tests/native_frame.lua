@@ -51,3 +51,15 @@ frame.apply(bg,header,footer,nil,box,edit)
 assert(parts[1].hidden and dividers[0].hidden,'native hidden state preserved')
 assert(#created==1 and not created[1].hidden,'plugin-owned rule replaces hidden divider')
 frame.destroy()
+
+-- Tradeable path supplies only the missing footer rule and follows cursor.
+frame.destroy();created={};dividers={}
+header.xyGlobal={x=20,y=26}
+assert(frame.apply(bg,header,footer,nil,box,edit,true,true))
+assert(#created==1,'footer fallback creates one divider, not a new text layer')
+local rule=created[1];local oldX,oldY=rule.x,rule.y
+header.xyGlobal={x=35,y=33};frame.follow(header)
+assert(rule.x==oldX+15 and rule.y==oldY+7,'divider follows native cursor delta')
+frame.hide();assert(rule.hidden,'divider disappears with tooltip')
+frame.destroy();assert(rule.destroyed,'divider cleaned up on shutdown')
+print('PASS: tradeable footer divider creation, cursor following and cleanup')

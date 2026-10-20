@@ -1,3 +1,4 @@
+print('[banked-xp] Loaded v0.155.0 (native anima tooltip).')
 -- Native middle-row layout 0.49. Native cursor positioning is preserved.
 -- Temporarily expands the native tooltip row and moves its footer below it.
 -- Reversible layout edits are undone before each frame and on exit.
@@ -189,7 +190,7 @@ end
 local function paint()
     if selected and not MiniMenu.IsOpen() then
         local ok,unchanged=pcall(unchangedAnima)
-        if ok and unchanged then return end
+        if ok and unchanged then nativeFrame.follow(animaHeader);return end
     end
     animaPaintKey=nil
     animaFooter=nil
@@ -358,7 +359,14 @@ local function paint()
     local combinedText,combinedHeight
     if tradeableAnima then
         if not footer.visibleGlobal or footer.hidden or #details>0 then probe('native footer unavailable');restore();return end
-        combinedText=text..'<br><br>'..footerText
+        -- One visible native label carries both sections. Center its body and
+        -- pad only the options line using measured nonbreaking spaces so the
+        -- options remain at the right edge without another text component.
+        local nbsp='\194\160'
+        local spaceWidth=footerStyle.font:GetStringWidth(nbsp,false)
+        local optionsWidth=footerStyle.font:GetStringWidth(footerText,false)
+        local pad=spaceWidth>0 and math.max(0,math.floor((plan.width-optionsWidth-2)/spaceWidth)) or 0
+        combinedText=text..'<br><br>'..string.rep(nbsp,pad)..footerText
         local count=math.max(1,footerStyle.font:GetStringLineCount(combinedText,plan.width,false))
         combinedHeight=math.ceil(footerStyle.font.maxAscent+footerStyle.font.maxDescent+(count-1)*footerStyle.spacing+2)
         local adjusted={};for k,v in pairs(plan) do adjusted[k]=v end;plan=adjusted
@@ -481,12 +489,13 @@ local function paint()
     if bg then resize(bg,frameWidth,frameHeight) end
     local effectY=plan.detailDividerY and (nativeY+plan.detailDividerY)
     local frameFooter=tradeableAnima and {xyGlobal={x=nativeX,y=nativeY+plan.footerY}} or footer
-    nativeFrame.apply(bg,header,frameFooter,effectY,box,edit,tradeableAnima)
+    nativeFrame.apply(bg,header,frameFooter,effectY,box,edit,tradeableAnima,tradeableAnima)
     if tradeableAnima then
         -- Reuse an already-rendered native label; never allocate UI children or
-        -- force visibility. Keep its native font and right alignment for this trial.
+        -- force visibility. Retain its native font while centering the body.
         box(footer,nativeX,nativeY+plan.bodyY,plan.width,combinedHeight)
         edit(footer,'content',combinedText)
+        edit(footer,'alignHorizontal',ui.AlignMode.CENTRE)
         edit(footer,'maxLines',0)
         animaFooter=footer
         animaPaintKey=animaKey();animaHeader=header;animaTitle=header.content

@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.154.0**.
+Current plugin version: **0.155.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.155 — Centered anima information and load-version message
+
+- User confirmed v0.154 native-label XP rendering. Center the combined label and use font-measured nonbreaking-space padding only on the final options line to keep it near the right edge.
+- Supply a missing footer divider through the existing native-sprite rule renderer. Reuse the divider and follow native cursor movement without repeated text measurement.
+- Print `[banked-xp] Loaded v0.155.0 (native anima tooltip).` at entry to main.lua on each load/reload, independent of chat permissions.
+- Hover and divider tests cover repeated switches, cached sizing, restoration, divider following and cleanup. Visual alignment/divider confirmation is pending in-game.
 
 ## v0.154 — Native options-label rendering trial
 

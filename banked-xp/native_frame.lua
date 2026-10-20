@@ -2,6 +2,7 @@
 -- Reuse the client sprites, including their tint, flips and transparency.
 local M={}
 local rules={}
+local anchorX,anchorY
 function M.plan(w,h)
     return {
         [0]={2,2,w-4,h-4},
@@ -40,7 +41,22 @@ local function spriteRule(key,x,y,width)
     end
     r.layer.hidden=false;r.layer:MoveToFront()
 end
-function M.apply(bg,header,footer,detailY,box,edit,existingOnly)
+-- Follow the native cursor without rebuilding or measuring the tooltip.
+function M.follow(header)
+    if not anchorX then return end
+    local xy=header.xyGlobal
+    local dx,dy=xy.x-anchorX,xy.y-anchorY
+    if dx~=0 or dy~=0 then
+        for _,r in pairs(rules) do
+            if not r.layer.hidden then
+                r.x,r.y=r.x+dx,r.y+dy;r.layer:SetPos(r.x,r.y)
+            end
+        end
+        anchorX,anchorY=xy.x,xy.y
+    end
+end
+function M.apply(bg,header,footer,detailY,box,edit,existingOnly,footerFallback)
+    anchorX,anchorY=header.xyGlobal.x,header.xyGlobal.y
     if not bg then return false end
     local parts={}
     for i=0,8 do
@@ -61,7 +77,7 @@ function M.apply(bg,header,footer,detailY,box,edit,existingOnly)
             box(c,x,y,width,2)
         else
             -- Missing/hidden native rules stay untouched. Draw our own rule.
-            if not existingOnly then spriteRule(key,x,y,width) end
+            if not existingOnly or (footerFallback and key=='footer') then spriteRule(key,x,y,width) end
         end
     end
     divider(first,'header',header.xyGlobal.y+header.height+1)
