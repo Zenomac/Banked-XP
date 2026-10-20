@@ -43,4 +43,4 @@ Only the documented XP percentage is modeled. Factory outfit effects on unfinish
 
 0.79: Removed the separate available outfit bonus line; the colored active percentage remains.
 
-0.97: Outfit parentheses show the number of missing detected pieces: (N not owned), or (N not worn) when the complete regular set is confirmed owned. Fully worn sets show (0 not worn). Ownership refers to observed pieces; Diango-only unlock evidence remains unconfirmed.
+0.80: Outfit parentheses show the number of missing detected pieces: (N not owned), or (N not worn) when the complete regular set is confirmed owned. Fully worn sets show (0 not worn). Ownership refers to observed pieces; Diango-only unlock evidence remains unconfirmed.

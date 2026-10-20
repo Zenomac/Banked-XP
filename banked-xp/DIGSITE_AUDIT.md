@@ -1,4 +1,4 @@
-# Digsite and excavation audit — v0.97
+# Digsite and excavation audit — v0.88
 
 Reviewed the current Archaeology dig-site list, the combined excavation-hotspot table (110 rows, including duplicate plot variants and event/quest sites), and 113 linked digsite/hotspot pages. All fetches succeeded. The combined table contains 234 distinct item names: 229 non-event finds, including the soul beacon components, and five Harvest Hollow event finds. Source-table damaged artefact links were checked on each linked page. The nine principal sites are Kharid-et, Infernal Source, Everlight, Moonrise, Senntisten, Stormguard Citadel, Daemonheim, Warforge and Orthen. The overview also covers the Guild tutorial and quest/event plots outside these sites.
 

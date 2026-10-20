@@ -1,4 +1,4 @@
-# Archaeology — v0.97
+# Archaeology — v0.87
 
 Audited all 231 restoration rows on https://runescape.wiki/w/Artefacts on 20 October 2026 against shipped XP, levels and required inputs. Added Teleportation crystal (damaged); corrected the Ninbaradari mural requirement from level 88 to 82. Existing Spear of Annihilation component routes are retained. No excavation XP or repaired-artefact repeat restoration XP is added.
 

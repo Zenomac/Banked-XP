@@ -1,4 +1,6 @@
-# v0.97 diagnostics
+# Historical v0.96 diagnostics
+
+This document describes the v0.96 diagnostic build. Native skill rendering returned in v0.97; later versions use the renderer described in NATIVE_SKILL_RENDERER.md.
 
 Install the complete folder and reload. Open the bank once to capture supplies. Background work is incremental; its completion prints ten [BXP audit] lines. Then hover a supported skill briefly. [BXP probe] and [BXP frame] lines report the actual skill-tooltip text IDs, fonts, positions and native frame geometry. Each skill is logged once per plugin activation to avoid continuous logging.
 

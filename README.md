@@ -33,6 +33,10 @@ Metal-bank access uses the documented container. Archaeology container discovery
 
 Totals use supported recipes and a deterministic greedy allocation of shared supplies within each skill. They are estimates, not a guaranteed global optimum or XP/hour claim. Different skill totals represent alternative uses of shared items. Stored bonus XP is not applied to the estimates.
 
+## Version history
+
+The current plugin version is **0.103.0**. [Release notes](banked-xp/README.md#release-history-newest-first) use the version in which each change was introduced. Historical entries may describe behavior superseded by later fixes; current usage is documented above.
+
 ## Development
 
 The complete plugin, data, documentation and 27 Lua test suites are under [banked-xp](banked-xp). Run each test in a separate Lua 5.4 process from that directory, for example:

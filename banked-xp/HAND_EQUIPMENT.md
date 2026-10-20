@@ -1,4 +1,4 @@
-# Skilling hand equipment — v0.97
+# Skilling hand equipment — v0.81
 
 The new “Include skilling hand equipment” setting defaults on. Actual WORN equipment is observed using the existing equipment cache, outside tooltip Draw. Bank ownership, toolbelt membership and backpack possession do not imply an active tool. Removing a tool removes its effect after the equipment cache refresh. Outfit and tool settings are independent.
 
