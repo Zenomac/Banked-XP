@@ -355,6 +355,7 @@ callbacks.MiniMenuOpened();labels[3]=nil
 local ownLayer,ownText
 local layerCreates,textCreates=0,0
 ui.Layer={new=function(parent,category,dynamic)
+ assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
  assert(parent==props and category~=0 and dynamic==0,'owned layer must share native text branch with separate category')
  layerCreates=layerCreates+1
  ownLayer=component(999,parent,0,0,0,0)
@@ -362,6 +363,7 @@ ui.Layer={new=function(parent,category,dynamic)
  return ownLayer
 end}
 ui.Text={new=function(parent,category,dynamic)
+ assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
  assert(parent==ownLayer,'text must use plugin-owned layer')
  textCreates=textCreates+1
  ownText=component(1000,parent,0,0,0,0)

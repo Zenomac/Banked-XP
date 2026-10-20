@@ -1,10 +1,16 @@
 # Changelog
 
-Current plugin version: **0.148.0**.
+Current plugin version: **0.149.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.149 — Fix rejected component identifier
+
+- v0.148 failed to create its owned layer: the client rejected category 4347984 / ID 0 with a 0–256 range error. It never reached the rendering trial.
+- Replace the oversized category with 148, retaining dynamic IDs 0 and 1 and separation from native category zero.
+- Both owned-component test fixtures now enforce the reported ID bounds. The new regression rejects v0.148. In-game appearance still needs confirmation after successful construction.
 
 ## v0.148 — Place owned text inside the tooltip content branch
 

@@ -10,10 +10,12 @@ local function object(parent)
  Destroy=function() destroys=destroys+1 end}
 end
 ui.Layer.new=function(parent,category,dynamic)
+ assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
  assert(parent.staticID==902 and category~=0 and dynamic==0)
  creates=creates+1;local c=object(parent);parent.children={[category..':'..dynamic]=c};return c
 end
 ui.Text.new=function(parent,category,dynamic)
+ assert(category>=0 and category<=256 and dynamic>=0 and dynamic<=256,'client component ID range 0..256')
  local c=setmetatable(object(parent),{
   __index=function(_,key) if key=='lineSpacing' then return 0 end end,
   __newindex=function(self,key,value)

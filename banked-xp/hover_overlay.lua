@@ -2,7 +2,7 @@
 local M={}
 local owner,layer,label,plan,blocked
 local inspected=false
-local CATEGORY=0x425850 -- BXP; keep separate from native category-zero rows.
+local CATEGORY=148 -- Client IDs are bounded to 0..256; avoid native category zero.
 local function root()
     local ok,c=pcall(function() return ui.Interfaces:GetComponent(1477,902) end)
     if ok and c and c.staticID==902 then return c end
