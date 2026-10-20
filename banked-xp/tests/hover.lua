@@ -354,7 +354,8 @@ callbacks.MiniMenuOpened()
 ui.Text={new=function() error('no text constructors') end}
 ui.Layer={new=function() error('no layer constructors') end}
 ui.Sprite={new=function() error('no sprite constructors') end}
-local expectedWidth
+local expectedWidth,measuredWidths,measuredLines
+selected.note='Limited by: Dinarrow | Requires: Standard imbuing | Outfit: <col=ff0000>+0%</col> Fletcher'
 for cycle=1,3 do
  for index,god in ipairs({'Bik','Ful','Wen','Jas'}) do
   selected.total=1000+index
@@ -367,10 +368,18 @@ for cycle=1,3 do
    callbacks.Draw()
    assert(labels[0].content:find('XP',1,true),'XP in visible native title on first and repeated draws')
    assert(labels[1].content=='' and not labels[1].hidden and not labels[1].visibleGlobal,'middle label untouched')
-   if frame==1 then expectedWidth=bg.width else assert(bg.width==expectedWidth,'width stable') end
+   assert(labels[0].font==labels[2].font,'use smaller native options font')
+   assert(labels[0].content:find('</col><br><col=e3d7bf>Requires:',1,true),'notes on separate lines')
+   if frame==1 then
+    expectedWidth=bg.width;measuredWidths=widthCalls;measuredLines=lineCalls
+   else
+    assert(bg.width==expectedWidth,'width stable')
+    assert(widthCalls==measuredWidths and lineCalls==measuredLines,'warm draws must not remeasure text')
+   end
   end
   callbacks.MiniMenuOpened()
   assert(labels[0].content==title,'native title restored')
+  assert(labels[0].font==12,'original title font restored')
  end
 end
 print('PASS: observed hidden-middle layout uses title only; no constructors, unhiding or horizontal growth')

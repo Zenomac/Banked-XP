@@ -1,10 +1,17 @@
 # Changelog
 
-Current plugin version: **0.137.0**.
+Current plugin version: **0.138.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.138 — Tradeable anima formatting and measurement cache
+
+- Match the smaller native options font on the existing visible label; restore the original title font on exit.
+- Separate limiter, requirement and outfit notes into centered lines; restore bank quantity and base-total context with readable number formatting.
+- Leave space for the native title divider and cache font lookup and text measurements across unchanged draws. Cache keys include displayed content, font, spacing and width.
+- Continue using existing visible components only. Local tests cover repeated measurement avoidance, all four gods, note separation and font restoration; in-game latency and appearance still require confirmation.
 
 ## v0.137 — Observed non-visible middle-row workaround
 
