@@ -1,10 +1,14 @@
 # Changelog
 
-Current plugin version: **0.116.0**.
+Current plugin version: **0.117.0**.
 
 This reconstructed development history starts with the original v0.1 prototype. Entries are based on the saved versioned ZIPs, complete plugin folders, their release notes and source changes. Early experimental builds were not all complete plugin packages. A historical feature or attempted fix is not a claim that it remains in the current build or was verified in the game.
 
 These are development release notes, not backdated Git commits or GitHub release tags. Versions follow the original build labels: v0.1 through v0.105. Historical instructions in older notes may have been superseded.
+
+## v0.117
+
+Preserve native non-Herblore detail blocks beneath XP information instead of stacking and centering each label. Native stat fonts, alignments, widths, heights and relative row/column offsets are retained; the block moves together below the XP section. Potion layout remains as before. Added native stat-preservation coverage; hover and Lua syntax checks pass. Live equipment appearance still requires confirmation.
 
 ## v0.116
 

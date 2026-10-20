@@ -263,6 +263,26 @@ local function paint()
     local maxWidth=math.min(440,root and math.max(120,root.width-32) or 440)
     local plan=hoverLayout.plan(font,header.content,lines,detailText,footerText,
         nativeWidth,nativeHeight,maxWidth,header.lineSpacing,header.font,styles)
+    -- Equipment details can contain native columns and precisely spaced rows.
+    -- Translate the block intact rather than stacking/recentering every label.
+    local preserveDetails=selected.skill~='Herblore' and #details>0
+    local detailOriginX,detailOriginY,detailBottom
+    if preserveDetails then
+        detailOriginX,detailOriginY,detailBottom=math.huge,math.huge,-math.huge
+        for _,c in ipairs(details) do
+            detailOriginX=math.min(detailOriginX,c.xyGlobal.x)
+            detailOriginY=math.min(detailOriginY,c.xyGlobal.y)
+            detailBottom=math.max(detailBottom,c.xyGlobal.y+c.height)
+        end
+        -- The layout plan is cached; copy before adjusting native block bounds.
+        local adjusted={};for k,v in pairs(plan) do adjusted[k]=v end;plan=adjusted
+        local start=plan.details[1].y
+        plan.footerY=start+(detailBottom-detailOriginY)+6
+        plan.height=plan.footerY+plan.footerHeight
+        local right=0
+        for _,c in ipairs(details) do right=math.max(right,c.xyGlobal.x-detailOriginX+c.width) end
+        plan.width=math.max(plan.width,right)
+    end
     local bg=ui.Interfaces:GetComponent(96797572)
     local oldHeight=bg and bg.height or (footer.xyGlobal.y+footer.height-nativeY+12)
     local frameWidth=plan.width+(bg and bg.width-nativeWidth or 16)
@@ -310,11 +330,16 @@ local function paint()
     end
     for i,c in ipairs(details) do
         local d=plan.details[i]
-        edit(c,'content',detailText[i])
-        box(c,nativeX,nativeY+d.y,plan.width,d.height)
-        edit(c,'alignVertical',ui.AlignMode.TOPLEFT)
-        edit(c,'alignHorizontal',alignment)
-        edit(c,'maxLines',0)
+        if preserveDetails then
+            box(c,nativeX+c.xyGlobal.x-detailOriginX,
+                nativeY+plan.details[1].y+c.xyGlobal.y-detailOriginY,c.width,c.height)
+        else
+            edit(c,'content',detailText[i])
+            box(c,nativeX,nativeY+d.y,plan.width,d.height)
+            edit(c,'alignVertical',ui.AlignMode.TOPLEFT)
+            edit(c,'alignHorizontal',alignment)
+            edit(c,'maxLines',0)
+        end
     end
     box(footer,nativeX,nativeY+plan.footerY,plan.width,plan.footerHeight)
     edit(footer,'content',footerText)

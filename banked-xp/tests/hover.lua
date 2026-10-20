@@ -295,3 +295,15 @@ for _,title in ipairs({'Withdraw-All Prayer potion<br>(4)','Withdraw-All Prayer 
  callbacks.MiniMenuOpened()
 end
 print('PASS: native newline and br name wrapping')
+
+-- Equipment stat blocks retain their native dimensions, typography and alignment.
+selected.skill='Crafting';labels[0].content='Withdraw-All Prayer potion (4)'
+labels[3].content='Damage: 100<br>Accuracy: 200'
+labels[3].alignHorizontal=0;labels[3].font=12
+local nativeStatWidth,nativeStatHeight=labels[3].width,labels[3].height
+callbacks.MiniMenuReady(event);callbacks.Draw()
+assert(labels[3].width==nativeStatWidth and labels[3].height==nativeStatHeight)
+assert(labels[3].font==12 and labels[3].alignHorizontal==0)
+assert(labels[3].content=='Damage: 100<br>Accuracy: 200')
+callbacks.MiniMenuOpened()
+print('PASS: native equipment stat dimensions, font, alignment and content preserved')
